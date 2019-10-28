@@ -1,12 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7ecbca01-677f-4e5e-abd2-bc73c42b1b35" name="Default Changelist" comment="" />
+    <list default="true" id="7ecbca01-677f-4e5e-abd2-bc73c42b1b35" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datanucleus.log" beforeDir="false" afterPath="$PROJECT_DIR$/datanucleus.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/es/deusto/client/controller/EasyBookingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/es/deusto/client/controller/FestivalCineController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/es/deusto/client/gui/Alta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/es/deusto/client/gui/Alta.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/es/deusto/client/gui/Inicio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/es/deusto/client/gui/Inicio.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/es/deusto/client/gui/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/es/deusto/client/gui/Login.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/es/deusto/client/remote/RMIServiceLocator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/es/deusto/client/remote/RMIServiceLocator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/es/deusto/server/auth/GoogleAuthServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/es/deusto/auth/GoogleAuthServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/es/deusto/server/auth/GoogleAuthService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/es/deusto/auth/GoogleAuthService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/es/deusto/server/gateway/GoogleAuth.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/es/deusto/server/gateway/IGatewayAuth.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/es/deusto/server/gateway/IGatewayAuth.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/es/deusto/server/remote/IUsuarioAdmin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/es/deusto/server/remote/IUsuarioAdmin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/es/deusto/server/remote/UsuarioAdmin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/es/deusto/server/remote/UsuarioAdmin.java" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
@@ -17,17 +36,28 @@
   </component>
   <component name="ProjectId" id="1SfCiyVe8L2nZVibfzNxyovv00N" />
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/es/deusto/server/dao" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/es/deusto/server/gateway" />
     <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Benat\workspace\fest_cine\src\main\sql" />
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="es.deusto.server" />
+      <recent name="es.deusto" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Benat\Desktop\Festival-de-Cine-Calidad-Software\src\main\java\es\deusto\server\gateway" />
+      <recent name="C:\Users\Benat\Desktop\Festival-de-Cine-Calidad-Software\src\main\java\es\deusto\server" />
       <recent name="C:\Users\Benat\workspace\fest_cine\src\main\java\es\deusto\server\dao" />
       <recent name="C:\Users\Benat\workspace\fest_cine\src\main\java\es\deusto\server" />
       <recent name="C:\Users\Benat\workspace\fest_cine" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="es.deusto.server.gateway" />
+      <recent name="es.deusto.server" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Benat\workspace\fest_cine\src\main\sql" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -54,5 +84,16 @@
       <updated>1571945393648</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

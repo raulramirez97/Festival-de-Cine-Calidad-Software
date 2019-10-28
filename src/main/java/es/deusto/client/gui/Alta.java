@@ -1,4 +1,4 @@
-package es.deusto.ingenieria.sd.eb.client.gui;
+package es.deusto.client.gui;
 
 import java.awt.Font;
 import java.awt.Color;
@@ -14,8 +14,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-import es.deusto.ingenieria.sd.eb.client.controller.EasyBookingController;
-import es.deusto.ingenieria.sd.eb.server.data.dto.UsuarioDTO;
+import es.deusto.client.controller.FestivalCineController;
+import es.deusto.server.dto.UsuarioDTO;
 
 public class Alta extends JFrame {
 
@@ -61,7 +61,7 @@ public class Alta extends JFrame {
             public void actionPerformed(ActionEvent e) {
             	try 
             	{
-					EasyBookingController.getInstance().crearNuevoUsuarioGoogle(textField.getText());
+					FestivalCineController.getInstance().crearNuevoUsuarioGoogle(textField.getText());
 					myUser = new UsuarioDTO(textField.getText());
 					Menu m = new Menu(myUser);
 	                m.setVisible(true);
@@ -78,7 +78,7 @@ public class Alta extends JFrame {
             }
         });
 		
-		JButton btnRegistrarseFacebook = new JButton("Registrarse Facebook");
+		/*JButton btnRegistrarseFacebook = new JButton("Registrarse Facebook");
 		btnRegistrarseFacebook.setBounds(230, 174, 175, 29);
 		contentPane.add(btnRegistrarseFacebook);
 		btnRegistrarseFacebook.addActionListener(new ActionListener() {
@@ -86,7 +86,7 @@ public class Alta extends JFrame {
             public void actionPerformed(ActionEvent e) {
             	try 
             	{
-					EasyBookingController.getInstance().crearNuevoUsuarioFacebook(textField.getText());
+					FestivalCineController.getInstance().crearNuevoUsuarioFacebook(textField.getText());
 					myUser = new UsuarioDTO(textField.getText());
 					Menu m = new Menu(myUser);
 	                m.setVisible(true);
@@ -101,6 +101,6 @@ public class Alta extends JFrame {
             		JOptionPane.showMessageDialog(alta, "Este usuario no existe en Facebook", "El usuario no existe", JOptionPane.INFORMATION_MESSAGE);
             	}
             }
-        });
+        });*/
 	}
 }

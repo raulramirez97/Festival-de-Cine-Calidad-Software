@@ -9,8 +9,8 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
-import es.deusto.server.dao.IUserDAO;
-import es.deusto.server.dao.UserDAO;
+import es.deusto.server.db.IUserDAO;
+import es.deusto.server.db.UserDAO;
 import es.deusto.server.data.DirectedMessage;
 import es.deusto.server.data.Message;
 import es.deusto.server.data.MessageList;

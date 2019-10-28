@@ -1,4 +1,4 @@
-package es.deusto.ingenieria.sd.eb.client.gui;
+package es.deusto.client.gui;
 
 import java.awt.Font;
 import java.awt.Color;
@@ -16,8 +16,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-import es.deusto.ingenieria.sd.eb.client.controller.EasyBookingController;
-import es.deusto.ingenieria.sd.eb.server.data.dto.UsuarioDTO;
+import es.deusto.client.controller.FestivalCineController;
+import es.deusto.server.dto.UsuarioDTO;
 
 public class Login extends JFrame {
 
@@ -65,10 +65,10 @@ public class Login extends JFrame {
             {
                 try 
                 {
-					flag = comprobarUsuario(EasyBookingController.getInstance().getUsuarios());
+					flag = comprobarUsuario(FestivalCineController.getInstance().getUsuarios());
 					if (!flag)
 					{
-						JOptionPane.showMessageDialog(ventana, "No hay usuarios que concuerden con esa credencial. Inténtelo otra vez.");
+						JOptionPane.showMessageDialog(ventana, "No hay usuarios que concuerden con esa credencial. Intï¿½ntelo otra vez.");
 					}
 				} 
                 catch (RemoteException e1) 

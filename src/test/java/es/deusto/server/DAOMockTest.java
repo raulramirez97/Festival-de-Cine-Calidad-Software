@@ -14,12 +14,11 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import es.deusto.server.dao.IUserDAO;
+import es.deusto.server.db.IUserDAO;
 import es.deusto.server.data.Message;
 import es.deusto.server.data.User;
 import es.deusto.server.data.DirectedMessage;
 
-import es.deusto.server.Messenger;
 import junit.framework.JUnit4TestAdapter;
 
 /**

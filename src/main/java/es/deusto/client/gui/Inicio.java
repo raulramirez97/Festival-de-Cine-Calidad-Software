@@ -1,4 +1,4 @@
-package es.deusto.ingenieria.sd.eb.client.gui;
+package es.deusto.client.gui;
 
 import java.awt.Font;
 import java.awt.Color;
@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import es.deusto.ingenieria.sd.eb.client.controller.EasyBookingController;
+import es.deusto.client.controller.FestivalCineController;
 
 public class Inicio extends JFrame {
 
@@ -34,7 +34,7 @@ public class Inicio extends JFrame {
 		setTitle("Menu principal");
 
 		
-		JLabel lblBienvenidoAEasybooking = new JLabel("¡Bienvenido a EasyBooking!");
+		JLabel lblBienvenidoAEasybooking = new JLabel("Bienvenido a EasyBooking");
 		lblBienvenidoAEasybooking.setFont(new Font("Tahoma", Font.PLAIN, 31));
 		lblBienvenidoAEasybooking.setBounds(58, 50, 418, 81);
 		contentPane.add(lblBienvenidoAEasybooking);
@@ -60,11 +60,11 @@ public class Inicio extends JFrame {
 		    {
 				try 
 				{
-					EasyBookingController.getInstance().getUsuarios();
+					FestivalCineController.getInstance().getUsuarios();
 				} 
 				catch (RemoteException e1) 
 				{
-					JOptionPane.showMessageDialog(ventana, "No hay usuarios actualmente en el sistema. Regístrese para usar EasyBooking.");
+					JOptionPane.showMessageDialog(ventana, "No hay usuarios actualmente en el sistema. Registrese para usar EasyBooking.");
 				}
 		    	Login f1 = new Login();
 				f1.setVisible(true);
