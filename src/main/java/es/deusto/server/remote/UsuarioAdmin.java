@@ -8,36 +8,39 @@ import java.util.Map;
 import java.util.TreeMap;
 import java.util.Map.Entry;
 
+import es.deusto.server.Auth;
 import es.deusto.server.data.Usuario;
 import es.deusto.server.dto.UsuarioAssembler;
 import es.deusto.server.dto.UsuarioDTO;
 import es.deusto.server.db.DBManager;
 import es.deusto.server.gateway.IGatewayAuth;
 
-public class UsuarioAdmin extends UnicastRemoteObject implements IUsuarioAdmin
+public class UsuarioAdmin implements IUsuarioAdmin
+//public class UsuarioAdmin extends UnicastRemoteObject implements IUsuarioAdmin
 {
 	private static final long serialVersionUID = 1L;
 	private Map<String, Usuario> usuarios = new TreeMap<String, Usuario>();
-	private IGatewayAuth gatewayGoogle;
-	private IGatewayAuth gatewayFacebook;
+	//private IGatewayAuth gatewayGoogle;
+	private Auth myAuth;
+	//private IGatewayAuth gatewayFacebook;
 
 	/*public UsuarioAdmin(IGatewayAuth gservice, IGatewayAuth fservice) throws RemoteException, NullPointerException {
 		super();
 		gatewayGoogle = gservice;
 		gatewayFacebook = fservice;
 	}*/
-	public UsuarioAdmin(IGatewayAuth gservice) throws RemoteException, NullPointerException {
+	public UsuarioAdmin() throws NullPointerException {
 		super();
-		gatewayGoogle = gservice;
+		myAuth = new Auth();
 	}
-	public synchronized void generarNuevoUsuarioGoogle (String email) throws RemoteException, NullPointerException {
-		if (gatewayGoogle.darAltaUsuario(email)==0)
+	public synchronized void generarNuevoUsuario (String email, String contra) throws NullPointerException {
+		if (myAuth.darAltaUsuario(email)==0)
 		{
-			System.out.println("Este usuario existe en Google+. Se proceder� a crear el usuario con el correo "+ email);
+			System.out.println("Este usuario existe en Google+. Se procedera a crear el usuario con el correo "+ email);
 		}
 		else
 		{
-			System.out.println("Este usuario no existe en Google+. - El usuario no se crear�");
+			System.out.println("Este usuario no existe en Google+. - El usuario no se creara");
 			throw new NullPointerException();
 		}
 		if (!(usuarios.containsKey(email)))
@@ -47,11 +50,11 @@ public class UsuarioAdmin extends UnicastRemoteObject implements IUsuarioAdmin
 			usuarios.put(email, user);
 			DBManager.getInstance().guardarUsuario(user);
 		}
-		else
+		/*else
 		{
 			System.out.println("The user has not been created");
 			throw new RemoteException();
-		}
+		}*/
 	}
 	/*public synchronized void generarNuevoUsuarioFacebook (String email) throws RemoteException, NullPointerException {
 		if (gatewayFacebook.darAltaUsuario(email)==0)

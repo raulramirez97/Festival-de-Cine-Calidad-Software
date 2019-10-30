@@ -237,6 +237,26 @@
                 </plugins>
             </build>
         </profile>
+        <!-- run as 'mvn exec:java -Pclientrest' -->
+        <profile>
+            <id>clientrest</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>exec-maven-plugin</artifactId>
+                        <version>1.2.1</version>
+                        <configuration>
+                            <mainClass>es.deusto.client.controller.FestivalCineController</mainClass>
+                            <arguments>
+                                <argument>${server.hostname}</argument>
+                                <argument>${server.port}</argument>
+                            </arguments>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
         <!-- run as 'mvn exec:java -Pclient' -->
         <profile>
             <id>client</id>

@@ -38,20 +38,23 @@ Para preparar la base de datos MySQL:
 1. Iniciar MySQL.
 2. Crear el schema MySQL usando el script preparado en `src\main\sql`.
 
-Para ejecutar la aplicación con ejemplos de prueba, antes de utilizar los ejemplos funcionales:
+Para testear la aplicación, hay que ejecutar los siguientes comandos:
 
 1. `mvn compile`
 2. `mvn package jetty:run`
-3. `mvn exec:java -Pfixture`
-
-Para ejecutar la aplicación con ejemplos reales, habría que ejecutar los siguientes comandos:
-
-1. `mvn compile`
-2. `mvn exec:java -Pauth`
-3. `mvn exec:java -Pserver`
-4. `mvn exec:java -Pclient`
+3. `mvn exec:java -Pclientrest -X`
 
 Para ejecutar las clases de test: `mvn test`
+
+Para limpiar todas las versiones de paquetes de Maven descargados: `mvn clean`
+
+### NOTA PARA JULEN:
+
+Por cada nueva entidad añadida a BD, debe haber:
+* Una clase en server/data
+* Dos clases en server/dto:
+   - <CLASE>DTO
+   - <CLASE>Assembler
 
 _____
 

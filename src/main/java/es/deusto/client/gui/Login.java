@@ -59,7 +59,7 @@ public class Login extends JFrame {
 		JButton btnRegistrarse = new JButton("Entrar");
 		btnRegistrarse.setBounds(132, 234, 155, 29);
 		contentPane.add(btnRegistrarse);
-		btnRegistrarse.addActionListener(new ActionListener() {
+		/*btnRegistrarse.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) 
             {
@@ -76,9 +76,9 @@ public class Login extends JFrame {
 					e1.printStackTrace();
 				}
             }
-        });
+        });*/
 	}
-	private boolean comprobarUsuario(List<UsuarioDTO> usu)
+	/*private boolean comprobarUsuario(List<UsuarioDTO> usu)
 	{
 		usuarioDTO = usu;
 		for (int i = 0; i < usuarioDTO.size(); i++)
@@ -93,5 +93,5 @@ public class Login extends JFrame {
 			}
         }
 		return false;
-	}
+	}*/
 }

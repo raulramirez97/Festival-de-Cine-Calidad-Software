@@ -7,12 +7,12 @@ public class UsuarioDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private String Email;
-	private String Aeropuerto;
+	private String Contrasena;
 	
-	public UsuarioDTO (String email) {
+	public UsuarioDTO (String email, String contrasena) {
 		super();
 		Email = email;
-		Aeropuerto = "PP";
+		Contrasena = contrasena;
 	}
 	public String getEmail() {
 		return Email;
@@ -20,10 +20,10 @@ public class UsuarioDTO implements Serializable {
 	public void setEmail(String email) {
 		Email = email;
 	}
-	public String getAeropuerto() {
-		return Aeropuerto;
+	public String getContrasena() {
+		return Contrasena;
 	}
-	public void setAeropuerto(String aeropuerto) {
-		Aeropuerto = aeropuerto;
+	public void setContrasena(String contrasena) {
+		Contrasena = contrasena;
 	}
 }

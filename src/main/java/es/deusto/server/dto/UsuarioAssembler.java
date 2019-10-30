@@ -19,7 +19,7 @@ private static UsuarioAssembler instance = new UsuarioAssembler();
 	{
 		List<UsuarioDTO> usuariosDTO = new ArrayList<>();
 		for (Usuario r : usuarios) {
-			usuariosDTO.add(new UsuarioDTO(r.getEmail()));
+			usuariosDTO.add(new UsuarioDTO(r.getEmail(),r.getContrasena()));
 		}
 		System.out.println("* Assembling Usuarios ...");		
 		return usuariosDTO;

@@ -22,6 +22,7 @@ public class Alta extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField textField;
+	private JTextField textField2;
 	private JFrame alta;
 	
 	UsuarioDTO myUser=null;
@@ -46,14 +47,22 @@ public class Alta extends JFrame {
 		JLabel lblUsuario = new JLabel("Usuario");
 		lblUsuario.setBounds(46, 173, 101, 37);
 		contentPane.add(lblUsuario);
-		
-			
+
 		textField = new JTextField();
 		textField.setBounds(46, 202, 146, 26);
 		contentPane.add(textField);
 		textField.setColumns(10);
+
+		JLabel lblPassword = new JLabel("Password");
+		lblPassword.setBounds(46, 240, 101, 37);
+		contentPane.add(lblPassword);
+
+		textField2 = new JTextField();
+		textField2.setBounds(46, 280, 146, 26);
+		contentPane.add(textField2);
+		textField2.setColumns(10);
 		
-		JButton btnRegistrarseGoogle = new JButton("Registrarse Google+");
+		JButton btnRegistrarseGoogle = new JButton("Registrarse");
 		btnRegistrarseGoogle.setBounds(230, 214, 175, 29);
 		contentPane.add(btnRegistrarseGoogle);
 		btnRegistrarseGoogle.addActionListener(new ActionListener() {
@@ -61,8 +70,8 @@ public class Alta extends JFrame {
             public void actionPerformed(ActionEvent e) {
             	try 
             	{
-					FestivalCineController.getInstance().crearNuevoUsuarioGoogle(textField.getText());
-					myUser = new UsuarioDTO(textField.getText());
+					FestivalCineController.getInstance().crearNuevoUsuario(textField.getText(), textField2.getText());
+					myUser = new UsuarioDTO(textField.getText(),textField2.getText());
 					Menu m = new Menu(myUser);
 	                m.setVisible(true);
 	                dispose();

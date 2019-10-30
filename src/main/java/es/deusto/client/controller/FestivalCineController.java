@@ -37,11 +37,14 @@ public class FestivalCineController {
 	}*/
 	
 	public List<UsuarioDTO> getUsuarios() throws RemoteException {
-		return rsl.getUsuarioService().getUsuariosDTO();
+		//return rsl.getUsuarioService().getUsuariosDTO();
+		//TODO: EDITAR
+		return null;
 	}
 
-	public void crearNuevoUsuarioGoogle (String email) throws RemoteException, NullPointerException {
-		rsl.getUsuarioService().generarNuevoUsuarioGoogle(email);
+	public void crearNuevoUsuario(String email, String contra) throws RemoteException, NullPointerException {
+		//rsl.getUsuarioService().generarNuevoUsuarioGoogle(email);
+		rsl.registerUser(email, contra);
 	}
 	
 	/*public void crearNuevoUsuarioFacebook (String email) throws RemoteException, NullPointerException {
@@ -102,5 +105,30 @@ public class FestivalCineController {
 
 	public static void main(String[] args) throws RemoteException {
 		new FestivalCineController(args);
+
+		//TODO: ANADIR SI ESO VALIDACION DE NUMERO DE ARGUMENTOS
+
+		/*if (args.length != 2) {
+			System.out.println("Use: java Client.Client [host] [port]");
+			System.exit(0);
+		}
+
+		String hostname = args[0];
+		String port = args[1];*/
+
+		/*ExampleClient exampleClient = new ExampleClient(hostname, port);
+
+		System.out.println("Register a user for the first time: dipina");
+		exampleClient.registerUser("dipina", "dipina");
+		System.out.println("Change the password as the user is already registered: cortazar");
+		exampleClient.registerUser("dipina", "cortazar");
+		System.out.println("* Message coming from the server: '"
+				+ exampleClient.sayMessage("dipina", "cortazar", "This is test 1!") + "'");
+		System.out.println("* Message coming from the server: '"
+				+ exampleClient.sayMessage("dipina", "cortazar", "This is test 2!") + "'");
+
+		MessageList messages = exampleClient.getUserMessages("dipina");
+		for (Message m : messages.getMessages()) {
+			System.out.println(m);*/
 	}
 }

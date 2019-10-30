@@ -11,7 +11,7 @@ public class Usuario //extends Persona
 {
 	@PrimaryKey
 	private String email;
-	private String aero;
+	private String contrasena;
 
 	/*
 	@Persistent(mappedBy="email", dependentElement="true")
@@ -23,7 +23,7 @@ public class Usuario //extends Persona
 	public Usuario (String email) 
 	{
 		this.email = email;
-		aero = "PP";
+		contrasena = "PP";
 	}
 	public String getEmail() {
 		return email;
@@ -31,11 +31,11 @@ public class Usuario //extends Persona
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getAeropuerto() {
-		return aero;
+	public String getContrasena() {
+		return contrasena;
 	}
-	public void setAeropuerto(String aero) {
-		this.aero = aero;
+	public void setContrasena(String contrasena) {
+		this.contrasena = contrasena;
 	}
 	/*public ArrayList<Reserva> getReservas() {
 		return reservas;
