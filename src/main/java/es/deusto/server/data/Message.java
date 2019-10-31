@@ -5,18 +5,13 @@ import javax.jdo.annotations.PersistenceCapable;
 import java.io.Serializable;
 import java.util.Date;
 
-//TODO: Clase a borrar; no hace falta para el Festival de Cine.
-//TODO: Aún no se ha borrado para que no peten las dependencias con clases base que se pueden tomar como
-//TODO: inspiración para modificar.
-
-
 @PersistenceCapable
 public class Message implements Serializable {
 	/**
 	 * Messages will be transferred to the RMI client as part of a User
 	 */
 	private static final long serialVersionUID = 1L;
-	User user = null;
+	UsuarioDTO usuariodto = null;
 	String text = null;
 	long timestamp;
 
@@ -26,12 +21,12 @@ public class Message implements Serializable {
 		this.timestamp = System.currentTimeMillis();
 	}
 
-	public User getUser() {
-		return user;
+	public UsuarioDTO getUsuarioDTO() {
+		return usuariodto;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setUsuarioDTO(UsuarioDTO usuarioDTO) {
+		this.usuariodto = usuarioDTO;
 	}
 
 	public String getText() {

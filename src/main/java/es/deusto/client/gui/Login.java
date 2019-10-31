@@ -1,33 +1,26 @@
 package es.deusto.client.gui;
 
-import java.awt.Font;
-import java.awt.Color;
+import es.deusto.client.FestivalCineController;
+import es.deusto.server.data.UsuarioDTO;
+
+import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.border.EmptyBorder;
-
-import es.deusto.client.controller.FestivalCineController;
-import es.deusto.server.dto.UsuarioDTO;
 
 public class Login extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField textField;
+	private JTextField textField2;
 	private boolean flag = false;
 	private JFrame ventana;
 	
-	private List<UsuarioDTO> usuarioDTO = new ArrayList<UsuarioDTO>();
+	//private List<UsuarioDTO> usuarioDTO = new ArrayList<UsuarioDTO>();
 	
 	public Login() 
 	{
@@ -55,43 +48,55 @@ public class Login extends JFrame {
 		textField.setBounds(46, 172, 146, 26);
 		contentPane.add(textField);
 		textField.setColumns(10);
+
+		JLabel lblPwd = new JLabel("Contrasena");
+		lblPwd.setBounds(46, 220, 101, 37);
+		contentPane.add(lblPwd);
+
+
+		textField2 = new JTextField();
+		textField2.setBounds(46, 270, 146, 26);
+		contentPane.add(textField2);
+		textField2.setColumns(10);
 		
 		JButton btnRegistrarse = new JButton("Entrar");
-		btnRegistrarse.setBounds(132, 234, 155, 29);
+		btnRegistrarse.setBounds(132, 232, 155, 29);
 		contentPane.add(btnRegistrarse);
-		/*btnRegistrarse.addActionListener(new ActionListener() {
+		btnRegistrarse.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) 
+            public void actionPerformed(ActionEvent e)
             {
-                try 
-                {
-					flag = comprobarUsuario(FestivalCineController.getInstance().getUsuarios());
+            	try
+				{
+					flag = comprobarUsuario(FestivalCineController.getInstance().getUser(textField.getText(),textField2.getText()),textField.getText(),textField2.getText());
 					if (!flag)
 					{
-						JOptionPane.showMessageDialog(ventana, "No hay usuarios que concuerden con esa credencial. Int�ntelo otra vez.");
+						JOptionPane.showMessageDialog(ventana, "No hay usuarios que concuerden con esas credenciales. Intentelo otra vez.");
 					}
-				} 
-                catch (RemoteException e1) 
-                {
-					e1.printStackTrace();
 				}
+            	catch (NullPointerException exception) {
+					JOptionPane.showMessageDialog(ventana, "No hay usuarios que concuerden con esas credenciales. Intentelo otra vez.");
+				}
+
             }
-        });*/
+        });
 	}
-	/*private boolean comprobarUsuario(List<UsuarioDTO> usu)
+	//TODO: SI ESO MOVER ESTO FUERA DE GUI, A LOGICA DE NEGOCIO.
+	private boolean comprobarUsuario(UsuarioDTO usu, String login, String pwd)
 	{
-		usuarioDTO = usu;
-		for (int i = 0; i < usuarioDTO.size(); i++)
-        {
-        if (usu.get(i).getEmail().compareTo(textField.getText())==0)
-			{
-         		System.out.println("Mi aeropuerto es: "+ usu.get(i).getAeropuerto());
-         		Menu m = new Menu(usu.get(i));
-         		m.setVisible(true);
-         		dispose();
-         		return true;
-			}
-        }
-		return false;
-	}*/
+		if ((usu == null))
+		{
+			return false;
+		}
+		else if ((usu.getLogin().compareTo(login)==0) && (usu.getPassword().compareTo(pwd)==0))
+		{
+			Menu m = new Menu(usu);
+			m.setVisible(true);
+			dispose();
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
 }

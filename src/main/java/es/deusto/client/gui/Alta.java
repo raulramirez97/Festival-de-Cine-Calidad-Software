@@ -1,21 +1,14 @@
 package es.deusto.client.gui;
 
-import java.awt.Font;
-import java.awt.Color;
+import es.deusto.client.FestivalCineController;
+import es.deusto.server.data.UsuarioDTO;
+
+import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.rmi.RemoteException;
-
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.border.EmptyBorder;
-
-import es.deusto.client.controller.FestivalCineController;
-import es.deusto.server.dto.UsuarioDTO;
 
 public class Alta extends JFrame {
 
@@ -68,22 +61,27 @@ public class Alta extends JFrame {
 		btnRegistrarseGoogle.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-            	try 
-            	{
-					FestivalCineController.getInstance().crearNuevoUsuario(textField.getText(), textField2.getText());
-					myUser = new UsuarioDTO(textField.getText(),textField2.getText());
-					Menu m = new Menu(myUser);
-	                m.setVisible(true);
-	                dispose();
-				} 
-            	catch (RemoteException e1) 
-            	{
-					JOptionPane.showMessageDialog(alta, "Este usuario ya existe en la BD", "El usuario ya existe", JOptionPane.INFORMATION_MESSAGE);
-				}
-            	catch (NullPointerException e1)
-            	{
-            		JOptionPane.showMessageDialog(alta, "Este usuario no existe en Google+", "El usuario no existe", JOptionPane.INFORMATION_MESSAGE);
-            	}
+				FestivalCineController.getInstance().registerUser(textField.getText(), textField2.getText());
+				myUser = new UsuarioDTO(textField.getText(),textField2.getText());
+				Menu m = new Menu(myUser);
+	            m.setVisible(true);
+	            dispose();
+//            	try
+//            	{
+//					FestivalCineController.getInstance().registerUser(textField.getText(), textField2.getText());
+//					myUser = new UsuarioDTO(textField.getText(),textField2.getText());
+//					Menu m = new Menu(myUser);
+//	                m.setVisible(true);
+//	                dispose();
+//				}
+//            	catch (RemoteException e1)
+//            	{
+//					JOptionPane.showMessageDialog(alta, "Este usuario ya existe en la BD", "El usuario ya existe", JOptionPane.INFORMATION_MESSAGE);
+//				}
+//            	catch (NullPointerException e1)
+//            	{
+//            		JOptionPane.showMessageDialog(alta, "Este usuario no existe en Google+", "El usuario no existe", JOptionPane.INFORMATION_MESSAGE);
+//            	}
             }
         });
 		

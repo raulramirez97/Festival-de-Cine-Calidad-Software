@@ -1,16 +1,13 @@
 package es.deusto.client.gui;
 
+import es.deusto.client.FestivalCineController;
+import es.deusto.server.data.*;
+
+import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.Color;
-import java.awt.Font;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-
-import es.deusto.server.dto.UsuarioDTO;
 
 public class Menu extends JFrame {
 	
@@ -28,22 +25,45 @@ public class Menu extends JFrame {
 		getContentPane().setBackground(Color.white);
 		setTitle("Reserva de vuelos");
 		
-		JLabel label = new JLabel("Bienvenido, " + aux.getEmail().toUpperCase());
+		JLabel label = new JLabel("Bienvenido, " + aux.getLogin().toUpperCase());
 		label.setFont(new Font("Times New Roman", Font.PLAIN, 32));
 		label.setBounds(40, 30, 287, 37);
 		contentPane.add(label);
 		
-		JButton btnReservar = new JButton("Reservar vuelo");
-		btnReservar.setBounds(150, 130, 175, 29);
-		contentPane.add(btnReservar);
+		JButton btnActores = new JButton("Ver listado de actores");
+		btnActores.setBounds(150, 130, 175, 29);
+		contentPane.add(btnActores);
 		
-		/*btnReservar.addActionListener(new ActionListener() {
+		btnActores.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-            	Vuelos vuelos = new Vuelos(aux);
-            	vuelos.setVisible(true);
-            	dispose();
+            	//TODO: POR EL MOMENTO ENSENADOS POR CONSOLA. POSTERIORMENTE SE APLICARA GUI.
+				ActorList actorList = FestivalCineController.getInstance().getActorList();
+				for (ActorDTO aux : actorList.getActorsDTO()) {
+					System.out.println(aux.toString());
+				}
+//            	Vuelos vuelos = new Vuelos(aux);
+//            	vuelos.setVisible(true);
+//            	dispose();
             }
-        });*/
+        });
+
+		JButton btnPeliculas = new JButton("Ver listado de peliculas");
+		btnPeliculas.setBounds(150, 180, 175, 29);
+		contentPane.add(btnPeliculas);
+
+		btnPeliculas.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				//TODO: POR EL MOMENTO ENSENADOS POR CONSOLA. POSTERIORMENTE SE APLICARA GUI.
+				PeliculaList peliculaList = FestivalCineController.getInstance().getPeliculaList();
+				for (PeliculaDTO aux : peliculaList.getPeliculasDTO()) {
+					System.out.println(aux.toString());
+				}
+//            	Vuelos vuelos = new Vuelos(aux);
+//            	vuelos.setVisible(true);
+//            	dispose();
+			}
+		});
 	}
 }

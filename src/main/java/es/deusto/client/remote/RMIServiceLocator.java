@@ -1,145 +1,139 @@
 package es.deusto.client.remote;
 
-import java.net.MalformedURLException;
-import java.rmi.Naming;
-import java.rmi.NotBoundException;
-import java.rmi.RemoteException;
+//import es.deusto.server.dto.UsuarioDTO;
 
-import es.deusto.server.remote.IUsuarioAdmin;
-import es.deusto.server.dto.UsuarioDTO;
+import es.deusto.server.data.*;
 
 import javax.ws.rs.client.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
+import java.util.List;
 
-public class RMIServiceLocator{
-	// The Cache
-	//private IReservaAdmin reservaService;
-	//private IUsuarioAdmin usuarioService;
-	//private IRMIAirline airlineService;
+public class RMIServiceLocator {
 	private Client client;
 	private WebTarget webTargetService;
 
-    public RMIServiceLocator() {}
+	public RMIServiceLocator() {}
 
-    public void setService(String[] args) {
-
+	public void setService(String[] args) {
 		client = ClientBuilder.newClient();
 		webTargetService = client.target(String.format("http://%s:%s/rest/server/", args[0], args[1]));
 		System.out.println(String.format("http://%s:%s/rest/server/", args[0], args[1]));
 	}
-    	// TODO: AQUI TENGO QUE METER EL CONTENIDO DE "EXAMPLECLIENT" (REGISTERUSER,SAYMESSAGE,GETUSERMESSAGES)
-		// TODO: LAS LLAMADAS DEL MAIN DEL "EXAMPLECLIENT" VENDRIAN DE ALTA/INICIO/LOGIN Y LUEGO DE CONTROLLER.
 
+	public void registerUser(String login, String password) {
+		WebTarget registerUserWebTarget = webTargetService.path("registerUser");
+		Invocation.Builder invocationBuilder = registerUserWebTarget.request(MediaType.APPLICATION_JSON);
 
-		public void registerUser(String login, String password) {
-			WebTarget registerUserWebTarget = this.webTargetService.path("register");
-            //Invocation.Builder invocationBuilder = sayHelloWebTarget.queryParam("login", "dipina").request(MediaType.APPLICATION_JSON);
-			Invocation.Builder invocationBuilder = registerUserWebTarget.request(MediaType.APPLICATION_JSON);
-
-			UsuarioDTO user = new UsuarioDTO(login, password);
-			Response response = invocationBuilder.post(Entity.entity(user, MediaType.APPLICATION_JSON));
-            //Response response = invocationBuilder.get();
-
-			if (response.getStatus() != Status.OK.getStatusCode()) {
-				System.out.println("Error connecting with the server. Code: " + response.getStatus());
-			} else {
-				System.out.println("User correctly registered");
-			}
+		UsuarioDTO usuarioDTO = new UsuarioDTO(login, password);
+		Response response = invocationBuilder.post(Entity.entity(usuarioDTO, MediaType.APPLICATION_JSON));
+		if (response.getStatus() != Status.OK.getStatusCode()) {
+			System.out.println("Error connecting with the server. Code: " + response.getStatus());
+		} else {
+			System.out.println("User correctly registered");
 		}
-/*
+	}
 
+	public String sayMessage(String login, String password, String message) {
+		WebTarget sayHelloWebTarget = webTargetService.path("sayMessage");
+		Invocation.Builder invocationBuilder = sayHelloWebTarget.request(MediaType.APPLICATION_JSON);
 
-	public ExampleClient(String hostname, String port) {
-			client = ClientBuilder.newClient();
-			webTarget = client.target(String.format("http://%s:%s/rest/server", hostname, port));
+		DirectedMessage directedMessage = new DirectedMessage();
+		UsuarioDTO usuarioDTO = new UsuarioDTO(login, password);
+
+		directedMessage.setUsuarioDTO(usuarioDTO);
+		directedMessage.setMessage(message);
+
+		Response response = invocationBuilder.post(Entity.entity(directedMessage, MediaType.APPLICATION_JSON));
+		if (response.getStatus() != Status.OK.getStatusCode()) {
+			System.out.println("Error connecting with the server. Code: " + response.getStatus());
+			return "";
+		} else {
+			String responseMessage = response.readEntity(String.class);
+			return responseMessage;
 		}
+	}
 
-		public void registerUser(String login, String password) {
-			WebTarget registerUserWebTarget = webTarget.path("register");
-			Invocation.Builder invocationBuilder = registerUserWebTarget.request(MediaType.APPLICATION_JSON);
+	public UsuarioDTO getUser(String login, String pwd) {
+		WebTarget sayHelloWebTarget = webTargetService.path("obtainUser");
+		sayHelloWebTarget = sayHelloWebTarget.queryParam("login", login);
+		Invocation.Builder invocationBuilder = sayHelloWebTarget.queryParam("pwd", pwd).request(MediaType.APPLICATION_JSON);
 
-			User user = new User(login, password);
-			Response response = invocationBuilder.post(Entity.entity(user, MediaType.APPLICATION_JSON));
-			if (response.getStatus() != Status.OK.getStatusCode()) {
-				System.out.println("Error connecting with the server. Code: " + response.getStatus());
-			} else {
-				System.out.println("User correctly registered");
-			}
+		Response response = invocationBuilder.get();
+		if (response.getStatus() != Status.OK.getStatusCode()) {
+			System.out.println("Error connecting with the server. Code: " + response.getStatus());
+			return new UsuarioDTO();
+		} else {
+			UsuarioDTO user = response.readEntity(UsuarioDTO.class);
+			return user;
 		}
+	}
 
-		public String sayMessage(String login, String password, String message) {
-			WebTarget sayHelloWebTarget = webTarget.path("sayMessage");
-			Invocation.Builder invocationBuilder = sayHelloWebTarget.request(MediaType.APPLICATION_JSON);
+	public MessageList getUserMessages(String login) {
+		WebTarget sayHelloWebTarget = webTargetService.path("messages");
+		Invocation.Builder invocationBuilder = sayHelloWebTarget.queryParam("login", "dipina").request(MediaType.APPLICATION_JSON);
 
-			DirectedMessage directedMessage = new DirectedMessage();
-			User user = new User(login, password);
-
-			directedMessage.setUser(user);
-			directedMessage.setMessage(message);
-
-			Response response = invocationBuilder.post(Entity.entity(directedMessage, MediaType.APPLICATION_JSON));
-			if (response.getStatus() != Status.OK.getStatusCode()) {
-				System.out.println("Error connecting with the server. Code: " + response.getStatus());
-				return "";
-			} else {
-				String responseMessage = response.readEntity(String.class);
-				return responseMessage;
-			}
+		Response response = invocationBuilder.get();
+		if (response.getStatus() != Status.OK.getStatusCode()) {
+			System.out.println("Error connecting with the server. Code: " + response.getStatus());
+			return new MessageList();
+		} else {
+			MessageList messageList = response.readEntity(MessageList.class);
+			return messageList;
 		}
+	}
 
-		public MessageList getUserMessages(String login) {
-			WebTarget sayHelloWebTarget = webTarget.path("messages");
-			Invocation.Builder invocationBuilder = sayHelloWebTarget.queryParam("login", "dipina").request(MediaType.APPLICATION_JSON);
+	public void registerActor(String id, String nombre, String apellido, int edad) {
+		WebTarget registerUserWebTarget = webTargetService.path("registerActor");
+		Invocation.Builder invocationBuilder = registerUserWebTarget.request(MediaType.APPLICATION_JSON);
 
-			Response response = invocationBuilder.get();
-			if (response.getStatus() != Status.OK.getStatusCode()) {
-				System.out.println("Error connecting with the server. Code: " + response.getStatus());
-				return new MessageList();
-			} else {
-				MessageList messageList = response.readEntity(MessageList.class);
-				return messageList;
-			}
+		ActorDTO actorDTO = new ActorDTO(id, nombre, apellido, edad);
+		Response response = invocationBuilder.post(Entity.entity(actorDTO, MediaType.APPLICATION_JSON));
+		if (response.getStatus() != Status.OK.getStatusCode()) {
+			System.out.println("Error connecting with the server. Code: " + response.getStatus());
+		} else {
+			System.out.println("Actor correctly registered");
 		}
+	}
+	public ActorList getActorList() {
+		WebTarget sayHelloWebTarget = webTargetService.path("obtainActors");
+		Invocation.Builder invocationBuilder = sayHelloWebTarget.request(MediaType.APPLICATION_JSON);
+		Response response = invocationBuilder.get();
+		if (response.getStatus() != Status.OK.getStatusCode()) {
+			System.out.println("Error connecting with the server. Code: " + response.getStatus());
+			return new ActorList();
+		} else {
+			ActorList actores = response.readEntity(ActorList.class);
+			return actores;
+		}
+	}
 
+	public void registerPelicula(String titulo, String sinopsis, String genero, int duracion,
+								 String director, String enlacetrailer, String premios,
+								 List<String> actores) {
+		WebTarget registerUserWebTarget = webTargetService.path("registerPelicula");
+		Invocation.Builder invocationBuilder = registerUserWebTarget.request(MediaType.APPLICATION_JSON);
 
- */
-    	// Add your code to get the TARGET reference HERE
-      	/*try
-      	{
-      		reservaService = (IReservaAdmin) Naming.lookup("//" + args[0] + ":" + args[1] + "/" + args[2]);
-    	} catch (MalformedURLException | RemoteException | NotBoundException e) {
-    			// TODO Auto-generated catch block
-    			e.printStackTrace();
-    	}*/
-      	/*try
-      	{
-      		usuarioService = (IUsuarioAdmin) Naming.lookup("//" + args[0] + ":" + args[1] + "/" + args[2]);
-		} catch (MalformedURLException | RemoteException | NotBoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}*/
-      	/*try
-      	{
-      		airlineService = (IRMIAirline) Naming.lookup("//" + args[0] + ":" + args[1] + "/" + args[4]);
-		} catch (MalformedURLException | RemoteException | NotBoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}*/
-    
-    //}
-
-
-
-    /*public IReservaAdmin getReservaService() {
-    	return reservaService;
-    }*/
-    
-    /*public IUsuarioAdmin getUsuarioService() {
-    	return usuarioService;
-    }*/
-    /*public IRMIAirline getRMIAirlineService() {
-    	return airlineService;
-    }*/
+		PeliculaDTO peliculaDTO = new PeliculaDTO(titulo, sinopsis, genero, duracion, director, enlacetrailer,
+				0,premios,null,actores);
+		Response response = invocationBuilder.post(Entity.entity(peliculaDTO, MediaType.APPLICATION_JSON));
+		if (response.getStatus() != Status.OK.getStatusCode()) {
+			System.out.println("Error connecting with the server. Code: " + response.getStatus());
+		} else {
+			System.out.println("Pelicula correctly registered");
+		}
+	}
+	public PeliculaList getPeliculaList() {
+		WebTarget sayHelloWebTarget = webTargetService.path("obtainPeliculas");
+		Invocation.Builder invocationBuilder = sayHelloWebTarget.request(MediaType.APPLICATION_JSON);
+		Response response = invocationBuilder.get();
+		if (response.getStatus() != Status.OK.getStatusCode()) {
+			System.out.println("Error connecting with the server. Code: " + response.getStatus());
+			return new PeliculaList();
+		} else {
+			PeliculaList peliculas = response.readEntity(PeliculaList.class);
+			return peliculas;
+		}
+	}
 }

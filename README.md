@@ -38,23 +38,17 @@ Para preparar la base de datos MySQL:
 1. Iniciar MySQL.
 2. Crear el schema MySQL usando el script preparado en `src\main\sql`.
 
-Para testear la aplicación, hay que ejecutar los siguientes comandos:
+Para testear la aplicación, hay que ejecutar los siguientes comandos en dos ventanas de línea de comando (ya sea *SH o PowerShell):
 
-1. `mvn compile`
-2. `mvn package jetty:run`
-3. `mvn exec:java -Pclientrest -X`
+### En la primera ventana:
+1. `mvn clean` : Permite limpiar todas las versiones de paquetes de Maven descargadas.
+2. `mvn compile` : Permite compilar todos los ficheros .java con los paquetes de Maven, y unirlos en el target.
+3. `mvn package jetty:run` : Permite ejecutar el servidor o "Servlet" de Jetty, y ponerlo en escucha (FestivalCineManager).
 
-Para ejecutar las clases de test: `mvn test`
+### En la segunda ventana:
+4. `mvn exec:java -Pclient -X` : Permite ejecutar el cliente (FestivalCineController).
 
-Para limpiar todas las versiones de paquetes de Maven descargados: `mvn clean`
-
-### NOTA PARA JULEN:
-
-Por cada nueva entidad añadida a BD, debe haber:
-* Una clase en server/data
-* Dos clases en server/dto:
-   - <CLASE>DTO
-   - <CLASE>Assembler
+Para ejecutar las clases de test: `mvn test`. No obstante, ahora mismo los tests están comentados para que no molesten con el resto del desarrollo.
 
 _____
 

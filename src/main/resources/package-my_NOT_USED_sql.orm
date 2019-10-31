@@ -11,7 +11,7 @@
 			<field name="password" persistence-modifier="persistent">
                 <column length="32" jdbc-type="VARCHAR"/>
             </field>
-			<field name="messages" mapped-by="user">
+			<field name="messages" mapped-by="usuarioDTO">
                 <join/>
             </field>
         </class>
@@ -23,7 +23,7 @@
 			<field name="timestamp" persistence-modifier="persistent">
                 <column jdbc-type="BIGINT"/>
             </field>
-			<field name="user" persistence-modifier="persistent">
+			<field name="usuarioDTO" persistence-modifier="persistent">
             </field>
         </class>
     </package>

@@ -6,9 +6,8 @@ import static org.mockito.Mockito.when;
 
 import java.rmi.RemoteException;
 
-import es.deusto.server.db.IDAO;
+import es.deusto.server.data.UsuarioDTO;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 //import org.junit.Ignore;
 import org.junit.runner.RunWith;
@@ -16,11 +15,9 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import es.deusto.server.db.IUserDAO;
+import es.deusto.server.dao.IDAO;
 import es.deusto.server.data.Message;
-import es.deusto.server.data.User;
 import es.deusto.server.data.DirectedMessage;
-
 import junit.framework.JUnit4TestAdapter;
 
 /**
@@ -29,7 +26,6 @@ import junit.framework.JUnit4TestAdapter;
  */
 @RunWith(MockitoJUnitRunner.class)
 public class DAOMockTest {
-
 
 	FestivalCineManager m;
 
@@ -47,67 +43,62 @@ public class DAOMockTest {
 	}
 
 	@Test
-	@Ignore
+	// @Ignore
 	public void testRegisterUserCorrectly() {
-/*
+
 		// Stubbing - return a given value when a specific method is called
-		when(dao.retrieveUser("cortazar")).thenReturn(null);
-		m.registerUser(new User("cortazar", "cortazar"));
+		when(dao.retrieveUsuario("cortazar")).thenReturn(null);
+		m.registerUser(new UsuarioDTO("cortazar", "cortazar"));
 
 		// Use ArgumentCaptor to capture argument values for further assertions.
-		ArgumentCaptor<User> userCaptor = ArgumentCaptor.forClass(User.class);
+		ArgumentCaptor<UsuarioDTO> userCaptor = ArgumentCaptor.forClass(UsuarioDTO.class);
 
 		// Setting expectations - the method storeUser() is called once and the argument
 		// is intercepted
-		verify(dao).storeUser(userCaptor.capture());
-		User newUser = userCaptor.getValue();
-		System.out.println("Registering mock new user: " + newUser.getLogin());
+		verify(dao).storeUsuario(userCaptor.capture());
+		UsuarioDTO newUsuarioDTO = userCaptor.getValue();
+		System.out.println("Registering mock new user: " + newUsuarioDTO.getLogin());
 
-		assertEquals("cortazar", newUser.getLogin());
-*/
+		assertEquals("cortazar", newUsuarioDTO.getLogin());
+
 	}
 
 	@Test
-    @Ignore
 	public void testRegisterUserAlreadyExists() {
-	    /*
-		User u = new User("cortazar", "cortazar");
+		UsuarioDTO u = new UsuarioDTO("cortazar", "cortazar");
 
-		when(dao.retrieveUser("cortazar")).thenReturn(u);
+		when(dao.retrieveUsuario("cortazar")).thenReturn(u);
 		// When the user exist, we update the password
-		m.registerUser(new User("cortazar", "dipina"));
+		m.registerUser(new UsuarioDTO("cortazar", "dipina"));
 
-		ArgumentCaptor<User> userCaptor = ArgumentCaptor.forClass(User.class);
-		verify(dao).updateUser(userCaptor.capture());
-		User newUser = userCaptor.getValue();
-		System.out.println("Changing password of mock user: " + newUser.getPassword());
-		assertEquals("dipina", newUser.getPassword());
-*/
+		ArgumentCaptor<UsuarioDTO> userCaptor = ArgumentCaptor.forClass(UsuarioDTO.class);
+		verify(dao).updateUsuario(userCaptor.capture());
+		UsuarioDTO newUsuarioDTO = userCaptor.getValue();
+		System.out.println("Changing password of mock user: " + newUsuarioDTO.getPassword());
+		assertEquals("dipina", newUsuarioDTO.getPassword());
+
 	}
 
 	@Test
-    @Ignore
 	public void testSayMessageUserValid() throws RemoteException {
-	    /*
 		// Setting up the test data
-		User u = new User("cortazar", "cortazar");
+		UsuarioDTO u = new UsuarioDTO("cortazar", "cortazar");
 		Message mes = new Message("testing message");
-		mes.setUser(u);
+		mes.setUsuarioDTO(u);
 		u.addMessage(mes);
 
 		// Stubbing
-		when(dao.retrieveUser("cortazar")).thenReturn(u);
+		when(dao.retrieveUsuario("cortazar")).thenReturn(u);
 
 		// Calling the method under test
 
 		m.sayMessage(new DirectedMessage("cortazar", "cortazar", "testing message"));
 
 		// Verifying the outcome
-		ArgumentCaptor<User> userCaptor = ArgumentCaptor.forClass(User.class);
-		verify(dao).updateUser(userCaptor.capture());
-		User newUser = userCaptor.getValue();
+		ArgumentCaptor<UsuarioDTO> userCaptor = ArgumentCaptor.forClass(UsuarioDTO.class);
+		verify(dao).updateUsuario(userCaptor.capture());
+		UsuarioDTO newUsuarioDTO = userCaptor.getValue();
 
-		assertEquals("cortazar", newUser.getMessages().get(0).getUser().getLogin());
-		*/
-    }
+		assertEquals("cortazar", newUsuarioDTO.getMessages().get(0).getUsuarioDTO().getLogin());
+	}
 }

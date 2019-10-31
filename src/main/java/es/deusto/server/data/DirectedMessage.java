@@ -1,13 +1,8 @@
 package es.deusto.server.data;
 
-//TODO: Clase a borrar; no hace falta para el Festival de Cine.
-//TODO: Aún no se ha borrado para que no peten las dependencias con clases base que se pueden tomar como
-//TODO: inspiración para modificar.
-
-
 public class DirectedMessage {
 
-    private User user;
+    private UsuarioDTO usuarioDTO;
     private String message;
 
     public DirectedMessage() {
@@ -15,16 +10,16 @@ public class DirectedMessage {
     }
     
     public DirectedMessage(String login, String password, String message) {
-    	this.user = new User(login, password);
+    	this.usuarioDTO = new UsuarioDTO(login, password);
     	this.message = message;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUsuarioDTO(UsuarioDTO usuarioDTO) {
+        this.usuarioDTO = usuarioDTO;
     }
 
-    public User getUser() {
-        return this.user;
+    public UsuarioDTO getUsuarioDTO() {
+        return this.usuarioDTO;
     }
 
     public void setMessage(String message) {
