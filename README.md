@@ -50,6 +50,10 @@ Para testear la aplicación, hay que ejecutar los siguientes comandos en dos ven
 
 Para ejecutar las clases de test: `mvn test`. No obstante, ahora mismo los tests están comentados para que no molesten con el resto del desarrollo.
 
+## Prototipo
+
+Para entender mejor a qué va a tender esta aplicación, se ha generado un prototipo mediante Marvel App para poder ilustrarlo. URL: https://marvelapp.com/d2h27dh/screen/63095209
+
 _____
 
 # Autores:

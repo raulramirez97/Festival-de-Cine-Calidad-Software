@@ -1,11 +1,11 @@
-/* DELETE 'festivalcinedb' database*/
-DROP SCHEMA IF EXISTS festivalcinedb;
-/* DELETE USER 'sc' AT LOCAL SERVER*/
-DROP USER IF EXISTS 'sd'@'%';
+/* DELETE 'festivalcineDB' database*/
+DROP SCHEMA IF EXISTS festivalcineDB;
+/* DELETE USER 'spq' AT LOCAL SERVER*/
+DROP USER IF EXISTS 'spq'@'%';
 
-/* CREATE 'festivalcinedb' DATABASE */
-CREATE SCHEMA festivalcinedb;
-/* CREATE THE USER 'sd' AT LOCAL SERVER WITH PASSWORD 'sd' */
-CREATE USER IF NOT EXISTS 'sd'@'%' IDENTIFIED BY 'sd';
-/* GRANT FULL ACCESS TO THE DATABASE FOR THE USER 'sd' AT LOCAL SERVER*/
-GRANT ALL ON festivalcinedb.* TO 'sd'@'%';
+/* CREATE 'festivalcineDB' DATABASE */
+CREATE SCHEMA festivalcineDB;
+/* CREATE THE USER 'spq' AT LOCAL SERVER WITH PASSWORD 'spq' */
+CREATE USER IF NOT EXISTS 'spq'@'%' IDENTIFIED BY 'spq';
+
+GRANT ALL ON festivalcineDB.* TO 'spq'@'%';

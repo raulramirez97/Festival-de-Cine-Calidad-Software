@@ -1,13 +1,10 @@
 package es.deusto.client.gui;
 
-import es.deusto.client.FestivalCineController;
-
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.rmi.RemoteException;
 
 public class Inicio extends JFrame {
 
@@ -28,10 +25,10 @@ public class Inicio extends JFrame {
 		setTitle("Menu principal");
 
 		
-		JLabel lblBienvenidoAEasybooking = new JLabel("Bienvenido a EasyBooking");
-		lblBienvenidoAEasybooking.setFont(new Font("Tahoma", Font.PLAIN, 31));
-		lblBienvenidoAEasybooking.setBounds(58, 50, 418, 81);
-		contentPane.add(lblBienvenidoAEasybooking);
+		JLabel lblFestivalCine = new JLabel("Bienvenido al Festival de Cine");
+		lblFestivalCine.setFont(new Font("Tahoma", Font.PLAIN, 31));
+		lblFestivalCine.setBounds(58, 50, 418, 81);
+		contentPane.add(lblFestivalCine);
 		
 		JButton btnDarseDeAlta = new JButton("Darse de alta");
 		btnDarseDeAlta.setBounds(175, 186, 191, 46);
@@ -48,7 +45,6 @@ public class Inicio extends JFrame {
 		JButton btnIniciarSesion = new JButton("Iniciar sesion");
 		btnIniciarSesion.setBounds(175, 248, 191, 46);
 		contentPane.add(btnIniciarSesion);
-		//TODO: VALIDAR SI HAY USUARIOS MAS TARDE. AHORA EMPEZAR CON ALGO BASICO.
 		btnIniciarSesion.addActionListener(new ActionListener() {
 			@Override
 		    public void actionPerformed(ActionEvent e)
@@ -57,21 +53,6 @@ public class Inicio extends JFrame {
 				f1.setVisible(true);
 				dispose();
 		    }
-//		    @Override
-//		    public void actionPerformed(ActionEvent e)
-//		    {
-//				try
-//				{
-//					FestivalCineController.getInstance().getUsuarios();
-//				}
-//				catch (RemoteException e1)
-//				{
-//					JOptionPane.showMessageDialog(ventana, "No hay usuarios actualmente en el sistema. Registrese para usar EasyBooking.");
-//				}
-//		    	Login f1 = new Login();
-//				f1.setVisible(true);
-//				dispose();
-//		    }
 		});
 		
 	}

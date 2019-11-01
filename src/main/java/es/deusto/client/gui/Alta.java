@@ -32,10 +32,10 @@ public class Alta extends JFrame {
 		getContentPane().setBackground(Color.white);
 		setTitle("Proceso de Alta");
 		
-		JLabel lblFacebookgoogle = new JLabel("Facebook/Google +");
-		lblFacebookgoogle.setFont(new Font("Times New Roman", Font.PLAIN, 32));
-		lblFacebookgoogle.setBounds(40, 40, 280, 72);
-		contentPane.add(lblFacebookgoogle);
+		JLabel lblAlta = new JLabel("Alta de Usuario");
+		lblAlta.setFont(new Font("Times New Roman", Font.PLAIN, 32));
+		lblAlta.setBounds(40, 40, 280, 72);
+		contentPane.add(lblAlta);
 		
 		JLabel lblUsuario = new JLabel("Usuario");
 		lblUsuario.setBounds(46, 173, 101, 37);
@@ -66,48 +66,7 @@ public class Alta extends JFrame {
 				Menu m = new Menu(myUser);
 	            m.setVisible(true);
 	            dispose();
-//            	try
-//            	{
-//					FestivalCineController.getInstance().registerUser(textField.getText(), textField2.getText());
-//					myUser = new UsuarioDTO(textField.getText(),textField2.getText());
-//					Menu m = new Menu(myUser);
-//	                m.setVisible(true);
-//	                dispose();
-//				}
-//            	catch (RemoteException e1)
-//            	{
-//					JOptionPane.showMessageDialog(alta, "Este usuario ya existe en la BD", "El usuario ya existe", JOptionPane.INFORMATION_MESSAGE);
-//				}
-//            	catch (NullPointerException e1)
-//            	{
-//            		JOptionPane.showMessageDialog(alta, "Este usuario no existe en Google+", "El usuario no existe", JOptionPane.INFORMATION_MESSAGE);
-//            	}
             }
         });
-		
-		/*JButton btnRegistrarseFacebook = new JButton("Registrarse Facebook");
-		btnRegistrarseFacebook.setBounds(230, 174, 175, 29);
-		contentPane.add(btnRegistrarseFacebook);
-		btnRegistrarseFacebook.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-            	try 
-            	{
-					FestivalCineController.getInstance().crearNuevoUsuarioFacebook(textField.getText());
-					myUser = new UsuarioDTO(textField.getText());
-					Menu m = new Menu(myUser);
-	                m.setVisible(true);
-	                dispose();
-				} 
-            	catch (RemoteException e1) 
-            	{
-					JOptionPane.showMessageDialog(alta, "Este usuario ya existe en la BD", "El usuario ya existe", JOptionPane.INFORMATION_MESSAGE);
-				}
-            	catch (NullPointerException e1)
-            	{
-            		JOptionPane.showMessageDialog(alta, "Este usuario no existe en Facebook", "El usuario no existe", JOptionPane.INFORMATION_MESSAGE);
-            	}
-            }
-        });*/
 	}
 }

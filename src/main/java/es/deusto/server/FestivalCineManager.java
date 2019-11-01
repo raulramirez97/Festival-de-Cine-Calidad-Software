@@ -190,6 +190,32 @@ public class FestivalCineManager {
 	}
 
 	@POST
+	@Path("/updateActor")
+	public Response updateActor(ActorDTO actorDTOData) {
+		//System.out.println("Checking whether the pelicula already exists or not: '" + peliculaDTOData.getTitulo());
+		ActorDTO actorDTO = null;
+		try {
+			actorDTO = dao.retrieveActor(actorDTOData.getIdentificador());
+		} catch (Exception e) {
+			System.out.println("Exception launched: " + e.getMessage());
+		}
+
+		if (actorDTO != null) {
+			System.out.println("Actor found. Updating the actor: " + actorDTOData.getNombre() + " " + actorDTOData.getApellido());
+			//TODO: CUIDADO CON EL SETTEO.
+			//actorDTO.setPelicula(actorDTOData.getPelicula(actorDTOData.getPeliculas().size()-1));
+			dao.updateActor(actorDTO);
+			System.out.println("(FestivalCineManager) Actor updated : " + actorDTOData.getNombre() + " " + actorDTOData.getApellido());
+		} else {
+			//TODO: SI ESTA BIEN HECHO, ESTO NO DEBERIA SUCEDER NUNCA POR LA PROPIA LOGICA DEL PROGRAMA (PRIMERO
+			//TODO: GENERAR ACTORES, DESPUES PELICULAS).
+			System.out.println("The actor wasn't found in the database.");
+		}
+
+		return Response.ok().build();
+	}
+
+	@POST
 	@Path("/registerPelicula")
 	public Response registerPelicula(PeliculaDTO peliculaDTOData) {
 		System.out.println("Checking whether the pelicula already exists or not: '" + peliculaDTOData.getTitulo());
@@ -202,11 +228,12 @@ public class FestivalCineManager {
 
 		if (peliculaDTO != null) {
 			System.out.println("The pelicula already exists.");
-		} else {
+		}
+		else {
 			System.out.println("Creating pelicula: " + peliculaDTOData.getTitulo());
 			peliculaDTO = new PeliculaDTO(peliculaDTOData.getTitulo(), peliculaDTOData.getSinopsis(),
-					peliculaDTOData.getGenero(), peliculaDTOData.getDuracion(), peliculaDTOData.getDirector(),
-					peliculaDTOData.getEnlaceTrailer(), peliculaDTOData.getValoracionMedia(),
+					peliculaDTOData.getGenero(), peliculaDTOData.getDuracion(), peliculaDTOData.getAnyo(),
+					peliculaDTOData.getDirector(), peliculaDTOData.getEnlaceTrailer(), peliculaDTOData.getValoracionMedia(),
 					peliculaDTOData.getPremios(), peliculaDTOData.getComentarios(), peliculaDTOData.getActores());
 			dao.storePelicula(peliculaDTO);
 			System.out.println("Pelicula created: " + peliculaDTOData.getTitulo());
@@ -229,5 +256,30 @@ public class FestivalCineManager {
 			System.out.println("There is no pelicula to retrieve ...");
 			return Response.status(Status.BAD_REQUEST).entity("There is no pelicula to retrieve ...").build();
 		}
+	}
+
+	@POST
+	@Path("/registerValoracion")
+	public Response registerValoracion(ValoracionDTO valoracionDTOData) throws NullPointerException {
+		System.out.println("Checking whether the pelicula to valorate already exists or not: '" + valoracionDTOData.getTitulo());
+		PeliculaDTO peliculaDTO = null;
+		try {
+			peliculaDTO = dao.retrievePelicula(valoracionDTOData.getTitulo());
+		} catch (Exception e) {
+			System.out.println("Exception launched: " + e.getMessage());
+			throw new NullPointerException();
+		}
+
+		if (peliculaDTO != null) {
+			System.out.println("The pelicula exists. The valoracion will be done.");
+			System.out.println("Valorating pelicula: " + valoracionDTOData.getTitulo());
+			//TODO: ARREGLAR EL CALCULO. ESTO ES UNA MEDIA INCCORECTA; SE HA HECHO COMO PRIMERA ITERACION PARA COMPROBAR QUE
+			//TODO: LA EXTRACCION DE DATOS FUNCIONA.
+			peliculaDTO.setNumvaloraciones(peliculaDTO.getNumvaloraciones()+1);
+			peliculaDTO.setValoracionMedia((peliculaDTO.getValoracionMedia()+valoracionDTOData.getValoracion())/peliculaDTO.getNumvaloraciones());
+			dao.updatePelicula(peliculaDTO);
+		}
+
+		return Response.ok().build();
 	}
 }

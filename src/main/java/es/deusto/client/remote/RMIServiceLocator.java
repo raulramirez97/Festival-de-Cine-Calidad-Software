@@ -1,14 +1,15 @@
 package es.deusto.client.remote;
 
-//import es.deusto.server.dto.UsuarioDTO;
-
 import es.deusto.server.data.*;
 
 import javax.ws.rs.client.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 public class RMIServiceLocator {
 	private Client client;
@@ -96,6 +97,7 @@ public class RMIServiceLocator {
 			System.out.println("Actor correctly registered");
 		}
 	}
+
 	public ActorList getActorList() {
 		WebTarget sayHelloWebTarget = webTargetService.path("obtainActors");
 		Invocation.Builder invocationBuilder = sayHelloWebTarget.request(MediaType.APPLICATION_JSON);
@@ -109,14 +111,19 @@ public class RMIServiceLocator {
 		}
 	}
 
-	public void registerPelicula(String titulo, String sinopsis, String genero, int duracion,
+	public void registerPelicula(String titulo, String sinopsis, String genero, int duracion, int anyo,
 								 String director, String enlacetrailer, String premios,
-								 List<String> actores) {
+								 List<ActorDTO> actores) {
 		WebTarget registerUserWebTarget = webTargetService.path("registerPelicula");
 		Invocation.Builder invocationBuilder = registerUserWebTarget.request(MediaType.APPLICATION_JSON);
+		StringBuilder strActores = new StringBuilder();
+		for (ActorDTO aux : actores) {
+			strActores.append(aux.getNombre() + " " + aux.getApellido() + ", ");
+		}
+		PeliculaDTO peliculaDTO = new PeliculaDTO(titulo, sinopsis, genero, duracion, anyo, director, enlacetrailer,
+				0, premios, null, strActores.toString());
 
-		PeliculaDTO peliculaDTO = new PeliculaDTO(titulo, sinopsis, genero, duracion, director, enlacetrailer,
-				0,premios,null,actores);
+		System.out.println("Enviando pelicula: " + peliculaDTO.getTitulo());
 		Response response = invocationBuilder.post(Entity.entity(peliculaDTO, MediaType.APPLICATION_JSON));
 		if (response.getStatus() != Status.OK.getStatusCode()) {
 			System.out.println("Error connecting with the server. Code: " + response.getStatus());
@@ -124,6 +131,7 @@ public class RMIServiceLocator {
 			System.out.println("Pelicula correctly registered");
 		}
 	}
+
 	public PeliculaList getPeliculaList() {
 		WebTarget sayHelloWebTarget = webTargetService.path("obtainPeliculas");
 		Invocation.Builder invocationBuilder = sayHelloWebTarget.request(MediaType.APPLICATION_JSON);
@@ -135,5 +143,51 @@ public class RMIServiceLocator {
 			PeliculaList peliculas = response.readEntity(PeliculaList.class);
 			return peliculas;
 		}
+	}
+
+	public void valorarPelicula(String titulo, float valoracion) throws NullPointerException {
+		//TODO: PARTE 1, INSERTAR VALORACION.
+		WebTarget registerValoracionWebTarget = webTargetService.path("registerValoracion");
+		Invocation.Builder invocationBuilder = registerValoracionWebTarget.request(MediaType.APPLICATION_JSON);
+		String id = "a";
+		ValoracionDTO valoracionDTO = new ValoracionDTO(id, titulo, valoracion);
+
+		Response response = invocationBuilder.post(Entity.entity(valoracionDTO, MediaType.APPLICATION_JSON));
+		if (response.getStatus() != Status.OK.getStatusCode()) {
+			System.out.println("Error connecting with the server. Code: " + response.getStatus());
+		} else {
+			System.out.println("Valoracion correctly registered");
+		}
+	}
+
+	public ArrayList<String> getFiltroList() throws NullPointerException {
+		List<PeliculaDTO> peliculasFestival = new ArrayList<PeliculaDTO>();
+		peliculasFestival = getPeliculaList().getPeliculasDTO();
+		ArrayList<String> filtrosPelis = new ArrayList<String>();
+		if (peliculasFestival.size() == 0) {
+			throw new NullPointerException();
+		}
+		else { //TODO: MODIFICAR PARA QUE SE PUEDA FILTRAR POR DIVERSOS CRITERIOS, NO SOLO POR GENERO.
+			Map<String, String> filtersMap = new TreeMap<String, String>();
+			for (PeliculaDTO aux : peliculasFestival) {
+				if (!(filtersMap.containsKey(aux.getGenero()))) {
+					filtersMap.put(aux.getGenero(), aux.getGenero());
+				}
+			}
+			filtrosPelis.addAll(filtersMap.values());
+			return filtrosPelis;
+		}
+	}
+
+	public PeliculaList getFilteredPeliculaList(String filtro) {
+		List<PeliculaDTO> peliculasFestival = new ArrayList<PeliculaDTO>();
+		peliculasFestival = getPeliculaList().getPeliculasDTO();
+		PeliculaList peliculasFiltradas = new PeliculaList();
+		for (PeliculaDTO aux : peliculasFestival) {
+			if (aux.getGenero().compareTo(filtro) == 0) {
+				peliculasFiltradas.addPeliculaDTO(aux);
+			}
+		}
+		return peliculasFiltradas;
 	}
 }
