@@ -15,7 +15,7 @@ public class ValoracionDTO implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	@PrimaryKey
-	String id = null;
+	String id = null; //TODO: Para empezar, se considerará que id=titulo de pelicula+<num_valoraciones>. Después se verá si cambiar esto a simplemente un id autoincrementado.
 	String titulo = null;
 	float valoracion = 0;
 

@@ -149,6 +149,8 @@ public class ServiceLocator {
 		//TODO: PARTE 1, INSERTAR VALORACION.
 		WebTarget registerValoracionWebTarget = webTargetService.path("registerValoracion");
 		Invocation.Builder invocationBuilder = registerValoracionWebTarget.request(MediaType.APPLICATION_JSON);
+		//TODO: Hay que autogenerar un ID aquí en base a la cantidad de valoraciones que haya. Puede ser un timestamp si no, pero eso es
+		//TODO: Un coñazo de buscar. Sería mejor leer las valoraciones que hay y hacer un append rapido con eso al titulo de película.
 		String id = "a";
 		ValoracionDTO valoracionDTO = new ValoracionDTO(id, titulo, valoracion);
 

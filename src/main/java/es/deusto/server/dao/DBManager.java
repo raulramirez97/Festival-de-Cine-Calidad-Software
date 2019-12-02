@@ -5,6 +5,7 @@ import javax.jdo.*;
 import es.deusto.server.data.ActorDTO;
 import es.deusto.server.data.PeliculaDTO;
 import es.deusto.server.data.UsuarioDTO;
+import es.deusto.server.data.ValoracionDTO;
 
 import java.util.ArrayList;
 
@@ -284,5 +285,25 @@ public class DBManager implements IDAO {
 			}
 		}
 		return peliculas;
+	}
+
+	@Override
+	public void storeValoracion(ValoracionDTO v) {
+		PersistenceManager pm = pmf.getPersistenceManager();
+		Transaction tx = pm.currentTransaction();
+		try {
+			tx.begin();
+			System.out.println("   * Storing a valoracion: " + v.getId());
+			pm.makePersistent(v);
+			tx.commit();
+		} catch (Exception ex) {
+			System.out.println("   $ Error storing an object: " + ex.getMessage());
+		} finally {
+			if (tx != null && tx.isActive()) {
+				tx.rollback();
+			}
+
+			pm.close();
+		}
 	}
 }

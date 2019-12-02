@@ -264,6 +264,7 @@ public class FestivalCineManager {
 	public Response registerValoracion(ValoracionDTO valoracionDTOData) throws NullPointerException {
 		System.out.println("Checking whether the pelicula to valorate already exists or not: '" + valoracionDTOData.getTitulo());
 		PeliculaDTO peliculaDTO = null;
+		ValoracionDTO valoracionDTO = null;
 		try {
 			peliculaDTO = dao.retrievePelicula(valoracionDTOData.getTitulo());
 		} catch (Exception e) {
@@ -275,12 +276,45 @@ public class FestivalCineManager {
 			System.out.println("The pelicula exists. The valoracion will be done.");
 			System.out.println("Valorating pelicula: " + valoracionDTOData.getTitulo());
 			//TODO: ARREGLAR EL CALCULO. ESTO ES UNA MEDIA INCCORECTA; SE HA HECHO COMO PRIMERA ITERACION PARA COMPROBAR QUE
-			//TODO: LA EXTRACCION DE DATOS FUNCIONA.
+			//TODO: LA EXTRACCION DE DATOS FUNCIONA. SE HACE MEDIA ENTRE LAS DOS ÚLTIMAS VALORACIONES CON TODAS LAS CANTIDADES DE VALORACIONES.
+			//TODO: HAY QUE CONSIDERAR TODAS LAS "VALORACIONDTO".
 			peliculaDTO.setNumvaloraciones(peliculaDTO.getNumvaloraciones()+1);
 			peliculaDTO.setValoracionMedia((peliculaDTO.getValoracionMedia()+valoracionDTOData.getValoracion())/peliculaDTO.getNumvaloraciones());
 			dao.updatePelicula(peliculaDTO);
+
+			//TODO: Con esto se ha almacenado la valoración cuando se inserta. Esto se usará posteriormente para hacer una media con todas las valoraciones
+			//TODO: existentes para una película determinada.
+			System.out.println("Saving valoracion: " + valoracionDTOData.getId());
+			valoracionDTO = new ValoracionDTO(valoracionDTOData.getId(), valoracionDTOData.getTitulo(), valoracionDTOData.getValoracion());
+			dao.storeValoracion(valoracionDTO);
+			System.out.println("Valoracion created: " + valoracionDTOData.getId());
 		}
 
 		return Response.ok().build();
 	}
+
+//	@POST
+//	@Path("/registerComment")
+//	public Response registerComment(ComentarioDTO comentarioDTOData) throws NullPointerException {
+//		System.out.println("Checking whether the pelicula to comment already exists or not: '" + comentarioDTOData.getTitulo());
+//		PeliculaDTO peliculaDTO = null;
+//		try {
+//			peliculaDTO = dao.retrievePelicula(valoracionDTOData.getTitulo());
+//		} catch (Exception e) {
+//			System.out.println("Exception launched: " + e.getMessage());
+//			throw new NullPointerException();
+//		}
+//
+//		if (peliculaDTO != null) {
+//			System.out.println("The pelicula exists. The valoracion will be done.");
+//			System.out.println("Valorating pelicula: " + valoracionDTOData.getTitulo());
+//			//TODO: ARREGLAR EL CALCULO. ESTO ES UNA MEDIA INCCORECTA; SE HA HECHO COMO PRIMERA ITERACION PARA COMPROBAR QUE
+//			//TODO: LA EXTRACCION DE DATOS FUNCIONA.
+//			peliculaDTO.setNumvaloraciones(peliculaDTO.getNumvaloraciones()+1);
+//			peliculaDTO.setValoracionMedia((peliculaDTO.getValoracionMedia()+valoracionDTOData.getValoracion())/peliculaDTO.getNumvaloraciones());
+//			dao.updatePelicula(peliculaDTO);
+//		}
+//
+//		return Response.ok().build();
+//	}
 }

@@ -1,8 +1,9 @@
 package es.deusto.server.dao;
 
-import es.deusto.server.data.ActorDTO;
 import es.deusto.server.data.PeliculaDTO;
 import es.deusto.server.data.UsuarioDTO;
+import es.deusto.server.data.ValoracionDTO;
+import es.deusto.server.data.ActorDTO;
 
 import java.util.ArrayList;
 
@@ -28,4 +29,6 @@ public interface IDAO {
 	void updatePelicula(PeliculaDTO p);
 
 	ArrayList<PeliculaDTO> getPeliculas ();
+
+	void storeValoracion (ValoracionDTO v);
 }
