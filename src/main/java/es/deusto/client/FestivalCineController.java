@@ -4,7 +4,6 @@ import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.WebTarget;
 
-import es.deusto.client.gui.Menu;
 import es.deusto.client.gui.MenuAnonimo;
 import es.deusto.client.remote.ServiceLocator;
 import es.deusto.server.data.*;

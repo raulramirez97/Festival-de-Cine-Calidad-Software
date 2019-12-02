@@ -20,8 +20,6 @@ public class Login extends JFrame {
 	private boolean flag = false;
 	private JFrame ventana;
 	
-	//private List<UsuarioDTO> usuarioDTO = new ArrayList<UsuarioDTO>();
-	
 	public Login() 
 	{
 		ventana = this;
@@ -49,7 +47,7 @@ public class Login extends JFrame {
 		contentPane.add(textField);
 		textField.setColumns(10);
 
-		JLabel lblPwd = new JLabel("Contrasena");
+		JLabel lblPwd = new JLabel("Contraseña");
 		lblPwd.setBounds(46, 220, 101, 37);
 		contentPane.add(lblPwd);
 

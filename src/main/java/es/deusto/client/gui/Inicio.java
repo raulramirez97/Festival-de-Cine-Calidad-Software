@@ -22,7 +22,7 @@ public class Inicio extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		getContentPane().setBackground(Color.white);
-		setTitle("Menu principal");
+		setTitle("Menú Principal - Festival de Cine");
 
 		
 		JLabel lblFestivalCine = new JLabel("Bienvenido al Festival de Cine");
@@ -42,7 +42,7 @@ public class Inicio extends JFrame {
 		    }
 		});
 		
-		JButton btnIniciarSesion = new JButton("Iniciar sesion");
+		JButton btnIniciarSesion = new JButton("Iniciar sesión");
 		btnIniciarSesion.setBounds(175, 248, 191, 46);
 		contentPane.add(btnIniciarSesion);
 		btnIniciarSesion.addActionListener(new ActionListener() {
@@ -66,6 +66,5 @@ public class Inicio extends JFrame {
 				dispose();
 			}
 		});
-		
 	}
 }

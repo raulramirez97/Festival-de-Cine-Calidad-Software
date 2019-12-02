@@ -67,7 +67,7 @@ public class Comentar extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    //TODO: AÑADIR COMENTARIO.
+                    //Añadir Comentario.
                     FestivalCineController.getInstance().comentarPelicula(textField.getText(),aux.getLogin(),textField2.getText());
                     System.out.println("La pelicula se ha comentado correctamente");
                     Menu m = new Menu(aux);

@@ -23,14 +23,14 @@ public class Menu extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		getContentPane().setBackground(Color.white);
-		setTitle("Reserva de vuelos");
+		setTitle("Festival de Cine");
 		
-		JLabel label = new JLabel("Bienvenido, " + aux.getLogin().toUpperCase());
-		label.setFont(new Font("Times New Roman", Font.PLAIN, 32));
+		JLabel label = new JLabel("Bienvenido a la aplicación del Festival de Cine, " + aux.getLogin());
+		label.setFont(new Font("Times New Roman", Font.PLAIN, 16));
 		label.setBounds(40, 30, 287, 37);
 		contentPane.add(label);
 		
-		JButton btnActores = new JButton("Ver listado de actores");
+		JButton btnActores = new JButton("Ver Listado de Actores");
 		btnActores.setBounds(150, 130, 175, 29);
 		contentPane.add(btnActores);
 		
@@ -48,7 +48,7 @@ public class Menu extends JFrame {
             }
         });
 
-		JButton btnPeliculas = new JButton("Ver listado de peliculas");
+		JButton btnPeliculas = new JButton("Ver Listado de películas");
 		btnPeliculas.setBounds(150, 180, 175, 29);
 		contentPane.add(btnPeliculas);
 
@@ -84,7 +84,7 @@ public class Menu extends JFrame {
 			}
 		});
 
-		JButton btnFiltrar = new JButton("Filtrar pelicula");
+		JButton btnFiltrar = new JButton("Filtrar PelÍcula");
 		btnFiltrar.setBounds(150, 280, 175, 29);
 		contentPane.add(btnFiltrar);
 
@@ -97,7 +97,7 @@ public class Menu extends JFrame {
 			}
 		});
 
-		JButton btnComentar = new JButton("Comentar pelicula");
+		JButton btnComentar = new JButton("Comentar PelÍcula");
 		btnComentar.setBounds(150, 330, 175, 29);
 		contentPane.add(btnComentar);
 

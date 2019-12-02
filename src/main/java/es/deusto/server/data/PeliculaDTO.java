@@ -32,30 +32,8 @@ public class PeliculaDTO implements Serializable {
 	@Persistent(defaultFetchGroup = "true", mappedBy = "pelicula", dependentElement = "true")
 	@Join
 	private List<ComentarioDTO> comentarios = new ArrayList<ComentarioDTO>();
-//	@Persistent(defaultFetchGroup = "true", mappedBy = "peliculas", dependentElement = "true")
-//	@Join
-//	private List<ActorDTO> elenco = new ArrayList<ActorDTO>();
-	private String elenco = "";
 
-	
-//	public PeliculaDTO(String titulo2, String sinopsis2, String genero2, int duracion2, int anyo,
-//			String directores2, String enlaceTrailer2, int valoracionMedia2, String premios2,
-//			List<ComentarioDTO> comentarios2, List<ActorDTO> actores2) {
-//
-//		this.titulo= titulo2;
-//		this.sinopsis = sinopsis2;
-//		this.genero = genero2;
-//		this.duracion = duracion2;
-//		//TODO: ANADIR POSTERIORMENTE FECHA COMO UN DATE. PRIMERO SE OBVIARA EL ATRIBUTO, PORQUE ES UN TIPO DATE. O NO - CONSIDERAR ANO Y A TOMAR POR SACO.
-//		this.anyo = anyo;
-//		this.director = directores2;
-//		this.enlaceTrailer = enlaceTrailer2;
-//		this.valoracionMedia = valoracionMedia2;
-//		this.premios = premios2;
-//		//TODO: PUEDE SER UTIL PENSAR EL COMENTARIO COMO UNA NUEVA CLASE, QUE TENGA SU FECHA, AUTOR Y CONTENIDO.
-//		this.comentarios = comentarios2;
-//		this.elenco = actores2;
-//	}
+	private String elenco = ""; //Se ha evitado generar esto como una Lista de Actores DTO, porque generaba una recursividad infinita al insertar actores y películas actualizados.
 
 
 	public PeliculaDTO(String titulo, String sinopsis, String genero, int duracion, int anyo,
@@ -174,12 +152,6 @@ public class PeliculaDTO implements Serializable {
 
 				}
 			else {
-				//TODO: REVISAR ESTO
-//				StringBuffer actoresStr = new StringBuffer();
-//				for (ActorDTO actor : this.getActores()) {
-//					actoresStr.append(actor.toString() + " - ");
-//				}
-
 					return "___________________________________________\n" +
 							"Pelicula: Titulo --> " + this.getTitulo() + ", " +
 							"Sinopsis -->  " + this.getSinopsis() + ", Genero --> " + this.getGenero() + ", Seccion --> " + this.getSeccionFestival() +
@@ -191,7 +163,6 @@ public class PeliculaDTO implements Serializable {
 				}
 			}
 		else {
-			//TODO: REVISAR ESTO
 			StringBuffer comentariosStr = new StringBuffer();
 			for (ComentarioDTO comentario : this.getComentarios()) {
 				comentariosStr.append(comentario.toString() + " - ");
@@ -208,12 +179,6 @@ public class PeliculaDTO implements Serializable {
 						"\n__________________________________________\n";
 			}
 			else {
-				//TODO: REVISAR ESTO
-//				StringBuffer actoresStr = new StringBuffer();
-//				for (ActorDTO actor : this.getActores()) {
-//					actoresStr.append(actor.toString() + " - ");
-//				}
-
 					return "___________________________________________\n" +
 							"Pelicula: Titulo --> " + this.getTitulo() + ", " +
 							"Sinopsis -->  " + this.getSinopsis() + ", Genero --> " + this.getGenero() + ", Seccion --> " + this.getSeccionFestival() +

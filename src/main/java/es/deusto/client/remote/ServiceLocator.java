@@ -1,6 +1,5 @@
 package es.deusto.client.remote;
 
-import es.deusto.client.gui.Comentar;
 import es.deusto.server.data.*;
 
 import javax.ws.rs.client.*;
@@ -159,20 +158,6 @@ public class ServiceLocator {
 		}
 	}
 
-	//TODO: No sé si hará falta esto en el lado cliente... Dejar por si acaso; eliminar si no se usa para nada.
-//	public ValoracionList getValoracionesList() {
-//		WebTarget sayHelloWebTarget = webTargetService.path("obtainValoraciones");
-//		Invocation.Builder invocationBuilder = sayHelloWebTarget.request(MediaType.APPLICATION_JSON);
-//		Response response = invocationBuilder.get();
-//		if (response.getStatus() != Status.OK.getStatusCode()) {
-//			System.out.println("Error connecting with the server. Code: " + response.getStatus());
-//			return new ValoracionList();
-//		} else {
-//			ValoracionList valoraciones = response.readEntity(ValoracionList.class);
-//			return valoraciones;
-//		}
-//	}
-
 	public void comentarPelicula(String titulo, String usuario, String contenido) {
 		WebTarget registerUserWebTarget = webTargetService.path("registerComment");
 		Invocation.Builder invocationBuilder = registerUserWebTarget.request(MediaType.APPLICATION_JSON);
@@ -203,7 +188,7 @@ public class ServiceLocator {
 			throw new NullPointerException();
 		}
 		else {
-			if (filtro == "Género") { // Filtro para Género.
+			if (filtro.compareTo("Género")==0) { // Filtro para Género.
 				Map<String, String> filtersMap = new TreeMap<String, String>();
 				for (PeliculaDTO aux : peliculasFestival) {
 					if (!(filtersMap.containsKey(aux.getGenero()))) {
@@ -213,7 +198,7 @@ public class ServiceLocator {
 				filtrosPelis.addAll(filtersMap.values());
 				return filtrosPelis;
 			}
-			else if (filtro == "Sección del Festival") { // Filtro para Sección del Festival.
+			else if (filtro.compareTo("Sección del Festival")==0) { // Filtro para Sección del Festival.
 				Map<String, String> filtersMap = new TreeMap<String, String>();
 				for (PeliculaDTO aux : peliculasFestival) {
 					if (!(filtersMap.containsKey(aux.getSeccionFestival()))) {
@@ -223,7 +208,7 @@ public class ServiceLocator {
 				filtrosPelis.addAll(filtersMap.values());
 				return filtrosPelis;
 			}
-			else if (filtro == "Año")  { // Filtro para Año
+			else if (filtro.compareTo("Año")==0) { // Filtro para Año
 				Map<String, String> filtersMap = new TreeMap<String, String>();
 				for (PeliculaDTO aux : peliculasFestival) {
 					if (!(filtersMap.containsKey(Integer.toString(aux.getAnyo())))) {
@@ -234,7 +219,7 @@ public class ServiceLocator {
 				return filtrosPelis;
 			}
 
-			else if (filtro == "Director")  { // Filtro para Director
+			else if (filtro.compareTo("Director")==0) { // Filtro para Director
 				Map<String, String> filtersMap = new TreeMap<String, String>();
 				for (PeliculaDTO aux : peliculasFestival) {
 					if (!(filtersMap.containsKey(aux.getDirector()))){
@@ -244,7 +229,7 @@ public class ServiceLocator {
 				filtrosPelis.addAll(filtersMap.values());
 				return filtrosPelis;
 			}
-			else if (filtro == "Premio")   { // Filtro para Premio
+			else if (filtro.compareTo("Premio")==0) { // Filtro para Premio
 				Map<String, String> filtersMap = new TreeMap<String, String>();
 				for (PeliculaDTO aux : peliculasFestival) {
 					if (!(filtersMap.containsKey(aux.getPremios()))){
@@ -271,7 +256,7 @@ public class ServiceLocator {
 		List<PeliculaDTO> peliculasFestival = new ArrayList<PeliculaDTO>();
 		peliculasFestival = getPeliculaList().getPeliculasDTO();
 		PeliculaList peliculasFiltradas = new PeliculaList();
-		if (criterio == "Género") { // Criterio de orden superior para Género.
+		if (criterio.compareTo("Género")==0) { // Criterio de orden superior para Género.
 			for (PeliculaDTO aux : peliculasFestival) {
 				if (aux.getGenero().compareTo(filtro) == 0) {
 					peliculasFiltradas.addPeliculaDTO(aux);
@@ -279,7 +264,7 @@ public class ServiceLocator {
 			}
 			return peliculasFiltradas;
 		}
-		else if (criterio == "Sección del Festival") { // Criterio de orden superior para Sección del Festival.
+		else if (criterio.compareTo("Sección del Festival")==0) { // Criterio de orden superior para Sección del Festival.
 			for (PeliculaDTO aux : peliculasFestival) {
 				if (aux.getSeccionFestival().compareTo(filtro) == 0) {
 					peliculasFiltradas.addPeliculaDTO(aux);
@@ -287,7 +272,7 @@ public class ServiceLocator {
 			}
 			return peliculasFiltradas;
 		}
-		else if (criterio == "Año") { // Criterio de orden superior para Año.
+		else if (criterio.compareTo("Año")==0) { // Criterio de orden superior para Año.
 			for (PeliculaDTO aux : peliculasFestival) {
 				if (Integer.toString(aux.getAnyo()).compareTo(filtro) == 0) {
 					peliculasFiltradas.addPeliculaDTO(aux);
@@ -295,7 +280,7 @@ public class ServiceLocator {
 			}
 			return peliculasFiltradas;
 		}
-		else if (criterio == "Valoración") { // Criterio de orden superior para Valoración.
+		else if (criterio.compareTo("Valoración")==0) { // Criterio de orden superior para Valoración.
 			double valoracionFiltro = Double.parseDouble(filtro);
 			for (PeliculaDTO aux : peliculasFestival) {
 				if (valoracionFiltro <= aux.getValoracionMedia()) {
@@ -304,7 +289,7 @@ public class ServiceLocator {
 			}
 			return peliculasFiltradas;
 		}
-		else if (criterio == "Duración") { // Criterio de orden superior para Duración.
+		else if (criterio.compareTo("Duración")==0) { // Criterio de orden superior para Duración.
 			int duracionFiltro = Integer.parseInt(filtro);
 			for (PeliculaDTO aux : peliculasFestival) {
 				if (duracionFiltro <= aux.getDuracion()) {
@@ -313,7 +298,7 @@ public class ServiceLocator {
 			}
 			return peliculasFiltradas;
 		}
-		else if (criterio == "Director") { // Criterio de orden superior para Director.
+		else if (criterio.compareTo("Director")==0) { // Criterio de orden superior para Director.
 			for (PeliculaDTO aux : peliculasFestival) {
 				if (aux.getDirector().compareTo(filtro) == 0) {
 					peliculasFiltradas.addPeliculaDTO(aux);
@@ -321,7 +306,7 @@ public class ServiceLocator {
 			}
 			return peliculasFiltradas;
 		}
-		else if (criterio == "Actor") { // Criterio de orden superior para Actor.
+		else if (criterio.compareTo("Actor")==0) { // Criterio de orden superior para Actor.
 			String filtroActor = filtro.toUpperCase();
 			for (PeliculaDTO aux : peliculasFestival) {
 				if (aux.getActores().toUpperCase().contains(filtroActor)) {
@@ -330,7 +315,7 @@ public class ServiceLocator {
 			}
 			return peliculasFiltradas;
 		}
-		else if (criterio == "Premio") { // Criterio de orden superior para Premio.
+		else if (criterio.compareTo("Premio")==0) { // Criterio de orden superior para Premio.
 			for (PeliculaDTO aux : peliculasFestival) {
 				if (aux.getPremios().compareTo(filtro) == 0) {
 					peliculasFiltradas.addPeliculaDTO(aux);

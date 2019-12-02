@@ -7,9 +7,7 @@ public class MessageList {
 
     private List<Message> messages = new ArrayList<Message>();
 
-    public MessageList() {
-
-    }
+    public MessageList() {}
 
     public List<Message> getMessages() {
         return this.messages;

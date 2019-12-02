@@ -13,7 +13,6 @@ import es.deusto.server.dao.IDAO;
 import es.deusto.server.dao.DBManager;
 import es.deusto.server.data.*;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -111,26 +110,6 @@ public class FestivalCineManager {
 		}
 	}
 
-//	@GET
-//	@Path("/user")
-//	public Response getUser(@QueryParam("credentials") ArrayList<String> credentials) {
-//		System.out.println("Checking whether the user already exits or not: '" + credentials.get(0) + "'");
-//		UsuarioDTO usuarioDTO = null;
-//		try {
-//			usuarioDTO = dao.retrieveUser(credentials.get(0));
-//		} catch (Exception e) {
-//			System.out.println("Exception launched: " + e.getMessage());
-//		}
-//
-//		if (usuarioDTO != null) {
-//			System.out.println("Returning the user to the client: " + credentials.get(0));
-//
-//			return Response.ok(usuarioDTO).build();
-//		} else {
-//			System.out.println("The user does not exist, no possibility of retrieving user ...: " + credentials.get(0));
-//			return Response.status(Status.BAD_REQUEST).entity("Login details supplied for user delivery is not correct").build();
-//		}
-//	}
 	@GET
 	@Path("obtainUser")
 	public Response getUser(@QueryParam("login") String login, @QueryParam("pwd") String pwd) {
@@ -146,11 +125,13 @@ public class FestivalCineManager {
 			System.out.println("Returning the user to the client: " + login);
 
 			return Response.ok(usuarioDTO).build();
-		} else {
+		}
+		else {
 			System.out.println("The user does not exist, no possibility of retrieving user ...: " + login);
 			return Response.status(Status.BAD_REQUEST).entity("Login details supplied for user delivery is not correct").build();
 		}
 	}
+
 	@POST
 	@Path("/registerActor")
 	public Response registerActor(ActorDTO actorDTOData) {
@@ -173,7 +154,6 @@ public class FestivalCineManager {
 			System.out.println("Actor created: " + actorDTOData.getNombre() + " " + actorDTOData.getApellido() + " ," +
 					"with ID: " + actorDTOData.getIdentificador());
 		}
-
 		return Response.ok().build();
 	}
 
@@ -181,13 +161,12 @@ public class FestivalCineManager {
 	@Path("/obtainActors")
 	public Response getActors() {
 		System.out.println("Returning the actors to the client");
-
 		ActorList actorList = new ActorList();
 		actorList.setActorsDTO(dao.getActors());
 		if (actorList.getActorsDTO().size()>0){
-
 		return Response.ok(actorList).build();
-		} else {
+		}
+		else {
 			System.out.println("There is no actor to retrieve ...");
 			return Response.status(Status.BAD_REQUEST).entity("There is no actor to retrieve ...").build();
 		}
@@ -196,23 +175,19 @@ public class FestivalCineManager {
 	@POST
 	@Path("/updateActor")
 	public Response updateActor(ActorDTO actorDTOData) {
-		//System.out.println("Checking whether the pelicula already exists or not: '" + peliculaDTOData.getTitulo());
 		ActorDTO actorDTO = null;
 		try {
 			actorDTO = dao.retrieveActor(actorDTOData.getIdentificador());
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			System.out.println("Exception launched: " + e.getMessage());
 		}
 
 		if (actorDTO != null) {
 			System.out.println("Actor found. Updating the actor: " + actorDTOData.getNombre() + " " + actorDTOData.getApellido());
-			//TODO: CUIDADO CON EL SETTEO.
-			//actorDTO.setPelicula(actorDTOData.getPelicula(actorDTOData.getPeliculas().size()-1));
 			dao.updateActor(actorDTO);
 			System.out.println("(FestivalCineManager) Actor updated : " + actorDTOData.getNombre() + " " + actorDTOData.getApellido());
 		} else {
-			//TODO: SI ESTA BIEN HECHO, ESTO NO DEBERIA SUCEDER NUNCA POR LA PROPIA LOGICA DEL PROGRAMA (PRIMERO
-			//TODO: GENERAR ACTORES, DESPUES PELICULAS).
 			System.out.println("The actor wasn't found in the database.");
 		}
 
@@ -336,24 +311,6 @@ public class FestivalCineManager {
 			return null;
 		}
 	}
-
-	//TODO: MANTENER ESTA PETICIÓN SI AL FINAL SE USA LA LISTA DE VALORACIONES DE CARA AL CLIENTE; SI NO, BORRAR.
-
-//	@GET
-//	@Path("/obtainValoraciones")
-//	public Response getValoraciones() {
-//		System.out.println("Returning the valoraciones");
-//
-//		ValoracionList valoracionList = new ValoracionList();
-//		valoracionList.setValoracionesDTO((dao.getValoraciones());
-//		if (valoracionList.getValoracionesDTO().size()>0){
-//
-//			return Response.ok(valoracionList).build();
-//		} else {
-//			System.out.println("There is no valoracion to retrieve ...");
-//			return Response.status(Status.BAD_REQUEST).entity("There is no valoracion to retrieve ...").build();
-//		}
-//	}
 
 	@POST
 	@Path("/registerComment")

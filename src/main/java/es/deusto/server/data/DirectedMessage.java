@@ -5,9 +5,7 @@ public class DirectedMessage {
     private UsuarioDTO usuarioDTO;
     private String message;
 
-    public DirectedMessage() {
-
-    }
+    public DirectedMessage() {}
     
     public DirectedMessage(String login, String password, String message) {
     	this.usuarioDTO = new UsuarioDTO(login, password);

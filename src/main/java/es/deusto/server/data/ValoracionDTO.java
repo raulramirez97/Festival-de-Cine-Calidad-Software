@@ -1,12 +1,8 @@
 package es.deusto.server.data;
 
-import javax.jdo.annotations.Join;
 import javax.jdo.annotations.PersistenceCapable;
-import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 @PersistenceCapable(detachable = "true")
 public class ValoracionDTO implements Serializable {
@@ -15,7 +11,7 @@ public class ValoracionDTO implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	@PrimaryKey
-	int id = 0; //TODO: Se considerará que primer ID=1.
+	int id = 1; //Se considera que el primer ID=1.
 	String titulo = null;
 	double valoracion = 0;
 

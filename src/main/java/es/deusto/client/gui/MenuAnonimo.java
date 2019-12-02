@@ -3,7 +3,6 @@ package es.deusto.client.gui;
 import es.deusto.client.FestivalCineController;
 import es.deusto.server.data.PeliculaDTO;
 import es.deusto.server.data.PeliculaList;
-import es.deusto.server.data.UsuarioDTO;
 import es.deusto.server.data.ActorDTO;
 import es.deusto.server.data.ActorList;
 
@@ -34,7 +33,7 @@ public class MenuAnonimo extends JFrame {
         label.setBounds(40, 30, 287, 37);
         contentPane.add(label);
 
-        JButton btnActores = new JButton("Ver listado de actores");
+        JButton btnActores = new JButton("Ver Listado de Actores");
         btnActores.setBounds(150, 130, 175, 29);
         contentPane.add(btnActores);
 
@@ -52,7 +51,7 @@ public class MenuAnonimo extends JFrame {
             }
         });
 
-        JButton btnPeliculas = new JButton("Ver listado de peliculas");
+        JButton btnPeliculas = new JButton("Ver Listado de PelÍculas");
         btnPeliculas.setBounds(150, 180, 175, 29);
         contentPane.add(btnPeliculas);
 
@@ -88,7 +87,7 @@ public class MenuAnonimo extends JFrame {
 //            }
 //        });
 
-        JButton btnFiltrar = new JButton("Filtrar pelicula");
+        JButton btnFiltrar = new JButton("Filtrar Peliíula");
         btnFiltrar.setBounds(150, 280, 175, 29);
         contentPane.add(btnFiltrar);
 
