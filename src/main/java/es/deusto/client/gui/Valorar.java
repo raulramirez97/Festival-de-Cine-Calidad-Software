@@ -28,14 +28,14 @@ public class Valorar extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		getContentPane().setBackground(Color.white);
-		setTitle("Proceso de LogIn");
+		setTitle("Valoración de Película");
 		
-		JLabel lblFacebookgoogle = new JLabel("Valora la pelicula");
+		JLabel lblFacebookgoogle = new JLabel("Valora la película:");
 		lblFacebookgoogle.setFont(new Font("Times New Roman", Font.PLAIN, 32));
 		lblFacebookgoogle.setBounds(40, 40, 350, 73);
 		contentPane.add(lblFacebookgoogle);
 		
-		JLabel lblUsuario = new JLabel("Nombre de pelicula");
+		JLabel lblUsuario = new JLabel("Nombre de pelicula:");
 		lblUsuario.setBounds(46, 123, 101, 37);
 		contentPane.add(lblUsuario);
 		
@@ -45,7 +45,7 @@ public class Valorar extends JFrame {
 		contentPane.add(textField);
 		textField.setColumns(10);
 
-		JLabel lblPwd = new JLabel("Puntuacion");
+		JLabel lblPwd = new JLabel("Puntuación:");
 		lblPwd.setBounds(46, 220, 101, 37);
 		contentPane.add(lblPwd);
 
@@ -63,7 +63,8 @@ public class Valorar extends JFrame {
             public void actionPerformed(ActionEvent e) {
 				try {
 					FestivalCineController.getInstance().valorarPelicula(textField.getText(), Float.parseFloat(textField2.getText()));
-					System.out.println("La pelicula se ha valorado correctamente");
+					System.out.println("La pelicula se ha valorado correctamente.");
+					JOptionPane.showConfirmDialog(ventana, "La pelicula se ha valorado correctamente.", "CONF-A01 - Confirmación de película valorada",JOptionPane.OK_OPTION);
 					Menu m = new Menu(aux);
 					m.setVisible(true);
 					dispose();

@@ -4,8 +4,8 @@ import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.WebTarget;
 
-import es.deusto.client.gui.Inicio;
-import es.deusto.client.remote.RMIServiceLocator;
+import es.deusto.client.gui.MenuAnonimo;
+import es.deusto.client.remote.ServiceLocator;
 import es.deusto.server.data.*;
 
 import java.util.ArrayList;
@@ -14,7 +14,7 @@ import java.util.List;
 public class FestivalCineController {
 
 	private static FestivalCineController instance;
-	private RMIServiceLocator rsl;
+	private ServiceLocator rsl;
 	private Client client;
 	private WebTarget webTarget;
 
@@ -25,28 +25,33 @@ public class FestivalCineController {
 	private FestivalCineController(String[] args) {
 		instance = this;
 
-		rsl = new RMIServiceLocator();
+		rsl = new ServiceLocator();
 		rsl.setService(args);
 		client = ClientBuilder.newClient();
 		webTarget = client.target(String.format("http://%s:%s/rest/server", args[0], args[1]));
-		Inicio frame = new Inicio();
+		//TODO: Modificar por Menu, dado que un usuario no tiene por qué estar registrado para usar la aplicación.
+		//TODO: Sin embargo, este NO PODRÁ COMENTAR.
+		//Inicio frame = new Inicio();
+		//frame.setVisible(true);
+		MenuAnonimo frame = new MenuAnonimo();
 		frame.setVisible(true);
 	}
 	//TODO: TODAS LAS COSAS PUESTAS A CONTINUACION EN ESTE METODO SE MANTIENEN PARA AYUDAR EN EL TESTEO Y DEBUG.
 	public void generateFixtures(){
 
+		// TODO: Pensar manera de meter primer usuario como admin.
 		System.out.println("Generating Fixtures when beginning execution:");
 		System.out.println("_____________________________________________");
-		System.out.println("Register a user for the first time: dipina");
-		FestivalCineController.getInstance().registerUser("dipina", "dipina");
-		System.out.println("Change the password as the user is already registered: cortazar");
-		FestivalCineController.getInstance().registerUser("dipina", "cortazar");
+		System.out.println("Register a user for the first time: admin");
+		FestivalCineController.getInstance().registerUser("admin", "admin");
+		System.out.println("Change the password as the user is already registered: admin");
+		FestivalCineController.getInstance().registerUser("admin", "admin");
 		System.out.println("* Message coming from the server: '"
-				+ FestivalCineController.getInstance().sayMessage("dipina", "cortazar", "This is test 1!") + "'");
+				+ FestivalCineController.getInstance().sayMessage("admin", "admin", "This is test 1!") + "'");
 		System.out.println("* Message coming from the server: '"
-				+ FestivalCineController.getInstance().sayMessage("dipina", "cortazar", "This is test 2!") + "'");
+				+ FestivalCineController.getInstance().sayMessage("admin", "admin", "This is test 2!") + "'");
 
-		MessageList messages = FestivalCineController.getInstance().getUserMessages("dipina");
+		MessageList messages = FestivalCineController.getInstance().getUserMessages("admin");
 		for (Message m : messages.getMessages()) {
 			System.out.println(m);
 		}
@@ -71,10 +76,10 @@ public class FestivalCineController {
 
 		FestivalCineController.getInstance().registerPelicula("Lo que el viento se llevo","Uno de los" +
 						" mayores clasicos de la historia", "drama",145, 1935,"Alguien","MIURL",
-				"Muchos y variados",randomActors);
+				"Muchos y variados","clasicos",randomActors);
 		FestivalCineController.getInstance().registerPelicula("Lo que el viento se llevo","Uno de los" +
 						" mayores clasicos de la historia", "drama",145, 1954,"Alguien","MIURL",
-				"Muchos y variados",randomActors);
+				"Muchos y variados","clasicos",randomActors);
 
 		randomActors.clear();
 //		randomActors.add(new ActorDTO("ID3", "Mufasa", "Mufasa", 5));
@@ -91,7 +96,7 @@ public class FestivalCineController {
 
 		FestivalCineController.getInstance().registerPelicula("El Rey Leon","Otro de los" +
 						" mayores clasicos de la historia", "drama",121, 1985,"Alguien","MIURL",
-				"Muchos y variados",randomActors);
+				"Muchos y variados","clasicos",randomActors);
 
 		randomActors.clear();
 		randomActors.add(FestivalCineController.getInstance().getActorList().getActorsDTO().get(0));
@@ -100,7 +105,7 @@ public class FestivalCineController {
 
 		FestivalCineController.getInstance().registerPelicula("La Comedia","Otro de los" +
 						" mayores clasicos de la historia", "comedia",97, 2019,"Yo mismo","MIURL",
-				"Muchos y variados",randomActors);
+				"Muchos y variados","novedades",randomActors);
 		System.out.println("Fixtures generated successfully.");
 		System.out.println("_____________________________________________");
 	}
@@ -124,9 +129,9 @@ public class FestivalCineController {
 		return rsl.getActorList();
 	}
 	public void registerPelicula(String titulo, String sinopsis, String genero, int duracion, int anyo,
-								 String director, String enlacetrailer, String premios,
+								 String director, String enlacetrailer, String premios, String seccion,
 								 List<ActorDTO> actores) {
-		rsl.registerPelicula(titulo,sinopsis,genero,duracion,anyo,director,enlacetrailer,premios,actores);
+		rsl.registerPelicula(titulo,sinopsis,genero,duracion,anyo,director,enlacetrailer,premios, seccion, actores);
 	}
 	public PeliculaList getPeliculaList() {
 		return rsl.getPeliculaList();
@@ -134,9 +139,13 @@ public class FestivalCineController {
 	public void valorarPelicula (String titulo, float valoracion) throws NullPointerException {
 		rsl.valorarPelicula(titulo, valoracion);
 	}
-	public ArrayList<String> getFiltros() { return rsl.getFiltroList();}
-	public PeliculaList getFilteredPeliculaList(String filtro) {
-		return rsl.getFilteredPeliculaList(filtro);
+	public ArrayList<String> getFiltros(String filtro) { return rsl.getFiltroList(filtro);}
+	public PeliculaList getFilteredPeliculaList(String filtro, String criterio) {
+		return rsl.getFilteredPeliculaList(filtro, criterio);
+	}
+
+	public void comentarPelicula (String titulo, String usuario, String contenido) throws NullPointerException {
+		rsl.comentarPelicula(titulo, usuario, contenido);
 	}
 
 	public static void main(String[] args) {

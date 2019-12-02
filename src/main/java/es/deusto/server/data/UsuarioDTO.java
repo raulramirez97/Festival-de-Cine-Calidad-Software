@@ -3,6 +3,8 @@ package es.deusto.server.data;
 import java.io.Serializable;
 import java.util.List;
 
+import es.deusto.server.data.Message;
+
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.PrimaryKey;
 import javax.jdo.annotations.Join;
@@ -12,9 +14,7 @@ import java.util.ArrayList;
 
 @PersistenceCapable(detachable = "true")
 public class UsuarioDTO implements Serializable {
-	/**
-	 * User implements Serializable to be transferred to the RMI client
-	 */
+
 	private static final long serialVersionUID = 1L;
 	@PrimaryKey
 	String login = null;
@@ -24,9 +24,7 @@ public class UsuarioDTO implements Serializable {
 	@Join
 	List<Message> messages = new ArrayList<Message>();
 	
-	public UsuarioDTO() {
-		
-	}
+	public UsuarioDTO() {}
 
 	public UsuarioDTO(String login, String password) {
 		this.login = login;

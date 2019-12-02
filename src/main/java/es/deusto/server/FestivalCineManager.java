@@ -13,6 +13,9 @@ import es.deusto.server.dao.IDAO;
 import es.deusto.server.dao.DBManager;
 import es.deusto.server.data.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Path("/server")
 @Produces(MediaType.APPLICATION_JSON)
 public class FestivalCineManager {
@@ -107,26 +110,6 @@ public class FestivalCineManager {
 		}
 	}
 
-//	@GET
-//	@Path("/user")
-//	public Response getUser(@QueryParam("credentials") ArrayList<String> credentials) {
-//		System.out.println("Checking whether the user already exits or not: '" + credentials.get(0) + "'");
-//		UsuarioDTO usuarioDTO = null;
-//		try {
-//			usuarioDTO = dao.retrieveUser(credentials.get(0));
-//		} catch (Exception e) {
-//			System.out.println("Exception launched: " + e.getMessage());
-//		}
-//
-//		if (usuarioDTO != null) {
-//			System.out.println("Returning the user to the client: " + credentials.get(0));
-//
-//			return Response.ok(usuarioDTO).build();
-//		} else {
-//			System.out.println("The user does not exist, no possibility of retrieving user ...: " + credentials.get(0));
-//			return Response.status(Status.BAD_REQUEST).entity("Login details supplied for user delivery is not correct").build();
-//		}
-//	}
 	@GET
 	@Path("obtainUser")
 	public Response getUser(@QueryParam("login") String login, @QueryParam("pwd") String pwd) {
@@ -142,11 +125,13 @@ public class FestivalCineManager {
 			System.out.println("Returning the user to the client: " + login);
 
 			return Response.ok(usuarioDTO).build();
-		} else {
+		}
+		else {
 			System.out.println("The user does not exist, no possibility of retrieving user ...: " + login);
 			return Response.status(Status.BAD_REQUEST).entity("Login details supplied for user delivery is not correct").build();
 		}
 	}
+
 	@POST
 	@Path("/registerActor")
 	public Response registerActor(ActorDTO actorDTOData) {
@@ -169,7 +154,6 @@ public class FestivalCineManager {
 			System.out.println("Actor created: " + actorDTOData.getNombre() + " " + actorDTOData.getApellido() + " ," +
 					"with ID: " + actorDTOData.getIdentificador());
 		}
-
 		return Response.ok().build();
 	}
 
@@ -177,13 +161,12 @@ public class FestivalCineManager {
 	@Path("/obtainActors")
 	public Response getActors() {
 		System.out.println("Returning the actors to the client");
-
 		ActorList actorList = new ActorList();
 		actorList.setActorsDTO(dao.getActors());
 		if (actorList.getActorsDTO().size()>0){
-
 		return Response.ok(actorList).build();
-		} else {
+		}
+		else {
 			System.out.println("There is no actor to retrieve ...");
 			return Response.status(Status.BAD_REQUEST).entity("There is no actor to retrieve ...").build();
 		}
@@ -192,23 +175,19 @@ public class FestivalCineManager {
 	@POST
 	@Path("/updateActor")
 	public Response updateActor(ActorDTO actorDTOData) {
-		//System.out.println("Checking whether the pelicula already exists or not: '" + peliculaDTOData.getTitulo());
 		ActorDTO actorDTO = null;
 		try {
 			actorDTO = dao.retrieveActor(actorDTOData.getIdentificador());
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			System.out.println("Exception launched: " + e.getMessage());
 		}
 
 		if (actorDTO != null) {
 			System.out.println("Actor found. Updating the actor: " + actorDTOData.getNombre() + " " + actorDTOData.getApellido());
-			//TODO: CUIDADO CON EL SETTEO.
-			//actorDTO.setPelicula(actorDTOData.getPelicula(actorDTOData.getPeliculas().size()-1));
 			dao.updateActor(actorDTO);
 			System.out.println("(FestivalCineManager) Actor updated : " + actorDTOData.getNombre() + " " + actorDTOData.getApellido());
 		} else {
-			//TODO: SI ESTA BIEN HECHO, ESTO NO DEBERIA SUCEDER NUNCA POR LA PROPIA LOGICA DEL PROGRAMA (PRIMERO
-			//TODO: GENERAR ACTORES, DESPUES PELICULAS).
 			System.out.println("The actor wasn't found in the database.");
 		}
 
@@ -234,7 +213,8 @@ public class FestivalCineManager {
 			peliculaDTO = new PeliculaDTO(peliculaDTOData.getTitulo(), peliculaDTOData.getSinopsis(),
 					peliculaDTOData.getGenero(), peliculaDTOData.getDuracion(), peliculaDTOData.getAnyo(),
 					peliculaDTOData.getDirector(), peliculaDTOData.getEnlaceTrailer(), peliculaDTOData.getValoracionMedia(),
-					peliculaDTOData.getPremios(), peliculaDTOData.getComentarios(), peliculaDTOData.getActores());
+					peliculaDTOData.getPremios(), peliculaDTOData.getComentarios(),
+					peliculaDTOData.getSeccionFestival(), peliculaDTOData.getActores());
 			dao.storePelicula(peliculaDTO);
 			System.out.println("Pelicula created: " + peliculaDTOData.getTitulo());
 		}
@@ -263,6 +243,9 @@ public class FestivalCineManager {
 	public Response registerValoracion(ValoracionDTO valoracionDTOData) throws NullPointerException {
 		System.out.println("Checking whether the pelicula to valorate already exists or not: '" + valoracionDTOData.getTitulo());
 		PeliculaDTO peliculaDTO = null;
+		ValoracionDTO valoracionDTO = null;
+		double promedio = 0;
+		int numValoracionesTitulo = 0;
 		try {
 			peliculaDTO = dao.retrievePelicula(valoracionDTOData.getTitulo());
 		} catch (Exception e) {
@@ -273,13 +256,119 @@ public class FestivalCineManager {
 		if (peliculaDTO != null) {
 			System.out.println("The pelicula exists. The valoracion will be done.");
 			System.out.println("Valorating pelicula: " + valoracionDTOData.getTitulo());
-			//TODO: ARREGLAR EL CALCULO. ESTO ES UNA MEDIA INCCORECTA; SE HA HECHO COMO PRIMERA ITERACION PARA COMPROBAR QUE
-			//TODO: LA EXTRACCION DE DATOS FUNCIONA.
-			peliculaDTO.setNumvaloraciones(peliculaDTO.getNumvaloraciones()+1);
-			peliculaDTO.setValoracionMedia((peliculaDTO.getValoracionMedia()+valoracionDTOData.getValoracion())/peliculaDTO.getNumvaloraciones());
+
+			//Paso 1: Recuperar la lista de valoraciones.
+			ValoracionList myValoracionList = getLocalValoraciones();
+			if (myValoracionList != null) {
+				//Paso 2: Filtrar los elementos de la lista de valoraciones que sean del título a valorar.
+				List<ValoracionDTO> valoracionCheck = myValoracionList.getValoracionesDTO();
+				List<ValoracionDTO> valoracionTitulo = new ArrayList<ValoracionDTO>();
+				double totalValoracionesTitulo = 0;
+				for (ValoracionDTO aux: valoracionCheck){
+					if (aux.getTitulo().compareTo(valoracionDTOData.getTitulo())==0){
+						valoracionTitulo.add(aux);
+						totalValoracionesTitulo += aux.getValoracion();
+					}
+				}
+				//Paso 3.1: Añadir valoración a la BD.
+				int numTotalValoraciones = valoracionCheck.size();
+				numValoracionesTitulo = valoracionTitulo.size()+1; //Valoraciones que se hicieron + la nueva.
+				System.out.println("Saving valoracion: " + (numTotalValoraciones+1));
+				valoracionDTO = new ValoracionDTO(numTotalValoraciones+1, valoracionDTOData.getTitulo(), valoracionDTOData.getValoracion());
+				dao.storeValoracion(valoracionDTO);
+				System.out.println("Valoracion created: " + valoracionDTO.getId());
+
+				//Paso 4.1: Establecer valoración de la película haciendo el promedio de todas las valoraciones previas + la nueva.
+				promedio = (totalValoracionesTitulo+valoracionDTOData.getValoracion())/numValoracionesTitulo;
+			}
+			else {
+				//Paso 3.2: Añadir valoración a la BD.
+				System.out.println("Saving valoracion: " + 1);
+				valoracionDTO = new ValoracionDTO(1, valoracionDTOData.getTitulo(), valoracionDTOData.getValoracion());
+				dao.storeValoracion(valoracionDTO);
+				System.out.println("Valoracion created: " + 1);
+
+				//Paso 4.2: Establecer valoración de la película haciendo el promedio de todas las valoraciones previas + la nueva.
+				promedio = valoracionDTOData.getValoracion();
+			}
+			peliculaDTO.setNumvaloraciones(numValoracionesTitulo);
+			peliculaDTO.setValoracionMedia(promedio);
 			dao.updatePelicula(peliculaDTO);
 		}
 
 		return Response.ok().build();
+	}
+
+	public ValoracionList getLocalValoraciones() {
+		System.out.println("Returning the valoraciones");
+
+		ValoracionList valoracionList = new ValoracionList();
+		valoracionList.setValoracionesDTO((dao.getValoraciones()));
+		if (valoracionList.getValoracionesDTO().size()>0){
+			return valoracionList;
+		} else {
+			System.out.println("There is no valoracion to retrieve ...");
+			return null;
+		}
+	}
+
+	@POST
+	@Path("/registerComment")
+	public Response registerComment(ComentarioDTO comentarioDTOData) throws NullPointerException {
+		System.out.println("Checking whether the pelicula to comment already exists or not: '" + comentarioDTOData.getPelicula().getTitulo());
+		PeliculaDTO peliculaDTO = null;
+		ComentarioDTO comentarioDTO = null;
+		try {
+			peliculaDTO = dao.retrievePelicula(comentarioDTOData.getPelicula().getTitulo());
+		} catch (Exception e) {
+			System.out.println("Exception launched: " + e.getMessage());
+			throw new NullPointerException();
+		}
+
+		if (peliculaDTO != null) {
+			System.out.println("The pelicula exists. The comentario will be done.");
+			System.out.println("Comentating pelicula: " + comentarioDTOData.getPelicula().getTitulo());
+
+			//Paso 1: Obtener el número de comentarios para generar el ID.
+			ComentarioList myComentarioList = getLocalComentarios();
+			if (myComentarioList != null) {
+				List<ComentarioDTO> comentarioCheck = myComentarioList.getComentariosDTO();
+				int numTotalComentarios = comentarioCheck.size();
+				System.out.println("Saving comentario " + (numTotalComentarios + 1));
+				comentarioDTO = new ComentarioDTO(numTotalComentarios + 1, peliculaDTO, comentarioDTOData.getUsuario(), comentarioDTOData.getContenido());
+
+				//Paso 2.1: Añadir PeliculaDTO a ComentarioDTO, y ComentarioDTO a PeliculaDTO.
+				peliculaDTO.getComentarios().add(comentarioDTO);
+				comentarioDTO.setPelicula(peliculaDTO);
+				//Paso 3.1: Hacer un update de esa película.
+				dao.updatePelicula(peliculaDTO);
+				return Response.ok().build();
+			}
+			else {
+				comentarioDTO = new ComentarioDTO(1, peliculaDTO, comentarioDTOData.getUsuario(), comentarioDTOData.getContenido());
+				//Paso 2.2: Añadir PeliculaDTO a ComentarioDTO, y ComentarioDTO a PeliculaDTO.
+				peliculaDTO.getComentarios().add(comentarioDTO);
+				comentarioDTO.setPelicula(peliculaDTO);
+				//Paso 3.2: Hacer un update de esa película.
+				dao.updatePelicula(peliculaDTO);
+				return Response.ok().build();
+			}
+		}
+		else {
+			return Response.status(Status.BAD_REQUEST).entity("There is no pelicula to comment ...").build();
+		}
+	}
+
+	public ComentarioList getLocalComentarios() {
+		System.out.println("Returning the comentarios");
+
+		ComentarioList comentarioList = new ComentarioList();
+		comentarioList.setComentariosDTO((dao.getComentarios()));
+		if (comentarioList.getComentariosDTO().size()>0){
+			return comentarioList;
+		} else {
+			System.out.println("There is no comentario to retrieve ...");
+			return null;
+		}
 	}
 }

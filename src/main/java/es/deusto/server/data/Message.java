@@ -5,6 +5,8 @@ import javax.jdo.annotations.PersistenceCapable;
 import java.io.Serializable;
 import java.util.Date;
 
+import es.deusto.server.data.UsuarioDTO;
+
 @PersistenceCapable
 public class Message implements Serializable {
 	/**

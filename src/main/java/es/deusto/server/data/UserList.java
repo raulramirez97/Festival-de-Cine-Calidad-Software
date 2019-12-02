@@ -7,9 +7,7 @@ public class UserList {
 
     private List<UsuarioDTO> usuarios = new ArrayList<UsuarioDTO>();
 
-    public UserList() {
-
-    }
+    public UserList() {}
 
     public List<UsuarioDTO> getUsuarios() {
         return this.usuarios;
