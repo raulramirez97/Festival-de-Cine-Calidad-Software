@@ -31,7 +31,9 @@ public class DAOMockTest {
 	Test unitario con JUnit 3 / 4.
 	Test de rendimiento con ContiPERF.
 	Mocks con Mockito.
-	
+	Visualización de carga con Visual VM.
+	Integración de CI con TravisCI.
+	EXTRA (para Sprint 3): Documentación con Doxygen.
 	 */
 	FestivalCineManager m;
 
