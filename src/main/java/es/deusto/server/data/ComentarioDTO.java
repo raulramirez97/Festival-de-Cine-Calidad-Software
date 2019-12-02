@@ -29,12 +29,12 @@ public class ComentarioDTO implements Serializable {
 	//TODO: MIRAR COMO SE HA HECHO LA GESTION DE TIMESTAMPS EN MESSAGE.JAVA
 	private long timestamp;
 
-	public ComentarioDTO(PeliculaDTO peli, String usuario, String contenido, long timestamp) {
+	public ComentarioDTO(PeliculaDTO peli, String usuario, String contenido) {
 		this.id = 1; //TODO: CAMBIAR A AUTOINDEXADO. PARA ELLO, HAY QUE RECOGER DE BD LOS COMENTARIOS, SUMAR+1 AL ID.
 		this.pelicula = peli;
 		this.usuario = usuario;
 		this.contenido = contenido;
-		this.timestamp = timestamp;
+		this.timestamp = System.currentTimeMillis();
 	}
 
 	public int getId() {
@@ -63,9 +63,6 @@ public class ComentarioDTO implements Serializable {
 	}
 	public long getTimestamp() {
 		return timestamp;
-	}
-	public void setTimestamp(long timestamp) {
-		this.timestamp = timestamp;
 	}
 	//	public String toString() {
 //

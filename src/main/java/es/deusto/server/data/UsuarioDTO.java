@@ -3,6 +3,8 @@ package es.deusto.server.data;
 import java.io.Serializable;
 import java.util.List;
 
+import es.deusto.server.data.Message;
+
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.PrimaryKey;
 import javax.jdo.annotations.Join;

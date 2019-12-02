@@ -16,7 +16,7 @@ public class Inicio extends JFrame {
 	{
 		ventana = this;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 513, 484);
+		setBounds(100, 100, 650, 484);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -53,6 +53,18 @@ public class Inicio extends JFrame {
 				f1.setVisible(true);
 				dispose();
 		    }
+		});
+		JButton btnNoUsuario = new JButton("Seguir sin usuario");
+		btnNoUsuario.setBounds(175, 300, 191, 46);
+		contentPane.add(btnNoUsuario);
+		btnNoUsuario.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e)
+			{
+				MenuAnonimo frame = new MenuAnonimo();
+				frame.setVisible(true);
+				dispose();
+			}
 		});
 		
 	}

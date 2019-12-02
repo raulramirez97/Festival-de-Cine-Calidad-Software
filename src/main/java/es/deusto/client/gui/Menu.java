@@ -96,5 +96,18 @@ public class Menu extends JFrame {
 				dispose();
 			}
 		});
+
+		JButton btnInicio = new JButton("Salir");
+		btnInicio.setBounds(450, 50, 175, 29);
+		contentPane.add(btnInicio);
+
+		btnInicio.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				MenuAnonimo frame = new MenuAnonimo();
+				frame.setVisible(true);
+				dispose();
+			}
+		});
 	}
 }

@@ -234,7 +234,8 @@ public class FestivalCineManager {
 			peliculaDTO = new PeliculaDTO(peliculaDTOData.getTitulo(), peliculaDTOData.getSinopsis(),
 					peliculaDTOData.getGenero(), peliculaDTOData.getDuracion(), peliculaDTOData.getAnyo(),
 					peliculaDTOData.getDirector(), peliculaDTOData.getEnlaceTrailer(), peliculaDTOData.getValoracionMedia(),
-					peliculaDTOData.getPremios(), peliculaDTOData.getComentarios(), peliculaDTOData.getActores());
+					peliculaDTOData.getPremios(), peliculaDTOData.getComentarios(),
+					peliculaDTOData.getSeccionFestival(), peliculaDTOData.getActores());
 			dao.storePelicula(peliculaDTO);
 			System.out.println("Pelicula created: " + peliculaDTOData.getTitulo());
 		}
