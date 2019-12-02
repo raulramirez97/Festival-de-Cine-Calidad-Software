@@ -306,4 +306,34 @@ public class DBManager implements IDAO {
 			pm.close();
 		}
 	}
+
+	@Override
+	public ArrayList<ValoracionDTO> getValoraciones() {
+		ArrayList<ValoracionDTO> valoraciones = new ArrayList<ValoracionDTO>();
+		PersistenceManager pm = null;
+		Transaction tx = null;
+		try
+		{
+			pm = pmf.getPersistenceManager();
+			tx = pm.currentTransaction();
+			tx.begin();
+			Extent<ValoracionDTO> extent = pm.getExtent(ValoracionDTO.class, true);
+
+			for (ValoracionDTO valoracion : extent)
+			{
+				valoraciones.add(valoracion);
+			}
+		}
+		catch (Exception ex)
+		{
+			System.err.println(" $ Error retrieving valoraciones using an 'Extent': " + ex.getMessage());
+		}
+		finally
+		{
+			if (pm != null && !pm.isClosed()) {
+				pm.close();
+			}
+		}
+		return valoraciones;
+	}
 }

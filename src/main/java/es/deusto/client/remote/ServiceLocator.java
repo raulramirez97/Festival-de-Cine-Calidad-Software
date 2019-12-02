@@ -149,10 +149,7 @@ public class ServiceLocator {
 		//TODO: PARTE 1, INSERTAR VALORACION.
 		WebTarget registerValoracionWebTarget = webTargetService.path("registerValoracion");
 		Invocation.Builder invocationBuilder = registerValoracionWebTarget.request(MediaType.APPLICATION_JSON);
-		//TODO: Hay que autogenerar un ID aquí en base a la cantidad de valoraciones que haya. Puede ser un timestamp si no, pero eso es
-		//TODO: Un coñazo de buscar. Sería mejor leer las valoraciones que hay y hacer un append rapido con eso al titulo de película.
-		String id = "a";
-		ValoracionDTO valoracionDTO = new ValoracionDTO(id, titulo, valoracion);
+		ValoracionDTO valoracionDTO = new ValoracionDTO(titulo, valoracion);
 
 		Response response = invocationBuilder.post(Entity.entity(valoracionDTO, MediaType.APPLICATION_JSON));
 		if (response.getStatus() != Status.OK.getStatusCode()) {
@@ -161,6 +158,20 @@ public class ServiceLocator {
 			System.out.println("Valoracion correctly registered");
 		}
 	}
+
+	//TODO: No sé si hará falta esto en el lado cliente... Dejar por si acaso; eliminar si no se usa para nada.
+//	public ValoracionList getValoracionesList() {
+//		WebTarget sayHelloWebTarget = webTargetService.path("obtainValoraciones");
+//		Invocation.Builder invocationBuilder = sayHelloWebTarget.request(MediaType.APPLICATION_JSON);
+//		Response response = invocationBuilder.get();
+//		if (response.getStatus() != Status.OK.getStatusCode()) {
+//			System.out.println("Error connecting with the server. Code: " + response.getStatus());
+//			return new ValoracionList();
+//		} else {
+//			ValoracionList valoraciones = response.readEntity(ValoracionList.class);
+//			return valoraciones;
+//		}
+//	}
 
 	public ArrayList<String> getFiltroList() throws NullPointerException {
 		List<PeliculaDTO> peliculasFestival = new ArrayList<PeliculaDTO>();

@@ -13,6 +13,10 @@ import es.deusto.server.dao.IDAO;
 import es.deusto.server.dao.DBManager;
 import es.deusto.server.data.*;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.List;
+
 @Path("/server")
 @Produces(MediaType.APPLICATION_JSON)
 public class FestivalCineManager {
@@ -265,6 +269,8 @@ public class FestivalCineManager {
 		System.out.println("Checking whether the pelicula to valorate already exists or not: '" + valoracionDTOData.getTitulo());
 		PeliculaDTO peliculaDTO = null;
 		ValoracionDTO valoracionDTO = null;
+		float promedio = 0;
+		int numValoracionesTitulo = 0;
 		try {
 			peliculaDTO = dao.retrievePelicula(valoracionDTOData.getTitulo());
 		} catch (Exception e) {
@@ -275,23 +281,79 @@ public class FestivalCineManager {
 		if (peliculaDTO != null) {
 			System.out.println("The pelicula exists. The valoracion will be done.");
 			System.out.println("Valorating pelicula: " + valoracionDTOData.getTitulo());
-			//TODO: ARREGLAR EL CALCULO. ESTO ES UNA MEDIA INCCORECTA; SE HA HECHO COMO PRIMERA ITERACION PARA COMPROBAR QUE
-			//TODO: LA EXTRACCION DE DATOS FUNCIONA. SE HACE MEDIA ENTRE LAS DOS ÚLTIMAS VALORACIONES CON TODAS LAS CANTIDADES DE VALORACIONES.
-			//TODO: HAY QUE CONSIDERAR TODAS LAS "VALORACIONDTO".
-			peliculaDTO.setNumvaloraciones(peliculaDTO.getNumvaloraciones()+1);
-			peliculaDTO.setValoracionMedia((peliculaDTO.getValoracionMedia()+valoracionDTOData.getValoracion())/peliculaDTO.getNumvaloraciones());
-			dao.updatePelicula(peliculaDTO);
 
-			//TODO: Con esto se ha almacenado la valoración cuando se inserta. Esto se usará posteriormente para hacer una media con todas las valoraciones
-			//TODO: existentes para una película determinada.
-			System.out.println("Saving valoracion: " + valoracionDTOData.getId());
-			valoracionDTO = new ValoracionDTO(valoracionDTOData.getId(), valoracionDTOData.getTitulo(), valoracionDTOData.getValoracion());
-			dao.storeValoracion(valoracionDTO);
-			System.out.println("Valoracion created: " + valoracionDTOData.getId());
+			//TODO: Paso 1: Recuperar la lista de valoraciones.
+			ValoracionList myValoracionList = getLocalValoraciones();
+			if (myValoracionList != null) {
+				//TODO: Paso 2: Filtrar los elementos de la lista de valoraciones que sean del título a valorar.
+				List<ValoracionDTO> valoracionCheck = myValoracionList.getValoracionesDTO();
+				List<ValoracionDTO> valoracionTitulo = new ArrayList<ValoracionDTO>();
+				float totalValoracionesTitulo = 0;
+				for (ValoracionDTO aux: valoracionCheck){
+					if (aux.getTitulo().compareTo(valoracionDTOData.getTitulo())==0){
+						valoracionTitulo.add(aux);
+						totalValoracionesTitulo += aux.getValoracion();
+					}
+				}
+				//TODO: Paso 3: Añadir valoración a la BD.
+				int numTotalValoraciones = valoracionCheck.size();
+				numValoracionesTitulo = valoracionTitulo.size()+1; //Valoraciones que se hicieron + la nueva.
+				System.out.println("Saving valoracion: " + (numTotalValoraciones+1));
+				valoracionDTO = new ValoracionDTO(numTotalValoraciones+1, valoracionDTOData.getTitulo(), valoracionDTOData.getValoracion());
+				dao.storeValoracion(valoracionDTO);
+				System.out.println("Valoracion created: " + valoracionDTO.getId());
+				//TODO: Paso 4: Establecer valoración de la película haciendo el promedio de todas las valoraciones previas + la nueva.
+
+				promedio = (totalValoracionesTitulo+valoracionDTOData.getValoracion())/numValoracionesTitulo;
+			}
+			else{
+				//TODO: Con esto se ha almacenado la valoración cuando se inserta. Esto se usará posteriormente para hacer una media con todas las valoraciones
+				//TODO: existentes para una película determinada.
+				System.out.println("Saving valoracion: " + 1);
+				valoracionDTO = new ValoracionDTO(1, valoracionDTOData.getTitulo(), valoracionDTOData.getValoracion());
+				dao.storeValoracion(valoracionDTO);
+				System.out.println("Valoracion created: " + 1);
+				promedio = valoracionDTOData.getValoracion();
+			}
+			peliculaDTO.setNumvaloraciones(numValoracionesTitulo);
+			peliculaDTO.setValoracionMedia(promedio);
+			dao.updatePelicula(peliculaDTO);
 		}
 
 		return Response.ok().build();
 	}
+
+	public ValoracionList getLocalValoraciones() {
+		System.out.println("Returning the valoraciones");
+
+		ValoracionList valoracionList = new ValoracionList();
+		valoracionList.setValoracionesDTO((dao.getValoraciones()));
+		if (valoracionList.getValoracionesDTO().size()>0){
+			return valoracionList;
+		} else {
+			System.out.println("There is no valoracion to retrieve ...");
+			return null;
+			//return Response.status(Status.BAD_REQUEST).entity("There is no valoracion to retrieve ...").build();
+		}
+	}
+
+	//TODO: MANTENER ESTA PETICIÓN SI AL FINAL SE USA LA LISTA DE VALORACIONES DE CARA AL CLIENTE; SI NO, BORRAR.
+
+//	@GET
+//	@Path("/obtainValoraciones")
+//	public Response getValoraciones() {
+//		System.out.println("Returning the valoraciones");
+//
+//		ValoracionList valoracionList = new ValoracionList();
+//		valoracionList.setValoracionesDTO((dao.getValoraciones());
+//		if (valoracionList.getValoracionesDTO().size()>0){
+//
+//			return Response.ok(valoracionList).build();
+//		} else {
+//			System.out.println("There is no valoracion to retrieve ...");
+//			return Response.status(Status.BAD_REQUEST).entity("There is no valoracion to retrieve ...").build();
+//		}
+//	}
 
 //	@POST
 //	@Path("/registerComment")

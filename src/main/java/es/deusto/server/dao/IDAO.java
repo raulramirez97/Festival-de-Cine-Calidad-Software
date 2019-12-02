@@ -31,4 +31,6 @@ public interface IDAO {
 	ArrayList<PeliculaDTO> getPeliculas ();
 
 	void storeValoracion (ValoracionDTO v);
+
+	ArrayList<ValoracionDTO> getValoraciones ();
 }
