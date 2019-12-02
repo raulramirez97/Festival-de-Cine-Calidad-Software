@@ -23,7 +23,7 @@ public class PeliculaDTO implements Serializable {
 	private int anyo; //Se ha mantenido anyo como atributo "int" por simplicidad; no nos interesa utilizar un formato Date en este contexto.
 	private String director; //Se ha entendido que habrá un único director por película por simplicidad, dado que no es lo más habitual ver múltiples directores.
 	private String enlaceTrailer;
-	private float valoracionMedia;
+	private double valoracionMedia;
 	private int numvaloraciones;
 	//TODO: CAMBIAR A PREMIODTO.
 	private String premios;
@@ -56,76 +56,10 @@ public class PeliculaDTO implements Serializable {
 //		this.comentarios = comentarios2;
 //		this.elenco = actores2;
 //	}
-//
-//	public String getTitulo() {
-//		return titulo;
-//	}
-//	public void setTitulo(String titulo) {
-//		this.titulo = titulo;
-//	}
-//	public String getSinopsis() {
-//		return sinopsis;
-//	}
-//	public void setSinopsis(String sinopsis) {
-//		this.sinopsis = sinopsis;
-//	}
-//	public String getGenero() {
-//		return genero;
-//	}
-//	public void setGenero(String genero) {
-//		this.genero = genero;
-//	}
-//	public int getDuracion() {
-//		return duracion;
-//	}
-//	public void setDuracion(int duracion) {
-//		this.duracion = duracion;
-//	}
-//	public int getAnyo() {
-//		return anyo;
-//	}
-//	public void setAnyo(int anyo) {
-//		this.anyo = anyo;
-//	}
-//	public String getDirector() {
-//		return director;
-//	}
-//	public void setDirector(String director) {
-//		this.director = director;
-//	}
-//	public String getEnlaceTrailer() {
-//		return enlaceTrailer;
-//	}
-//	public void setEnlaceTrailer(String enlaceTrailer) {
-//		this.enlaceTrailer = enlaceTrailer;
-//	}
-//	public int getValoracionMedia() {
-//		return valoracionMedia;
-//	}
-//	public void setValoracionMedia(int valoracionMedia) {
-//		this.valoracionMedia = valoracionMedia;
-//	}
-//	public String getPremios() {
-//		return premios;
-//	}
-//	public void setPremios(String premios) {
-//		this.premios = premios;
-//	}
-//	public List<ComentarioDTO> getComentarios() {
-//		return comentarios;
-//	}
-//	public void setComentarios(List<ComentarioDTO> comentarios) {
-//		this.comentarios = comentarios;
-//	}
-//	public List<ActorDTO> getActores() {
-//		return elenco;
-//	}
-//	public void setActores(List<ActorDTO> actores) {
-//		this.elenco = actores;
-//	}
+
 
 	public PeliculaDTO(String titulo, String sinopsis, String genero, int duracion, int anyo,
-					   String director, String enlaceTrailer, float valoracionMedia, String premios,
+					   String director, String enlaceTrailer, double valoracionMedia, String premios,
 					   List<ComentarioDTO> comentarios, String seccion, String actores) {
 
 		this.titulo = titulo;
@@ -186,10 +120,10 @@ public class PeliculaDTO implements Serializable {
 	public void setEnlaceTrailer(String enlaceTrailer) {
 		this.enlaceTrailer = enlaceTrailer;
 	}
-	public float getValoracionMedia() {
+	public double getValoracionMedia() {
 		return valoracionMedia;
 	}
-	public void setValoracionMedia(float valoracionMedia) {
+	public void setValoracionMedia(double valoracionMedia) {
 		this.valoracionMedia = valoracionMedia;
 	}
 	public int getNumvaloraciones() {
@@ -232,8 +166,8 @@ public class PeliculaDTO implements Serializable {
 			if (this.getActores() == null) {
 			return "___________________________________________\n" +
 					"Pelicula: Titulo --> " + this.getTitulo() + ", " +
-					"Sinopsis -->  " + this.getSinopsis() + ", Genero --> " + this.getGenero() +
-					", Duracion --> " + this.getDuracion() + ", Director --> " + this.getDirector() +
+					"Sinopsis -->  " + this.getSinopsis() + ", Genero --> " + this.getGenero() + ", Seccion --> " + this.getSeccionFestival() +
+					", Duracion --> " + this.getDuracion() + ", Director --> " + this.getDirector() + ", Año --> " + this.getAnyo() +
 					", Enlace a trailer --> " + this.getEnlaceTrailer() + ", Valoracion media --> " + this.getValoracionMedia() +
 					", Premios --> " + this.getPremios() + ", Comentarios --> No hay registrados, Actores --> No hay registrados" +
 					"\n__________________________________________\n";
@@ -248,8 +182,8 @@ public class PeliculaDTO implements Serializable {
 
 					return "___________________________________________\n" +
 							"Pelicula: Titulo --> " + this.getTitulo() + ", " +
-							"Sinopsis -->  " + this.getSinopsis() + ", Genero --> " + this.getGenero() +
-							", Duracion --> " + this.getDuracion() + ", Director --> " + this.getDirector() +
+							"Sinopsis -->  " + this.getSinopsis() + ", Genero --> " + this.getGenero() + ", Seccion --> " + this.getSeccionFestival() +
+							", Duracion --> " + this.getDuracion() + ", Director --> " + this.getDirector() + ", Año --> " + this.getAnyo() +
 							", Enlace a trailer --> " + this.getEnlaceTrailer() + ", Valoracion media --> " + this.getValoracionMedia() +
 							", Premios --> " + this.getPremios() + ", Comentarios --> No hay registrados" +
 							", Actores --> [" + this.getActores() + "]"+
@@ -266,8 +200,8 @@ public class PeliculaDTO implements Serializable {
 			if (this.getActores() == null) {
 				return "___________________________________________\n" +
 						"Pelicula: Titulo --> " + this.getTitulo() + ", " +
-						"Sinopsis -->  " + this.getSinopsis() + ", Genero --> " + this.getGenero() +
-						", Duracion --> " + this.getDuracion() + ", Director --> " + this.getDirector() +
+						"Sinopsis -->  " + this.getSinopsis() + ", Genero --> " + this.getGenero() + ", Seccion --> " + this.getSeccionFestival() +
+						", Duracion --> " + this.getDuracion() + ", Director --> " + this.getDirector() + ", Año --> " + this.getAnyo() +
 						", Enlace a trailer --> " + this.getEnlaceTrailer() + ", Valoracion media --> " + this.getValoracionMedia() +
 						", Premios --> " + this.getPremios() + ", Comentarios --> [" + comentariosStr + "]" +
 						", Actores --> No hay registrados"+
@@ -282,8 +216,8 @@ public class PeliculaDTO implements Serializable {
 
 					return "___________________________________________\n" +
 							"Pelicula: Titulo --> " + this.getTitulo() + ", " +
-							"Sinopsis -->  " + this.getSinopsis() + ", Genero --> " + this.getGenero() +
-							", Duracion --> " + this.getDuracion() + ", Director --> " + this.getDirector() +
+							"Sinopsis -->  " + this.getSinopsis() + ", Genero --> " + this.getGenero() + ", Seccion --> " + this.getSeccionFestival() +
+							", Duracion --> " + this.getDuracion() + ", Director --> " + this.getDirector() + ", Año --> " + this.getAnyo() +
 							", Enlace a trailer --> " + this.getEnlaceTrailer() + ", Valoracion media --> " + this.getValoracionMedia() +
 							", Premios --> " + this.getPremios() + ", Comentarios --> [" + comentariosStr + "]" +
 							", Actores --> [" + this.getActores() + "]"+

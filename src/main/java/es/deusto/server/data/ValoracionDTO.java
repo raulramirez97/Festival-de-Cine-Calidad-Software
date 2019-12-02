@@ -17,16 +17,16 @@ public class ValoracionDTO implements Serializable {
 	@PrimaryKey
 	int id = 0; //TODO: Se considerará que primer ID=1.
 	String titulo = null;
-	float valoracion = 0;
+	double valoracion = 0;
 
 	public ValoracionDTO() {}
 
-	public ValoracionDTO(String titulo, float valoracion) {
+	public ValoracionDTO(String titulo, double valoracion) {
 		this.titulo = titulo;
 		this.valoracion = valoracion;
 	}
 
-	public ValoracionDTO(int id, String titulo, float valoracion) {
+	public ValoracionDTO(int id, String titulo, double valoracion) {
 		this.id = id;
 		this.titulo = titulo;
 		this.valoracion = valoracion;
@@ -39,11 +39,11 @@ public class ValoracionDTO implements Serializable {
 		this.id = id;
 	}
 
-	public float getValoracion() {
+	public double getValoracion() {
 		return this.valoracion;
 	}
 
-	public void setValoracion(float valoracion) {
+	public void setValoracion(double valoracion) {
 		this.valoracion = valoracion;
 	}
 

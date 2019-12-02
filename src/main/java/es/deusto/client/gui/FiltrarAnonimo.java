@@ -43,20 +43,20 @@ public class FiltrarAnonimo extends JFrame {
         lblCategoria.setBounds(46, 123, 101, 37);
         contentPane.add(lblCategoria);
 
-        ArrayList<String> filtros = new ArrayList<String>();
-        filtros = FestivalCineController.getInstance().getFiltros();
-        String[] filtrosStrings = new String [filtros.size()];
-        for (int i = 0; i < filtrosStrings.length; i++){
-            filtrosStrings[i] = filtros.get(i);
-        }
-
-        //Create the combo box, select item at index 4.
-        //Indices start at 0, so 4 specifies the pig.
-        listafiltros = new JComboBox(filtrosStrings);
-        listafiltros.setBounds(46, 172, 146, 26);
-        contentPane.add(listafiltros);
-        //listafiltros.setSelectedIndex(4);
-        //listafiltros.addActionListener(this);
+//        ArrayList<String> filtros = new ArrayList<String>();
+//        filtros = FestivalCineController.getInstance().getFiltros();
+//        String[] filtrosStrings = new String [filtros.size()];
+//        for (int i = 0; i < filtrosStrings.length; i++){
+//            filtrosStrings[i] = filtros.get(i);
+//        }
+//
+//        //Create the combo box, select item at index 4.
+//        //Indices start at 0, so 4 specifies the pig.
+//        listafiltros = new JComboBox(filtrosStrings);
+//        listafiltros.setBounds(46, 172, 146, 26);
+//        contentPane.add(listafiltros);
+//        //listafiltros.setSelectedIndex(4);
+//        //listafiltros.addActionListener(this);
 
         //TODO: POR SI SE QUIERE ELEGIR CANTIDAD DE PELICULAS A OBSERVAR.
 //		JLabel lblPwd = new JLabel("Puntuacion");
@@ -77,13 +77,13 @@ public class FiltrarAnonimo extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 //TODO: POR EL MOMENTO ENSENADOS POR CONSOLA. POSTERIORMENTE SE APLICARA GUI (FILTRADOS.JAVA).
-                PeliculaList peliculaList = FestivalCineController.getInstance().getFilteredPeliculaList((String)(listafiltros.getSelectedItem()));
-                for (PeliculaDTO aux : peliculaList.getPeliculasDTO()) {
-                    System.out.println(aux.toString());
-                }
-                MenuAnonimo m = new MenuAnonimo();
-                m.setVisible(true);
-                dispose();
+//                PeliculaList peliculaList = FestivalCineController.getInstance().getFilteredPeliculaList((String)(listafiltros.getSelectedItem()));
+//                for (PeliculaDTO aux : peliculaList.getPeliculasDTO()) {
+//                    System.out.println(aux.toString());
+//                }
+//                MenuAnonimo m = new MenuAnonimo();
+//                m.setVisible(true);
+//                dispose();
 //            	Filtrados filtrados = new Filtrados(aux);
 //            	filtrados.setVisible(true);
 //            	dispose();

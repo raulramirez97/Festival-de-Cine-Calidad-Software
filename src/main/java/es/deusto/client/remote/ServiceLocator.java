@@ -195,34 +195,92 @@ public class ServiceLocator {
 		}
 	}
 
-	public ArrayList<String> getFiltroList() throws NullPointerException {
+	public ArrayList<String> getFiltroList(String filtro) throws NullPointerException {
 		List<PeliculaDTO> peliculasFestival = new ArrayList<PeliculaDTO>();
 		peliculasFestival = getPeliculaList().getPeliculasDTO();
 		ArrayList<String> filtrosPelis = new ArrayList<String>();
 		if (peliculasFestival.size() == 0) {
 			throw new NullPointerException();
 		}
-		else { //TODO: MODIFICAR PARA QUE SE PUEDA FILTRAR POR DIVERSOS CRITERIOS, NO SOLO POR GENERO.
-			Map<String, String> filtersMap = new TreeMap<String, String>();
-			for (PeliculaDTO aux : peliculasFestival) {
-				if (!(filtersMap.containsKey(aux.getGenero()))) {
-					filtersMap.put(aux.getGenero(), aux.getGenero());
+		else {
+			if (filtro == "Género") { // Filtro para Género.
+				Map<String, String> filtersMap = new TreeMap<String, String>();
+				for (PeliculaDTO aux : peliculasFestival) {
+					if (!(filtersMap.containsKey(aux.getGenero()))) {
+						filtersMap.put(aux.getGenero(), aux.getGenero());
+					}
 				}
+				filtrosPelis.addAll(filtersMap.values());
+				return filtrosPelis;
 			}
-			filtrosPelis.addAll(filtersMap.values());
-			return filtrosPelis;
+			else if (filtro == "Sección del Festival") { // Filtro para Sección del Festival.
+				Map<String, String> filtersMap = new TreeMap<String, String>();
+				for (PeliculaDTO aux : peliculasFestival) {
+					if (!(filtersMap.containsKey(aux.getSeccionFestival()))) {
+						filtersMap.put(aux.getSeccionFestival(), aux.getSeccionFestival());
+					}
+				}
+				filtrosPelis.addAll(filtersMap.values());
+				return filtrosPelis;
+			}
+			else { // Filtro para Año
+				Map<String, String> filtersMap = new TreeMap<String, String>();
+				for (PeliculaDTO aux : peliculasFestival) {
+					if (!(filtersMap.containsKey(Integer.toString(aux.getAnyo())))) {
+						filtersMap.put(Integer.toString(aux.getAnyo()), Integer.toString(aux.getAnyo()));
+					}
+				}
+				filtrosPelis.addAll(filtersMap.values());
+				return filtrosPelis;
+			}
 		}
 	}
 
-	public PeliculaList getFilteredPeliculaList(String filtro) {
+	public PeliculaList getFilteredPeliculaList(String filtro, String criterio) {
 		List<PeliculaDTO> peliculasFestival = new ArrayList<PeliculaDTO>();
 		peliculasFestival = getPeliculaList().getPeliculasDTO();
 		PeliculaList peliculasFiltradas = new PeliculaList();
-		for (PeliculaDTO aux : peliculasFestival) {
-			if (aux.getGenero().compareTo(filtro) == 0) {
-				peliculasFiltradas.addPeliculaDTO(aux);
+		if (criterio == "Género") { // Criterio de orden superior para Género.
+			for (PeliculaDTO aux : peliculasFestival) {
+				if (aux.getGenero().compareTo(filtro) == 0) {
+					peliculasFiltradas.addPeliculaDTO(aux);
+				}
 			}
+			return peliculasFiltradas;
 		}
-		return peliculasFiltradas;
+		else if (criterio == "Sección del Festival") { // Criterio de orden superior para Sección del Festival.
+			for (PeliculaDTO aux : peliculasFestival) {
+				if (aux.getSeccionFestival().compareTo(filtro) == 0) {
+					peliculasFiltradas.addPeliculaDTO(aux);
+				}
+			}
+			return peliculasFiltradas;
+		}
+		else if (criterio == "Año") { // Criterio de orden superior para Año.
+			for (PeliculaDTO aux : peliculasFestival) {
+				if (Integer.toString(aux.getAnyo()).compareTo(filtro) == 0) {
+					peliculasFiltradas.addPeliculaDTO(aux);
+				}
+			}
+			return peliculasFiltradas;
+		}
+		else if (criterio == "Valoración") { // Criterio de orden superior para Valoración.
+			double valoracionFiltro = Double.parseDouble(filtro);
+			for (PeliculaDTO aux : peliculasFestival) {
+				if (valoracionFiltro <= aux.getValoracionMedia()) {
+					peliculasFiltradas.addPeliculaDTO(aux);
+				}
+			}
+			return peliculasFiltradas;
+		}
+		else { // Criterio de orden superior para Valoración.
+			int duracionFiltro = Integer.parseInt(filtro);
+			for (PeliculaDTO aux : peliculasFestival) {
+				if (duracionFiltro <= aux.getDuracion()) {
+					peliculasFiltradas.addPeliculaDTO(aux);
+				}
+			}
+			return peliculasFiltradas;
+		}
 	}
 }

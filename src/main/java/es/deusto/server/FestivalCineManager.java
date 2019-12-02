@@ -269,7 +269,7 @@ public class FestivalCineManager {
 		System.out.println("Checking whether the pelicula to valorate already exists or not: '" + valoracionDTOData.getTitulo());
 		PeliculaDTO peliculaDTO = null;
 		ValoracionDTO valoracionDTO = null;
-		float promedio = 0;
+		double promedio = 0;
 		int numValoracionesTitulo = 0;
 		try {
 			peliculaDTO = dao.retrievePelicula(valoracionDTOData.getTitulo());
@@ -282,35 +282,38 @@ public class FestivalCineManager {
 			System.out.println("The pelicula exists. The valoracion will be done.");
 			System.out.println("Valorating pelicula: " + valoracionDTOData.getTitulo());
 
-			//TODO: Paso 1: Recuperar la lista de valoraciones.
+			//Paso 1: Recuperar la lista de valoraciones.
 			ValoracionList myValoracionList = getLocalValoraciones();
 			if (myValoracionList != null) {
-				//TODO: Paso 2: Filtrar los elementos de la lista de valoraciones que sean del título a valorar.
+				//Paso 2: Filtrar los elementos de la lista de valoraciones que sean del título a valorar.
 				List<ValoracionDTO> valoracionCheck = myValoracionList.getValoracionesDTO();
 				List<ValoracionDTO> valoracionTitulo = new ArrayList<ValoracionDTO>();
-				float totalValoracionesTitulo = 0;
+				double totalValoracionesTitulo = 0;
 				for (ValoracionDTO aux: valoracionCheck){
 					if (aux.getTitulo().compareTo(valoracionDTOData.getTitulo())==0){
 						valoracionTitulo.add(aux);
 						totalValoracionesTitulo += aux.getValoracion();
 					}
 				}
-				//TODO: Paso 3: Añadir valoración a la BD.
+				//Paso 3.1: Añadir valoración a la BD.
 				int numTotalValoraciones = valoracionCheck.size();
 				numValoracionesTitulo = valoracionTitulo.size()+1; //Valoraciones que se hicieron + la nueva.
 				System.out.println("Saving valoracion: " + (numTotalValoraciones+1));
 				valoracionDTO = new ValoracionDTO(numTotalValoraciones+1, valoracionDTOData.getTitulo(), valoracionDTOData.getValoracion());
 				dao.storeValoracion(valoracionDTO);
 				System.out.println("Valoracion created: " + valoracionDTO.getId());
-				//TODO: Paso 4: Establecer valoración de la película haciendo el promedio de todas las valoraciones previas + la nueva.
 
+				//Paso 4.1: Establecer valoración de la película haciendo el promedio de todas las valoraciones previas + la nueva.
 				promedio = (totalValoracionesTitulo+valoracionDTOData.getValoracion())/numValoracionesTitulo;
 			}
-			else{
+			else {
+				//Paso 3.2: Añadir valoración a la BD.
 				System.out.println("Saving valoracion: " + 1);
 				valoracionDTO = new ValoracionDTO(1, valoracionDTOData.getTitulo(), valoracionDTOData.getValoracion());
 				dao.storeValoracion(valoracionDTO);
 				System.out.println("Valoracion created: " + 1);
+
+				//Paso 4.2: Establecer valoración de la película haciendo el promedio de todas las valoraciones previas + la nueva.
 				promedio = valoracionDTOData.getValoracion();
 			}
 			peliculaDTO.setNumvaloraciones(numValoracionesTitulo);

@@ -140,9 +140,9 @@ public class FestivalCineController {
 	public void valorarPelicula (String titulo, float valoracion) throws NullPointerException {
 		rsl.valorarPelicula(titulo, valoracion);
 	}
-	public ArrayList<String> getFiltros() { return rsl.getFiltroList();}
-	public PeliculaList getFilteredPeliculaList(String filtro) {
-		return rsl.getFilteredPeliculaList(filtro);
+	public ArrayList<String> getFiltros(String filtro) { return rsl.getFiltroList(filtro);}
+	public PeliculaList getFilteredPeliculaList(String filtro, String criterio) {
+		return rsl.getFilteredPeliculaList(filtro, criterio);
 	}
 
 	public void comentarPelicula (String titulo, String usuario, String contenido) throws NullPointerException {
