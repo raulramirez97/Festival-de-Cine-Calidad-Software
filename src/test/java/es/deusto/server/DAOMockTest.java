@@ -27,6 +27,12 @@ import junit.framework.JUnit4TestAdapter;
 @RunWith(MockitoJUnitRunner.class)
 public class DAOMockTest {
 
+	/*TODO: Tests y elementos a agregar:
+	Test unitario con JUnit 3 / 4.
+	Test de rendimiento con ContiPERF.
+	Mocks con Mockito.
+	
+	 */
 	FestivalCineManager m;
 
 	@Mock
