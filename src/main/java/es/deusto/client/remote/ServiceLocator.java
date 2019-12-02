@@ -223,11 +223,42 @@ public class ServiceLocator {
 				filtrosPelis.addAll(filtersMap.values());
 				return filtrosPelis;
 			}
-			else { // Filtro para Año
+			else if (filtro == "Año")  { // Filtro para Año
 				Map<String, String> filtersMap = new TreeMap<String, String>();
 				for (PeliculaDTO aux : peliculasFestival) {
 					if (!(filtersMap.containsKey(Integer.toString(aux.getAnyo())))) {
 						filtersMap.put(Integer.toString(aux.getAnyo()), Integer.toString(aux.getAnyo()));
+					}
+				}
+				filtrosPelis.addAll(filtersMap.values());
+				return filtrosPelis;
+			}
+
+			else if (filtro == "Director")  { // Filtro para Director
+				Map<String, String> filtersMap = new TreeMap<String, String>();
+				for (PeliculaDTO aux : peliculasFestival) {
+					if (!(filtersMap.containsKey(aux.getDirector()))){
+						filtersMap.put(aux.getDirector(), aux.getDirector());
+					}
+				}
+				filtrosPelis.addAll(filtersMap.values());
+				return filtrosPelis;
+			}
+			else if (filtro == "Premio")   { // Filtro para Premio
+				Map<String, String> filtersMap = new TreeMap<String, String>();
+				for (PeliculaDTO aux : peliculasFestival) {
+					if (!(filtersMap.containsKey(aux.getPremios()))){
+						filtersMap.put(aux.getPremios(), aux.getPremios());
+					}
+				}
+				filtrosPelis.addAll(filtersMap.values());
+				return filtrosPelis;
+			}
+			else { // Filtro para Película
+				Map<String, String> filtersMap = new TreeMap<String, String>();
+				for (PeliculaDTO aux : peliculasFestival) {
+					if (!(filtersMap.containsKey(aux.getTitulo()))){
+						filtersMap.put(aux.getTitulo(), aux.getTitulo());
 					}
 				}
 				filtrosPelis.addAll(filtersMap.values());
@@ -273,10 +304,43 @@ public class ServiceLocator {
 			}
 			return peliculasFiltradas;
 		}
-		else { // Criterio de orden superior para Valoración.
+		else if (criterio == "Duración") { // Criterio de orden superior para Duración.
 			int duracionFiltro = Integer.parseInt(filtro);
 			for (PeliculaDTO aux : peliculasFestival) {
 				if (duracionFiltro <= aux.getDuracion()) {
+					peliculasFiltradas.addPeliculaDTO(aux);
+				}
+			}
+			return peliculasFiltradas;
+		}
+		else if (criterio == "Director") { // Criterio de orden superior para Director.
+			for (PeliculaDTO aux : peliculasFestival) {
+				if (aux.getDirector().compareTo(filtro) == 0) {
+					peliculasFiltradas.addPeliculaDTO(aux);
+				}
+			}
+			return peliculasFiltradas;
+		}
+		else if (criterio == "Actor") { // Criterio de orden superior para Actor.
+			String filtroActor = filtro.toUpperCase();
+			for (PeliculaDTO aux : peliculasFestival) {
+				if (aux.getActores().toUpperCase().contains(filtroActor)) {
+					peliculasFiltradas.addPeliculaDTO(aux);
+				}
+			}
+			return peliculasFiltradas;
+		}
+		else if (criterio == "Premio") { // Criterio de orden superior para Premio.
+			for (PeliculaDTO aux : peliculasFestival) {
+				if (aux.getPremios().compareTo(filtro) == 0) {
+					peliculasFiltradas.addPeliculaDTO(aux);
+				}
+			}
+			return peliculasFiltradas;
+		}
+		else { // Criterio de orden superior para Película.
+			for (PeliculaDTO aux : peliculasFestival) {
+				if (aux.getTitulo().compareTo(filtro) == 0) {
 					peliculasFiltradas.addPeliculaDTO(aux);
 				}
 			}

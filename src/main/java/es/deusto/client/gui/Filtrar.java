@@ -19,7 +19,6 @@ public class Filtrar extends JFrame {
 	private JTextField textFieldFiltroNumero;
 	private JComboBox listafiltrosGenerales;
 	private JComboBox listafiltrosEspecificos;
-	private boolean flag = false;
 	private JFrame ventana;
 
 	public Filtrar(UsuarioDTO aux)
@@ -43,29 +42,22 @@ public class Filtrar extends JFrame {
 		lblCategoria.setBounds(46, 123, 101, 37);
 		contentPane.add(lblCategoria);
 
-		//TODO: Paso 1: Recoger Categoría de Filtro general.
-
-		//TODO: Paso 2: Usar Categoría de Filtro general para hacer un filtro de segundo nivel.
-		//TODO: El problema con esta aproximación es que solo me vale para aquellas cosas de tipo "cualitativo" donde
-		//TODO: puedo hacer un match exacto con un String y ya. No me vale para filtrados numéricos; tendré que pensarlo
-		//TODO: de otra manera para esos casos. (if-else tratando de inferir el tipo del textfield? Ojo cuidado, puede ser
-		//TODO: que un número me interese reflejarlo como un String y que por tanto a nivel de comparativa vaya a otro lado.)
-
 		ArrayList<String> filtrosGenerales = new ArrayList<String>();
-		//TODO: Test realizado. Eliminar después (o no!).
-		//filtrosGenerales = FestivalCineController.getInstance().getFiltros();
-		filtrosGenerales.add("Opciones:");
-		filtrosGenerales.add("Género");
-		filtrosGenerales.add("Sección del Festival");
-		filtrosGenerales.add("Año");
-		filtrosGenerales.add("Valoración");
-		filtrosGenerales.add("Duración");
+		filtrosGenerales.add("Opciones:"); // CODE: 0
+		filtrosGenerales.add("Género"); // CODE: 1
+		filtrosGenerales.add("Sección del Festival"); //CODE: 2
+		filtrosGenerales.add("Año"); //CODE: 3
+		filtrosGenerales.add("Valoración"); //CODE: 4
+		filtrosGenerales.add("Duración"); //CODE: 5
+		filtrosGenerales.add("Director"); //CODE: 6
+		filtrosGenerales.add("Actor"); //CODE: 7
+		filtrosGenerales.add("Premio"); //CODE: 8
 		String[] filtrosGeneralesStrings = new String [filtrosGenerales.size()];
 		for (int i = 0; i < filtrosGeneralesStrings.length; i++){
 			filtrosGeneralesStrings[i] = filtrosGenerales.get(i);
 		}
 
-		//TODO: Filtros Específicos.
+		//Filtros Específicos.
 		listafiltrosEspecificos = new JComboBox();
 		listafiltrosEspecificos.setBounds(46, 220, 146, 26);
 		contentPane.add(listafiltrosEspecificos);
@@ -76,7 +68,6 @@ public class Filtrar extends JFrame {
 		contentPane.add(textFieldFiltroNumero);
 		textFieldFiltroNumero.setVisible(false);
 
-		//ArrayList<String> filtrosEspecificos = new ArrayList<String>();
 		listafiltrosGenerales = new JComboBox(filtrosGeneralesStrings);
 		listafiltrosGenerales.setBounds(46, 172, 146, 26);
 		contentPane.add(listafiltrosGenerales);
@@ -137,6 +128,36 @@ public class Filtrar extends JFrame {
 					listafiltrosEspecificos.setVisible(false);
 					textFieldFiltroNumero.setVisible(true);
 				}
+				else if (listafiltrosGenerales.getSelectedIndex()==6) {
+					textFieldFiltroNumero.setVisible(false);
+					ArrayList<String> filtrosEspecificos = new ArrayList<String>();
+					filtrosEspecificos = FestivalCineController.getInstance().getFiltros(filtrosGenerales.get(6));
+					String[] filtrosEspecificosStrings = new String [filtrosEspecificos.size()];
+					for (int i = 0; i < filtrosEspecificosStrings.length; i++){
+						filtrosEspecificosStrings[i] = filtrosEspecificos.get(i);
+					}
+
+					DefaultComboBoxModel model = new DefaultComboBoxModel( filtrosEspecificosStrings );
+					listafiltrosEspecificos.setModel( model );
+					listafiltrosEspecificos.setVisible(true);
+				}
+				else if (listafiltrosGenerales.getSelectedIndex()==7) {
+					listafiltrosEspecificos.setVisible(false);
+					textFieldFiltroNumero.setVisible(true);
+				}
+				else if (listafiltrosGenerales.getSelectedIndex()==8) {
+					textFieldFiltroNumero.setVisible(false);
+					ArrayList<String> filtrosEspecificos = new ArrayList<String>();
+					filtrosEspecificos = FestivalCineController.getInstance().getFiltros(filtrosGenerales.get(8));
+					String[] filtrosEspecificosStrings = new String [filtrosEspecificos.size()];
+					for (int i = 0; i < filtrosEspecificosStrings.length; i++){
+						filtrosEspecificosStrings[i] = filtrosEspecificos.get(i);
+					}
+
+					DefaultComboBoxModel model = new DefaultComboBoxModel( filtrosEspecificosStrings );
+					listafiltrosEspecificos.setModel( model );
+					listafiltrosEspecificos.setVisible(true);
+				}
 			}
 		});
 
@@ -169,14 +190,22 @@ public class Filtrar extends JFrame {
 				else {
 					try {
 						PeliculaList peliculaList = null;
-						if (listafiltrosGenerales.getSelectedIndex() == 1 || listafiltrosGenerales.getSelectedIndex() == 2 || listafiltrosGenerales.getSelectedIndex() == 3) {
+						if (listafiltrosGenerales.getSelectedIndex() == 1 || listafiltrosGenerales.getSelectedIndex() == 2 || listafiltrosGenerales.getSelectedIndex() == 3 || listafiltrosGenerales.getSelectedIndex() == 6 || listafiltrosGenerales.getSelectedIndex() == 8) {
 							peliculaList = FestivalCineController.getInstance().getFilteredPeliculaList((String) (listafiltrosEspecificos.getSelectedItem()), (String) listafiltrosGenerales.getSelectedItem());
-						} else if (listafiltrosGenerales.getSelectedIndex() == 4) {
+						}
+						else if (listafiltrosGenerales.getSelectedIndex() == 4) {
 							Double.parseDouble(textFieldFiltroNumero.getText());
 							peliculaList = FestivalCineController.getInstance().getFilteredPeliculaList((textFieldFiltroNumero.getText()), (String) listafiltrosGenerales.getSelectedItem());
 						}
 						else if (listafiltrosGenerales.getSelectedIndex() == 5) {
 							Integer.parseInt(textFieldFiltroNumero.getText());
+							peliculaList = FestivalCineController.getInstance().getFilteredPeliculaList((textFieldFiltroNumero.getText()), (String) listafiltrosGenerales.getSelectedItem());
+						}
+						else if ( listafiltrosGenerales.getSelectedIndex() == 7) {
+							String actorInput = textFieldFiltroNumero.getText();
+							if (actorInput.length()==0){
+								throw new NullPointerException();
+							}
 							peliculaList = FestivalCineController.getInstance().getFilteredPeliculaList((textFieldFiltroNumero.getText()), (String) listafiltrosGenerales.getSelectedItem());
 						}
 						for (PeliculaDTO aux : peliculaList.getPeliculasDTO()) {
@@ -188,6 +217,9 @@ public class Filtrar extends JFrame {
 					}
 					catch (NumberFormatException e1){
 						JOptionPane.showMessageDialog(ventana, "¡No has insertado un valor numérico correcto!", "ERR-A02 - Inserción errónea de valor numérico", JOptionPane.ERROR_MESSAGE);
+					}
+					catch (NullPointerException e1){
+						JOptionPane.showMessageDialog(ventana, "¡Has dejado en blanco el campo de búsqueda del actor!", "ERR-A03 - Inserción errónea de nombre o apellido de actor", JOptionPane.ERROR_MESSAGE);
 					}
 				}
 //            	Filtrados filtrados = new Filtrados(aux);
