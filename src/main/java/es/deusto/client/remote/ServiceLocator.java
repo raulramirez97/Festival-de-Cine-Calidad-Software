@@ -1,5 +1,6 @@
 package es.deusto.client.remote;
 
+import es.deusto.client.gui.Comentar;
 import es.deusto.server.data.*;
 
 import javax.ws.rs.client.*;
@@ -146,7 +147,6 @@ public class ServiceLocator {
 	}
 
 	public void valorarPelicula(String titulo, float valoracion) throws NullPointerException {
-		//TODO: PARTE 1, INSERTAR VALORACION.
 		WebTarget registerValoracionWebTarget = webTargetService.path("registerValoracion");
 		Invocation.Builder invocationBuilder = registerValoracionWebTarget.request(MediaType.APPLICATION_JSON);
 		ValoracionDTO valoracionDTO = new ValoracionDTO(titulo, valoracion);
@@ -172,6 +172,28 @@ public class ServiceLocator {
 //			return valoraciones;
 //		}
 //	}
+
+	public void comentarPelicula(String titulo, String usuario, String contenido) {
+		WebTarget registerUserWebTarget = webTargetService.path("registerComment");
+		Invocation.Builder invocationBuilder = registerUserWebTarget.request(MediaType.APPLICATION_JSON);
+		ComentarioDTO miComentario = null;
+		List<PeliculaDTO> misPelis = getPeliculaList().getPeliculasDTO();
+
+		for (PeliculaDTO aux: misPelis){
+			if (aux.getTitulo().compareTo(titulo)==0){
+				miComentario = new ComentarioDTO(aux,usuario,contenido);
+				break;
+			}
+		}
+
+		System.out.println("Enviando comentario: " + miComentario.getPelicula().getTitulo());
+		Response response = invocationBuilder.post(Entity.entity(miComentario, MediaType.APPLICATION_JSON));
+		if (response.getStatus() != Status.OK.getStatusCode()) {
+			System.out.println("Error connecting with the server. Code: " + response.getStatus());
+		} else {
+			System.out.println("Comentario correctly registered");
+		}
+	}
 
 	public ArrayList<String> getFiltroList() throws NullPointerException {
 		List<PeliculaDTO> peliculasFestival = new ArrayList<PeliculaDTO>();

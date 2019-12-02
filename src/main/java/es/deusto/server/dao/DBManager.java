@@ -2,10 +2,7 @@ package es.deusto.server.dao;
 
 import javax.jdo.*;
 
-import es.deusto.server.data.ActorDTO;
-import es.deusto.server.data.PeliculaDTO;
-import es.deusto.server.data.UsuarioDTO;
-import es.deusto.server.data.ValoracionDTO;
+import es.deusto.server.data.*;
 
 import java.util.ArrayList;
 
@@ -335,5 +332,35 @@ public class DBManager implements IDAO {
 			}
 		}
 		return valoraciones;
+	}
+
+	@Override
+	public ArrayList<ComentarioDTO> getComentarios() {
+		ArrayList<ComentarioDTO> comentarios = new ArrayList<ComentarioDTO>();
+		PersistenceManager pm = null;
+		Transaction tx = null;
+		try
+		{
+			pm = pmf.getPersistenceManager();
+			tx = pm.currentTransaction();
+			tx.begin();
+			Extent<ComentarioDTO> extent = pm.getExtent(ComentarioDTO.class, true);
+
+			for (ComentarioDTO comentario : extent)
+			{
+				comentarios.add(comentario);
+			}
+		}
+		catch (Exception ex)
+		{
+			System.err.println(" $ Error retrieving comentarios using an 'Extent': " + ex.getMessage());
+		}
+		finally
+		{
+			if (pm != null && !pm.isClosed()) {
+				pm.close();
+			}
+		}
+		return comentarios;
 	}
 }

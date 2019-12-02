@@ -6,6 +6,7 @@ import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @PersistenceCapable(detachable = "true")
@@ -30,7 +31,15 @@ public class ComentarioDTO implements Serializable {
 	private long timestamp;
 
 	public ComentarioDTO(PeliculaDTO peli, String usuario, String contenido) {
-		this.id = 1; //TODO: CAMBIAR A AUTOINDEXADO. PARA ELLO, HAY QUE RECOGER DE BD LOS COMENTARIOS, SUMAR+1 AL ID.
+		this.id = 1;
+		this.pelicula = peli;
+		this.usuario = usuario;
+		this.contenido = contenido;
+		this.timestamp = System.currentTimeMillis();
+	}
+
+	public ComentarioDTO(int id, PeliculaDTO peli, String usuario, String contenido) {
+		this.id = id;
 		this.pelicula = peli;
 		this.usuario = usuario;
 		this.contenido = contenido;
@@ -64,59 +73,9 @@ public class ComentarioDTO implements Serializable {
 	public long getTimestamp() {
 		return timestamp;
 	}
-	//	public String toString() {
-//
-//		if (this.getComentarios() == null) {
-//			if (this.getActores() == null) {
-//			return "Pelicula: Titulo --> " + this.getTitulo() + ", " +
-//					"Sinopsis -->  " + this.getSinopsis() + ", Genero --> " + this.getGenero() +
-//					", Duracion --> " + this.getDuracion() + ", Director --> " + this.getDirector() +
-//					", Enlace a trailer --> " + this.getEnlaceTrailer() + ", Valoracion media --> " + this.getValoracionMedia() +
-//					", Premios --> " + this.getPremios() + ", Comentarios --> No hay registrados, Actores --> No hay registrados";
-//
-//				}
-//			else {
-//				StringBuffer actoresStr = new StringBuffer();
-//				for (String actor : this.getActores()) {
-//					actoresStr.append(actor.toString() + " - ");
-//				}
-//
-//					return "Pelicula: Titulo --> " + this.getTitulo() + ", " +
-//							"Sinopsis -->  " + this.getSinopsis() + ", Genero --> " + this.getGenero() +
-//							", Duracion --> " + this.getDuracion() + ", Director --> " + this.getDirector() +
-//							", Enlace a trailer --> " + this.getEnlaceTrailer() + ", Valoracion media --> " + this.getValoracionMedia() +
-//							", Premios --> " + this.getPremios() + ", Comentarios --> No hay registrados" +
-//							", Actores --> [" + actoresStr + "]";
-//				}
-//			}
-//		else {
-//			StringBuffer comentariosStr = new StringBuffer();
-//			for (String comentario : this.getComentarios()) {
-//				comentariosStr.append(comentario.toString() + " - ");
-//			}
-//
-//			if (this.getActores() == null) {
-//				return "Pelicula: Titulo --> " + this.getTitulo() + ", " +
-//						"Sinopsis -->  " + this.getSinopsis() + ", Genero --> " + this.getGenero() +
-//						", Duracion --> " + this.getDuracion() + ", Director --> " + this.getDirector() +
-//						", Enlace a trailer --> " + this.getEnlaceTrailer() + ", Valoracion media --> " + this.getValoracionMedia() +
-//						", Premios --> " + this.getPremios() + ", Comentarios --> [" + comentariosStr + "]" +
-//						", Actores --> No hay registrados";
-//			}
-//			else {
-//				StringBuffer actoresStr = new StringBuffer();
-//				for (String actor : this.getActores()) {
-//					actoresStr.append(actor.toString() + " - ");
-//				}
-//
-//					return "Pelicula: Titulo --> " + this.getTitulo() + ", " +
-//							"Sinopsis -->  " + this.getSinopsis() + ", Genero --> " + this.getGenero() +
-//							", Duracion --> " + this.getDuracion() + ", Director --> " + this.getDirector() +
-//							", Enlace a trailer --> " + this.getEnlaceTrailer() + ", Valoracion media --> " + this.getValoracionMedia() +
-//							", Premios --> " + this.getPremios() + ", Comentarios --> [" + comentariosStr + "]" +
-//							", Actores --> [" + actoresStr + "]";
-//				}
-//			}
-//
-//	}
+
+	public String toString() {
+		Date fecha = new Date(this.getTimestamp());
+		return "ID Comentario: "+this.getId()+", Usuario: "+this.getUsuario()+", Fecha: "+fecha+", Contenido: "+contenido;
+	}
 }

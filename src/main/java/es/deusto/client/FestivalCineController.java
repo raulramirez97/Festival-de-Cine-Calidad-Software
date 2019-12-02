@@ -145,6 +145,10 @@ public class FestivalCineController {
 		return rsl.getFilteredPeliculaList(filtro);
 	}
 
+	public void comentarPelicula (String titulo, String usuario, String contenido) throws NullPointerException {
+		rsl.comentarPelicula(titulo, usuario, contenido);
+	}
+
 	public static void main(String[] args) {
 		new FestivalCineController(args);
 		FestivalCineController.getInstance().generateFixtures();

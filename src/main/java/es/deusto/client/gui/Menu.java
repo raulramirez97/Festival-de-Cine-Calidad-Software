@@ -55,12 +55,12 @@ public class Menu extends JFrame {
 		btnPeliculas.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				//TODO: POR EL MOMENTO ENSENADOS POR CONSOLA. POSTERIORMENTE SE APLICARA GUI (INFORME.JAVA).
+				//TODO: POR EL MOMENTO ENSENADOS POR CONSOLA. POSTERIORMENTE SE APLICARA GUI (INFORMEGENERAL.JAVA).
 				PeliculaList peliculaList = FestivalCineController.getInstance().getPeliculaList();
 				for (PeliculaDTO aux : peliculaList.getPeliculasDTO()) {
 					System.out.println(aux.toString());
 				}
-//            	Informe informe = new Informe(aux);
+//            	InformeGeneral informe = new InformeGeneral(aux);
 //            	informe.setVisible(true);
 //            	dispose();
 			}
@@ -96,6 +96,21 @@ public class Menu extends JFrame {
 				dispose();
 			}
 		});
+
+		JButton btnComentar = new JButton("Comentar pelicula");
+		btnComentar.setBounds(150, 330, 175, 29);
+		contentPane.add(btnComentar);
+
+		btnComentar.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Comentar comentar = new Comentar(aux);
+				comentar.setVisible(true);
+				dispose();
+			}
+		});
+
+
 
 		JButton btnInicio = new JButton("Salir");
 		btnInicio.setBounds(450, 50, 175, 29);

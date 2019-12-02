@@ -33,61 +33,51 @@ public class Comentar extends JFrame {
         setContentPane(contentPane);
         contentPane.setLayout(null);
         getContentPane().setBackground(Color.white);
-        setTitle("Proceso de LogIn");
+        setTitle("Comentar");
 
-        JLabel lblFiltrar = new JLabel("Filtra las peliculas");
-        lblFiltrar.setFont(new Font("Times New Roman", Font.PLAIN, 32));
-        lblFiltrar.setBounds(40, 40, 350, 73);
-        contentPane.add(lblFiltrar);
+        JLabel lblFacebookgoogle = new JLabel("Comenta la pelicula");
+        lblFacebookgoogle.setFont(new Font("Times New Roman", Font.PLAIN, 32));
+        lblFacebookgoogle.setBounds(40, 40, 350, 73);
+        contentPane.add(lblFacebookgoogle);
 
-        JLabel lblCategoria = new JLabel("Categoria");
-        lblCategoria.setBounds(46, 123, 101, 37);
-        contentPane.add(lblCategoria);
+        JLabel lblUsuario = new JLabel("Nombre de pelicula");
+        lblUsuario.setBounds(46, 123, 101, 37);
+        contentPane.add(lblUsuario);
 
-        ArrayList<String> filtros = new ArrayList<String>();
-        filtros = FestivalCineController.getInstance().getFiltros();
-        String[] filtrosStrings = new String [filtros.size()];
-        for (int i = 0; i < filtrosStrings.length; i++){
-            filtrosStrings[i] = filtros.get(i);
-        }
 
-        //Create the combo box, select item at index 4.
-        //Indices start at 0, so 4 specifies the pig.
-        listafiltros = new JComboBox(filtrosStrings);
-        listafiltros.setBounds(46, 172, 146, 26);
-        contentPane.add(listafiltros);
-        //listafiltros.setSelectedIndex(4);
-        //listafiltros.addActionListener(this);
+        textField = new JTextField();
+        textField.setBounds(46, 172, 146, 26);
+        contentPane.add(textField);
+        textField.setColumns(10);
 
-        //TODO: POR SI SE QUIERE ELEGIR CANTIDAD DE PELICULAS A OBSERVAR.
-//		JLabel lblPwd = new JLabel("Puntuacion");
-//		lblPwd.setBounds(46, 220, 101, 37);
-//		contentPane.add(lblPwd);
-//
-//
-//		textField = new JTextField();
-//		textField.setBounds(46, 270, 146, 26);
-//		contentPane.add(textField);
-//		textField.setColumns(10);
+        JLabel lblPwd = new JLabel("Tu comentario");
+        lblPwd.setBounds(46, 220, 101, 37);
+        contentPane.add(lblPwd);
 
-        JButton btnPeliculas = new JButton("Ver listado de peliculas filtradas");
-        btnPeliculas.setBounds(46, 220, 175, 29);
-        contentPane.add(btnPeliculas);
 
-        btnPeliculas.addActionListener(new ActionListener() {
+        textField2 = new JTextField();
+        textField2.setBounds(46, 270, 146, 26);
+        contentPane.add(textField2);
+        textField2.setColumns(10);
+
+        JButton btnValoracion = new JButton("Comentar");
+        btnValoracion.setBounds(132, 232, 155, 29);
+        contentPane.add(btnValoracion);
+        btnValoracion.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //TODO: POR EL MOMENTO ENSENADOS POR CONSOLA. POSTERIORMENTE SE APLICARA GUI (FILTRADOS.JAVA).
-                PeliculaList peliculaList = FestivalCineController.getInstance().getFilteredPeliculaList((String)(listafiltros.getSelectedItem()));
-                for (PeliculaDTO aux : peliculaList.getPeliculasDTO()) {
-                    System.out.println(aux.toString());
+                try {
+                    //TODO: AÑADIR COMENTARIO.
+                    FestivalCineController.getInstance().comentarPelicula(textField.getText(),aux.getLogin(),textField2.getText());
+                    System.out.println("La pelicula se ha comentado correctamente");
+                    Menu m = new Menu(aux);
+                    m.setVisible(true);
+                    dispose();
                 }
-                Menu m = new Menu(aux);
-                m.setVisible(true);
-                dispose();
-//            	Filtrados filtrados = new Filtrados(aux);
-//            	filtrados.setVisible(true);
-//            	dispose();
+                //TODO: NO LLEGA AQUI LA EXCEPCION CON LAS PETICIONES REST...
+                catch (NullPointerException exc) {
+                    JOptionPane.showMessageDialog(ventana, "La pelicula que se ha querido comentar no esta entre las peliculas disponibles.");
+                }
             }
         });
     }
