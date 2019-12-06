@@ -1,20 +1,16 @@
 package es.deusto.server.data;
 
-import java.io.Serializable;
-import java.util.List;
-
-import javax.jdo.annotations.PersistenceCapable;
-import javax.jdo.annotations.PrimaryKey;
 import javax.jdo.annotations.Join;
+import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
-
+import javax.jdo.annotations.PrimaryKey;
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 @PersistenceCapable(detachable = "true")
 public class UsuarioDTO implements Serializable {
-	/**
-	 * User implements Serializable to be transferred to the RMI client
-	 */
+
 	private static final long serialVersionUID = 1L;
 	@PrimaryKey
 	String login = null;
@@ -24,9 +20,7 @@ public class UsuarioDTO implements Serializable {
 	@Join
 	List<Message> messages = new ArrayList<Message>();
 	
-	public UsuarioDTO() {
-		
-	}
+	public UsuarioDTO() {}
 
 	public UsuarioDTO(String login, String password) {
 		this.login = login;
@@ -57,6 +51,10 @@ public class UsuarioDTO implements Serializable {
 		return this.messages;
 	}
 
+	/**
+	 * Método toString generado para obtener la representación a modo de informe por pantalla.
+	 * @return Información de un usuario.
+	 */
 	public String toString() {
 		if (messages.isEmpty()) {
 			return "User: login --> " + this.login + ", password -->  " + this.password;

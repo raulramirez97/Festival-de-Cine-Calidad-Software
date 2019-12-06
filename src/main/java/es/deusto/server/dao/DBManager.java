@@ -1,13 +1,18 @@
 package es.deusto.server.dao;
 
+import es.deusto.server.data.*;
+
 import javax.jdo.*;
-
-import es.deusto.server.data.ActorDTO;
-import es.deusto.server.data.PeliculaDTO;
-import es.deusto.server.data.UsuarioDTO;
-
 import java.util.ArrayList;
 
+/**
+ * Este bloque de código implementa la interfaz IDAO, y representa la implementación del patrón de diseño DAO. Por lo
+ * tanto, es la clase encargada de hacer procesos CRU (Create, Read, Update) con los datos de la base de datos MySQL,
+ * gestionada a su vez mediante DataNucleus. No se ha necesitado de borrado de datos.
+ * @author Grupo RMBJ
+ * @version 2.0
+ * @since 1.0
+ */
 public class DBManager implements IDAO {
 
 	private PersistenceManagerFactory pmf;
@@ -15,10 +20,6 @@ public class DBManager implements IDAO {
 	public DBManager() {
 		pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
 	}
-
-	/*
-	USUARIO METHODS BELOW:
-	 */
 
 	@Override
 	public void storeUsuario(UsuarioDTO u) {
@@ -51,7 +52,7 @@ public class DBManager implements IDAO {
 			tx.begin();
 			usuarioDTO = pm.getObjectById(UsuarioDTO.class, login);
 			tx.commit();
-		} catch (javax.jdo.JDOObjectNotFoundException jonfe) {
+		} catch (JDOObjectNotFoundException jonfe) {
 			System.out.println("User does not exist: " + jonfe.getMessage());
 		}
 
@@ -87,10 +88,6 @@ public class DBManager implements IDAO {
 
 	}
 
-	/*
-	ACTOR METHODS BELOW:
-	 */
-
 	@Override
 	public void storeActor(ActorDTO a) {
 		PersistenceManager pm = pmf.getPersistenceManager();
@@ -121,7 +118,7 @@ public class DBManager implements IDAO {
 			tx.begin();
 			actorDTO = pm.getObjectById(ActorDTO.class, id);
 			tx.commit();
-		} catch (javax.jdo.JDOObjectNotFoundException jonfe) {
+		} catch (JDOObjectNotFoundException jonfe) {
 			System.out.println("Actor does not exist: " + jonfe.getMessage());
 		}
 
@@ -186,11 +183,6 @@ public class DBManager implements IDAO {
 		return actors;
 	}
 
-
-	/*
-	PELICULA METHODS BELOW:
-	 */
-
 	@Override
 	public void storePelicula(PeliculaDTO p) {
 		PersistenceManager pm = pmf.getPersistenceManager();
@@ -221,7 +213,7 @@ public class DBManager implements IDAO {
 			tx.begin();
 			peliculaDTO = pm.getObjectById(PeliculaDTO.class, titulo);
 			tx.commit();
-		} catch (javax.jdo.JDOObjectNotFoundException jonfe) {
+		} catch (JDOObjectNotFoundException jonfe) {
 			System.out.println("Pelicula does not exist: " + jonfe.getMessage());
 		}
 
@@ -284,5 +276,85 @@ public class DBManager implements IDAO {
 			}
 		}
 		return peliculas;
+	}
+
+	@Override
+	public void storeValoracion(ValoracionDTO v) {
+		PersistenceManager pm = pmf.getPersistenceManager();
+		Transaction tx = pm.currentTransaction();
+		try {
+			tx.begin();
+			System.out.println("   * Storing a valoracion: " + v.getId());
+			pm.makePersistent(v);
+			tx.commit();
+		} catch (Exception ex) {
+			System.out.println("   $ Error storing an object: " + ex.getMessage());
+		} finally {
+			if (tx != null && tx.isActive()) {
+				tx.rollback();
+			}
+
+			pm.close();
+		}
+	}
+
+	@Override
+	public ArrayList<ValoracionDTO> getValoraciones() {
+		ArrayList<ValoracionDTO> valoraciones = new ArrayList<ValoracionDTO>();
+		PersistenceManager pm = null;
+		Transaction tx = null;
+		try
+		{
+			pm = pmf.getPersistenceManager();
+			tx = pm.currentTransaction();
+			tx.begin();
+			Extent<ValoracionDTO> extent = pm.getExtent(ValoracionDTO.class, true);
+
+			for (ValoracionDTO valoracion : extent)
+			{
+				valoraciones.add(valoracion);
+			}
+		}
+		catch (Exception ex)
+		{
+			System.err.println(" $ Error retrieving valoraciones using an 'Extent': " + ex.getMessage());
+		}
+		finally
+		{
+			if (pm != null && !pm.isClosed()) {
+				pm.close();
+			}
+		}
+		return valoraciones;
+	}
+
+	@Override
+	public ArrayList<ComentarioDTO> getComentarios() {
+		ArrayList<ComentarioDTO> comentarios = new ArrayList<ComentarioDTO>();
+		PersistenceManager pm = null;
+		Transaction tx = null;
+		try
+		{
+			pm = pmf.getPersistenceManager();
+			tx = pm.currentTransaction();
+			tx.begin();
+			Extent<ComentarioDTO> extent = pm.getExtent(ComentarioDTO.class, true);
+
+			for (ComentarioDTO comentario : extent)
+			{
+				comentarios.add(comentario);
+			}
+		}
+		catch (Exception ex)
+		{
+			System.err.println(" $ Error retrieving comentarios using an 'Extent': " + ex.getMessage());
+		}
+		finally
+		{
+			if (pm != null && !pm.isClosed()) {
+				pm.close();
+			}
+		}
+		return comentarios;
 	}
 }

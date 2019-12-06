@@ -1,11 +1,16 @@
 package es.deusto.server.dao;
 
-import es.deusto.server.data.ActorDTO;
-import es.deusto.server.data.PeliculaDTO;
-import es.deusto.server.data.UsuarioDTO;
+import es.deusto.server.data.*;
 
 import java.util.ArrayList;
 
+/**
+ * Esta interfaz aporta las cabeceras de los métodos que se han de usar para acceder a la base de datos, delimitando
+ * las funcionalidades de la implementación del patrón DAO.
+ * @author Grupo RMBJ
+ * @version 2.0
+ * @since 1.0
+ */
 public interface IDAO {
 	void storeUsuario(UsuarioDTO u);
 
@@ -19,7 +24,7 @@ public interface IDAO {
 
 	void updateActor(ActorDTO a);
 
-	ArrayList<ActorDTO> getActors ();
+	ArrayList<ActorDTO> getActors();
 
 	void storePelicula(PeliculaDTO p);
 
@@ -27,5 +32,11 @@ public interface IDAO {
 
 	void updatePelicula(PeliculaDTO p);
 
-	ArrayList<PeliculaDTO> getPeliculas ();
+	ArrayList<PeliculaDTO> getPeliculas();
+
+	void storeValoracion (ValoracionDTO v);
+
+	ArrayList<ValoracionDTO> getValoraciones();
+
+	ArrayList<ComentarioDTO> getComentarios();
 }

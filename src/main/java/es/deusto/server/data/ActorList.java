@@ -7,9 +7,7 @@ public class ActorList {
 
     private List<ActorDTO> actors = new ArrayList<ActorDTO>();
 
-    public ActorList() {
-
-    }
+    public ActorList() {}
 
     public List<ActorDTO> getActorsDTO() {
         return this.actors;

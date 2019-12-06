@@ -1,46 +1,47 @@
 package es.deusto.server.data;
 
-import javax.jdo.annotations.Join;
 import javax.jdo.annotations.PersistenceCapable;
-import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 @PersistenceCapable(detachable = "true")
 public class ValoracionDTO implements Serializable {
-	/**
-	 * User implements Serializable to be transferred to the RMI client
-	 */
+
 	private static final long serialVersionUID = 1L;
+
+	/**
+	 * El id inicial es 1, y se va autoincrementando en la ejecución del programa.
+	 */
 	@PrimaryKey
-	String id = null;
+	int id = 1;
 	String titulo = null;
-	float valoracion = 0;
+	double valoracion = 0;
 
-	public ValoracionDTO() {
+	public ValoracionDTO() {}
 
+	public ValoracionDTO(String titulo, double valoracion) {
+		this.titulo = titulo;
+		this.valoracion = valoracion;
 	}
 
-	public ValoracionDTO(String id, String titulo, float valoracion) {
+	public ValoracionDTO(int id, String titulo, double valoracion) {
 		this.id = id;
 		this.titulo = titulo;
 		this.valoracion = valoracion;
 	}
-	public String getId() {
+	public int getId() {
 		return this.id;
 	}
 
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
-	public float getValoracion() {
+	public double getValoracion() {
 		return this.valoracion;
 	}
 
-	public void setValoracion(float valoracion) {
+	public void setValoracion(double valoracion) {
 		this.valoracion = valoracion;
 	}
 

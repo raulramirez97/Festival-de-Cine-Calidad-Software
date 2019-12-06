@@ -1,15 +1,13 @@
 package es.deusto.server.data;
 
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
 public class MessageList {
 
     private List<Message> messages = new ArrayList<Message>();
 
-    public MessageList() {
-
-    }
+    public MessageList() {}
 
     public List<Message> getMessages() {
         return this.messages;
