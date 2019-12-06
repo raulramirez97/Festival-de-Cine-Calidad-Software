@@ -34,32 +34,50 @@ public class Login extends JFrame {
 		
 		JLabel lblFacebookgoogle = new JLabel("Introduce tus credenciales");
 		lblFacebookgoogle.setFont(new Font("Times New Roman", Font.PLAIN, 32));
-		lblFacebookgoogle.setBounds(40, 40, 350, 73);
+		lblFacebookgoogle.setBounds(40, 69, 350, 73);
 		contentPane.add(lblFacebookgoogle);
 		
 		JLabel lblUsuario = new JLabel("Usuario");
-		lblUsuario.setBounds(46, 123, 101, 37);
+		lblUsuario.setBounds(50, 134, 101, 37);
 		contentPane.add(lblUsuario);
 		
 		
 		textField = new JTextField();
-		textField.setBounds(46, 172, 146, 26);
+		textField.setBounds(50, 170, 340, 26);
 		contentPane.add(textField);
 		textField.setColumns(10);
 
 		JLabel lblPwd = new JLabel("Contraseña");
-		lblPwd.setBounds(46, 220, 101, 37);
+		lblPwd.setBounds(50, 196, 101, 37);
 		contentPane.add(lblPwd);
 
 
 		textField2 = new JTextField();
-		textField2.setBounds(46, 270, 146, 26);
+		textField2.setBounds(48, 232, 342, 26);
 		contentPane.add(textField2);
 		textField2.setColumns(10);
 		
 		JButton btnRegistrarse = new JButton("Entrar");
-		btnRegistrarse.setBounds(132, 232, 155, 29);
+		btnRegistrarse.setBounds(58, 269, 155, 29);
 		contentPane.add(btnRegistrarse);
+		
+		JButton btnVolver = new JButton("Volver");
+		btnVolver.setBounds(254, 272, 136, 23);
+		contentPane.add(btnVolver);
+		btnVolver.addActionListener(new ActionListener() {
+		    @Override
+		    public void actionPerformed(ActionEvent e) {
+		    	Inicio i = new Inicio();
+				i.setVisible(true);
+				dispose();
+		    }
+		});
+		
+		
+		JLabel lblFestivalDeCine = new JLabel("Festival de Cine");
+		lblFestivalDeCine.setFont(new Font("Times New Roman", Font.PLAIN, 32));
+		lblFestivalDeCine.setBounds(108, 0, 214, 73);
+		contentPane.add(lblFestivalDeCine);
 		btnRegistrarse.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e)
@@ -88,7 +106,7 @@ public class Login extends JFrame {
 		}
 		else if ((usu.getLogin().compareTo(login)==0) && (usu.getPassword().compareTo(pwd)==0))
 		{
-			Menu m = new Menu(usu);
+			menuTest m = new menuTest(usu);
 			m.setVisible(true);
 			dispose();
 			return true;

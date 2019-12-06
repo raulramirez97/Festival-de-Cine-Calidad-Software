@@ -37,31 +37,31 @@ public class Comentar extends JFrame {
 
         JLabel lblFacebookgoogle = new JLabel("Comenta la pelicula");
         lblFacebookgoogle.setFont(new Font("Times New Roman", Font.PLAIN, 32));
-        lblFacebookgoogle.setBounds(40, 40, 350, 73);
+        lblFacebookgoogle.setBounds(56, 24, 350, 73);
         contentPane.add(lblFacebookgoogle);
 
         JLabel lblUsuario = new JLabel("Nombre de pelicula");
-        lblUsuario.setBounds(46, 123, 101, 37);
+        lblUsuario.setBounds(48, 88, 101, 37);
         contentPane.add(lblUsuario);
 
 
         textField = new JTextField();
-        textField.setBounds(46, 172, 146, 26);
+        textField.setBounds(48, 137, 146, 26);
         contentPane.add(textField);
         textField.setColumns(10);
 
         JLabel lblPwd = new JLabel("Tu comentario");
-        lblPwd.setBounds(46, 220, 101, 37);
+        lblPwd.setBounds(48, 185, 101, 37);
         contentPane.add(lblPwd);
 
 
         textField2 = new JTextField();
-        textField2.setBounds(46, 270, 146, 26);
+        textField2.setBounds(48, 235, 146, 26);
         contentPane.add(textField2);
         textField2.setColumns(10);
 
         JButton btnValoracion = new JButton("Comentar");
-        btnValoracion.setBounds(132, 232, 155, 29);
+        btnValoracion.setBounds(168, 290, 155, 29);
         contentPane.add(btnValoracion);
         btnValoracion.addActionListener(new ActionListener() {
             @Override

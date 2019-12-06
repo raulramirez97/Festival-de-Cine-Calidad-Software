@@ -5,17 +5,28 @@
 package es.deusto.client.gui;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.*;
+
+import es.deusto.client.FestivalCineController;
+import es.deusto.server.data.PeliculaDTO;
+import es.deusto.server.data.PeliculaList;
+import es.deusto.server.data.UsuarioDTO;
 
 /**
  * @author unknown
  */
 public class menuTest extends JFrame {
-    public menuTest() {
-        initComponents();
+    public menuTest(UsuarioDTO aux) {
+    	PeliculaList peliculaList = FestivalCineController.getInstance().getPeliculaList();
+        initComponents(peliculaList,aux);
+        
+        
     }
 
-    private void initComponents() {
+    private void initComponents(PeliculaList peliculaList,UsuarioDTO aux) {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         // Generated using JFormDesigner Evaluation license - Beñat
         button1 = new JButton();
@@ -36,9 +47,9 @@ public class menuTest extends JFrame {
         comboBox1 = new JComboBox();
         label10 = new JLabel();
         label11 = new JLabel();
-
+        
         //======== this ========
-        setTitle("Men\u00fa Principal - <Nombre_Usuario>");
+        setTitle("Men\u00fa Principal - "+aux.getLogin());
         Container contentPane = getContentPane();
         contentPane.setLayout(null);
 
@@ -46,6 +57,14 @@ public class menuTest extends JFrame {
         button1.setText("Salir");
         contentPane.add(button1);
         button1.setBounds(750, 145, 160, 30);
+        button1.addActionListener(new ActionListener() {
+ 			@Override
+ 			public void actionPerformed(ActionEvent e) {
+ 				menuAnonimoTest m = new menuAnonimoTest();
+ 				m.setVisible(true);
+ 				dispose();
+ 			}
+ 		});
 
         //---- label1 ----
         label1.setText("Festival Cine");
@@ -74,22 +93,22 @@ public class menuTest extends JFrame {
         label5.setBounds(500, 425, 130, 90);
 
         //---- label6 ----
-        label6.setText("<Sinopsis_1>");
+        label6.setText(peliculaList.getPeliculasDTO().get(0).getSinopsis());
         contentPane.add(label6);
         label6.setBounds(225, 320, 125, 20);
 
         //---- label7 ----
-        label7.setText("<Sinopsis_3>");
+        label7.setText(peliculaList.getPeliculasDTO().get(3).getSinopsis());
         contentPane.add(label7);
         label7.setBounds(225, 535, 125, 20);
 
         //---- label8 ----
-        label8.setText("<Sinopsis_4>");
+        label8.setText(peliculaList.getPeliculasDTO().get(2).getSinopsis());
         contentPane.add(label8);
         label8.setBounds(510, 540, 125, 20);
 
         //---- label9 ----
-        label9.setText("<Sinopsis_2>");
+        label9.setText(peliculaList.getPeliculasDTO().get(1).getSinopsis());
         contentPane.add(label9);
         label9.setBounds(505, 320, 125, 20);
 
@@ -97,31 +116,76 @@ public class menuTest extends JFrame {
         button2.setText("+ Info");
         contentPane.add(button2);
         button2.setBounds(220, 375, 110, 30);
+        button2.addActionListener(new ActionListener() {
+ 			@Override
+ 			public void actionPerformed(ActionEvent e) {
+ 				informePeliculaTest i = new informePeliculaTest(peliculaList.getPeliculasDTO().get(0), aux);
+ 				i.setVisible(true);
+ 				dispose();
+ 			}
+ 		});
+        
 
         //---- button3 ----
         button3.setText("+ Info");
         contentPane.add(button3);
         button3.setBounds(510, 375, 110, 30);
+        button3.addActionListener(new ActionListener() {
+ 			@Override
+ 			public void actionPerformed(ActionEvent e) {
+ 				informePeliculaTest i = new informePeliculaTest(peliculaList.getPeliculasDTO().get(1), aux);
+ 				i.setVisible(true);
+ 				dispose();
+ 			}
+ 		});
+        
 
         //---- button4 ----
         button4.setText("+ Info");
         contentPane.add(button4);
         button4.setBounds(220, 580, 110, 30);
+        button4.addActionListener(new ActionListener() {
+ 			@Override
+ 			public void actionPerformed(ActionEvent e) {
+ 				informePeliculaTest i = new informePeliculaTest(peliculaList.getPeliculasDTO().get(2), aux);
+ 				i.setVisible(true);
+ 				dispose();
+ 			}
+ 		});
+        
 
         //---- button5 ----
         button5.setText("+ Info");
         contentPane.add(button5);
         button5.setBounds(510, 580, 110, 30);
+        button5.addActionListener(new ActionListener() {
+ 			@Override
+ 			public void actionPerformed(ActionEvent e) {
+ 				informePeliculaTest i = new informePeliculaTest(peliculaList.getPeliculasDTO().get(3), aux);
+ 				i.setVisible(true);
+ 				dispose();
+ 			}
+ 		});
+        
 
         //---- button6 ----
         button6.setText("Buscar");
         contentPane.add(button6);
         button6.setBounds(new Rectangle(new Point(830, 200), button6.getPreferredSize()));
         contentPane.add(comboBox1);
+        button6.addActionListener(new ActionListener() {
+ 			@Override
+ 			public void actionPerformed(ActionEvent e) {
+ 				Filtrar f = new Filtrar(aux);
+ 				f.setVisible(true);
+ 				dispose();
+ 			}
+ 		});
+        
         comboBox1.setBounds(700, 200, 110, comboBox1.getPreferredSize().height);
-
+        
         //---- label10 ----
-        label10.setText("<NOMBRE_USUARIO>");
+        label10.setText(aux.getLogin());
         label10.setHorizontalAlignment(SwingConstants.CENTER);
         contentPane.add(label10);
         label10.setBounds(750, 110, 155, 20);

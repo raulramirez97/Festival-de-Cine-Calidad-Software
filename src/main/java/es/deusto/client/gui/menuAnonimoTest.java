@@ -5,17 +5,24 @@
 package es.deusto.client.gui;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.*;
+
+import es.deusto.client.FestivalCineController;
+import es.deusto.server.data.PeliculaList;
 
 /**
  * @author unknown
  */
 public class menuAnonimoTest extends JFrame {
     public menuAnonimoTest() {
-        initComponents();
+    	PeliculaList peliculaList = FestivalCineController.getInstance().getPeliculaList();
+        initComponents(peliculaList);
     }
 
-    private void initComponents() {
+    private void initComponents(PeliculaList peliculaList) {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         // Generated using JFormDesigner Evaluation license - Beñat
         button1 = new JButton();
@@ -44,6 +51,15 @@ public class menuAnonimoTest extends JFrame {
         button1.setText("Login");
         contentPane.add(button1);
         button1.setBounds(750, 115, 160, 30);
+        button1.addActionListener(new ActionListener() {
+ 			@Override
+ 			public void actionPerformed(ActionEvent e) {
+ 				Login l = new Login();
+ 				l.setVisible(true);
+ 				dispose();
+ 			}
+ 		});
+        
 
         //---- label1 ----
         label1.setText("Festival Cine");
@@ -72,22 +88,22 @@ public class menuAnonimoTest extends JFrame {
         label5.setBounds(500, 425, 130, 90);
 
         //---- label6 ----
-        label6.setText("<Sinopsis_1>");
+        label6.setText(peliculaList.getPeliculasDTO().get(0).getSinopsis());
         contentPane.add(label6);
         label6.setBounds(225, 320, 125, 20);
 
         //---- label7 ----
-        label7.setText("<Sinopsis_3>");
+        label7.setText(peliculaList.getPeliculasDTO().get(3).getSinopsis());
         contentPane.add(label7);
         label7.setBounds(225, 535, 125, 20);
 
         //---- label8 ----
-        label8.setText("<Sinopsis_4>");
+        label8.setText(peliculaList.getPeliculasDTO().get(2).getSinopsis());
         contentPane.add(label8);
         label8.setBounds(510, 540, 125, 20);
 
         //---- label9 ----
-        label9.setText("<Sinopsis_2>");
+        label9.setText(peliculaList.getPeliculasDTO().get(1).getSinopsis());
         contentPane.add(label9);
         label9.setBounds(505, 320, 125, 20);
 
@@ -95,26 +111,69 @@ public class menuAnonimoTest extends JFrame {
         button2.setText("+ Info");
         contentPane.add(button2);
         button2.setBounds(220, 375, 110, 30);
+        button2.addActionListener(new ActionListener() {
+ 			@Override
+ 			public void actionPerformed(ActionEvent e) {
+ 				informePeliculaAnonimoTest i = new informePeliculaAnonimoTest(peliculaList.getPeliculasDTO().get(0));
+ 				i.setVisible(true);
+ 				dispose();
+ 			}
+ 		});
 
         //---- button3 ----
         button3.setText("+ Info");
         contentPane.add(button3);
         button3.setBounds(510, 375, 110, 30);
+        button3.addActionListener(new ActionListener() {
+ 			@Override
+ 			public void actionPerformed(ActionEvent e) {
+ 				informePeliculaAnonimoTest i = new informePeliculaAnonimoTest(peliculaList.getPeliculasDTO().get(1));
+ 				i.setVisible(true);
+ 				dispose();
+ 			}
+ 		});
 
         //---- button4 ----
         button4.setText("+ Info");
         contentPane.add(button4);
         button4.setBounds(220, 580, 110, 30);
+        button4.addActionListener(new ActionListener() {
+ 			@Override
+ 			public void actionPerformed(ActionEvent e) {
+ 				informePeliculaAnonimoTest i = new informePeliculaAnonimoTest(peliculaList.getPeliculasDTO().get(2));
+ 				i.setVisible(true);
+ 				dispose();
+ 			}
+ 		});
 
         //---- button5 ----
         button5.setText("+ Info");
         contentPane.add(button5);
         button5.setBounds(510, 580, 110, 30);
+        button5.addActionListener(new ActionListener() {
+ 			@Override
+ 			public void actionPerformed(ActionEvent e) {
+ 				informePeliculaAnonimoTest i = new informePeliculaAnonimoTest(peliculaList.getPeliculasDTO().get(3));
+ 				i.setVisible(true);
+ 				dispose();
+ 			}
+ 		});
 
         //---- button6 ----
         button6.setText("Buscar");
         contentPane.add(button6);
         button6.setBounds(new Rectangle(new Point(830, 200), button6.getPreferredSize()));
+        button6.addActionListener(new ActionListener() {
+ 			@Override
+ 			public void actionPerformed(ActionEvent e) {
+ 				FiltrarAnonimo f = new FiltrarAnonimo();
+ 				f.setVisible(true);
+ 				dispose();
+ 			}
+ 		});
+        
+        
+        
         contentPane.add(comboBox1);
         comboBox1.setBounds(700, 200, 110, comboBox1.getPreferredSize().height);
 

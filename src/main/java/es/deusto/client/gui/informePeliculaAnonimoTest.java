@@ -5,17 +5,24 @@
 package es.deusto.client.gui;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.*;
+
+import es.deusto.server.data.PeliculaDTO;
+import es.deusto.server.data.UsuarioDTO;
 
 /**
  * @author Beñat
  */
 public class informePeliculaAnonimoTest extends JFrame {
-    public informePeliculaAnonimoTest() {
-        initComponents();
-    }
 
-    private void initComponents() {
+    public informePeliculaAnonimoTest(PeliculaDTO pelicula) {
+    	initComponents(pelicula);
+	}
+
+	private void initComponents(PeliculaDTO pelicula) {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         // Generated using JFormDesigner Evaluation license - Beñat
         label1 = new JLabel();
@@ -100,32 +107,32 @@ public class informePeliculaAnonimoTest extends JFrame {
         label9.setBounds(105, 535, 75, 20);
 
         //---- label10 ----
-        label10.setText("<INSERTAR_A\u00d1O>");
+        label10.setText(pelicula.getDirector());
         contentPane.add(label10);
         label10.setBounds(230, 170, 130, 15);
 
         //---- label11 ----
-        label11.setText("<INSERTAR_DURACI\u00d3N>");
+        label11.setText(pelicula.getDuracion()+"min.");
         contentPane.add(label11);
         label11.setBounds(230, 210, 140, 15);
 
         //---- label12 ----
-        label12.setText("<INSERTAR_G\u00c9NERO>");
+        label12.setText(pelicula.getGenero());
         contentPane.add(label12);
         label12.setBounds(230, 250, 225, 15);
 
         //---- label13 ----
-        label13.setText("<INSERTAR_REPARTO>");
+        label13.setText(pelicula.getActores());
         contentPane.add(label13);
         label13.setBounds(230, 290, 265, 15);
 
         //---- label16 ----
-        label16.setText("<INSERTAR_VALORACION>");
+        label16.setText(pelicula.getValoracionMedia()+"/10");
         contentPane.add(label16);
         label16.setBounds(230, 500, 265, 15);
 
         //---- label17 ----
-        label17.setText("<INSERTAR_TRAILER>");
+        label17.setText(pelicula.getEnlaceTrailer());
         contentPane.add(label17);
         label17.setBounds(230, 540, 265, 15);
 
@@ -133,14 +140,14 @@ public class informePeliculaAnonimoTest extends JFrame {
         {
 
             //---- textArea1 ----
-            textArea1.setText("<INSERTAR_SINOPSIS>");
+            textArea1.setText(pelicula.getSinopsis());
             scrollPane1.setViewportView(textArea1);
         }
         contentPane.add(scrollPane1);
         scrollPane1.setBounds(230, 330, 270, 90);
 
         //---- textArea2 ----
-        textArea2.setText("<INSERTAR_PREMIOS>");
+        textArea2.setText(pelicula.getPremios());
         contentPane.add(textArea2);
         textArea2.setBounds(230, 440, 270, 45);
 
@@ -154,6 +161,14 @@ public class informePeliculaAnonimoTest extends JFrame {
         button3.setText("Vuelve al Men\u00fa Principal");
         contentPane.add(button3);
         button3.setBounds(375, 600, 190, 40);
+        button3.addActionListener(new ActionListener() {
+ 			@Override
+ 			public void actionPerformed(ActionEvent e) {
+ 				menuAnonimoTest menu = new menuAnonimoTest();
+ 				menu.setVisible(true);
+ 				dispose();
+ 			}
+ 		});
 
         {
             // compute preferred size
