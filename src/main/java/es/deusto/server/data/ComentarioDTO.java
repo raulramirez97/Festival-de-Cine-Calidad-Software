@@ -64,6 +64,7 @@ public class ComentarioDTO implements Serializable {
 
 	public String toString() {
 		Date fecha = new Date(this.getTimestamp());
-		return "ID Comentario: "+this.getId()+", Usuario: "+this.getUsuario()+", Fecha: "+fecha+", Contenido: "+contenido;
+		return "ID Comentario: "+this.getId()+", Usuario: "+this.getUsuario()+", Fecha: "+fecha
+				+", Contenido: "+contenido;
 	}
 }

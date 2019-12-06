@@ -11,6 +11,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
+/**
+ * Implementación del patrón de diseño ServiceLocator. Este bloque de código es el que recibe las órdenes de la clase
+ * FestivalCineController, y es el que establece la conexión con la parte servidora de esta aplicación mediante el
+ * consumo de una API RESTful.
+ * @author Grupo RMBJ
+ * @version 2.0
+ * @since 1.0
+ */
 public class ServiceLocator {
 	private Client client;
 	private WebTarget webTargetService;

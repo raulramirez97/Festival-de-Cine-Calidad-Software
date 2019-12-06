@@ -6,12 +6,14 @@ import java.io.Serializable;
 
 @PersistenceCapable(detachable = "true")
 public class ValoracionDTO implements Serializable {
-	/**
-	 * User implements Serializable to be transferred to the RMI client
-	 */
+
 	private static final long serialVersionUID = 1L;
+
+	/**
+	 * El id inicial es 1, y se va autoincrementando en la ejecución del programa.
+	 */
 	@PrimaryKey
-	int id = 1; //Se considera que el primer ID=1.
+	int id = 1;
 	String titulo = null;
 	double valoracion = 0;
 

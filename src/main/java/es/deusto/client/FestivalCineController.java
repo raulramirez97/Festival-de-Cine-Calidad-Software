@@ -1,16 +1,23 @@
 package es.deusto.client;
 
-import javax.ws.rs.client.Client;
-import javax.ws.rs.client.ClientBuilder;
-import javax.ws.rs.client.WebTarget;
-
 import es.deusto.client.gui.MenuAnonimo;
 import es.deusto.client.remote.ServiceLocator;
 import es.deusto.server.data.*;
 
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.WebTarget;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Implementación del patrón de diseño Controller. Este bloque de código es quien coordina las funciones a proveer
+ * para la interfaz del cliente, y está conectado con el ServiceLocator, el cual toma la información de la parte
+ * servidora de la aplicación.
+ * @author Grupo RMBJ
+ * @version 2.0
+ * @since 1.0
+ */
 public class FestivalCineController {
 
 	private static FestivalCineController instance;

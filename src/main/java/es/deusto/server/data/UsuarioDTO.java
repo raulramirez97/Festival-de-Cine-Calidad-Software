@@ -1,16 +1,12 @@
 package es.deusto.server.data;
 
-import java.io.Serializable;
-import java.util.List;
-
-import es.deusto.server.data.Message;
-
-import javax.jdo.annotations.PersistenceCapable;
-import javax.jdo.annotations.PrimaryKey;
 import javax.jdo.annotations.Join;
+import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
-
+import javax.jdo.annotations.PrimaryKey;
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 @PersistenceCapable(detachable = "true")
 public class UsuarioDTO implements Serializable {
@@ -55,6 +51,10 @@ public class UsuarioDTO implements Serializable {
 		return this.messages;
 	}
 
+	/**
+	 * Método toString generado para obtener la representación a modo de informe por pantalla.
+	 * @return Información de un usuario.
+	 */
 	public String toString() {
 		if (messages.isEmpty()) {
 			return "User: login --> " + this.login + ", password -->  " + this.password;
