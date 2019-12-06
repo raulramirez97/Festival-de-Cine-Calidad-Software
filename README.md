@@ -53,9 +53,6 @@ Para testear la aplicación, hay que ejecutar los siguientes comandos en dos ven
 ### En la segunda ventana:
 4. `mvn exec:java -Pclient -X` : Permite ejecutar el cliente (FestivalCineController).
 
-Para ejecutar las clases de test: `mvn test`. No obstante, ahora mismo los tests están comentados para que no molesten 
-con el resto del desarrollo.
-
 ## Prototipo
 
 Para entender mejor a qué va a tender esta aplicación, se ha generado un prototipo mediante Marvel App para poder 
@@ -77,10 +74,14 @@ Se han hecho algunas correcciones de checkstyle, aunque aún quedan unas cuantas
 Finalmente, se ha empezado a agregar algo de documentación JavaDoc, que posteriormente es interpretada por el 
 plugin `Doxygen`.
 
-NOTA: Se ha hecho una pequeña trampa en esta aplicación. Dado que buena parte de las líneas de código se encuentran
-en la parte Cliente de la aplicación, y esta consta de muchas líneas para la interfaz gráfica de usuario, el code
-coverage obtenido es bastante bajo de base. Por ello, se ha reducido a niveles bastante bajos los indicadores de
-code coverage, para que JaCoCo no bloqueara la ejecución de los tests.
+NOTAS: Se han hecho dos pequeña trampas en esta aplicación:
+1. Dado que buena parte de las líneas de código se encuentran en la parte Cliente de la aplicación, y esta consta de 
+muchas líneas para la interfaz gráfica de usuario, el code coverage obtenido es bastante bajo de base. Por ello, se ha 
+reducido a niveles bastante bajos los indicadores de code coverage, para que JaCoCo no bloqueara la ejecución de los 
+tests.
+2. Como el Admin de este repositorio (Raúl Ramírez) no ha configurado Travis CI, no tenemos capturas directas del uso
+de la herramienta CI contra este repositorio. Sin embargo, se ha añadido el fichero .travis.yml con las configuraciones
+necesarias.
 
 ### Comandos para ejecutar tests
 

@@ -49,6 +49,7 @@ public class informePeliculaAnonimoTest extends JFrame {
         label18 = new JLabel();
 
         //======== this ========
+
         setTitle("Informe: "+pelicula.getTitulo());
         Container contentPane = getContentPane();
         contentPane.setLayout(null);
@@ -120,6 +121,7 @@ public class informePeliculaAnonimoTest extends JFrame {
         label10.setBounds(230, 170, 130, 15);
 
         //---- label11 ----
+
         label11.setText(Integer.toString(pelicula.getDuracion())+" m.");
         contentPane.add(label11);
         label11.setBounds(230, 205, 140, 15);
@@ -184,7 +186,6 @@ public class informePeliculaAnonimoTest extends JFrame {
                 dispose();
             }
         });
-
 
         {
             // compute preferred size
