@@ -1,16 +1,24 @@
 package es.deusto.client;
 
-import javax.ws.rs.client.Client;
-import javax.ws.rs.client.ClientBuilder;
-import javax.ws.rs.client.WebTarget;
-
 import es.deusto.client.gui.MenuAnonimo;
+import es.deusto.client.gui.menuAnonimoTest;
 import es.deusto.client.remote.ServiceLocator;
 import es.deusto.server.data.*;
 
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.WebTarget;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Implementación del patrón de diseño Controller. Este bloque de código es quien coordina las funciones a proveer
+ * para la interfaz del cliente, y está conectado con el ServiceLocator, el cual toma la información de la parte
+ * servidora de la aplicación.
+ * @author Grupo RMBJ
+ * @version 2.0
+ * @since 1.0
+ */
 public class FestivalCineController {
 
 	private static FestivalCineController instance;
@@ -29,11 +37,9 @@ public class FestivalCineController {
 		rsl.setService(args);
 		client = ClientBuilder.newClient();
 		webTarget = client.target(String.format("http://%s:%s/rest/server", args[0], args[1]));
-		//TODO: Modificar por Menu, dado que un usuario no tiene por qué estar registrado para usar la aplicación.
-		//TODO: Sin embargo, este NO PODRÁ COMENTAR.
-		//Inicio frame = new Inicio();
+		//MenuAnonimo frame = new MenuAnonimo();
 		//frame.setVisible(true);
-		MenuAnonimo frame = new MenuAnonimo();
+		menuAnonimoTest frame = new menuAnonimoTest();
 		frame.setVisible(true);
 	}
 	//TODO: TODAS LAS COSAS PUESTAS A CONTINUACION EN ESTE METODO SE MANTIENEN PARA AYUDAR EN EL TESTEO Y DEBUG.
@@ -82,9 +88,6 @@ public class FestivalCineController {
 				"Muchos y variados","clasicos",randomActors);
 
 		randomActors.clear();
-//		randomActors.add(new ActorDTO("ID3", "Mufasa", "Mufasa", 5));
-//		randomActors.add(new ActorDTO("ID4", "Timon", "Timon", 6));
-//		randomActors.add(new ActorDTO("ID5", "Pumba", "Pumba", 7));
 
 		FestivalCineController.getInstance().registerActor("ID3", "Mufasa", "Mufasa", 5);
 		FestivalCineController.getInstance().registerActor("ID4", "Timon", "Timon", 6);

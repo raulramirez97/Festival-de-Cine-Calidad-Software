@@ -34,39 +34,58 @@ public class Alta extends JFrame {
 		
 		JLabel lblAlta = new JLabel("Alta de Usuario");
 		lblAlta.setFont(new Font("Times New Roman", Font.PLAIN, 32));
-		lblAlta.setBounds(40, 40, 280, 72);
+		lblAlta.setBounds(166, 70, 280, 72);
 		contentPane.add(lblAlta);
 		
 		JLabel lblUsuario = new JLabel("Usuario");
-		lblUsuario.setBounds(46, 173, 101, 37);
+		lblUsuario.setBounds(75, 121, 101, 37);
 		contentPane.add(lblUsuario);
 
 		textField = new JTextField();
-		textField.setBounds(46, 202, 146, 26);
+		textField.setBounds(75, 150, 346, 26);
 		contentPane.add(textField);
 		textField.setColumns(10);
 
 		JLabel lblPassword = new JLabel("Password");
-		lblPassword.setBounds(46, 240, 101, 37);
+		lblPassword.setBounds(75, 188, 101, 37);
 		contentPane.add(lblPassword);
 
 		textField2 = new JTextField();
-		textField2.setBounds(46, 280, 146, 26);
+		textField2.setBounds(75, 228, 346, 26);
 		contentPane.add(textField2);
 		textField2.setColumns(10);
 		
 		JButton btnRegistrarseGoogle = new JButton("Registrarse");
-		btnRegistrarseGoogle.setBounds(230, 214, 175, 29);
+		btnRegistrarseGoogle.setBounds(85, 271, 175, 29);
 		contentPane.add(btnRegistrarseGoogle);
 		btnRegistrarseGoogle.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 				FestivalCineController.getInstance().registerUser(textField.getText(), textField2.getText());
 				myUser = new UsuarioDTO(textField.getText(),textField2.getText());
-				Menu m = new Menu(myUser);
+				menuTest m = new menuTest(myUser);
 	            m.setVisible(true);
 	            dispose();
             }
         });
+		
+		JLabel lblFestivalDeCine = new JLabel("Festival de Cine");
+		lblFestivalDeCine.setFont(new Font("Times New Roman", Font.PLAIN, 32));
+		lblFestivalDeCine.setBounds(156, 11, 280, 72);
+		contentPane.add(lblFestivalDeCine);
+		
+		JButton btnVolver = new JButton("Volver");
+		btnVolver.setBounds(285, 274, 136, 23);
+		contentPane.add(btnVolver);
+		btnVolver.addActionListener(new ActionListener() {
+		    @Override
+		    public void actionPerformed(ActionEvent e) {
+		    	Inicio i = new Inicio();
+				i.setVisible(true);
+				dispose();
+		    }
+		});
+		
+		
 	}
 }

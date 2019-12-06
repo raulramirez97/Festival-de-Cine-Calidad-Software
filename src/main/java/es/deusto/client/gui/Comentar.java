@@ -37,38 +37,38 @@ public class Comentar extends JFrame {
 
         JLabel lblFacebookgoogle = new JLabel("Comenta la pelicula");
         lblFacebookgoogle.setFont(new Font("Times New Roman", Font.PLAIN, 32));
-        lblFacebookgoogle.setBounds(40, 40, 350, 73);
+        lblFacebookgoogle.setBounds(56, 24, 350, 73);
         contentPane.add(lblFacebookgoogle);
 
         JLabel lblUsuario = new JLabel("Nombre de pelicula");
-        lblUsuario.setBounds(46, 123, 101, 37);
+        lblUsuario.setBounds(48, 88, 101, 37);
         contentPane.add(lblUsuario);
 
 
         textField = new JTextField();
-        textField.setBounds(46, 172, 146, 26);
+        textField.setBounds(48, 137, 146, 26);
         contentPane.add(textField);
         textField.setColumns(10);
 
         JLabel lblPwd = new JLabel("Tu comentario");
-        lblPwd.setBounds(46, 220, 101, 37);
+        lblPwd.setBounds(48, 185, 101, 37);
         contentPane.add(lblPwd);
 
 
         textField2 = new JTextField();
-        textField2.setBounds(46, 270, 146, 26);
+        textField2.setBounds(48, 235, 146, 26);
         contentPane.add(textField2);
         textField2.setColumns(10);
 
         JButton btnValoracion = new JButton("Comentar");
-        btnValoracion.setBounds(132, 232, 155, 29);
+        btnValoracion.setBounds(168, 290, 155, 29);
         contentPane.add(btnValoracion);
         btnValoracion.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    //Añadir Comentario.
-                    FestivalCineController.getInstance().comentarPelicula(textField.getText(),aux.getLogin(),textField2.getText());
+                    FestivalCineController.getInstance().comentarPelicula(textField.getText(),aux.getLogin(),
+                            textField2.getText());
                     System.out.println("La pelicula se ha comentado correctamente");
                     Menu m = new Menu(aux);
                     m.setVisible(true);
@@ -76,7 +76,8 @@ public class Comentar extends JFrame {
                 }
                 //TODO: NO LLEGA AQUI LA EXCEPCION CON LAS PETICIONES REST...
                 catch (NullPointerException exc) {
-                    JOptionPane.showMessageDialog(ventana, "La pelicula que se ha querido comentar no esta entre las peliculas disponibles.");
+                    JOptionPane.showMessageDialog(ventana, "La pelicula que se ha querido comentar no está " +
+                            "entre las peliculas disponibles.");
                 }
             }
         });

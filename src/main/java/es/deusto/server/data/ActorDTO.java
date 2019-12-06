@@ -47,6 +47,11 @@ public class ActorDTO implements Serializable{
 		this.edad = edad;
 	}
 
+	/**
+	 * Método toString generado para obtener la representación a modo de informe por pantalla. Sin embargo, este
+	 * método debería dejar de usarse cuando el informe se genere con una ventana nueva.
+	 * @return Informe de un actor en formato texto mediante terminal.
+	 */
 	public String toString() {
 		return "Actor: Identificador --> " + this.getIdentificador() + ", Nombre -->  " + this.getNombre() +
 				", Apellido --> " + this.getApellido() + ", Edad --> " + this.getEdad() + "";
