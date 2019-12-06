@@ -74,7 +74,7 @@ Se han hecho algunas correcciones de checkstyle, aunque aún quedan unas cuantas
 Finalmente, se ha empezado a agregar algo de documentación JavaDoc, que posteriormente es interpretada por el 
 plugin `Doxygen`.
 
-NOTAS: Se han hecho dos pequeña trampas en esta aplicación:
+NOTAS: Se han hecho dos pequeñas trampas en esta aplicación:
 1. Dado que buena parte de las líneas de código se encuentran en la parte Cliente de la aplicación, y esta consta de 
 muchas líneas para la interfaz gráfica de usuario, el code coverage obtenido es bastante bajo de base. Por ello, se ha 
 reducido a niveles bastante bajos los indicadores de code coverage, para que JaCoCo no bloqueara la ejecución de los 

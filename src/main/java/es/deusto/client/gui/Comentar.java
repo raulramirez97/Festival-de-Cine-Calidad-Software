@@ -12,8 +12,11 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.logging.Logger;
 
 public class Comentar extends JFrame {
+
+    static Logger logger = Logger.getLogger(Comentar.class.getName());
 
     private static final long serialVersionUID = 1L;
     private JPanel contentPane;
@@ -69,7 +72,7 @@ public class Comentar extends JFrame {
                 try {
                     FestivalCineController.getInstance().comentarPelicula(textField.getText(),aux.getLogin(),
                             textField2.getText());
-                    System.out.println("La pelicula se ha comentado correctamente");
+                    logger.info("La pelicula se ha comentado correctamente");
                     Menu m = new Menu(aux);
                     m.setVisible(true);
                     dispose();

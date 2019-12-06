@@ -11,8 +11,11 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.logging.Logger;
 
 public class FiltrarAnonimo extends JFrame {
+
+    static Logger logger = Logger.getLogger(FiltrarAnonimo.class.getName());
 
     private static final long serialVersionUID = 1L;
     private JPanel contentPane;
@@ -187,41 +190,58 @@ public class FiltrarAnonimo extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 //TODO: POR EL MOMENTO ENSENADOS POR CONSOLA. POSTERIORMENTE SE APLICARA GUI (FILTRADOS.JAVA).
                 if (listafiltrosGenerales.getSelectedIndex() == 0) {
-                    JOptionPane.showMessageDialog(ventana,"Selecciona una opción, por favor!","ERR-A01 - Selección errónea de filtro",JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(ventana,"Selecciona una opción, por favor!",
+                            "ERR-A01 - Selección errónea de filtro",JOptionPane.ERROR_MESSAGE);
                 }
                 else {
                     try {
                         PeliculaList peliculaList = null;
-                        if (listafiltrosGenerales.getSelectedIndex() == 1 || listafiltrosGenerales.getSelectedIndex() == 2 || listafiltrosGenerales.getSelectedIndex() == 3 || listafiltrosGenerales.getSelectedIndex() == 6 || listafiltrosGenerales.getSelectedIndex() == 8 || listafiltrosGenerales.getSelectedIndex() == 9) {
-                            peliculaList = FestivalCineController.getInstance().getFilteredPeliculaList((String) (listafiltrosEspecificos.getSelectedItem()), (String) listafiltrosGenerales.getSelectedItem());
+                        if (listafiltrosGenerales.getSelectedIndex() == 1 ||
+                                listafiltrosGenerales.getSelectedIndex() == 2 ||
+                                listafiltrosGenerales.getSelectedIndex() == 3 ||
+                                listafiltrosGenerales.getSelectedIndex() == 6 ||
+                                listafiltrosGenerales.getSelectedIndex() == 8 ||
+                                listafiltrosGenerales.getSelectedIndex() == 9) {
+                            peliculaList = FestivalCineController.getInstance().getFilteredPeliculaList(
+                                    (String) (listafiltrosEspecificos.getSelectedItem()),
+                                    (String) listafiltrosGenerales.getSelectedItem());
                         }
                         else if (listafiltrosGenerales.getSelectedIndex() == 4) {
                             Double.parseDouble(textFieldFiltroNumero.getText());
-                            peliculaList = FestivalCineController.getInstance().getFilteredPeliculaList((textFieldFiltroNumero.getText()), (String) listafiltrosGenerales.getSelectedItem());
+                            peliculaList = FestivalCineController.getInstance().getFilteredPeliculaList(
+                                    (textFieldFiltroNumero.getText()),
+                                    (String) listafiltrosGenerales.getSelectedItem());
                         }
                         else if (listafiltrosGenerales.getSelectedIndex() == 5) {
                             Integer.parseInt(textFieldFiltroNumero.getText());
-                            peliculaList = FestivalCineController.getInstance().getFilteredPeliculaList((textFieldFiltroNumero.getText()), (String) listafiltrosGenerales.getSelectedItem());
+                            peliculaList = FestivalCineController.getInstance().getFilteredPeliculaList(
+                                    (textFieldFiltroNumero.getText()),
+                                    (String) listafiltrosGenerales.getSelectedItem());
                         }
                         else if ( listafiltrosGenerales.getSelectedIndex() == 7) {
                             String actorInput = textFieldFiltroNumero.getText();
                             if (actorInput.length()==0){
                                 throw new NullPointerException();
                             }
-                            peliculaList = FestivalCineController.getInstance().getFilteredPeliculaList((textFieldFiltroNumero.getText()), (String) listafiltrosGenerales.getSelectedItem());
+                            peliculaList = FestivalCineController.getInstance().getFilteredPeliculaList(
+                                    (textFieldFiltroNumero.getText()),
+                                    (String) listafiltrosGenerales.getSelectedItem());
                         }
                         for (PeliculaDTO aux : peliculaList.getPeliculasDTO()) {
-                            System.out.println(aux.toString());
+                            logger.info(aux.toString());
                         }
                         MenuAnonimo m = new MenuAnonimo();
                         m.setVisible(true);
                         dispose();
                     }
                     catch (NumberFormatException e1){
-                        JOptionPane.showMessageDialog(ventana, "¡No has insertado un valor numérico correcto!", "ERR-A02 - Inserción errónea de valor numérico", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(ventana, "¡No has insertado un valor numérico correcto!",
+                                "ERR-A02 - Inserción errónea de valor numérico", JOptionPane.ERROR_MESSAGE);
                     }
                     catch (NullPointerException e1){
-                        JOptionPane.showMessageDialog(ventana, "¡Has dejado en blanco el campo de búsqueda del actor!", "ERR-A03 - Inserción errónea de nombre o apellido de actor", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(ventana, "¡Has dejado en blanco el campo de búsqueda del" +
+                                " actor!", "ERR-A03 - Inserción errónea de nombre o apellido de actor",
+                                JOptionPane.ERROR_MESSAGE);
                     }
                 }
 //            	Filtrados filtrados = new Filtrados(aux);

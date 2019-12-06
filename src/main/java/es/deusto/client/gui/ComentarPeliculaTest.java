@@ -11,12 +11,15 @@ import es.deusto.server.data.UsuarioDTO;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.logging.Logger;
 import javax.swing.*;
 
 /**
  * @author Beñat
  */
 public class ComentarPeliculaTest extends JFrame {
+
+    static Logger logger = Logger.getLogger(ComentarPeliculaTest.class.getName());
 
     public ComentarPeliculaTest(UsuarioDTO aux, PeliculaDTO pelicula) {
         initComponents(aux, pelicula);
@@ -69,7 +72,7 @@ public class ComentarPeliculaTest extends JFrame {
                 try {
                     FestivalCineController.getInstance().comentarPelicula(pelicula.getTitulo(), aux.getLogin(),
                             textField1.getText());
-                    System.out.println("La pelicula se ha comentado correctamente");
+                    logger.info("La pelicula se ha comentado correctamente");
                     informePeliculaTest m = new informePeliculaTest (pelicula,aux);
                     m.setVisible(true);
                     dispose();

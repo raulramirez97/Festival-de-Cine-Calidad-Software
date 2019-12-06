@@ -352,7 +352,7 @@ public class menuTest extends JFrame {
                                     (textField1.getText()), (String) comboBox1.getSelectedItem());
                         }
                         for (PeliculaDTO aux : peliculaList.getPeliculasDTO()) {
-                            System.out.println(aux.toString());
+                            logger.info(aux.toString());
                         }
                         //TODO: Se debería mostrar el listado de películas filtradas, en formato búsqueda.
                         //Menu m = new Menu(aux);
