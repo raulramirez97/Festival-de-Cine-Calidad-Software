@@ -93,7 +93,7 @@ public class menuAnonimoTest extends JFrame {
         label6.setBounds(225, 320, 125, 20);
 
         //---- label7 ----
-        label7.setText(peliculaList.getPeliculasDTO().get(3).getSinopsis());
+        //label7.setText(peliculaList.getPeliculasDTO().get(3).getSinopsis());
         contentPane.add(label7);
         label7.setBounds(225, 535, 125, 20);
 
