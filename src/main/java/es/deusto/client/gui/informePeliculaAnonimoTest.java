@@ -45,14 +45,16 @@ public class informePeliculaAnonimoTest extends JFrame {
         textArea2 = new JTextArea();
         label14 = new JLabel();
         button3 = new JButton();
+        label15 = new JLabel();
+        label18 = new JLabel();
 
         //======== this ========
-        setTitle("Informe: <Nombre_Pelicula>");
+        setTitle("Informe: "+pelicula.getTitulo());
         Container contentPane = getContentPane();
         contentPane.setLayout(null);
 
         //---- label1 ----
-        label1.setText("<NOMBRE_PELICULA>");
+        label1.setText(pelicula.getTitulo());
         label1.setFont(label1.getFont().deriveFont(label1.getFont().getSize() + 18f));
         label1.setHorizontalAlignment(SwingConstants.CENTER);
         contentPane.add(label1);
@@ -68,73 +70,84 @@ public class informePeliculaAnonimoTest extends JFrame {
         label3.setText("Duraci\u00f3n");
         label3.setHorizontalAlignment(SwingConstants.RIGHT);
         contentPane.add(label3);
-        label3.setBounds(105, 205, 75, 20);
+        label3.setBounds(105, 200, 75, 20);
 
         //---- label4 ----
         label4.setText("G\u00e9nero");
         label4.setHorizontalAlignment(SwingConstants.RIGHT);
         contentPane.add(label4);
-        label4.setBounds(105, 245, 75, 20);
+        label4.setBounds(105, 240, 75, 20);
+
+        //---- label15 ----
+        label15.setText("Director");
+        label15.setHorizontalAlignment(SwingConstants.RIGHT);
+        contentPane.add(label15);
+        label15.setBounds(100, 280, 80, label15.getPreferredSize().height);
 
         //---- label5 ----
         label5.setText("Reparto");
         label5.setHorizontalAlignment(SwingConstants.RIGHT);
         contentPane.add(label5);
-        label5.setBounds(105, 285, 75, 20);
+        label5.setBounds(105, 315, 75, 20);
 
         //---- label6 ----
         label6.setText("Sinopsis");
         label6.setHorizontalAlignment(SwingConstants.RIGHT);
         contentPane.add(label6);
-        label6.setBounds(105, 325, 75, 20);
+        label6.setBounds(105, 355, 75, 20);
 
         //---- label7 ----
         label7.setText("Premios");
         label7.setHorizontalAlignment(SwingConstants.RIGHT);
         contentPane.add(label7);
-        label7.setBounds(105, 440, 75, 20);
+        label7.setBounds(105, 470, 75, 20);
 
         //---- label8 ----
         label8.setText("Valoraci\u00f3n");
         label8.setHorizontalAlignment(SwingConstants.RIGHT);
         contentPane.add(label8);
-        label8.setBounds(105, 495, 75, 20);
+        label8.setBounds(105, 525, 75, 20);
 
         //---- label9 ----
         label9.setText("Tr\u00e1iler");
         label9.setHorizontalAlignment(SwingConstants.RIGHT);
         contentPane.add(label9);
-        label9.setBounds(105, 535, 75, 20);
+        label9.setBounds(105, 565, 75, 20);
 
         //---- label10 ----
-        label10.setText(pelicula.getDirector());
+        label10.setText(Integer.toString(pelicula.getAnyo()));
         contentPane.add(label10);
         label10.setBounds(230, 170, 130, 15);
 
         //---- label11 ----
-        label11.setText(pelicula.getDuracion()+"min.");
+        label11.setText(Integer.toString(pelicula.getDuracion())+" m.");
         contentPane.add(label11);
-        label11.setBounds(230, 210, 140, 15);
+        label11.setBounds(230, 205, 140, 15);
 
         //---- label12 ----
         label12.setText(pelicula.getGenero());
         contentPane.add(label12);
-        label12.setBounds(230, 250, 225, 15);
+        label12.setBounds(230, 245, 225, 15);
+
+        //---- label18 ----
+        label18.setText(pelicula.getDirector());
+        contentPane.add(label18);
+        label18.setBounds(230, 280, 270, 20);
 
         //---- label13 ----
         label13.setText(pelicula.getActores());
         contentPane.add(label13);
-        label13.setBounds(230, 290, 265, 15);
+        label13.setBounds(230, 320, 265, 15);
 
         //---- label16 ----
-        label16.setText(pelicula.getValoracionMedia()+"/10");
+        label16.setText(Double.toString(pelicula.getValoracionMedia())+"/10");
         contentPane.add(label16);
-        label16.setBounds(230, 500, 265, 15);
+        label16.setBounds(230, 530, 265, 15);
 
         //---- label17 ----
         label17.setText(pelicula.getEnlaceTrailer());
         contentPane.add(label17);
-        label17.setBounds(230, 540, 265, 15);
+        label17.setBounds(230, 570, 265, 15);
 
         //======== scrollPane1 ========
         {
@@ -142,14 +155,16 @@ public class informePeliculaAnonimoTest extends JFrame {
             //---- textArea1 ----
             textArea1.setText(pelicula.getSinopsis());
             scrollPane1.setViewportView(textArea1);
+            textArea1.setEditable(false);
         }
         contentPane.add(scrollPane1);
-        scrollPane1.setBounds(230, 330, 270, 90);
+        scrollPane1.setBounds(230, 360, 270, 90);
 
         //---- textArea2 ----
         textArea2.setText(pelicula.getPremios());
         contentPane.add(textArea2);
-        textArea2.setBounds(230, 440, 270, 45);
+        textArea2.setBounds(230, 470, 270, 45);
+        textArea2.setEditable(false);
 
         //---- label14 ----
         label14.setText("<INSERTAR_IMAGEN_PELICULA>");
@@ -162,13 +177,14 @@ public class informePeliculaAnonimoTest extends JFrame {
         contentPane.add(button3);
         button3.setBounds(375, 600, 190, 40);
         button3.addActionListener(new ActionListener() {
- 			@Override
- 			public void actionPerformed(ActionEvent e) {
- 				menuAnonimoTest menu = new menuAnonimoTest();
- 				menu.setVisible(true);
- 				dispose();
- 			}
- 		});
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                menuAnonimoTest m = new menuAnonimoTest();
+                m.setVisible(true);
+                dispose();
+            }
+        });
+
 
         {
             // compute preferred size
@@ -211,5 +227,7 @@ public class informePeliculaAnonimoTest extends JFrame {
     private JTextArea textArea2;
     private JLabel label14;
     private JButton button3;
+    private JLabel label15;
+    private JLabel label18;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

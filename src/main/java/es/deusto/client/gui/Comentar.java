@@ -67,8 +67,8 @@ public class Comentar extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    //Añadir Comentario.
-                    FestivalCineController.getInstance().comentarPelicula(textField.getText(),aux.getLogin(),textField2.getText());
+                    FestivalCineController.getInstance().comentarPelicula(textField.getText(),aux.getLogin(),
+                            textField2.getText());
                     System.out.println("La pelicula se ha comentado correctamente");
                     Menu m = new Menu(aux);
                     m.setVisible(true);
@@ -76,7 +76,8 @@ public class Comentar extends JFrame {
                 }
                 //TODO: NO LLEGA AQUI LA EXCEPCION CON LAS PETICIONES REST...
                 catch (NullPointerException exc) {
-                    JOptionPane.showMessageDialog(ventana, "La pelicula que se ha querido comentar no esta entre las peliculas disponibles.");
+                    JOptionPane.showMessageDialog(ventana, "La pelicula que se ha querido comentar no está " +
+                            "entre las peliculas disponibles.");
                 }
             }
         });

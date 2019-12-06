@@ -40,7 +40,7 @@ import static org.mockito.Mockito.when;
  */
 @RunWith(MockitoJUnitRunner.class)
 @PerfTest(invocations = 1)
-@Required(max = 1200, average = 250)
+@Required(max = 1200, average = 350)
 public class DAOMockPerfTest {
 
 	FestivalCineManager m;

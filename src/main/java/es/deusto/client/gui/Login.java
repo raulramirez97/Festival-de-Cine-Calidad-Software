@@ -1,6 +1,7 @@
 package es.deusto.client.gui;
 
 import es.deusto.client.FestivalCineController;
+import es.deusto.server.FestivalCineManager;
 import es.deusto.server.data.UsuarioDTO;
 
 import javax.swing.*;
@@ -10,9 +11,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
+import java.util.logging.Level;
 
 public class Login extends JFrame {
 
+	static Logger logger = Logger.getLogger(Login.class.getName());
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField textField;
@@ -30,7 +34,7 @@ public class Login extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		getContentPane().setBackground(Color.white);
-		setTitle("Proceso de LogIn");
+		setTitle("Proceso de Login");
 		
 		JLabel lblFacebookgoogle = new JLabel("Introduce tus credenciales");
 		lblFacebookgoogle.setFont(new Font("Times New Roman", Font.PLAIN, 32));
@@ -84,14 +88,20 @@ public class Login extends JFrame {
             {
             	try
 				{
-					flag = comprobarUsuario(FestivalCineController.getInstance().getUser(textField.getText(),textField2.getText()),textField.getText(),textField2.getText());
+					UsuarioDTO user = FestivalCineController.getInstance().getUser(textField.getText(),
+							textField2.getText());
+					logger.info("Nombre de usuario encontrado: " + user.getLogin());
+					logger.info("Contrasena de usuario encontrado: " + user.getPassword());
+					flag = comprobarUsuario(user,textField.getText(),textField2.getText());
 					if (!flag)
 					{
-						JOptionPane.showMessageDialog(ventana, "No hay usuarios que concuerden con esas credenciales. Intentelo otra vez.");
+						JOptionPane.showMessageDialog(ventana, "No hay usuarios que concuerden con esas" +
+								" credenciales. Intentelo otra vez.");
 					}
 				}
             	catch (NullPointerException exception) {
-					JOptionPane.showMessageDialog(ventana, "No hay usuarios que concuerden con esas credenciales. Intentelo otra vez.");
+					JOptionPane.showMessageDialog(ventana, "No hay usuarios que concuerden con esas " +
+							"credenciales. Intentelo otra vez.");
 				}
 
             }
@@ -102,16 +112,22 @@ public class Login extends JFrame {
 	{
 		if ((usu == null))
 		{
+			logger.info("El usuario se detecta como nulo.");
 			return false;
 		}
 		else if ((usu.getLogin().compareTo(login)==0) && (usu.getPassword().compareTo(pwd)==0))
 		{
+			logger.info("Paso 1.");
 			menuTest m = new menuTest(usu);
+			logger.info("Paso 2.");
 			m.setVisible(true);
+			logger.info("Paso 3.");
 			dispose();
+			logger.info("Paso 4.");
 			return true;
 		}
 		else {
+			logger.info("Las credenciales no coinciden.");
 			return false;
 		}
 	}

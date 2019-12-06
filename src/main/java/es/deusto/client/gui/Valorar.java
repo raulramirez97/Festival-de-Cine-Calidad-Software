@@ -62,19 +62,23 @@ public class Valorar extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 				try {
-					FestivalCineController.getInstance().valorarPelicula(textField.getText(), Float.parseFloat(textField2.getText()));
+					FestivalCineController.getInstance().valorarPelicula(textField.getText(),
+							Float.parseFloat(textField2.getText()));
 					System.out.println("La pelicula se ha valorado correctamente.");
-					JOptionPane.showConfirmDialog(ventana, "La pelicula se ha valorado correctamente.", "CONF-A01 - Confirmación de película valorada",JOptionPane.OK_OPTION);
+					JOptionPane.showConfirmDialog(ventana, "La pelicula se ha valorado correctamente.",
+							"CONF-A01 - Confirmación de película valorada",JOptionPane.DEFAULT_OPTION);
 					Menu m = new Menu(aux);
 					m.setVisible(true);
 					dispose();
 				}
 				catch (NumberFormatException exc) {
-					JOptionPane.showMessageDialog(ventana, "Inserte un valor numérico en el campo de la puntuacion, por favor.");
+					JOptionPane.showMessageDialog(ventana, "Inserte un valor numérico en el campo " +
+							"de la puntuacion, por favor.");
 				}
 				//TODO: NO LLEGA AQUI LA EXCEPCION CON LAS PETICIONES REST...
 				catch (NullPointerException exc) {
-					JOptionPane.showMessageDialog(ventana, "La pelicula que se ha querido valorar no esta entre las peliculas disponibles.");
+					JOptionPane.showMessageDialog(ventana, "La pelicula que se ha querido valorar no está" +
+							" entre las peliculas disponibles.");
 				}
 			}
         });
