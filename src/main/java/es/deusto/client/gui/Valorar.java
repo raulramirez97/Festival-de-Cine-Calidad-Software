@@ -8,9 +8,11 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.logging.Logger;
 
 public class Valorar extends JFrame {
 
+	static Logger logger = Logger.getLogger(Valorar.class.getName());
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField textField;
@@ -64,7 +66,7 @@ public class Valorar extends JFrame {
 				try {
 					FestivalCineController.getInstance().valorarPelicula(textField.getText(),
 							Float.parseFloat(textField2.getText()));
-					System.out.println("La pelicula se ha valorado correctamente.");
+					logger.info("La pelicula se ha valorado correctamente.");
 					JOptionPane.showConfirmDialog(ventana, "La pelicula se ha valorado correctamente.",
 							"CONF-A01 - Confirmación de película valorada",JOptionPane.DEFAULT_OPTION);
 					Menu m = new Menu(aux);

@@ -18,7 +18,7 @@ A su vez, este proyecto ha pretendido ser una excusa para que los alumnos pudier
 tecnologías:
 
 - [Maven](https://maven.apache.org/ "Landing page de Maven").
-- Comunicación mediante REST.
+- Comunicación mediante REST, usando [Jersey](https://eclipse-ee4j.github.io/jersey/ "Documentación de Jersey").
 - [YouTrack](https://www.jetbrains.com/youtrack/ "Landing page de YouTrack, producto de JetBrains").
 
 ## Ejecución
@@ -74,18 +74,18 @@ Se han hecho algunas correcciones de checkstyle, aunque aún quedan unas cuantas
 Finalmente, se ha empezado a agregar algo de documentación JavaDoc, que posteriormente es interpretada por el 
 plugin `Doxygen`.
 
-NOTAS: Se han hecho dos pequeña trampas en esta aplicación:
-1. Dado que buena parte de las líneas de código se encuentran en la parte Cliente de la aplicación, y esta consta de 
-muchas líneas para la interfaz gráfica de usuario, el code coverage obtenido es bastante bajo de base. Por ello, se ha 
-reducido a niveles bastante bajos los indicadores de code coverage, para que JaCoCo no bloqueara la ejecución de los 
-tests.
-2. Como el Admin de este repositorio (Raúl Ramírez) no ha configurado Travis CI, no tenemos capturas directas del uso
-de la herramienta CI contra este repositorio. Sin embargo, se ha añadido el fichero .travis.yml con las configuraciones
-necesarias.
+La información sobre profiling con VisualVM se ha incluido en el directorio `profiling` de este repo. El log que muestra 
+la integración correcta con TravisCI y la ejecución automatizada de este test se muestra en `travisci_log`.
+
+NOTA: Se ha hecho una pequeña trampa en esta aplicación: Dado que buena parte de las líneas de código se encuentran en 
+la parte Cliente de la aplicación, y esta consta de  muchas líneas para la interfaz gráfica de usuario, el code coverage 
+obtenido es bastante bajo de base. Por ello, se ha  reducido a niveles bastante bajos los indicadores de code coverage,
+para que JaCoCo no bloqueara la ejecución de los tests.
 
 ### Comandos para ejecutar tests
 
-Se insertan a continuación diversos comandos para poder jugar con las clases de testeo:
+Se insertan a continuación diversos comandos para poder jugar con las clases de testeo. Antes de ejecutar estos,
+habrá que ejecutar `mvn clean` y `mvn compile`. Los comandos son los que siguen:
 
 - Ejecución de tests a nivel general: ```mvn test```
 - Ejecución de code coverage: ```mvn jacoco:check```

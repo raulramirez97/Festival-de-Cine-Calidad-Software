@@ -20,7 +20,7 @@ import es.deusto.server.data.PeliculaList;
  */
 public class menuAnonimoTest extends JFrame {
     public menuAnonimoTest() {
-    	PeliculaList peliculaList = FestivalCineController.getInstance().getPeliculaList();
+        PeliculaList peliculaList = FestivalCineController.getInstance().getPeliculaList();
         initComponents(peliculaList);
     }
 
@@ -47,6 +47,7 @@ public class menuAnonimoTest extends JFrame {
         textField1 = new JTextField();
 
         ventana = this;
+
         //======== this ========
         setTitle("Men\u00fa Principal");
         Container contentPane = getContentPane();
@@ -58,7 +59,6 @@ public class menuAnonimoTest extends JFrame {
         button1.setText("Login");
         contentPane.add(button1);
         button1.setBounds(730, 115, 180, 30);
-
         button1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -67,7 +67,6 @@ public class menuAnonimoTest extends JFrame {
                 dispose();
             }
         });
-
 
         //---- label1 ----
         label1.setText("Festival Cine");
@@ -345,7 +344,7 @@ public class menuAnonimoTest extends JFrame {
                     }
                     catch (NullPointerException e1){
                         JOptionPane.showMessageDialog(ventana, "¡Has dejado en blanco el campo de búsqueda " +
-                                "del actor!", "ERR-A03 - Inserción errónea de nombre o apellido de actor",
+                                        "del actor!", "ERR-A03 - Inserción errónea de nombre o apellido de actor",
                                 JOptionPane.ERROR_MESSAGE);
                     }
                 }
@@ -392,6 +391,5 @@ public class menuAnonimoTest extends JFrame {
     private JComboBox comboBox2;
     private JTextField textField1;
     private JFrame ventana;
-
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

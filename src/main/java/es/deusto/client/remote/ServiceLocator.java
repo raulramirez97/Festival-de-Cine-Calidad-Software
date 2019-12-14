@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
+import java.util.logging.Logger;
 
 /**
  * Implementación del patrón de diseño ServiceLocator. Este bloque de código es el que recibe las órdenes de la clase
@@ -20,6 +21,8 @@ import java.util.TreeMap;
  * @since 1.0
  */
 public class ServiceLocator {
+
+	static Logger logger = Logger.getLogger(ServiceLocator.class.getName());
 	private Client client;
 	private WebTarget webTargetService;
 
@@ -28,7 +31,7 @@ public class ServiceLocator {
 	public void setService(String[] args) {
 		client = ClientBuilder.newClient();
 		webTargetService = client.target(String.format("http://%s:%s/rest/server/", args[0], args[1]));
-		System.out.println(String.format("http://%s:%s/rest/server/", args[0], args[1]));
+		logger.info(String.format("http://%s:%s/rest/server/", args[0], args[1]));
 	}
 
 	public void registerUser(String login, String password) {
@@ -38,9 +41,9 @@ public class ServiceLocator {
 		UsuarioDTO usuarioDTO = new UsuarioDTO(login, password);
 		Response response = invocationBuilder.post(Entity.entity(usuarioDTO, MediaType.APPLICATION_JSON));
 		if (response.getStatus() != Status.OK.getStatusCode()) {
-			System.out.println("Error connecting with the server. Code: " + response.getStatus());
+			logger.warning("Error connecting with the server. Code: " + response.getStatus());
 		} else {
-			System.out.println("User correctly registered");
+			logger.info("User correctly registered");
 		}
 	}
 
@@ -56,7 +59,7 @@ public class ServiceLocator {
 
 		Response response = invocationBuilder.post(Entity.entity(directedMessage, MediaType.APPLICATION_JSON));
 		if (response.getStatus() != Status.OK.getStatusCode()) {
-			System.out.println("Error connecting with the server. Code: " + response.getStatus());
+			logger.warning("Error connecting with the server. Code: " + response.getStatus());
 			return "";
 		} else {
 			String responseMessage = response.readEntity(String.class);
@@ -71,7 +74,7 @@ public class ServiceLocator {
 
 		Response response = invocationBuilder.get();
 		if (response.getStatus() != Status.OK.getStatusCode()) {
-			System.out.println("Error connecting with the server. Code: " + response.getStatus());
+			logger.warning("Error connecting with the server. Code: " + response.getStatus());
 			return new UsuarioDTO();
 		} else {
 			UsuarioDTO user = response.readEntity(UsuarioDTO.class);
@@ -85,7 +88,7 @@ public class ServiceLocator {
 
 		Response response = invocationBuilder.get();
 		if (response.getStatus() != Status.OK.getStatusCode()) {
-			System.out.println("Error connecting with the server. Code: " + response.getStatus());
+			logger.warning("Error connecting with the server. Code: " + response.getStatus());
 			return new MessageList();
 		} else {
 			MessageList messageList = response.readEntity(MessageList.class);
@@ -100,9 +103,9 @@ public class ServiceLocator {
 		ActorDTO actorDTO = new ActorDTO(id, nombre, apellido, edad);
 		Response response = invocationBuilder.post(Entity.entity(actorDTO, MediaType.APPLICATION_JSON));
 		if (response.getStatus() != Status.OK.getStatusCode()) {
-			System.out.println("Error connecting with the server. Code: " + response.getStatus());
+			logger.warning("Error connecting with the server. Code: " + response.getStatus());
 		} else {
-			System.out.println("Actor correctly registered");
+			logger.info("Actor correctly registered");
 		}
 	}
 
@@ -111,7 +114,7 @@ public class ServiceLocator {
 		Invocation.Builder invocationBuilder = sayHelloWebTarget.request(MediaType.APPLICATION_JSON);
 		Response response = invocationBuilder.get();
 		if (response.getStatus() != Status.OK.getStatusCode()) {
-			System.out.println("Error connecting with the server. Code: " + response.getStatus());
+			logger.warning("Error connecting with the server. Code: " + response.getStatus());
 			return new ActorList();
 		} else {
 			ActorList actores = response.readEntity(ActorList.class);
@@ -131,12 +134,12 @@ public class ServiceLocator {
 		PeliculaDTO peliculaDTO = new PeliculaDTO(titulo, sinopsis, genero, duracion, anyo, director, enlacetrailer,
 				0, premios,null, seccion, strActores.toString());
 
-		System.out.println("Enviando pelicula: " + peliculaDTO.getTitulo());
+		logger.info("Enviando pelicula: " + peliculaDTO.getTitulo());
 		Response response = invocationBuilder.post(Entity.entity(peliculaDTO, MediaType.APPLICATION_JSON));
 		if (response.getStatus() != Status.OK.getStatusCode()) {
-			System.out.println("Error connecting with the server. Code: " + response.getStatus());
+			logger.warning("Error connecting with the server. Code: " + response.getStatus());
 		} else {
-			System.out.println("Pelicula correctly registered");
+			logger.info("Pelicula correctly registered");
 		}
 	}
 
@@ -145,7 +148,7 @@ public class ServiceLocator {
 		Invocation.Builder invocationBuilder = sayHelloWebTarget.request(MediaType.APPLICATION_JSON);
 		Response response = invocationBuilder.get();
 		if (response.getStatus() != Status.OK.getStatusCode()) {
-			System.out.println("Error connecting with the server. Code: " + response.getStatus());
+			logger.warning("Error connecting with the server. Code: " + response.getStatus());
 			return new PeliculaList();
 		} else {
 			PeliculaList peliculas = response.readEntity(PeliculaList.class);
@@ -160,9 +163,9 @@ public class ServiceLocator {
 
 		Response response = invocationBuilder.post(Entity.entity(valoracionDTO, MediaType.APPLICATION_JSON));
 		if (response.getStatus() != Status.OK.getStatusCode()) {
-			System.out.println("Error connecting with the server. Code: " + response.getStatus());
+			logger.warning("Error connecting with the server. Code: " + response.getStatus());
 		} else {
-			System.out.println("Valoracion correctly registered");
+			logger.info("Valoracion correctly registered");
 		}
 	}
 
@@ -179,12 +182,12 @@ public class ServiceLocator {
 			}
 		}
 
-		System.out.println("Enviando comentario: " + miComentario.getPelicula().getTitulo());
+		logger.info("Enviando comentario: " + miComentario.getPelicula().getTitulo());
 		Response response = invocationBuilder.post(Entity.entity(miComentario, MediaType.APPLICATION_JSON));
 		if (response.getStatus() != Status.OK.getStatusCode()) {
-			System.out.println("Error connecting with the server. Code: " + response.getStatus());
+			logger.warning("Error connecting with the server. Code: " + response.getStatus());
 		} else {
-			System.out.println("Comentario correctly registered");
+			logger.info("Comentario correctly registered");
 		}
 	}
 

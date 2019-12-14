@@ -10,6 +10,7 @@ import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.WebTarget;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 /**
  * Implementación del patrón de diseño Controller. Este bloque de código es quien coordina las funciones a proveer
@@ -21,6 +22,7 @@ import java.util.List;
  */
 public class FestivalCineController {
 
+	static Logger logger = Logger.getLogger(FestivalCineController.class.getName());
 	private static FestivalCineController instance;
 	private ServiceLocator rsl;
 	private Client client;
@@ -46,46 +48,42 @@ public class FestivalCineController {
 	public void generateFixtures(){
 
 		// TODO: Pensar manera de meter primer usuario como admin.
-		System.out.println("Generating Fixtures when beginning execution:");
-		System.out.println("_____________________________________________");
-		System.out.println("Register a user for the first time: admin");
+		logger.info("Generating Fixtures when beginning execution:");
+		logger.info("Register a user for the first time: admin");
 		FestivalCineController.getInstance().registerUser("admin", "admin");
-		System.out.println("Change the password as the user is already registered: admin");
+		logger.info("Change the password as the user is already registered: admin");
 		FestivalCineController.getInstance().registerUser("admin", "admin");
-		System.out.println("* Message coming from the server: '"
-				+ FestivalCineController.getInstance().sayMessage("admin", "admin", "This is test 1!") + "'");
-		System.out.println("* Message coming from the server: '"
-				+ FestivalCineController.getInstance().sayMessage("admin", "admin", "This is test 2!") + "'");
+		logger.info("* Message coming from the server: '"
+				+ FestivalCineController.getInstance().sayMessage("admin",
+				"admin", "This is test 1!") + "'");
+		logger.info("* Message coming from the server: '"
+				+ FestivalCineController.getInstance().sayMessage("admin",
+				"admin", "This is test 2!") + "'");
 
 		MessageList messages = FestivalCineController.getInstance().getUserMessages("admin");
 		for (Message m : messages.getMessages()) {
-			System.out.println(m);
+			logger.info(m.toString());
 		}
 
-		//TODO: SE VA A SUPRIMIR LA PERSISTENCIA DE ACTORES DIRECTAMENTE PARA PERSISTIRLOS CUANDO HAYA PELICULAS.
-		//TODO: SE PODRIA PENSAR EN UNA "CACHE" DE ACTORES PARA DESPUES PERSISTIRLOS EN PELICULAS. ESTA "CACHE" SERIA
-		//TODO: UNA NUEVA CLASE PARA ACTORES (POR EJEMPLO, ACTORCASTINGDTO).
-		System.out.println("Registering some peliculas:");
-		List<ActorDTO> randomActors = new ArrayList<ActorDTO>();
-//		randomActors.add(new ActorDTO("ID1", "Nicholas", "Cage", 50));
-//		randomActors.add(new ActorDTO("ID2", "Perico", "Cage", 120));
 
-		System.out.println("Registering an actor for the first time: Nicholas Cage");
+		logger.info("Registering some peliculas:");
+		List<ActorDTO> randomActors = new ArrayList<ActorDTO>();
+
+		logger.info("Registering an actor for the first time: Nicholas Cage");
 		FestivalCineController.getInstance().registerActor("ID1", "Nicholas", "Cage", 50);
 		FestivalCineController.getInstance().registerActor("ID1", "Pepe", "Juanito", 57);
 		FestivalCineController.getInstance().registerActor("ID2", "Perico", "Cage", 120);
 
 
-		//TODO: MOLARIA PODER USAR EL ID DEL ACTOR PARA BUSCARLO... EXTRA.
 		randomActors.add(FestivalCineController.getInstance().getActorList().getActorsDTO().get(0));
 		randomActors.add(FestivalCineController.getInstance().getActorList().getActorsDTO().get(1));
 
 		FestivalCineController.getInstance().registerPelicula("Lo que el viento se llevo","Uno de los" +
-						" mayores clasicos de la historia", "drama",145, 1935,"Alguien","MIURL",
-				"Muchos y variados","clasicos",randomActors);
+						" mayores clasicos de la historia", "drama",145, 1935,"Alguien",
+				"MIURL", "Muchos y variados","clasicos",randomActors);
 		FestivalCineController.getInstance().registerPelicula("Lo que el viento se llevo","Uno de los" +
-						" mayores clasicos de la historia", "drama",145, 1954,"Alguien","MIURL",
-				"Muchos y variados","clasicos",randomActors);
+						" mayores clasicos de la historia", "drama",145, 1954,"Alguien",
+				"MIURL", "Muchos y variados","clasicos",randomActors);
 
 		randomActors.clear();
 
@@ -98,8 +96,8 @@ public class FestivalCineController {
 		randomActors.add(FestivalCineController.getInstance().getActorList().getActorsDTO().get(4));
 
 		FestivalCineController.getInstance().registerPelicula("El Rey Leon","Otro de los" +
-						" mayores clasicos de la historia", "drama",121, 1985,"Alguien","MIURL",
-				"Muchos y variados","clasicos",randomActors);
+						" mayores clasicos de la historia", "drama",121, 1985,"Alguien",
+				"MIURL", "Muchos y variados","clasicos",randomActors);
 
 		randomActors.clear();
 		randomActors.add(FestivalCineController.getInstance().getActorList().getActorsDTO().get(0));
@@ -107,10 +105,10 @@ public class FestivalCineController {
 		randomActors.add(FestivalCineController.getInstance().getActorList().getActorsDTO().get(4));
 
 		FestivalCineController.getInstance().registerPelicula("La Comedia","Otro de los" +
-						" mayores clasicos de la historia", "comedia",97, 2019,"Yo mismo","MIURL",
-				"Muchos y variados","novedades",randomActors);
-		System.out.println("Fixtures generated successfully.");
-		System.out.println("_____________________________________________");
+						" mayores clasicos de la historia", "comedia",97, 2019,
+				"Yo mismo","MIURL", "Muchos y variados","novedades",randomActors);
+		logger.info("Fixtures generated successfully.");
+
 	}
 
 	public void registerUser(String login, String password) {
@@ -155,7 +153,7 @@ public class FestivalCineController {
 		new FestivalCineController(args);
 		FestivalCineController.getInstance().generateFixtures();
 		if (args.length != 2) {
-			System.out.println("Use: java Client.Client [host] [port]");
+			logger.warning("Use: java Client.Client [host] [port]");
 			System.exit(0);
 		}
 	}

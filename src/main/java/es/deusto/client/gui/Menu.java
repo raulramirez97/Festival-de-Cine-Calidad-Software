@@ -8,9 +8,11 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.logging.Logger;
 
 public class Menu extends JFrame {
-	
+
+	static Logger logger = Logger.getLogger(Menu.class.getName());
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 
@@ -40,7 +42,7 @@ public class Menu extends JFrame {
             	//TODO: POR EL MOMENTO ENSENADOS POR CONSOLA. POSTERIORMENTE SE APLICARA GUI (ACTORES.JAVA)
 				ActorList actorList = FestivalCineController.getInstance().getActorList();
 				for (ActorDTO aux : actorList.getActorsDTO()) {
-					System.out.println(aux.toString());
+					logger.info(aux.toString());
 				}
 //            	Actores actores = new Actores(aux);
 //            	actores.setVisible(true);

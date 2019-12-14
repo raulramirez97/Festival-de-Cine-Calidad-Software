@@ -8,7 +8,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-//TODO: Clase principal a trabajar. Hay que conseguir una GUI decente; es de lo poco que queda por hacer de funcionalidad de esta aplicación.
+//TODO: Esta clase se está trabajando en sus clases "informePeliculaTest" e "informePeliculaTestAnonimo"
+//correspondientes. Se hará limpieza en el Sprint 3.
 
 public class InformePelicula extends JFrame {
 

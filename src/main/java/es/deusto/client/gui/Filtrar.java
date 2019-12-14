@@ -11,8 +11,11 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.logging.Logger;
 
 public class Filtrar extends JFrame {
+
+	static Logger logger = Logger.getLogger(Filtrar.class.getName());
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -209,7 +212,7 @@ public class Filtrar extends JFrame {
 							peliculaList = FestivalCineController.getInstance().getFilteredPeliculaList((textFieldFiltroNumero.getText()), (String) listafiltrosGenerales.getSelectedItem());
 						}
 						for (PeliculaDTO aux : peliculaList.getPeliculasDTO()) {
-							System.out.println(aux.toString());
+							logger.info(aux.toString());
 						}
 						Menu m = new Menu(aux);
 						m.setVisible(true);
