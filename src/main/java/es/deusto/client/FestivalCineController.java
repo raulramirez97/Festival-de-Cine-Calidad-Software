@@ -17,7 +17,7 @@ import java.util.logging.Logger;
  * para la interfaz del cliente, y está conectado con el ServiceLocator, el cual toma la información de la parte
  * servidora de la aplicación.
  * @author Grupo RMBJ
- * @version 2.0
+ * @version 3.0
  * @since 1.0
  */
 public class FestivalCineController {

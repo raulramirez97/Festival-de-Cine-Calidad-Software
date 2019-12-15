@@ -10,7 +10,7 @@ import java.util.ArrayList;
  * tanto, es la clase encargada de hacer procesos CRU (Create, Read, Update) con los datos de la base de datos MySQL,
  * gestionada a su vez mediante DataNucleus. No se ha necesitado de borrado de datos.
  * @author Grupo RMBJ
- * @version 2.0
+ * @version 3.0
  * @since 1.0
  */
 public class DBManager implements IDAO {

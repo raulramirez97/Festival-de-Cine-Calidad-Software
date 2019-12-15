@@ -23,7 +23,7 @@ import static org.junit.Assert.*;
  * a una PeliculaDTO). A estas pruebas unitarias se les ha añadido tests de rendimiento para validar que su generación
  * es rápida.
  * @author Grupo RMBJ
- * @version 2.0
+ * @version 3.0
  * @since 2.0
  */
 @PerfTest(invocations = 3)
