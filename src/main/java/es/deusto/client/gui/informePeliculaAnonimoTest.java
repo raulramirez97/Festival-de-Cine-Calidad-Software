@@ -11,7 +11,6 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 
 import es.deusto.server.data.PeliculaDTO;
-import es.deusto.server.data.UsuarioDTO;
 
 /**
  * @author Beñat
@@ -181,7 +180,7 @@ public class informePeliculaAnonimoTest extends JFrame {
         button3.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                menuAnonimoTest m = new menuAnonimoTest();
+                MenuAnonimo m = new MenuAnonimo();
                 m.setVisible(true);
                 dispose();
             }

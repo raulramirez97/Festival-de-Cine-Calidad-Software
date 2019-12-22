@@ -206,7 +206,7 @@ public class informePeliculaTest extends JFrame {
         button3.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                menuTest m = new menuTest(aux);
+                Menu m = new Menu(aux);
                 m.setVisible(true);
                 dispose();
             }

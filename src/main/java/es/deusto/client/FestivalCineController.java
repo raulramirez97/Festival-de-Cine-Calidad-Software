@@ -1,7 +1,6 @@
 package es.deusto.client;
 
 import es.deusto.client.gui.MenuAnonimo;
-import es.deusto.client.gui.menuAnonimoTest;
 import es.deusto.client.remote.ServiceLocator;
 import es.deusto.server.data.*;
 
@@ -41,7 +40,7 @@ public class FestivalCineController {
 		webTarget = client.target(String.format("http://%s:%s/rest/server", args[0], args[1]));
 		//MenuAnonimo frame = new MenuAnonimo();
 		//frame.setVisible(true);
-		menuAnonimoTest frame = new menuAnonimoTest();
+		MenuAnonimo frame = new MenuAnonimo();
 		frame.setVisible(true);
 	}
 	//TODO: TODAS LAS COSAS PUESTAS A CONTINUACION EN ESTE METODO SE MANTIENEN PARA AYUDAR EN EL TESTEO Y DEBUG.
