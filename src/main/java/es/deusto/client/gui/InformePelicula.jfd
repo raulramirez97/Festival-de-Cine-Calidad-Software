@@ -184,10 +184,10 @@ new FormModel {
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "button1"
-				"text": "Mira los Comentarios"
+				"text": "Lee los Comentarios"
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 90
-				"y": 605
+				"x": 405
+				"y": 665
 				"width": 190
 				"height": 40
 			} )
@@ -197,7 +197,7 @@ new FormModel {
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"width": 190
 				"height": 40
-				"x": 390
+				"x": 405
 				"y": 605
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
@@ -207,7 +207,7 @@ new FormModel {
 				"width": 190
 				"height": 40
 				"x": 680
-				"y": 605
+				"y": 630
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label15"
@@ -225,6 +225,15 @@ new FormModel {
 				"x": 230
 				"y": 280
 				"width": 270
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "button4"
+				"text": "Valora la Película"
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 190
+				"height": 40
+				"x": 130
+				"y": 630
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )

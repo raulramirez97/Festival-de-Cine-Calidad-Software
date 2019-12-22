@@ -114,7 +114,7 @@ public class Menu extends JFrame {
             button2.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    informePeliculaTest m = new informePeliculaTest (peliculaList.getPeliculasDTO().get(0), aux);
+                    InformePelicula m = new InformePelicula(peliculaList.getPeliculasDTO().get(0), aux);
                     m.setVisible(true);
                     dispose();
                 }
@@ -138,7 +138,7 @@ public class Menu extends JFrame {
                 button3.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        informePeliculaTest m = new informePeliculaTest (peliculaList.getPeliculasDTO().get(1), aux);
+                        InformePelicula m = new InformePelicula(peliculaList.getPeliculasDTO().get(1), aux);
                         m.setVisible(true);
                         dispose();
                     }
@@ -162,7 +162,7 @@ public class Menu extends JFrame {
                     button4.addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e) {
-                            informePeliculaTest m = new informePeliculaTest (peliculaList.getPeliculasDTO().get(2), aux);
+                            InformePelicula m = new InformePelicula(peliculaList.getPeliculasDTO().get(2), aux);
                             m.setVisible(true);
                             dispose();
                         }
@@ -186,7 +186,7 @@ public class Menu extends JFrame {
                         button5.addActionListener(new ActionListener() {
                             @Override
                             public void actionPerformed(ActionEvent e) {
-                                informePeliculaTest m = new informePeliculaTest (peliculaList.getPeliculasDTO().get(3), aux);
+                                InformePelicula m = new InformePelicula(peliculaList.getPeliculasDTO().get(3), aux);
                                 m.setVisible(true);
                                 dispose();
                             }

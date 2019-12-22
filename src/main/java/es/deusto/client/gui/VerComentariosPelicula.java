@@ -4,7 +4,6 @@
 
 package es.deusto.client.gui;
 
-import es.deusto.client.FestivalCineController;
 import es.deusto.server.data.PeliculaDTO;
 import es.deusto.server.data.UsuarioDTO;
 
@@ -143,7 +142,7 @@ public class VerComentariosPelicula extends JFrame {
         button2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                informePeliculaTest m = new informePeliculaTest (pelicula,usuario);
+                InformePelicula m = new InformePelicula(pelicula,usuario);
                 m.setVisible(true);
                 dispose();
             }

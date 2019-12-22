@@ -27,7 +27,7 @@ import static org.junit.Assert.*;
  */
 @PerfTest(invocations = 3)
 @Required(max = 100, average = 50)
-public class WindowGenerationTest {
+public class GeneracionVentanasTest {
 //
 //	private ActorDTO testActorDTO;
 //	private ComentarioDTO testComentarioDTO;
@@ -36,13 +36,13 @@ public class WindowGenerationTest {
 //	private ValoracionDTO testValoracionDTO;
 //	String testName;
 //
-//	static Logger logger = Logger.getLogger(WindowGenerationTest.class.getName());
+//	static Logger logger = Logger.getLogger(GeneracionVentanasTest.class.getName());
 //
 //	@Rule
 //	public ContiPerfRule rule = new ContiPerfRule();
 //
 //	public static junit.framework.Test suite() {
-//		return new JUnit4TestAdapter(WindowGenerationTest.class);
+//		return new JUnit4TestAdapter(GeneracionVentanasTest.class);
 //	}
 //
 //	@Before

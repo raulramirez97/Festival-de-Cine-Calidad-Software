@@ -93,7 +93,7 @@ public class MenuAnonimo extends JFrame {
             button2.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    informePeliculaAnonimoTest m = new informePeliculaAnonimoTest (peliculaList.getPeliculasDTO().get(0));
+                    InformePeliculaAnonimo m = new InformePeliculaAnonimo(peliculaList.getPeliculasDTO().get(0));
                     m.setVisible(true);
                     dispose();
                 }
@@ -117,7 +117,7 @@ public class MenuAnonimo extends JFrame {
                 button3.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        informePeliculaAnonimoTest m = new informePeliculaAnonimoTest (peliculaList.getPeliculasDTO().get(1));
+                        InformePeliculaAnonimo m = new InformePeliculaAnonimo(peliculaList.getPeliculasDTO().get(1));
                         m.setVisible(true);
                         dispose();
                     }
@@ -141,7 +141,7 @@ public class MenuAnonimo extends JFrame {
                     button4.addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e) {
-                            informePeliculaAnonimoTest m = new informePeliculaAnonimoTest (peliculaList.getPeliculasDTO().get(2));
+                            InformePeliculaAnonimo m = new InformePeliculaAnonimo(peliculaList.getPeliculasDTO().get(2));
                             m.setVisible(true);
                             dispose();
                         }
@@ -165,7 +165,7 @@ public class MenuAnonimo extends JFrame {
                         button5.addActionListener(new ActionListener() {
                             @Override
                             public void actionPerformed(ActionEvent e) {
-                                informePeliculaAnonimoTest m = new informePeliculaAnonimoTest (peliculaList.getPeliculasDTO().get(3));
+                                InformePeliculaAnonimo m = new InformePeliculaAnonimo(peliculaList.getPeliculasDTO().get(3));
                                 m.setVisible(true);
                                 dispose();
                             }
