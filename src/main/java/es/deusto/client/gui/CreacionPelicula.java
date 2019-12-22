@@ -18,15 +18,15 @@ import es.deusto.server.data.UsuarioDTO;
 /**
  * @author Beñat
  */
-public class InformePelicula extends JFrame {
+public class CreacionPelicula extends JFrame {
 
-    static Logger logger = Logger.getLogger(InformePelicula.class.getName());
+    static Logger logger = Logger.getLogger(CreacionPelicula.class.getName());
 
-    public InformePelicula(PeliculaDTO pelicula, UsuarioDTO aux) {
-        initComponents(pelicula,aux);
+    public CreacionPelicula(UsuarioDTO aux) {
+        initComponents(aux);
     }
 
-    private void initComponents(PeliculaDTO pelicula, UsuarioDTO aux) {
+    private void initComponents(UsuarioDTO aux) {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         // Generated using JFormDesigner Evaluation license - Beñat
         label1 = new JLabel();
@@ -57,7 +57,7 @@ public class InformePelicula extends JFrame {
         ventana = this;
 
         //======== this ========
-        setTitle("Informe: "+pelicula.getTitulo()+" - "+aux.getLogin());
+        setTitle("Generacion de nueva pelicula");
         Container contentPane = getContentPane();
         contentPane.setLayout(null);
 
