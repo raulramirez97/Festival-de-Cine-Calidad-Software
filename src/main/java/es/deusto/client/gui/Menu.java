@@ -382,7 +382,9 @@ public class Menu extends JFrame {
             button7.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    //TODO: Llevar a ventana CreacionActor.
+                    CreacionActor ca = new CreacionActor(aux);
+                    ca.setVisible(true);
+                    dispose();
                 }
             });
             //---- button7 ----

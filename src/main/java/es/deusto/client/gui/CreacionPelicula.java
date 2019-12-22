@@ -14,7 +14,6 @@ import javax.swing.*;
 
 import es.deusto.client.FestivalCineController;
 import es.deusto.server.data.ActorDTO;
-import es.deusto.server.data.PeliculaDTO;
 import es.deusto.server.data.UsuarioDTO;
 
 /**
@@ -164,7 +163,6 @@ public class CreacionPelicula extends JFrame {
             }
         });
 
-
         contentPane.add(textFieldAnyoPeli);
         textFieldAnyoPeli.setBounds(225, 165, 275, 30);
         textFieldAnyoPeli.addFocusListener(new FocusListener() {
@@ -273,11 +271,10 @@ public class CreacionPelicula extends JFrame {
         button4.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                List<ActorDTO> randomActors = FestivalCineController.getInstance().getActorList().getActorsDTO();
-                //TODO: Revisar si esto no da problemas para actores!
+                List<ActorDTO> allActors = FestivalCineController.getInstance().getActorList().getActorsDTO();
                 List<ActorDTO> selectedActors = new ArrayList<>();
                 String[] actorsStringList = textFieldActoresPeli.getText().split("\\s*,\\s*");
-                for (ActorDTO myActor: randomActors) {
+                for (ActorDTO myActor: allActors) {
                     String check = myActor.getNombre() + " " + myActor.getApellido();
                     for (int i = 0; i < actorsStringList.length; i++){
                         if (check.toUpperCase().compareTo(actorsStringList[i].toUpperCase())==0){
@@ -285,20 +282,27 @@ public class CreacionPelicula extends JFrame {
                         }
                     }
                 }
-                try {
-                    FestivalCineController.getInstance().registerPelicula(textFieldNomPeli.getText(),
-                            textAreaSinopsisPeli.getText(), textFieldGenPeli.getText(),
-                            Integer.parseInt(textFieldDurPeli.getText()), Integer.parseInt(textFieldAnyoPeli.getText()),
-                            textFieldDirPeli.getText(),textFieldURLTrailer.getText(), textAreaPremiosPeli.getText(),
-                            "novedades", randomActors); //TODO: Revisar esto con selectedActors.
-                    logger.info("Pelicula generated successfully by the admin.");
-                    Menu m = new Menu(aux);
-                    m.setVisible(true);
-                    dispose();
+                if (selectedActors.size() == 0) {
+                    JOptionPane.showMessageDialog(ventana, "Inserta nombre y apellido de actores, separados" +
+                            " con comas que existan actualmente en el sistema.");
                 }
-                catch (NumberFormatException exc) {
-                    JOptionPane.showMessageDialog(ventana, "Inserte un valor numérico en los campos" +
-                            "numéricos, por favor.");
+                else {
+                    try {
+                        FestivalCineController.getInstance().registerPelicula(textFieldNomPeli.getText(),
+                                textAreaSinopsisPeli.getText(), textFieldGenPeli.getText(),
+                                Integer.parseInt(textFieldDurPeli.getText()),
+                                Integer.parseInt(textFieldAnyoPeli.getText()),
+                                textFieldDirPeli.getText(),textFieldURLTrailer.getText(),
+                                textAreaPremiosPeli.getText(), "novedades", selectedActors);
+                        logger.info("Pelicula generated successfully by the admin.");
+                        Menu m = new Menu(aux);
+                        m.setVisible(true);
+                        dispose();
+                    }
+                    catch (NumberFormatException exc) {
+                        JOptionPane.showMessageDialog(ventana, "Inserte un valor numérico en los campos" +
+                                "numéricos, por favor.");
+                    }
                 }
             }
         });
