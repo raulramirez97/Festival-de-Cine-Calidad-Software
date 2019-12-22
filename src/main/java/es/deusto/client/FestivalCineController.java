@@ -46,7 +46,6 @@ public class FestivalCineController {
 	//TODO: TODAS LAS COSAS PUESTAS A CONTINUACION EN ESTE METODO SE MANTIENEN PARA AYUDAR EN EL TESTEO Y DEBUG.
 	public void generateFixtures(){
 
-		// TODO: Pensar manera de meter primer usuario como admin.
 		logger.info("Generating Fixtures when beginning execution:");
 		logger.info("Register a user for the first time: admin");
 		FestivalCineController.getInstance().registerUser("admin", "admin");
