@@ -8,6 +8,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+//TODO: Esto debería cambiarse por una ventana medio bien hecha que muestre la información como en el prototipo.
+//TODO: Es decir: https://marvelapp.com/d2h27dh/screen/63129721
 public class ResultadoFiltrados extends JFrame {
 
     private static final long serialVersionUID = 1L;

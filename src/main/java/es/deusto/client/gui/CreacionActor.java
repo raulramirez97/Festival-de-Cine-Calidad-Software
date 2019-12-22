@@ -160,7 +160,7 @@ public class CreacionActor extends JFrame {
                     FestivalCineController.getInstance().registerActor(textFieldIDActor.getText(),
                             textFieldNomActor.getText(),textFieldApeActor.getText(),
                             Integer.parseInt(textFieldEdadActor.getText()));
-                    logger.info("Pelicula generated successfully by the admin.");
+                    logger.info("Actor generated successfully by the admin.");
                     Menu m = new Menu(aux);
                     m.setVisible(true);
                     dispose();
