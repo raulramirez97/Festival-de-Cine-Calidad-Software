@@ -7,17 +7,6 @@ new FormModel {
 			name: "this"
 			"title": "Informe: <Nombre_Pelicula> - Usuario"
 			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "label1"
-				"text": "<NOMBRE_PELICULA>"
-				"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 18, false )
-				"horizontalAlignment": 0
-			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"width": 720
-				"height": 40
-				"x": 120
-				"y": 85
-			} )
-			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label2"
 				"text": "Año"
 				"horizontalAlignment": 4
@@ -78,16 +67,6 @@ new FormModel {
 				"y": 470
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "label8"
-				"text": "Valoración"
-				"horizontalAlignment": 4
-			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"width": 75
-				"height": 20
-				"x": 105
-				"y": 525
-			} )
-			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label9"
 				"text": "Tráiler"
 				"horizontalAlignment": 4
@@ -95,67 +74,12 @@ new FormModel {
 				"width": 75
 				"height": 20
 				"x": 105
-				"y": 565
-			} )
-			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "label10"
-				"text": "<INSERTAR_AÑO>"
-			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 230
-				"y": 170
-				"width": 130
-				"height": 15
-			} )
-			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "label11"
-				"text": "<INSERTAR_DURACIÓN>"
-			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"width": 140
-				"height": 15
-				"x": 230
-				"y": 205
-			} )
-			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "label12"
-				"text": "<INSERTAR_GÉNERO>"
-			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"width": 225
-				"height": 15
-				"x": 230
-				"y": 245
-			} )
-			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "label13"
-				"text": "<INSERTAR_REPARTO>"
-			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"width": 265
-				"height": 15
-				"x": 230
-				"y": 320
-			} )
-			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "label16"
-				"text": "<INSERTAR_VALORACION>"
-			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"width": 265
-				"height": 15
-				"x": 230
-				"y": 530
-			} )
-			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "label17"
-				"text": "<INSERTAR_TRAILER>"
-			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"width": 265
-				"height": 15
-				"x": 230
-				"y": 570
+				"y": 535
 			} )
 			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
 				name: "scrollPane1"
 				add( new FormComponent( "javax.swing.JTextArea" ) {
-					name: "textArea1"
-					"text": "<INSERTAR_SINOPSIS>"
+					name: "textAreaSinopsisPeli"
 				} )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"x": 230
@@ -164,8 +88,7 @@ new FormModel {
 				"height": 90
 			} )
 			add( new FormComponent( "javax.swing.JTextArea" ) {
-				name: "textArea2"
-				"text": "<INSERTAR_PREMIOS>"
+				name: "textAreaPremiosPeli"
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"width": 270
 				"height": 45
@@ -183,31 +106,13 @@ new FormModel {
 				"height": 160
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
-				name: "button1"
-				"text": "Lee los Comentarios"
-			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 405
-				"y": 665
-				"width": 190
-				"height": 40
-			} )
-			add( new FormComponent( "javax.swing.JButton" ) {
-				name: "button2"
-				"text": "¡Comenta!"
-			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"width": 190
-				"height": 40
-				"x": 405
-				"y": 605
-			} )
-			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "button3"
 				"text": "Vuelve al Menú Principal"
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"width": 190
 				"height": 40
-				"x": 680
-				"y": 630
+				"x": 575
+				"y": 625
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label15"
@@ -218,22 +123,90 @@ new FormModel {
 				"y": 280
 				"width": 65
 			} )
-			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "label18"
-				"text": "<INSERTAR_DIRECTOR>"
-			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 230
-				"y": 280
-				"width": 270
-			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "button4"
-				"text": "Valora la Película"
+				"text": "Inserta la Pelicula"
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"width": 190
 				"height": 40
-				"x": 130
-				"y": 630
+				"x": 210
+				"y": 625
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label8"
+				"text": "Nombre"
+				"horizontalAlignment": 4
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 75
+				"height": 20
+				"x": 105
+				"y": 130
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "textFieldNomPeli"
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 225
+				"y": 130
+				"width": 275
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label1"
+				"text": "Inserta a continuación los datos de la nueva película"
+				"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 6, false )
+				"horizontalAlignment": 0
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 225
+				"y": 55
+				"width": 489
+				"height": 35
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "textFieldAnyoPeli"
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 275
+				"height": 30
+				"x": 225
+				"y": 165
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "textFieldDurPeli"
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 275
+				"height": 30
+				"x": 225
+				"y": 205
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "textFieldGenPeli"
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 275
+				"height": 30
+				"x": 225
+				"y": 245
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "textFieldDirPeli"
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 275
+				"height": 30
+				"x": 225
+				"y": 285
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "textFieldActoresPeli"
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 275
+				"height": 30
+				"x": 225
+				"y": 320
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "textFieldURLTrailer"
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 275
+				"height": 30
+				"x": 230
+				"y": 535
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
@@ -241,4 +214,3 @@ new FormModel {
 		} )
 	}
 }
-

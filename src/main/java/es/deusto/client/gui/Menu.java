@@ -392,7 +392,9 @@ public class Menu extends JFrame {
             button8.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    //TODO: Llevar a ventana CreacionPelicula.
+                    CreacionPelicula cp = new CreacionPelicula(aux);
+                    cp.setVisible(true);
+                    dispose();
                 }
             });
             logger.info("Botones de generación cargados con usuario admin.");
