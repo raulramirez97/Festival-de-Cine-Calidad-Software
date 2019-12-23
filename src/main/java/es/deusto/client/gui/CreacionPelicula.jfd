@@ -82,7 +82,7 @@ new FormModel {
 					name: "textAreaSinopsisPeli"
 				} )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 230
+				"x": 228
 				"y": 360
 				"width": 270
 				"height": 90
@@ -92,7 +92,7 @@ new FormModel {
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"width": 270
 				"height": 45
-				"x": 230
+				"x": 228
 				"y": 470
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
@@ -111,7 +111,7 @@ new FormModel {
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"width": 190
 				"height": 40
-				"x": 575
+				"x": 620
 				"y": 625
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
@@ -129,7 +129,7 @@ new FormModel {
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"width": 190
 				"height": 40
-				"x": 210
+				"x": 160
 				"y": 625
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
@@ -205,8 +205,17 @@ new FormModel {
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"width": 275
 				"height": 30
-				"x": 230
+				"x": 225
 				"y": 535
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "button5"
+				"text": "Selecciona la Imagen"
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 190
+				"height": 40
+				"x": 625
+				"y": 380
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )

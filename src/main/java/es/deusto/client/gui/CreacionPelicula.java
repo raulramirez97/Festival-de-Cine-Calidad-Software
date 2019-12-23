@@ -6,11 +6,16 @@ package es.deusto.client.gui;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 import es.deusto.client.FestivalCineController;
 import es.deusto.server.data.ActorDTO;
@@ -18,6 +23,9 @@ import es.deusto.server.data.UsuarioDTO;
 
 /**
  * @author Beñat
+ * Inspiración para JFileChooser tomada de: http://1bestcsharp.blogspot.com/2015/04/java-how-to-browse-image-file-and-And-Display-It-Using-JFileChooser-In-Java.html
+ * Inspiración para tomar working directory: https://stackoverflow.com/questions/4871051/getting-the-current-working-directory-in-java
+ * Inspiración para recoger imagen: https://docs.oracle.com/javase/tutorial/2d/images/loadimage.html
  */
 public class CreacionPelicula extends JFrame {
 
@@ -30,29 +38,30 @@ public class CreacionPelicula extends JFrame {
     private void initComponents(UsuarioDTO aux) {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         // Generated using JFormDesigner Evaluation license - Beñat
+        label1 = new JLabel();
         label2 = new JLabel();
         label3 = new JLabel();
         label4 = new JLabel();
         label5 = new JLabel();
         label6 = new JLabel();
         label7 = new JLabel();
-        label9 = new JLabel();
-        scrollPane1 = new JScrollPane();
-        textAreaSinopsisPeli = new JTextArea();
-        textAreaPremiosPeli = new JTextArea();
-        label14 = new JLabel();
-        button3 = new JButton();
-        label15 = new JLabel();
-        button4 = new JButton();
         label8 = new JLabel();
+        label9 = new JLabel();
+        label14 = new JLabel();
+        label15 = new JLabel();
+        button3 = new JButton();
+        button4 = new JButton();
+        button5 = new JButton();
         textFieldNomPeli = new JTextField();
-        label1 = new JLabel();
         textFieldAnyoPeli = new JTextField();
         textFieldDurPeli = new JTextField();
         textFieldGenPeli = new JTextField();
         textFieldDirPeli = new JTextField();
         textFieldActoresPeli = new JTextField();
         textFieldURLTrailer = new JTextField();
+        scrollPane1 = new JScrollPane();
+        textAreaSinopsisPeli = new JTextArea();
+        textAreaPremiosPeli = new JTextArea();
 
         ventana = this;
 
@@ -238,7 +247,7 @@ public class CreacionPelicula extends JFrame {
         });
 
         contentPane.add(textFieldURLTrailer);
-        textFieldURLTrailer.setBounds(230, 535, 275, 30);
+        textFieldURLTrailer.setBounds(225, 535, 275, 30);
         textFieldURLTrailer.addFocusListener(new FocusListener() {
             @Override
             public void focusGained(FocusEvent e) {}
@@ -254,7 +263,7 @@ public class CreacionPelicula extends JFrame {
         //---- button3 ----
         button3.setText("Vuelve al Men\u00fa Principal");
         contentPane.add(button3);
-        button3.setBounds(575, 625, 190, 40);
+        button3.setBounds(620, 625, 190, 40);
         button3.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -267,7 +276,7 @@ public class CreacionPelicula extends JFrame {
         //---- button4 ----
         button4.setText("Inserta la Pelicula");
         contentPane.add(button4);
-        button4.setBounds(210, 625, 190, 40);
+        button4.setBounds(160, 625, 190, 40);
         button4.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -287,6 +296,7 @@ public class CreacionPelicula extends JFrame {
                             " con comas que existan actualmente en el sistema.");
                 }
                 else {
+                    //TODO: Queda cambiar los métodos para que guarde la URI de la imagen (URIImage).
                     try {
                         FestivalCineController.getInstance().registerPelicula(textFieldNomPeli.getText(),
                                 textAreaSinopsisPeli.getText(), textFieldGenPeli.getText(),
@@ -303,6 +313,41 @@ public class CreacionPelicula extends JFrame {
                         JOptionPane.showMessageDialog(ventana, "Inserte un valor numérico en los campos" +
                                 "numéricos, por favor.");
                     }
+                }
+            }
+        });
+        //---- button5 ----
+        button5.setText("Selecciona la Imagen");
+        contentPane.add(button5);
+        button5.setBounds(625, 380, 190, 40);
+        button5.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                JFileChooser file = new JFileChooser();
+                file.setCurrentDirectory(new File(System.getProperty("user.home")));
+                //filter the files
+                FileNameExtensionFilter filter = new FileNameExtensionFilter("*.Images",
+                        "jpg","gif","png");
+                file.addChoosableFileFilter(filter);
+                int result = file.showSaveDialog(null);
+                //if the user click on save in Jfilechooser
+                if(result == JFileChooser.APPROVE_OPTION){
+                    File selectedFile = file.getSelectedFile();
+                    String path = selectedFile.getAbsolutePath();
+                    label14.setIcon(ResizeImage(path));
+                    //Store image in resources/img folder:
+                    String store = System.getProperty("user.dir")+"/src/main/resources/img";
+                    BufferedImage img = null;
+                    try {
+                        img = ImageIO.read(selectedFile);
+                        ImageIO.write(img,"png",new File(store+"/"+selectedFile.getName()));
+                        URIImage = store+"/"+selectedFile.getName();
+                    } catch (IOException ex) {
+                        ex.printStackTrace();
+                    }
+                }
+                //if the user click on cancel in Jfilechooser
+                else if(result == JFileChooser.CANCEL_OPTION){
+                    System.out.println("No File Selected");
                 }
             }
         });
@@ -328,29 +373,41 @@ public class CreacionPelicula extends JFrame {
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
     // Generated using JFormDesigner Evaluation license - Beñat
+    private JLabel label1;
     private JLabel label2;
     private JLabel label3;
     private JLabel label4;
     private JLabel label5;
     private JLabel label6;
     private JLabel label7;
-    private JLabel label9;
-    private JScrollPane scrollPane1;
-    private JTextArea textAreaSinopsisPeli;
-    private JTextArea textAreaPremiosPeli;
-    private JLabel label14;
-    private JButton button3;
-    private JLabel label15;
-    private JButton button4;
     private JLabel label8;
+    private JLabel label9;
+    private JLabel label14;
+    private JLabel label15;
+    private JButton button3;
+    private JButton button4;
+    private JButton button5;
     private JTextField textFieldNomPeli;
-    private JLabel label1;
     private JTextField textFieldAnyoPeli;
     private JTextField textFieldDurPeli;
     private JTextField textFieldGenPeli;
     private JTextField textFieldDirPeli;
     private JTextField textFieldActoresPeli;
     private JTextField textFieldURLTrailer;
+    private JScrollPane scrollPane1;
+    private JTextArea textAreaSinopsisPeli;
+    private JTextArea textAreaPremiosPeli;
     private JFrame ventana;
+    private String URIImage;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
+
+    // Methode to resize imageIcon with the same size of a Jlabel
+    public ImageIcon ResizeImage(String ImagePath)
+    {
+        ImageIcon MyImage = new ImageIcon(ImagePath);
+        Image img = MyImage.getImage();
+        Image newImg = img.getScaledInstance(label14.getWidth(), label14.getHeight(), Image.SCALE_SMOOTH);
+        ImageIcon image = new ImageIcon(newImg);
+        return image;
+    }
 }
