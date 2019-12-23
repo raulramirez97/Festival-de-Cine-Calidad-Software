@@ -11,10 +11,11 @@ script:
 branches:
 
   only:
-    - master
-    - featAdmin
+    - featFilter
 
   except:
+    - master
     - devel
     - featBizlogic
     - featFestivalUX
+    - featAdmin
