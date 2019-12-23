@@ -61,7 +61,7 @@ public class Inicio extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e)
 			{
-				menuAnonimoTest frame = new menuAnonimoTest();
+				MenuAnonimo frame = new MenuAnonimo();
 				frame.setVisible(true);
 				dispose();
 			}

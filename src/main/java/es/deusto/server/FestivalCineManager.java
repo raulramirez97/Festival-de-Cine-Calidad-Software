@@ -25,7 +25,7 @@ import java.util.logging.Logger;
  * el patrón de diseño DTO para poder serializarse y transmitirse, además de al DAO para gestionar la base de datos
  * MySQL con DataNucleus.
  * @author Grupo RMBJ
- * @version 2.0
+ * @version 3.0
  * @since 1.0
  */
 @Path("/server")
@@ -241,7 +241,7 @@ public class FestivalCineManager {
 					peliculaDTOData.getDirector(), peliculaDTOData.getEnlaceTrailer(),
 					peliculaDTOData.getValoracionMedia(), peliculaDTOData.getPremios(),
 					peliculaDTOData.getComentarios(), peliculaDTOData.getSeccionFestival(),
-					peliculaDTOData.getActores());
+					peliculaDTOData.getActores(), peliculaDTOData.getURIimagen());
 			dao.storePelicula(peliculaDTO);
 			logger.info("Pelicula created: " + peliculaDTOData.getTitulo());
 		}

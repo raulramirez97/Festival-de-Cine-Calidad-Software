@@ -7,22 +7,25 @@ package es.deusto.client.gui;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.logging.Logger;
 
 import javax.swing.*;
 
+import es.deusto.client.FestivalCineController;
 import es.deusto.server.data.PeliculaDTO;
-import es.deusto.server.data.UsuarioDTO;
 
 /**
  * @author Beñat
  */
-public class informePeliculaAnonimoTest extends JFrame {
+public class InformePeliculaAnonimo extends JFrame {
 
-    public informePeliculaAnonimoTest(PeliculaDTO pelicula) {
-    	initComponents(pelicula);
-	}
+    static Logger logger = Logger.getLogger(InformePeliculaAnonimo.class.getName());
 
-	private void initComponents(PeliculaDTO pelicula) {
+    public InformePeliculaAnonimo(PeliculaDTO pelicula) {
+        initComponents(pelicula);
+    }
+
+    private void initComponents(PeliculaDTO pelicula) {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         // Generated using JFormDesigner Evaluation license - Beñat
         label1 = new JLabel();
@@ -45,10 +48,14 @@ public class informePeliculaAnonimoTest extends JFrame {
         textArea2 = new JTextArea();
         label14 = new JLabel();
         button3 = new JButton();
+        button4 = new JButton();
         label15 = new JLabel();
         label18 = new JLabel();
 
+        ventana = this;
         //======== this ========
+
+        String myPath = System.getProperty("user.dir");
 
         setTitle("Informe: "+pelicula.getTitulo());
         Container contentPane = getContentPane();
@@ -169,21 +176,56 @@ public class informePeliculaAnonimoTest extends JFrame {
         textArea2.setEditable(false);
 
         //---- label14 ----
-        label14.setText("<INSERTAR_IMAGEN_PELICULA>");
-        label14.setHorizontalAlignment(SwingConstants.CENTER);
-        contentPane.add(label14);
         label14.setBounds(580, 165, 270, 160);
+        label14.setIcon(ResizeImage(myPath+pelicula.getURIimagen(), label14));
+        contentPane.add(label14);
 
         //---- button3 ----
         button3.setText("Vuelve al Men\u00fa Principal");
         contentPane.add(button3);
-        button3.setBounds(375, 600, 190, 40);
+        button3.setBounds(560, 605, 190, 40);
         button3.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                menuAnonimoTest m = new menuAnonimoTest();
+                MenuAnonimo m = new MenuAnonimo();
                 m.setVisible(true);
                 dispose();
+            }
+        });
+
+        //---- button4 ----
+        button4.setText("Valora la Pel\u00edcula");
+        contentPane.add(button4);
+        button4.setBounds(235, 605, 190, 40);
+        button4.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // prompt the user to enter their name
+                String valoracion = JOptionPane.showInputDialog(ventana, "Indica la puntuación de" +
+                        " 1 a 10 por favor");
+                try {
+                    if (Float.parseFloat(valoracion) < 1 || Float.parseFloat(valoracion) > 10) {
+                        JOptionPane.showMessageDialog(ventana, "Inserte un valor entre el 1 y el 10" +
+                                ", por favor.");
+                    }
+                    else {
+                        FestivalCineController.getInstance().valorarPelicula(pelicula.getTitulo(),
+                                Float.parseFloat(valoracion));
+                        logger.info("La pelicula se ha valorado correctamente.");
+                        JOptionPane.showConfirmDialog(ventana, "La pelicula se ha valorado correctamente. " +
+                                        "Recarga el informe de película para ver la valoración actualizada.",
+                                "CONF-A01 - Confirmación de película valorada",JOptionPane.DEFAULT_OPTION);
+                    }
+                }
+                catch (NumberFormatException exc) {
+                    JOptionPane.showMessageDialog(ventana, "Inserte un valor numérico en el campo " +
+                            "de la puntuacion, por favor.");
+                }
+                //Con la nueva manera de integrar la Valoración en la ficha nunca se dará esta Excepción.
+                //catch (NullPointerException exc) {
+                //    JOptionPane.showMessageDialog(ventana, "La pelicula que se ha querido valorar no está" +
+                //           " entre las peliculas disponibles.");
+                //}
             }
         });
 
@@ -228,7 +270,21 @@ public class informePeliculaAnonimoTest extends JFrame {
     private JTextArea textArea2;
     private JLabel label14;
     private JButton button3;
+    private JButton button4;
     private JLabel label15;
     private JLabel label18;
+    private JFrame ventana;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
+
+    /**
+     * Método para redimensionar un ImageIcon al mismo tamaño que un JLabel.
+     */
+    public ImageIcon ResizeImage(String ImagePath, JLabel label)
+    {
+        ImageIcon MyImage = new ImageIcon(ImagePath);
+        Image img = MyImage.getImage();
+        Image newImg = img.getScaledInstance(label.getWidth(), label.getHeight(), Image.SCALE_SMOOTH);
+        ImageIcon image = new ImageIcon(newImg);
+        return image;
+    }
 }

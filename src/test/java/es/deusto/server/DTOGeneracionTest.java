@@ -23,12 +23,12 @@ import static org.junit.Assert.*;
  * a una PeliculaDTO). A estas pruebas unitarias se les ha añadido tests de rendimiento para validar que su generación
  * es rápida.
  * @author Grupo RMBJ
- * @version 2.0
+ * @version 3.0
  * @since 2.0
  */
 @PerfTest(invocations = 3)
 @Required(max = 100, average = 50)
-public class DTOGenerationTest {
+public class DTOGeneracionTest {
 
 	private ActorDTO testActorDTO;
 	private ComentarioDTO testComentarioDTO;
@@ -37,13 +37,13 @@ public class DTOGenerationTest {
 	private ValoracionDTO testValoracionDTO;
 	String testName;
 
-	static Logger logger = Logger.getLogger(DTOGenerationTest.class.getName());
+	static Logger logger = Logger.getLogger(DTOGeneracionTest.class.getName());
 
 	@Rule
 	public ContiPerfRule rule = new ContiPerfRule();
 
 	public static junit.framework.Test suite() {
-		return new JUnit4TestAdapter(DTOGenerationTest.class);
+		return new JUnit4TestAdapter(DTOGeneracionTest.class);
 	}
 
 	@Before
@@ -76,7 +76,7 @@ public class DTOGenerationTest {
 				"TestingDrama", 10, 2019, "Benat",
 				"http://www.iliketoquote.com/save-the-drama-for-your-mama/", 10.0,
 				"Premio Cannes al mejor Drama", null,"Drama",
-				testActorDTO.getNombre() + " "+ testActorDTO.getApellido());
+				testActorDTO.getNombre() + " "+ testActorDTO.getApellido(), "MyDrama");
 		assertEquals("Test",testPeliculaDTO.getTitulo());
 		assertEquals("Este es el inicio de un gran test",testPeliculaDTO.getSinopsis());
 		assertEquals("TestingDrama",testPeliculaDTO.getGenero());
@@ -110,7 +110,7 @@ public class DTOGenerationTest {
 				"TestingDrama", 10, 2019, "Benat",
 				"http://www.iliketoquote.com/save-the-drama-for-your-mama/", 10.0,
 				"Premio Cannes al mejor Drama", null,"Drama",
-				testActorDTO.getNombre() + " "+ testActorDTO.getApellido());
+				testActorDTO.getNombre() + " "+ testActorDTO.getApellido(), "MyDrama");
 
 		long currentTime = System.currentTimeMillis();
 		testComentarioDTO = new ComentarioDTO(testPeliculaDTO, testUsuarioDTO.getLogin(),
@@ -133,7 +133,7 @@ public class DTOGenerationTest {
 				"TestingDrama", 10, 2019, "Benat",
 				"http://www.iliketoquote.com/save-the-drama-for-your-mama/", 10.0,
 				"Premio Cannes al mejor Drama", null,"Drama",
-				testActorDTO.getNombre() + " "+ testActorDTO.getApellido());
+				testActorDTO.getNombre() + " "+ testActorDTO.getApellido(), "MyDrama");
 
 		testComentarioDTO = new ComentarioDTO(testPeliculaDTO, testUsuarioDTO.getLogin(),
 				"Es una gran pelicula de test!");
@@ -152,7 +152,7 @@ public class DTOGenerationTest {
 				"TestingDrama", 10, 2019, "Benat",
 				"http://www.iliketoquote.com/save-the-drama-for-your-mama/", 10.0,
 				"Premio Cannes al mejor Drama", null,"Drama",
-				testActorDTO.getNombre() + " "+ testActorDTO.getApellido());
+				testActorDTO.getNombre() + " "+ testActorDTO.getApellido(), "MyDrama");
 
 		testComentarioDTO = new ComentarioDTO(testPeliculaDTO, testUsuarioDTO.getLogin(),
 				"Es una gran pelicula de test!");

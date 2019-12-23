@@ -1,7 +1,6 @@
 package es.deusto.client.gui;
 
 import es.deusto.client.FestivalCineController;
-import es.deusto.server.FestivalCineManager;
 import es.deusto.server.data.UsuarioDTO;
 
 import javax.swing.*;
@@ -9,10 +8,7 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Logger;
-import java.util.logging.Level;
 
 public class Login extends JFrame {
 
@@ -20,7 +16,7 @@ public class Login extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField textField;
-	private JTextField textField2;
+	private JPasswordField passwordField;
 	private boolean flag = false;
 	private JFrame ventana;
 	
@@ -55,11 +51,10 @@ public class Login extends JFrame {
 		lblPwd.setBounds(50, 196, 101, 37);
 		contentPane.add(lblPwd);
 
-
-		textField2 = new JTextField();
-		textField2.setBounds(48, 232, 342, 26);
-		contentPane.add(textField2);
-		textField2.setColumns(10);
+		passwordField = new JPasswordField();
+		passwordField.setBounds(50, 232, 342, 26);
+		contentPane.add(passwordField);
+		passwordField.setColumns(10);
 		
 		JButton btnRegistrarse = new JButton("Entrar");
 		btnRegistrarse.setBounds(58, 269, 155, 29);
@@ -89,10 +84,10 @@ public class Login extends JFrame {
             	try
 				{
 					UsuarioDTO user = FestivalCineController.getInstance().getUser(textField.getText(),
-							textField2.getText());
+							passwordField.getText());
 					logger.info("Nombre de usuario encontrado: " + user.getLogin());
 					logger.info("Contrasena de usuario encontrado: " + user.getPassword());
-					flag = comprobarUsuario(user,textField.getText(),textField2.getText());
+					flag = comprobarUsuario(user,textField.getText(),passwordField.getText());
 					if (!flag)
 					{
 						JOptionPane.showMessageDialog(ventana, "No hay usuarios que concuerden con esas" +
@@ -118,7 +113,7 @@ public class Login extends JFrame {
 		else if ((usu.getLogin().compareTo(login)==0) && (usu.getPassword().compareTo(pwd)==0))
 		{
 			logger.info("Paso 1.");
-			menuTest m = new menuTest(usu);
+			Menu m = new Menu(usu);
 			logger.info("Paso 2.");
 			m.setVisible(true);
 			logger.info("Paso 3.");

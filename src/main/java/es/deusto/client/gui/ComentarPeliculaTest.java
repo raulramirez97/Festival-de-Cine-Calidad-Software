@@ -73,7 +73,7 @@ public class ComentarPeliculaTest extends JFrame {
                     FestivalCineController.getInstance().comentarPelicula(pelicula.getTitulo(), aux.getLogin(),
                             textField1.getText());
                     logger.info("La pelicula se ha comentado correctamente");
-                    informePeliculaTest m = new informePeliculaTest (pelicula,aux);
+                    InformePelicula m = new InformePelicula (pelicula,aux);
                     m.setVisible(true);
                     dispose();
                 }
@@ -92,7 +92,7 @@ public class ComentarPeliculaTest extends JFrame {
         button2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                informePeliculaTest m = new informePeliculaTest (pelicula,aux);
+                InformePelicula m = new InformePelicula (pelicula,aux);
                 m.setVisible(true);
                 dispose();
             }

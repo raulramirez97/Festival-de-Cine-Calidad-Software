@@ -1,7 +1,7 @@
 package es.deusto.client;
 
 import es.deusto.client.gui.MenuAnonimo;
-import es.deusto.client.gui.menuAnonimoTest;
+import es.deusto.client.gui.ProgressBar;
 import es.deusto.client.remote.ServiceLocator;
 import es.deusto.server.data.*;
 
@@ -17,7 +17,7 @@ import java.util.logging.Logger;
  * para la interfaz del cliente, y está conectado con el ServiceLocator, el cual toma la información de la parte
  * servidora de la aplicación.
  * @author Grupo RMBJ
- * @version 2.0
+ * @version 3.0
  * @since 1.0
  */
 public class FestivalCineController {
@@ -39,15 +39,29 @@ public class FestivalCineController {
 		rsl.setService(args);
 		client = ClientBuilder.newClient();
 		webTarget = client.target(String.format("http://%s:%s/rest/server", args[0], args[1]));
-		//MenuAnonimo frame = new MenuAnonimo();
-		//frame.setVisible(true);
-		menuAnonimoTest frame = new menuAnonimoTest();
-		frame.setVisible(true);
+		PeliculaList peliculaList = this.getPeliculaList();
+		int tam = peliculaList.getPeliculasDTO().size();
+		if (tam == 0) {
+			ProgressBar bar = new ProgressBar("Insertando los datos por primera vez," +
+					" espere un poco por favor...");
+			bar.setVisible(true);
+		}
+		else {
+			MenuAnonimo frame = new MenuAnonimo();
+			frame.setVisible(true);
+		}
 	}
-	//TODO: TODAS LAS COSAS PUESTAS A CONTINUACION EN ESTE METODO SE MANTIENEN PARA AYUDAR EN EL TESTEO Y DEBUG.
+
+	/**
+	 * Este método permite generar los datos de partida para que la aplicación pueda operar con algo. Además, cubre
+	 * una función importante, que es la de generar el usuario "admin", el cual es el único que puede crear más
+	 * películas y actores dentro del sistema.
+	 *
+	 * De este modo, este método es importante tanto para el debug de la aplicación como para el propio funcionamiento
+	 * de la misma.
+	 */
 	public void generateFixtures(){
 
-		// TODO: Pensar manera de meter primer usuario como admin.
 		logger.info("Generating Fixtures when beginning execution:");
 		logger.info("Register a user for the first time: admin");
 		FestivalCineController.getInstance().registerUser("admin", "admin");
@@ -68,6 +82,10 @@ public class FestivalCineController {
 
 		logger.info("Registering some peliculas:");
 		List<ActorDTO> randomActors = new ArrayList<ActorDTO>();
+		//TODO: Aqui interesa guardar solo el /src/main/resources/img, no más, porque el user.dir cambiará en cada PC.
+		//TODO: El user.dir es necesario para la carga de la imagen, pero no para la persistencia en la BD.
+		String store = "/src/main/resources/img";
+		//String store = System.getProperty("user.dir")+"/src/main/resources/img";
 
 		logger.info("Registering an actor for the first time: Nicholas Cage");
 		FestivalCineController.getInstance().registerActor("ID1", "Nicholas", "Cage", 50);
@@ -79,11 +97,9 @@ public class FestivalCineController {
 		randomActors.add(FestivalCineController.getInstance().getActorList().getActorsDTO().get(1));
 
 		FestivalCineController.getInstance().registerPelicula("Lo que el viento se llevo","Uno de los" +
-						" mayores clasicos de la historia", "drama",145, 1935,"Alguien",
-				"MIURL", "Muchos y variados","clasicos",randomActors);
-		FestivalCineController.getInstance().registerPelicula("Lo que el viento se llevo","Uno de los" +
-						" mayores clasicos de la historia", "drama",145, 1954,"Alguien",
-				"MIURL", "Muchos y variados","clasicos",randomActors);
+						" mayores clasicos de la historia", "drama",145, 1962,"Alguien",
+				"MIURL", "Muchos y variados","clasicos",randomActors,
+				store+"/loqueelvientosellevo.jpg");
 
 		randomActors.clear();
 
@@ -97,7 +113,8 @@ public class FestivalCineController {
 
 		FestivalCineController.getInstance().registerPelicula("El Rey Leon","Otro de los" +
 						" mayores clasicos de la historia", "drama",121, 1985,"Alguien",
-				"MIURL", "Muchos y variados","clasicos",randomActors);
+				"MIURL", "Muchos y variados","clasicos",randomActors,
+				store+"/elreyleon.jpg");
 
 		randomActors.clear();
 		randomActors.add(FestivalCineController.getInstance().getActorList().getActorsDTO().get(0));
@@ -106,7 +123,8 @@ public class FestivalCineController {
 
 		FestivalCineController.getInstance().registerPelicula("La Comedia","Otro de los" +
 						" mayores clasicos de la historia", "comedia",97, 2019,
-				"Yo mismo","MIURL", "Muchos y variados","novedades",randomActors);
+				"Yo mismo","MIURL", "Muchos y variados","novedades",randomActors,
+				store+"/lacomedia.jpg");
 		logger.info("Fixtures generated successfully.");
 
 	}
@@ -131,8 +149,9 @@ public class FestivalCineController {
 	}
 	public void registerPelicula(String titulo, String sinopsis, String genero, int duracion, int anyo,
 								 String director, String enlacetrailer, String premios, String seccion,
-								 List<ActorDTO> actores) {
-		rsl.registerPelicula(titulo,sinopsis,genero,duracion,anyo,director,enlacetrailer,premios, seccion, actores);
+								 List<ActorDTO> actores, String imagen) {
+		rsl.registerPelicula(titulo,sinopsis,genero,duracion,anyo,director,enlacetrailer,premios, seccion, actores,
+				imagen);
 	}
 	public PeliculaList getPeliculaList() {
 		return rsl.getPeliculaList();

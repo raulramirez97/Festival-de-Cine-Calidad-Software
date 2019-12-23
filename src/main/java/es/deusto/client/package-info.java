@@ -4,7 +4,7 @@
  * que están orquestados mediante el FestivalCineController. La ejecución del cliente mediante Maven comienza desde el
  * FestivalCineController.
  * @author Grupo RMBJ
- * @version 2.0
+ * @version 3.0
  * @since 1.0
  */
 package es.deusto.client;

@@ -35,12 +35,12 @@ import static org.mockito.Mockito.when;
  * porque si no Mockito lanzaba excepciones del tipo <b>org.mockito.exceptions.verification.TooManyActualInvocations
  * </b>.</p>
  * @author Grupo RMBJ
- * @version 2.0
+ * @version 3.0
  * @since 2.0
  */
 @RunWith(MockitoJUnitRunner.class)
 @PerfTest(invocations = 1)
-@Required(max = 1200, average = 350)
+@Required(max = 1200, average = 500)
 public class DAOMockPerfTest {
 
 	FestivalCineManager m;

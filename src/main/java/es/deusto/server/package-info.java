@@ -4,7 +4,7 @@
  * requeridos para que la aplicación funcione (Data), y un FestivalCineManager, quien aporta una API RESTful para que
  * la comunicación Cliente-Servidor se pueda ejecutar.
  * @author Grupo RMBJ
- * @version 2.0
+ * @version 3.0
  * @since 1.0
  */
 package es.deusto.server;
