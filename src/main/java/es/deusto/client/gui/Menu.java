@@ -61,6 +61,7 @@ public class Menu extends JFrame {
         Container contentPane = getContentPane();
         contentPane.setLayout(null);
 
+        String myPath = System.getProperty("user.dir");
         int tam = peliculaList.getPeliculasDTO().size();
         logger.info("Tamaño de películas disponibles obtenido: "+ tam);
 
@@ -98,9 +99,10 @@ public class Menu extends JFrame {
 
         if (tam > 0 ) {
             //---- label2 ----
-            label2.setText(peliculaList.getPeliculasDTO().get(0).getURIimagen());
-            contentPane.add(label2);
+            //label2.setText(peliculaList.getPeliculasDTO().get(0).getURIimagen());
             label2.setBounds(220, 215, 130, 90);
+            label2.setIcon(ResizeImage(myPath+peliculaList.getPeliculasDTO().get(0).getURIimagen(), label2));
+            contentPane.add(label2);
 
             //---- label6 ----
             label6.setText(peliculaList.getPeliculasDTO().get(0).getTitulo());
@@ -122,9 +124,10 @@ public class Menu extends JFrame {
 
             if (tam > 1) {
                 //---- label3 ----
-                label3.setText(peliculaList.getPeliculasDTO().get(1).getURIimagen());
-                contentPane.add(label3);
                 label3.setBounds(500, 215, 130, 90);
+                label3.setIcon(ResizeImage(myPath+peliculaList.getPeliculasDTO().get(1).getURIimagen(),
+                        label3));
+                contentPane.add(label3);
 
                 //---- label9 ----
                 label9.setText(peliculaList.getPeliculasDTO().get(1).getTitulo());
@@ -146,9 +149,10 @@ public class Menu extends JFrame {
 
                 if (tam > 2) {
                     //---- label4 ----
-                    label4.setText(peliculaList.getPeliculasDTO().get(2).getURIimagen());
-                    contentPane.add(label4);
                     label4.setBounds(215, 425, 130, 90);
+                    label4.setIcon(ResizeImage(myPath+peliculaList.getPeliculasDTO().get(2).getURIimagen(),
+                            label4));
+                    contentPane.add(label4);
 
                     //---- label7 ----
                     label7.setText(peliculaList.getPeliculasDTO().get(2).getTitulo());
@@ -170,9 +174,11 @@ public class Menu extends JFrame {
 
                     if (tam > 3) {
                         //---- label5 ----
-                        label5.setText(peliculaList.getPeliculasDTO().get(3).getURIimagen());
+                        //label5.setText(peliculaList.getPeliculasDTO().get(3).getURIimagen());
                         contentPane.add(label5);
                         label5.setBounds(500, 425, 130, 90);
+                        label5.setIcon(ResizeImage(myPath+peliculaList.getPeliculasDTO().get(3).
+                                getURIimagen(), label5));
 
                         //---- label8 ----
                         label8.setText(peliculaList.getPeliculasDTO().get(3).getTitulo());
@@ -446,4 +452,16 @@ public class Menu extends JFrame {
     private JLabel label11;
     private JFrame ventana;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
+
+    /**
+     * Método para redimensionar un ImageIcon al mismo tamaño que un JLabel.
+     */
+    public ImageIcon ResizeImage(String ImagePath, JLabel label)
+    {
+        ImageIcon MyImage = new ImageIcon(ImagePath);
+        Image img = MyImage.getImage();
+        Image newImg = img.getScaledInstance(label.getWidth(), label.getHeight(), Image.SCALE_SMOOTH);
+        ImageIcon image = new ImageIcon(newImg);
+        return image;
+    }
 }

@@ -296,7 +296,6 @@ public class CreacionPelicula extends JFrame {
                             " con comas que existan actualmente en el sistema.");
                 }
                 else {
-                    //TODO: Queda cambiar los métodos para que guarde la URI de la imagen (URIImage).
                     try {
                         FestivalCineController.getInstance().registerPelicula(textFieldNomPeli.getText(),
                                 textAreaSinopsisPeli.getText(), textFieldGenPeli.getText(),
@@ -340,7 +339,7 @@ public class CreacionPelicula extends JFrame {
                     try {
                         img = ImageIO.read(selectedFile);
                         ImageIO.write(img,"png",new File(store+"/"+selectedFile.getName()));
-                        URIImage = store+"/"+selectedFile.getName();
+                        URIImage = "/src/main/resources/img/"+selectedFile.getName();
                     } catch (IOException ex) {
                         JOptionPane.showMessageDialog(ventana, "Se ha seleeccionado un tipo de fichero" +
                                 " distinto a una imagen");
@@ -403,7 +402,9 @@ public class CreacionPelicula extends JFrame {
     private String URIImage;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 
-    // Methode to resize imageIcon with the same size of a Jlabel
+    /**
+     * Método para redimensionar un ImageIcon al mismo tamaño que un JLabel.
+     */
     public ImageIcon ResizeImage(String ImagePath)
     {
         ImageIcon MyImage = new ImageIcon(ImagePath);

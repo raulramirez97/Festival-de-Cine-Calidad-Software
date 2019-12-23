@@ -58,6 +58,11 @@ Para testear la aplicación, hay que ejecutar los siguientes comandos en dos ven
 Para entender mejor a qué va a tender esta aplicación, se ha generado un prototipo mediante Marvel App para poder 
 ilustrarlo. URL: https://marvelapp.com/d2h27dh/screen/63095209
 
+## Sobre las imágenes
+
+Solamente destacar que para que el cargado de imágenes sea óptimo en cualquier situación, es recomendble
+que los nombres de estas no tengan espacios intermedios, sino que sean del formato ```el_rey_leon.jpg```.
+
 ## 2. Testeo
 
 Otra parte fundamental que se ha querido trabajar en este proyecto han sido los tests. Se han hecho tests y mejoras

@@ -55,6 +55,8 @@ public class InformePeliculaAnonimo extends JFrame {
         ventana = this;
         //======== this ========
 
+        String myPath = System.getProperty("user.dir");
+
         setTitle("Informe: "+pelicula.getTitulo());
         Container contentPane = getContentPane();
         contentPane.setLayout(null);
@@ -174,10 +176,9 @@ public class InformePeliculaAnonimo extends JFrame {
         textArea2.setEditable(false);
 
         //---- label14 ----
-        label14.setText("<INSERTAR_IMAGEN_PELICULA>");
-        label14.setHorizontalAlignment(SwingConstants.CENTER);
-        contentPane.add(label14);
         label14.setBounds(580, 165, 270, 160);
+        label14.setIcon(ResizeImage(myPath+pelicula.getURIimagen(), label14));
+        contentPane.add(label14);
 
         //---- button3 ----
         button3.setText("Vuelve al Men\u00fa Principal");
@@ -274,4 +275,16 @@ public class InformePeliculaAnonimo extends JFrame {
     private JLabel label18;
     private JFrame ventana;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
+
+    /**
+     * Método para redimensionar un ImageIcon al mismo tamaño que un JLabel.
+     */
+    public ImageIcon ResizeImage(String ImagePath, JLabel label)
+    {
+        ImageIcon MyImage = new ImageIcon(ImagePath);
+        Image img = MyImage.getImage();
+        Image newImg = img.getScaledInstance(label.getWidth(), label.getHeight(), Image.SCALE_SMOOTH);
+        ImageIcon image = new ImageIcon(newImg);
+        return image;
+    }
 }
