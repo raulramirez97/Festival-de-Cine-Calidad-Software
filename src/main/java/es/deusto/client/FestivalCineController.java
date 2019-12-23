@@ -1,6 +1,7 @@
 package es.deusto.client;
 
 import es.deusto.client.gui.MenuAnonimo;
+import es.deusto.client.gui.ProgressBar;
 import es.deusto.client.remote.ServiceLocator;
 import es.deusto.server.data.*;
 
@@ -38,8 +39,17 @@ public class FestivalCineController {
 		rsl.setService(args);
 		client = ClientBuilder.newClient();
 		webTarget = client.target(String.format("http://%s:%s/rest/server", args[0], args[1]));
-		MenuAnonimo frame = new MenuAnonimo();
-		frame.setVisible(true);
+		PeliculaList peliculaList = this.getPeliculaList();
+		int tam = peliculaList.getPeliculasDTO().size();
+		if (tam == 0) {
+			ProgressBar bar = new ProgressBar("Insertando los datos por primera vez," +
+					" espere un poco por favor...");
+			bar.setVisible(true);
+		}
+		else {
+			MenuAnonimo frame = new MenuAnonimo();
+			frame.setVisible(true);
+		}
 	}
 
 	/**

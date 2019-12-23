@@ -92,10 +92,9 @@ public class Menu extends JFrame {
         label10.setBounds(750, 110, 155, 20);
 
         //---- label11 ----
-        label11.setText("<ICONO_USUARIO>");
-        label11.setHorizontalAlignment(SwingConstants.CENTER);
-        contentPane.add(label11);
         label11.setBounds(770, 50, 120, 55);
+        label11.setIcon(ResizeImage(myPath+"/src/main/resources/img/avataricon.jpg", label11));
+        contentPane.add(label11);
 
         if (tam > 0 ) {
             //---- label2 ----
