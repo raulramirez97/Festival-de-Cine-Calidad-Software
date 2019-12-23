@@ -77,7 +77,7 @@ public class MenuAnonimo extends JFrame {
 
         if (tam > 0 ) {
             //---- label2 ----
-            label2.setText("<INSERTAR_IMAGEN_1>");
+            label2.setText(peliculaList.getPeliculasDTO().get(0).getURIimagen());
             contentPane.add(label2);
             label2.setBounds(220, 215, 130, 90);
 
@@ -101,7 +101,7 @@ public class MenuAnonimo extends JFrame {
 
             if (tam > 1) {
                 //---- label3 ----
-                label3.setText("<INSERTAR_IMAGEN_2>");
+                label3.setText(peliculaList.getPeliculasDTO().get(1).getURIimagen());
                 contentPane.add(label3);
                 label3.setBounds(500, 215, 130, 90);
 
@@ -125,7 +125,7 @@ public class MenuAnonimo extends JFrame {
 
                 if (tam > 2) {
                     //---- label4 ----
-                    label4.setText("<INSERTAR_IMAGEN_3>");
+                    label4.setText(peliculaList.getPeliculasDTO().get(2).getURIimagen());
                     contentPane.add(label4);
                     label4.setBounds(215, 425, 130, 90);
 
@@ -149,7 +149,7 @@ public class MenuAnonimo extends JFrame {
 
                     if (tam > 3) {
                         //---- label5 ----
-                        label5.setText("<INSERTAR_IMAGEN_4>");
+                        label5.setText(peliculaList.getPeliculasDTO().get(3).getURIimagen());
                         contentPane.add(label5);
                         label5.setBounds(500, 425, 130, 90);
 

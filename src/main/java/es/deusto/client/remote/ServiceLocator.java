@@ -124,7 +124,7 @@ public class ServiceLocator {
 
 	public void registerPelicula(String titulo, String sinopsis, String genero, int duracion, int anyo,
 								 String director, String enlacetrailer, String premios, String seccion,
-								 List<ActorDTO> actores) {
+								 List<ActorDTO> actores, String imagen) {
 		WebTarget registerUserWebTarget = webTargetService.path("registerPelicula");
 		Invocation.Builder invocationBuilder = registerUserWebTarget.request(MediaType.APPLICATION_JSON);
 		StringBuilder strActores = new StringBuilder();
@@ -132,7 +132,7 @@ public class ServiceLocator {
 			strActores.append(aux.getNombre() + " " + aux.getApellido() + ", ");
 		}
 		PeliculaDTO peliculaDTO = new PeliculaDTO(titulo, sinopsis, genero, duracion, anyo, director, enlacetrailer,
-				0, premios,null, seccion, strActores.toString());
+				0, premios,null, seccion, strActores.toString(), imagen);
 
 		logger.info("Enviando pelicula: " + peliculaDTO.getTitulo());
 		Response response = invocationBuilder.post(Entity.entity(peliculaDTO, MediaType.APPLICATION_JSON));

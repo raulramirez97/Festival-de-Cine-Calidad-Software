@@ -241,7 +241,7 @@ public class FestivalCineManager {
 					peliculaDTOData.getDirector(), peliculaDTOData.getEnlaceTrailer(),
 					peliculaDTOData.getValoracionMedia(), peliculaDTOData.getPremios(),
 					peliculaDTOData.getComentarios(), peliculaDTOData.getSeccionFestival(),
-					peliculaDTOData.getActores());
+					peliculaDTOData.getActores(), peliculaDTOData.getURIimagen());
 			dao.storePelicula(peliculaDTO);
 			logger.info("Pelicula created: " + peliculaDTOData.getTitulo());
 		}

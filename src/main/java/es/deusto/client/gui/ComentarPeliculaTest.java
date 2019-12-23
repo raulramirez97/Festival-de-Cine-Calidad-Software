@@ -28,6 +28,7 @@ public class ComentarPeliculaTest extends JFrame {
     private void initComponents(UsuarioDTO aux, PeliculaDTO pelicula) {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         // Generated using JFormDesigner Evaluation license - Beñat
+        ventana = this;
         label1 = new JLabel();
         label2 = new JLabel();
         label3 = new JLabel();
@@ -36,7 +37,7 @@ public class ComentarPeliculaTest extends JFrame {
         button2 = new JButton();
 
         //======== this ========
-        setTitle("Comentar Pelicula: <NOMBRE_PELICULA>");
+        setTitle("Comentar Pelicula: "+pelicula.getTitulo());
         Container contentPane = getContentPane();
         contentPane.setLayout(null);
 
@@ -48,7 +49,7 @@ public class ComentarPeliculaTest extends JFrame {
         label1.setBounds(390, 45, 200, 50);
 
         //---- label2 ----
-        label2.setText("Comentario - <NOMBRE_PELICULA>");
+        label2.setText("Comentario - "+pelicula.getTitulo());
         label2.setHorizontalAlignment(SwingConstants.CENTER);
         label2.setFont(label2.getFont().deriveFont(label2.getFont().getSize() + 10f));
         contentPane.add(label2);
@@ -65,11 +66,37 @@ public class ComentarPeliculaTest extends JFrame {
         button1.setText("Comentar");
         contentPane.add(button1);
         button1.setBounds(270, 525, 165, 65);
+        button1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    FestivalCineController.getInstance().comentarPelicula(pelicula.getTitulo(), aux.getLogin(),
+                            textField1.getText());
+                    logger.info("La pelicula se ha comentado correctamente");
+                    InformePelicula m = new InformePelicula (pelicula,aux);
+                    m.setVisible(true);
+                    dispose();
+                }
+                //NO LLEGA AQUI LA EXCEPCION CON LAS PETICIONES REST...
+                catch (NullPointerException exc) {
+                    JOptionPane.showMessageDialog(ventana, "La pelicula que se ha querido comentar no está " +
+                            "entre las peliculas disponibles.");
+                }
+            }
+        });
 
         //---- button2 ----
         button2.setText("Volver");
         contentPane.add(button2);
         button2.setBounds(550, 525, 165, 65);
+        button2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                InformePelicula m = new InformePelicula (pelicula,aux);
+                m.setVisible(true);
+                dispose();
+            }
+        });
 
         {
             // compute preferred size
@@ -98,5 +125,6 @@ public class ComentarPeliculaTest extends JFrame {
     private JTextField textField1;
     private JButton button1;
     private JButton button2;
+    private JFrame ventana;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

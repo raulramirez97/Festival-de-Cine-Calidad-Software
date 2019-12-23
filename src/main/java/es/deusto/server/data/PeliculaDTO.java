@@ -48,9 +48,15 @@ public class PeliculaDTO implements Serializable {
 	 */
 	private String elenco = "";
 
+	/**
+	 * Representa la ruta en la que se encuentra la imagen de la pelicula a la que se quiere hacer referencia. Por
+	 * ello, es importante tener la carpeta java/resources/img con los carteles de las películas preparados.
+	 */
+	private String URIimagen = "";
+
 	public PeliculaDTO(String titulo, String sinopsis, String genero, int duracion, int anyo,
                        String director, String enlaceTrailer, double valoracionMedia, String premios,
-                       List<ComentarioDTO> comentarios, String seccion, String actores) {
+                       List<ComentarioDTO> comentarios, String seccion, String actores, String URIimagen) {
 
 		this.titulo = titulo;
 		this.sinopsis = sinopsis;
@@ -65,6 +71,7 @@ public class PeliculaDTO implements Serializable {
 		this.seccionFestival = seccion;
 		this.comentarios = comentarios;
 		this.elenco = actores;
+		this.URIimagen = URIimagen;
 	}
 
 	public String getTitulo() {
@@ -147,6 +154,12 @@ public class PeliculaDTO implements Serializable {
 	}
 	public void setActores(String actores) {
 		this.elenco = actores;
+	}
+	public String getURIimagen() {
+		return URIimagen;
+	}
+	public void setURIimagen(String URIimagen) {
+		this.URIimagen = URIimagen;
 	}
 
 	/**

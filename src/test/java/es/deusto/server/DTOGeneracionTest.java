@@ -76,7 +76,7 @@ public class DTOGeneracionTest {
 				"TestingDrama", 10, 2019, "Benat",
 				"http://www.iliketoquote.com/save-the-drama-for-your-mama/", 10.0,
 				"Premio Cannes al mejor Drama", null,"Drama",
-				testActorDTO.getNombre() + " "+ testActorDTO.getApellido());
+				testActorDTO.getNombre() + " "+ testActorDTO.getApellido(), "MyDrama");
 		assertEquals("Test",testPeliculaDTO.getTitulo());
 		assertEquals("Este es el inicio de un gran test",testPeliculaDTO.getSinopsis());
 		assertEquals("TestingDrama",testPeliculaDTO.getGenero());
@@ -110,7 +110,7 @@ public class DTOGeneracionTest {
 				"TestingDrama", 10, 2019, "Benat",
 				"http://www.iliketoquote.com/save-the-drama-for-your-mama/", 10.0,
 				"Premio Cannes al mejor Drama", null,"Drama",
-				testActorDTO.getNombre() + " "+ testActorDTO.getApellido());
+				testActorDTO.getNombre() + " "+ testActorDTO.getApellido(), "MyDrama");
 
 		long currentTime = System.currentTimeMillis();
 		testComentarioDTO = new ComentarioDTO(testPeliculaDTO, testUsuarioDTO.getLogin(),
@@ -133,7 +133,7 @@ public class DTOGeneracionTest {
 				"TestingDrama", 10, 2019, "Benat",
 				"http://www.iliketoquote.com/save-the-drama-for-your-mama/", 10.0,
 				"Premio Cannes al mejor Drama", null,"Drama",
-				testActorDTO.getNombre() + " "+ testActorDTO.getApellido());
+				testActorDTO.getNombre() + " "+ testActorDTO.getApellido(), "MyDrama");
 
 		testComentarioDTO = new ComentarioDTO(testPeliculaDTO, testUsuarioDTO.getLogin(),
 				"Es una gran pelicula de test!");
@@ -152,7 +152,7 @@ public class DTOGeneracionTest {
 				"TestingDrama", 10, 2019, "Benat",
 				"http://www.iliketoquote.com/save-the-drama-for-your-mama/", 10.0,
 				"Premio Cannes al mejor Drama", null,"Drama",
-				testActorDTO.getNombre() + " "+ testActorDTO.getApellido());
+				testActorDTO.getNombre() + " "+ testActorDTO.getApellido(), "MyDrama");
 
 		testComentarioDTO = new ComentarioDTO(testPeliculaDTO, testUsuarioDTO.getLogin(),
 				"Es una gran pelicula de test!");

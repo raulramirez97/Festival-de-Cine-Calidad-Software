@@ -303,7 +303,7 @@ public class CreacionPelicula extends JFrame {
                                 Integer.parseInt(textFieldDurPeli.getText()),
                                 Integer.parseInt(textFieldAnyoPeli.getText()),
                                 textFieldDirPeli.getText(),textFieldURLTrailer.getText(),
-                                textAreaPremiosPeli.getText(), "novedades", selectedActors);
+                                textAreaPremiosPeli.getText(), "novedades", selectedActors, URIImage);
                         logger.info("Pelicula generated successfully by the admin.");
                         Menu m = new Menu(aux);
                         m.setVisible(true);
@@ -342,12 +342,14 @@ public class CreacionPelicula extends JFrame {
                         ImageIO.write(img,"png",new File(store+"/"+selectedFile.getName()));
                         URIImage = store+"/"+selectedFile.getName();
                     } catch (IOException ex) {
-                        ex.printStackTrace();
+                        JOptionPane.showMessageDialog(ventana, "Se ha seleeccionado un tipo de fichero" +
+                                " distinto a una imagen");
+                        logger.info("Se ha seleeccionado un tipo de fichero distinto a una imagen.");
                     }
                 }
                 //if the user click on cancel in Jfilechooser
                 else if(result == JFileChooser.CANCEL_OPTION){
-                    System.out.println("No File Selected");
+                    logger.info("No se ha seleccionado ninguna imagen");
                 }
             }
         });
