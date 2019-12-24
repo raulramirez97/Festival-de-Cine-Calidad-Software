@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ProgressBar.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Festival_Cine</a> &gt; <a href="index.source.html" class="el_package">es.deusto.client.gui</a> &gt; <span class="el_source">ProgressBar.java</span></div><h1>ProgressBar.java</h1><pre class="source lang-java linenums">package es.deusto.client.gui;
+
+import javax.swing.*;
+import java.awt.*;
+import java.util.Random;
+
+public class ProgressBar extends JFrame {
+
+<span class="nc" id="L9">    MiRunnable miHilo = null;</span>
+    JProgressBar progressBar;
+    int v1;
+    int v2;
+    int v3;
+    int v4;
+    int v5;
+
+    int e1;
+    int e2;
+    int e3;
+    int e4;
+    int e5;
+
+<span class="nc" id="L23">    public ProgressBar(String titulo) {</span>
+
+<span class="nc" id="L25">        setBounds(450, 300, 400, 140);</span>
+<span class="nc" id="L26">        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);</span>
+<span class="nc" id="L27">        getContentPane().setLayout(null);</span>
+
+<span class="nc" id="L29">        setTitle(titulo);</span>
+<span class="nc" id="L30">        progressBar = new JProgressBar();</span>
+<span class="nc" id="L31">        progressBar.setBounds(50, 30, 300, 35);</span>
+<span class="nc" id="L32">        getContentPane().add(progressBar);</span>
+
+<span class="nc" id="L34">        Random rnd_v=new Random();</span>
+<span class="nc" id="L35">        v1=rnd_v.nextInt(100);</span>
+<span class="nc" id="L36">        v2=rnd_v.nextInt(100);</span>
+<span class="nc" id="L37">        v3=rnd_v.nextInt(100);</span>
+<span class="nc" id="L38">        v4=rnd_v.nextInt(100);</span>
+<span class="nc" id="L39">        v5=rnd_v.nextInt(100);</span>
+
+<span class="nc" id="L41">        e1=rnd_v.nextInt(4000);</span>
+<span class="nc" id="L42">        e2=rnd_v.nextInt(4000);</span>
+<span class="nc" id="L43">        e3=rnd_v.nextInt(4000);</span>
+<span class="nc" id="L44">        e4=rnd_v.nextInt(4000);</span>
+<span class="nc" id="L45">        e5=rnd_v.nextInt(4000);</span>
+
+<span class="nc" id="L47">        progressBar.setBackground(Color.black);</span>
+<span class="nc" id="L48">        progressBar.setForeground(Color.blue);</span>
+
+<span class="nc" id="L50">        miHilo = new MiRunnable();</span>
+<span class="nc" id="L51">        Thread nuevoHilo = new Thread(miHilo );</span>
+<span class="nc" id="L52">        nuevoHilo.start();</span>
+<span class="nc" id="L53">    }</span>
+    public void cerrar()
+    {
+<span class="nc" id="L56">        this.dispose();</span>
+<span class="nc" id="L57">        MenuAnonimo frame = new MenuAnonimo();</span>
+<span class="nc" id="L58">        frame.setVisible(true);</span>
+<span class="nc" id="L59">    }</span>
+
+<span class="nc" id="L61">    class MiRunnable implements Runnable {</span>
+<span class="nc" id="L62">        boolean sigo = true;</span>
+        @Override
+        public void run() {
+<span class="nc bnc" id="L65" title="All 2 branches missed.">            while (sigo) {</span>
+
+<span class="nc bnc" id="L67" title="All 2 branches missed.">                for(int i=0;i&lt;=100;i++)</span>
+                {
+<span class="nc" id="L69">                    progressBar.setStringPainted(true);</span>
+<span class="nc" id="L70">                    progressBar.setString(i + &quot;%&quot;);</span>
+<span class="nc" id="L71">                    progressBar.setValue(i);</span>
+
+<span class="nc bnc" id="L73" title="All 2 branches missed.">                    if(i==v1)</span>
+<span class="nc" id="L74">                        try { Thread.sleep(e1); } catch (InterruptedException e1) { e1.printStackTrace(); }</span>
+<span class="nc bnc" id="L75" title="All 2 branches missed.">                    if(i==v2)</span>
+<span class="nc" id="L76">                        try { Thread.sleep(e2); } catch (InterruptedException e1) { e1.printStackTrace(); }</span>
+<span class="nc bnc" id="L77" title="All 2 branches missed.">                    if(i==v3)</span>
+<span class="nc" id="L78">                        try { Thread.sleep(e3); } catch (InterruptedException e1) { e1.printStackTrace(); }</span>
+<span class="nc bnc" id="L79" title="All 2 branches missed.">                    if(i==v4)</span>
+<span class="nc" id="L80">                        try { Thread.sleep(e4); } catch (InterruptedException e1) { e1.printStackTrace(); }</span>
+<span class="nc bnc" id="L81" title="All 2 branches missed.">                    if(i==v5)</span>
+<span class="nc" id="L82">                        try { Thread.sleep(e5); } catch (InterruptedException e1) { e1.printStackTrace(); }</span>
+<span class="nc" id="L83">                    try { Thread.sleep(15); } catch (InterruptedException e) { e.printStackTrace(); }</span>
+                }
+<span class="nc" id="L85">                sigo=false;</span>
+<span class="nc" id="L86">                cerrar();</span>
+            }
+<span class="nc" id="L88">        }</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>

@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ResultadoFiltrados.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Festival_Cine</a> &gt; <a href="index.source.html" class="el_package">es.deusto.client.gui</a> &gt; <span class="el_source">ResultadoFiltrados.java</span></div><h1>ResultadoFiltrados.java</h1><pre class="source lang-java linenums">package es.deusto.client.gui;
+
+import es.deusto.server.data.UsuarioDTO;
+import es.deusto.client.FestivalCineController;
+import es.deusto.server.data.PeliculaList;
+import es.deusto.server.data.PeliculaDTO;
+
+
+import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.logging.Logger;
+
+//TODO: Esto debería cambiarse por una ventana medio bien hecha que muestre la información como en el prototipo.
+//TODO: Es decir: https://marvelapp.com/d2h27dh/screen/63129721
+public class ResultadoFiltrados extends JFrame {
+
+<span class="nc" id="L20">    static Logger logger = Logger.getLogger(ResultadoFiltrados.class.getName());</span>
+
+<span class="nc" id="L22">    public ResultadoFiltrados(PeliculaList pelicula) {</span>
+<span class="nc" id="L23">        initComponents(pelicula);</span>
+<span class="nc" id="L24">    }</span>
+
+    private void initComponents(PeliculaList pelicula) {
+
+   /* private static final long serialVersionUID = 1L;
+    private JPanel contentPane;
+    private JTextField textField;
+    private JTextField textField2;
+    private JComboBox listafiltros;
+    private JComboBox criterios;
+    private boolean flag = false;
+    private JFrame ventana;*/
+
+        // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
+        // Generated using JFormDesigner Evaluation license - Beñat
+<span class="nc" id="L39">        label1 = new JLabel();</span>
+<span class="nc" id="L40">        label2 = new JLabel();</span>
+<span class="nc" id="L41">        label3 = new JLabel();</span>
+<span class="nc" id="L42">        label4 = new JLabel();</span>
+<span class="nc" id="L43">        label5 = new JLabel();</span>
+<span class="nc" id="L44">        label6 = new JLabel();</span>
+<span class="nc" id="L45">        label7 = new JLabel();</span>
+<span class="nc" id="L46">        label8 = new JLabel();</span>
+<span class="nc" id="L47">        label9 = new JLabel();</span>
+<span class="nc" id="L48">        label10 = new JLabel();</span>
+<span class="nc" id="L49">        label11 = new JLabel();</span>
+<span class="nc" id="L50">        label12 = new JLabel();</span>
+<span class="nc" id="L51">        label13 = new JLabel();</span>
+<span class="nc" id="L52">        label16 = new JLabel();</span>
+<span class="nc" id="L53">        label17 = new JLabel();</span>
+<span class="nc" id="L54">        scrollPane1 = new JScrollPane();</span>
+<span class="nc" id="L55">        textArea1 = new JTextArea();</span>
+<span class="nc" id="L56">        textArea2 = new JTextArea();</span>
+<span class="nc" id="L57">        label14 = new JLabel();</span>
+<span class="nc" id="L58">        button3 = new JButton();</span>
+<span class="nc" id="L59">        button4 = new JButton();</span>
+<span class="nc" id="L60">        label15 = new JLabel();</span>
+<span class="nc" id="L61">        label18 = new JLabel();</span>
+
+<span class="nc" id="L63">        ventana = this;</span>
+
+        //this//
+
+<span class="nc" id="L67">        String myPath = System.getProperty(&quot;user.dir&quot;);</span>
+
+        // setTitle(&quot;Películas filtradas: &quot;+pelicula.getTitulo());
+<span class="nc" id="L70">        setTitle(&quot;Películas filtradas: &quot;);</span>
+<span class="nc" id="L71">        Container contentPane = getContentPane();</span>
+<span class="nc" id="L72">        contentPane.setLayout(null);</span>
+
+
+       /* setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setBounds(100, 100, 452, 367);
+        contentPane = new JPanel();
+        contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+        setContentPane(contentPane);
+        contentPane.setLayout(null);
+        getContentPane().setBackground(Color.white);
+        setTitle(&quot;Películas filtradas&quot;);*/
+
+        //---- label1 ----
+<span class="nc" id="L85">        label1.setText(&quot;Festival Cine&quot;);</span>
+<span class="nc" id="L86">        label1.setFont(label1.getFont().deriveFont(label1.getFont().getSize() + 18f));</span>
+<span class="nc" id="L87">        label1.setHorizontalAlignment(SwingConstants.CENTER);</span>
+<span class="nc" id="L88">        contentPane.add(label1);</span>
+<span class="nc" id="L89">        label1.setBounds(290, 95, 275, 30);</span>
+
+       /* btnPeliculas.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //TODO: POR EL MOMENTO ENSENADOS POR CONSOLA. POSTERIORMENTE SE APLICARA GUI (FILTRADOS.JAVA).
+//                PeliculaList peliculaList = FestivalCineController.getInstance().getFilteredPeliculaList((String)(listafiltros.getSelectedItem()));
+//                for (PeliculaDTO aux : peliculaList.getPeliculasDTO()) {
+//                    System.out.println(aux.toString());
+//                }
+//                Menu m = new Menu(aux);
+//                m.setVisible(true);
+//                dispose();
+//            	Filtrados filtrados = new Filtrados(aux);
+//            	filtrados.setVisible(true);
+//            	dispose();
+
+                *//*PeliculaList peliculaList = FestivalCineController.getInstance().getFilteredPeliculaList((String)(listafiltros.getSelectedItem()),(String)(criterios.getSelectedItem()));
+                for (PeliculaDTO aux : peliculaList.getPeliculasDTO()) {
+                    System.out.println(aux.toString());
+                }
+                Menu m = new Menu(aux);
+                m.setVisible(true);
+                dispose();*//*
+            	//Filtrados filtrados = new Filtrados(aux);
+            	//filtrados.setVisible(true);
+           //	dispose();
+            }
+        });*/
+        {
+            // compute preferred size
+<span class="nc" id="L120">            Dimension preferredSize = new Dimension();</span>
+<span class="nc bnc" id="L121" title="All 2 branches missed.">            for(int i = 0; i &lt; contentPane.getComponentCount(); i++) {</span>
+<span class="nc" id="L122">                Rectangle bounds = contentPane.getComponent(i).getBounds();</span>
+<span class="nc" id="L123">                preferredSize.width = Math.max(bounds.x + bounds.width, preferredSize.width);</span>
+<span class="nc" id="L124">                preferredSize.height = Math.max(bounds.y + bounds.height, preferredSize.height);</span>
+            }
+<span class="nc" id="L126">            Insets insets = contentPane.getInsets();</span>
+<span class="nc" id="L127">            preferredSize.width += insets.right;</span>
+<span class="nc" id="L128">            preferredSize.height += insets.bottom;</span>
+<span class="nc" id="L129">            contentPane.setMinimumSize(preferredSize);</span>
+<span class="nc" id="L130">            contentPane.setPreferredSize(preferredSize);</span>
+        }
+<span class="nc" id="L132">        pack();</span>
+<span class="nc" id="L133">        setLocationRelativeTo(getOwner());</span>
+        // JFormDesigner - End of component initialization  //GEN-END:initComponents
+<span class="nc" id="L135">    }</span>
+
+    // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
+    // Generated using JFormDesigner Evaluation license - Beñat
+    private JLabel label1;
+    private JLabel label2;
+    private JLabel label3;
+    private JLabel label4;
+    private JLabel label5;
+    private JLabel label6;
+    private JLabel label7;
+    private JLabel label8;
+    private JLabel label9;
+    private JLabel label10;
+    private JLabel label11;
+    private JLabel label12;
+    private JLabel label13;
+    private JLabel label16;
+    private JLabel label17;
+    private JScrollPane scrollPane1;
+    private JTextArea textArea1;
+    private JTextArea textArea2;
+    private JLabel label14;
+    private JButton button3;
+    private JButton button4;
+    private JLabel label15;
+    private JLabel label18;
+    private JFrame ventana;
+    // JFormDesigner - End of variables declaration  //GEN-END:variables
+
+    /**
+     * Método para redimensionar un ImageIcon al mismo tamaño que un JLabel.
+     */
+    public ImageIcon ResizeImage(String ImagePath, JLabel label)
+    {
+<span class="nc" id="L170">        ImageIcon MyImage = new ImageIcon(ImagePath);</span>
+<span class="nc" id="L171">        Image img = MyImage.getImage();</span>
+<span class="nc" id="L172">        Image newImg = img.getScaledInstance(label.getWidth(), label.getHeight(), Image.SCALE_SMOOTH);</span>
+<span class="nc" id="L173">        ImageIcon image = new ImageIcon(newImg);</span>
+<span class="nc" id="L174">        return image;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>

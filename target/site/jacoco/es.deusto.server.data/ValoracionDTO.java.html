@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ValoracionDTO.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Festival_Cine</a> &gt; <a href="index.source.html" class="el_package">es.deusto.server.data</a> &gt; <span class="el_source">ValoracionDTO.java</span></div><h1>ValoracionDTO.java</h1><pre class="source lang-java linenums">package es.deusto.server.data;
+
+import javax.jdo.annotations.PersistenceCapable;
+import javax.jdo.annotations.PrimaryKey;
+import java.io.Serializable;
+
+@PersistenceCapable(detachable = &quot;true&quot;)
+public class ValoracionDTO implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * El id inicial es 1, y se va autoincrementando en la ejecución del programa.
+	 */
+<span class="fc" id="L15">	@PrimaryKey</span>
+	int id = 1;
+<span class="fc" id="L17">	String titulo = null;</span>
+<span class="fc" id="L18">	double valoracion = 0;</span>
+
+<span class="fc" id="L20">	public ValoracionDTO() {}</span>
+
+<span class="fc" id="L22">	public ValoracionDTO(String titulo, double valoracion) {</span>
+<span class="fc" id="L23">		this.titulo = titulo;</span>
+<span class="fc" id="L24">		this.valoracion = valoracion;</span>
+<span class="fc" id="L25">	}</span>
+
+<span class="fc" id="L27">	public ValoracionDTO(int id, String titulo, double valoracion) {</span>
+<span class="fc" id="L28">		this.id = id;</span>
+<span class="fc" id="L29">		this.titulo = titulo;</span>
+<span class="fc" id="L30">		this.valoracion = valoracion;</span>
+<span class="fc" id="L31">	}</span>
+	public int getId() {
+<span class="fc" id="L33">		return this.id;</span>
+	}
+
+	public void setId(int id) {
+<span class="nc" id="L37">		this.id = id;</span>
+<span class="nc" id="L38">	}</span>
+
+	public double getValoracion() {
+<span class="fc" id="L41">		return this.valoracion;</span>
+	}
+
+	public void setValoracion(double valoracion) {
+<span class="nc" id="L45">		this.valoracion = valoracion;</span>
+<span class="nc" id="L46">	}</span>
+
+	public String getTitulo() {
+<span class="fc" id="L49">		return this.titulo;</span>
+	}
+
+	public void setTitulo(String titulo) {
+<span class="nc" id="L53">		this.titulo = titulo;</span>
+<span class="nc" id="L54">	}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>

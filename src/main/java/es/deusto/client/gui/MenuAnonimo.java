@@ -345,6 +345,12 @@ public class MenuAnonimo extends JFrame {
                         //Menu m = new Menu(aux);
                         //m.setVisible(true);
                         //dispose();
+
+                        ResultadoFiltrados m = new ResultadoFiltrados(peliculaList);
+
+                        m.setVisible(true);
+                        dispose();
+
                     }
                     catch (NumberFormatException e1){
                         JOptionPane.showMessageDialog(ventana, "¡No has insertado un valor numérico correcto!",

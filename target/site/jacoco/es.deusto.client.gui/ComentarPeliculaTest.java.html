@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ComentarPeliculaTest.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Festival_Cine</a> &gt; <a href="index.source.html" class="el_package">es.deusto.client.gui</a> &gt; <span class="el_source">ComentarPeliculaTest.java</span></div><h1>ComentarPeliculaTest.java</h1><pre class="source lang-java linenums">/*
+ * Created by JFormDesigner on Fri Dec 06 15:27:37 CET 2019
+ */
+
+package es.deusto.client.gui;
+
+import es.deusto.client.FestivalCineController;
+import es.deusto.server.data.PeliculaDTO;
+import es.deusto.server.data.UsuarioDTO;
+
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.logging.Logger;
+import javax.swing.*;
+
+/**
+ * @author Beñat
+ */
+public class ComentarPeliculaTest extends JFrame {
+
+<span class="nc" id="L22">    static Logger logger = Logger.getLogger(ComentarPeliculaTest.class.getName());</span>
+
+<span class="nc" id="L24">    public ComentarPeliculaTest(UsuarioDTO aux, PeliculaDTO pelicula) {</span>
+<span class="nc" id="L25">        initComponents(aux, pelicula);</span>
+<span class="nc" id="L26">    }</span>
+
+    private void initComponents(UsuarioDTO aux, PeliculaDTO pelicula) {
+        // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
+        // Generated using JFormDesigner Evaluation license - Beñat
+<span class="nc" id="L31">        ventana = this;</span>
+<span class="nc" id="L32">        label1 = new JLabel();</span>
+<span class="nc" id="L33">        label2 = new JLabel();</span>
+<span class="nc" id="L34">        label3 = new JLabel();</span>
+<span class="nc" id="L35">        textField1 = new JTextField();</span>
+<span class="nc" id="L36">        button1 = new JButton();</span>
+<span class="nc" id="L37">        button2 = new JButton();</span>
+
+        //======== this ========
+<span class="nc" id="L40">        setTitle(&quot;Comentar Pelicula: &quot;+pelicula.getTitulo());</span>
+<span class="nc" id="L41">        Container contentPane = getContentPane();</span>
+<span class="nc" id="L42">        contentPane.setLayout(null);</span>
+
+        //---- label1 ----
+<span class="nc" id="L45">        label1.setText(&quot;Festival de Cine&quot;);</span>
+<span class="nc" id="L46">        label1.setFont(label1.getFont().deriveFont(label1.getFont().getSize() + 12f));</span>
+<span class="nc" id="L47">        label1.setHorizontalAlignment(SwingConstants.CENTER);</span>
+<span class="nc" id="L48">        contentPane.add(label1);</span>
+<span class="nc" id="L49">        label1.setBounds(390, 45, 200, 50);</span>
+
+        //---- label2 ----
+<span class="nc" id="L52">        label2.setText(&quot;Comentario - &quot;+pelicula.getTitulo());</span>
+<span class="nc" id="L53">        label2.setHorizontalAlignment(SwingConstants.CENTER);</span>
+<span class="nc" id="L54">        label2.setFont(label2.getFont().deriveFont(label2.getFont().getSize() + 10f));</span>
+<span class="nc" id="L55">        contentPane.add(label2);</span>
+<span class="nc" id="L56">        label2.setBounds(235, 145, 510, 65);</span>
+
+        //---- label3 ----
+<span class="nc" id="L59">        label3.setText(&quot;Tu comentario:&quot;);</span>
+<span class="nc" id="L60">        contentPane.add(label3);</span>
+<span class="nc" id="L61">        label3.setBounds(100, 240, 215, 20);</span>
+<span class="nc" id="L62">        contentPane.add(textField1);</span>
+<span class="nc" id="L63">        textField1.setBounds(100, 290, 815, 185);</span>
+
+        //---- button1 ----
+<span class="nc" id="L66">        button1.setText(&quot;Comentar&quot;);</span>
+<span class="nc" id="L67">        contentPane.add(button1);</span>
+<span class="nc" id="L68">        button1.setBounds(270, 525, 165, 65);</span>
+<span class="nc" id="L69">        button1.addActionListener(new ActionListener() {</span>
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+<span class="nc" id="L73">                    FestivalCineController.getInstance().comentarPelicula(pelicula.getTitulo(), aux.getLogin(),</span>
+<span class="nc" id="L74">                            textField1.getText());</span>
+<span class="nc" id="L75">                    logger.info(&quot;La pelicula se ha comentado correctamente&quot;);</span>
+<span class="nc" id="L76">                    InformePelicula m = new InformePelicula (pelicula,aux);</span>
+<span class="nc" id="L77">                    m.setVisible(true);</span>
+<span class="nc" id="L78">                    dispose();</span>
+                }
+                //NO LLEGA AQUI LA EXCEPCION CON LAS PETICIONES REST...
+<span class="nc" id="L81">                catch (NullPointerException exc) {</span>
+<span class="nc" id="L82">                    JOptionPane.showMessageDialog(ventana, &quot;La pelicula que se ha querido comentar no está &quot; +</span>
+                            &quot;entre las peliculas disponibles.&quot;);
+<span class="nc" id="L84">                }</span>
+<span class="nc" id="L85">            }</span>
+        });
+
+        //---- button2 ----
+<span class="nc" id="L89">        button2.setText(&quot;Volver&quot;);</span>
+<span class="nc" id="L90">        contentPane.add(button2);</span>
+<span class="nc" id="L91">        button2.setBounds(550, 525, 165, 65);</span>
+<span class="nc" id="L92">        button2.addActionListener(new ActionListener() {</span>
+            @Override
+            public void actionPerformed(ActionEvent e) {
+<span class="nc" id="L95">                InformePelicula m = new InformePelicula (pelicula,aux);</span>
+<span class="nc" id="L96">                m.setVisible(true);</span>
+<span class="nc" id="L97">                dispose();</span>
+<span class="nc" id="L98">            }</span>
+        });
+
+        {
+            // compute preferred size
+<span class="nc" id="L103">            Dimension preferredSize = new Dimension();</span>
+<span class="nc bnc" id="L104" title="All 2 branches missed.">            for(int i = 0; i &lt; contentPane.getComponentCount(); i++) {</span>
+<span class="nc" id="L105">                Rectangle bounds = contentPane.getComponent(i).getBounds();</span>
+<span class="nc" id="L106">                preferredSize.width = Math.max(bounds.x + bounds.width, preferredSize.width);</span>
+<span class="nc" id="L107">                preferredSize.height = Math.max(bounds.y + bounds.height, preferredSize.height);</span>
+            }
+<span class="nc" id="L109">            Insets insets = contentPane.getInsets();</span>
+<span class="nc" id="L110">            preferredSize.width += insets.right;</span>
+<span class="nc" id="L111">            preferredSize.height += insets.bottom;</span>
+<span class="nc" id="L112">            contentPane.setMinimumSize(preferredSize);</span>
+<span class="nc" id="L113">            contentPane.setPreferredSize(preferredSize);</span>
+        }
+<span class="nc" id="L115">        pack();</span>
+<span class="nc" id="L116">        setLocationRelativeTo(getOwner());</span>
+        // JFormDesigner - End of component initialization  //GEN-END:initComponents
+<span class="nc" id="L118">    }</span>
+
+    // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
+    // Generated using JFormDesigner Evaluation license - Beñat
+    private JLabel label1;
+    private JLabel label2;
+    private JLabel label3;
+    private JTextField textField1;
+    private JButton button1;
+    private JButton button2;
+    private JFrame ventana;
+    // JFormDesigner - End of variables declaration  //GEN-END:variables
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>

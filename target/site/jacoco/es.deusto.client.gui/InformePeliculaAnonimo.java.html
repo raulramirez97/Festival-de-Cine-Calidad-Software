@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>InformePeliculaAnonimo.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Festival_Cine</a> &gt; <a href="index.source.html" class="el_package">es.deusto.client.gui</a> &gt; <span class="el_source">InformePeliculaAnonimo.java</span></div><h1>InformePeliculaAnonimo.java</h1><pre class="source lang-java linenums">/*
+ * Created by JFormDesigner on Thu Dec 05 09:53:02 CET 2019
+ */
+
+package es.deusto.client.gui;
+
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.logging.Logger;
+
+import javax.swing.*;
+
+import es.deusto.client.FestivalCineController;
+import es.deusto.server.data.PeliculaDTO;
+
+/**
+ * @author Beñat
+ */
+public class InformePeliculaAnonimo extends JFrame {
+
+<span class="nc" id="L22">    static Logger logger = Logger.getLogger(InformePeliculaAnonimo.class.getName());</span>
+
+<span class="nc" id="L24">    public InformePeliculaAnonimo(PeliculaDTO pelicula) {</span>
+<span class="nc" id="L25">        initComponents(pelicula);</span>
+<span class="nc" id="L26">    }</span>
+
+    private void initComponents(PeliculaDTO pelicula) {
+        // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
+        // Generated using JFormDesigner Evaluation license - Beñat
+<span class="nc" id="L31">        label1 = new JLabel();</span>
+<span class="nc" id="L32">        label2 = new JLabel();</span>
+<span class="nc" id="L33">        label3 = new JLabel();</span>
+<span class="nc" id="L34">        label4 = new JLabel();</span>
+<span class="nc" id="L35">        label5 = new JLabel();</span>
+<span class="nc" id="L36">        label6 = new JLabel();</span>
+<span class="nc" id="L37">        label7 = new JLabel();</span>
+<span class="nc" id="L38">        label8 = new JLabel();</span>
+<span class="nc" id="L39">        label9 = new JLabel();</span>
+<span class="nc" id="L40">        label10 = new JLabel();</span>
+<span class="nc" id="L41">        label11 = new JLabel();</span>
+<span class="nc" id="L42">        label12 = new JLabel();</span>
+<span class="nc" id="L43">        label13 = new JLabel();</span>
+<span class="nc" id="L44">        label16 = new JLabel();</span>
+<span class="nc" id="L45">        label17 = new JLabel();</span>
+<span class="nc" id="L46">        scrollPane1 = new JScrollPane();</span>
+<span class="nc" id="L47">        textArea1 = new JTextArea();</span>
+<span class="nc" id="L48">        textArea2 = new JTextArea();</span>
+<span class="nc" id="L49">        label14 = new JLabel();</span>
+<span class="nc" id="L50">        button3 = new JButton();</span>
+<span class="nc" id="L51">        button4 = new JButton();</span>
+<span class="nc" id="L52">        label15 = new JLabel();</span>
+<span class="nc" id="L53">        label18 = new JLabel();</span>
+
+<span class="nc" id="L55">        ventana = this;</span>
+        //======== this ========
+
+<span class="nc" id="L58">        String myPath = System.getProperty(&quot;user.dir&quot;);</span>
+
+<span class="nc" id="L60">        setTitle(&quot;Informe: &quot;+pelicula.getTitulo());</span>
+<span class="nc" id="L61">        Container contentPane = getContentPane();</span>
+<span class="nc" id="L62">        contentPane.setLayout(null);</span>
+
+        //---- label1 ----
+<span class="nc" id="L65">        label1.setText(pelicula.getTitulo());</span>
+<span class="nc" id="L66">        label1.setFont(label1.getFont().deriveFont(label1.getFont().getSize() + 18f));</span>
+<span class="nc" id="L67">        label1.setHorizontalAlignment(SwingConstants.CENTER);</span>
+<span class="nc" id="L68">        contentPane.add(label1);</span>
+<span class="nc" id="L69">        label1.setBounds(120, 85, 720, 40);</span>
+
+        //---- label2 ----
+<span class="nc" id="L72">        label2.setText(&quot;A\u00f1o&quot;);</span>
+<span class="nc" id="L73">        label2.setHorizontalAlignment(SwingConstants.RIGHT);</span>
+<span class="nc" id="L74">        contentPane.add(label2);</span>
+<span class="nc" id="L75">        label2.setBounds(105, 165, 75, 20);</span>
+
+        //---- label3 ----
+<span class="nc" id="L78">        label3.setText(&quot;Duraci\u00f3n&quot;);</span>
+<span class="nc" id="L79">        label3.setHorizontalAlignment(SwingConstants.RIGHT);</span>
+<span class="nc" id="L80">        contentPane.add(label3);</span>
+<span class="nc" id="L81">        label3.setBounds(105, 200, 75, 20);</span>
+
+        //---- label4 ----
+<span class="nc" id="L84">        label4.setText(&quot;G\u00e9nero&quot;);</span>
+<span class="nc" id="L85">        label4.setHorizontalAlignment(SwingConstants.RIGHT);</span>
+<span class="nc" id="L86">        contentPane.add(label4);</span>
+<span class="nc" id="L87">        label4.setBounds(105, 240, 75, 20);</span>
+
+        //---- label15 ----
+<span class="nc" id="L90">        label15.setText(&quot;Director&quot;);</span>
+<span class="nc" id="L91">        label15.setHorizontalAlignment(SwingConstants.RIGHT);</span>
+<span class="nc" id="L92">        contentPane.add(label15);</span>
+<span class="nc" id="L93">        label15.setBounds(100, 280, 80, label15.getPreferredSize().height);</span>
+
+        //---- label5 ----
+<span class="nc" id="L96">        label5.setText(&quot;Reparto&quot;);</span>
+<span class="nc" id="L97">        label5.setHorizontalAlignment(SwingConstants.RIGHT);</span>
+<span class="nc" id="L98">        contentPane.add(label5);</span>
+<span class="nc" id="L99">        label5.setBounds(105, 315, 75, 20);</span>
+
+        //---- label6 ----
+<span class="nc" id="L102">        label6.setText(&quot;Sinopsis&quot;);</span>
+<span class="nc" id="L103">        label6.setHorizontalAlignment(SwingConstants.RIGHT);</span>
+<span class="nc" id="L104">        contentPane.add(label6);</span>
+<span class="nc" id="L105">        label6.setBounds(105, 355, 75, 20);</span>
+
+        //---- label7 ----
+<span class="nc" id="L108">        label7.setText(&quot;Premios&quot;);</span>
+<span class="nc" id="L109">        label7.setHorizontalAlignment(SwingConstants.RIGHT);</span>
+<span class="nc" id="L110">        contentPane.add(label7);</span>
+<span class="nc" id="L111">        label7.setBounds(105, 470, 75, 20);</span>
+
+        //---- label8 ----
+<span class="nc" id="L114">        label8.setText(&quot;Valoraci\u00f3n&quot;);</span>
+<span class="nc" id="L115">        label8.setHorizontalAlignment(SwingConstants.RIGHT);</span>
+<span class="nc" id="L116">        contentPane.add(label8);</span>
+<span class="nc" id="L117">        label8.setBounds(105, 525, 75, 20);</span>
+
+        //---- label9 ----
+<span class="nc" id="L120">        label9.setText(&quot;Tr\u00e1iler&quot;);</span>
+<span class="nc" id="L121">        label9.setHorizontalAlignment(SwingConstants.RIGHT);</span>
+<span class="nc" id="L122">        contentPane.add(label9);</span>
+<span class="nc" id="L123">        label9.setBounds(105, 565, 75, 20);</span>
+
+        //---- label10 ----
+<span class="nc" id="L126">        label10.setText(Integer.toString(pelicula.getAnyo()));</span>
+<span class="nc" id="L127">        contentPane.add(label10);</span>
+<span class="nc" id="L128">        label10.setBounds(230, 170, 130, 15);</span>
+
+        //---- label11 ----
+
+<span class="nc" id="L132">        label11.setText(Integer.toString(pelicula.getDuracion())+&quot; m.&quot;);</span>
+<span class="nc" id="L133">        contentPane.add(label11);</span>
+<span class="nc" id="L134">        label11.setBounds(230, 205, 140, 15);</span>
+
+        //---- label12 ----
+<span class="nc" id="L137">        label12.setText(pelicula.getGenero());</span>
+<span class="nc" id="L138">        contentPane.add(label12);</span>
+<span class="nc" id="L139">        label12.setBounds(230, 245, 225, 15);</span>
+
+        //---- label18 ----
+<span class="nc" id="L142">        label18.setText(pelicula.getDirector());</span>
+<span class="nc" id="L143">        contentPane.add(label18);</span>
+<span class="nc" id="L144">        label18.setBounds(230, 280, 270, 20);</span>
+
+        //---- label13 ----
+<span class="nc" id="L147">        label13.setText(pelicula.getActores());</span>
+<span class="nc" id="L148">        contentPane.add(label13);</span>
+<span class="nc" id="L149">        label13.setBounds(230, 320, 265, 15);</span>
+
+        //---- label16 ----
+<span class="nc" id="L152">        label16.setText(Double.toString(pelicula.getValoracionMedia())+&quot;/10&quot;);</span>
+<span class="nc" id="L153">        contentPane.add(label16);</span>
+<span class="nc" id="L154">        label16.setBounds(230, 530, 265, 15);</span>
+
+        //---- label17 ----
+<span class="nc" id="L157">        label17.setText(pelicula.getEnlaceTrailer());</span>
+<span class="nc" id="L158">        contentPane.add(label17);</span>
+<span class="nc" id="L159">        label17.setBounds(230, 570, 265, 15);</span>
+
+        //======== scrollPane1 ========
+        {
+
+            //---- textArea1 ----
+<span class="nc" id="L165">            textArea1.setText(pelicula.getSinopsis());</span>
+<span class="nc" id="L166">            scrollPane1.setViewportView(textArea1);</span>
+<span class="nc" id="L167">            textArea1.setEditable(false);</span>
+        }
+<span class="nc" id="L169">        contentPane.add(scrollPane1);</span>
+<span class="nc" id="L170">        scrollPane1.setBounds(230, 360, 270, 90);</span>
+
+        //---- textArea2 ----
+<span class="nc" id="L173">        textArea2.setText(pelicula.getPremios());</span>
+<span class="nc" id="L174">        contentPane.add(textArea2);</span>
+<span class="nc" id="L175">        textArea2.setBounds(230, 470, 270, 45);</span>
+<span class="nc" id="L176">        textArea2.setEditable(false);</span>
+
+        //---- label14 ----
+<span class="nc" id="L179">        label14.setBounds(580, 165, 270, 160);</span>
+<span class="nc" id="L180">        label14.setIcon(ResizeImage(myPath+pelicula.getURIimagen(), label14));</span>
+<span class="nc" id="L181">        contentPane.add(label14);</span>
+
+        //---- button3 ----
+<span class="nc" id="L184">        button3.setText(&quot;Vuelve al Men\u00fa Principal&quot;);</span>
+<span class="nc" id="L185">        contentPane.add(button3);</span>
+<span class="nc" id="L186">        button3.setBounds(560, 605, 190, 40);</span>
+<span class="nc" id="L187">        button3.addActionListener(new ActionListener() {</span>
+            @Override
+            public void actionPerformed(ActionEvent e) {
+<span class="nc" id="L190">                MenuAnonimo m = new MenuAnonimo();</span>
+<span class="nc" id="L191">                m.setVisible(true);</span>
+<span class="nc" id="L192">                dispose();</span>
+<span class="nc" id="L193">            }</span>
+        });
+
+        //---- button4 ----
+<span class="nc" id="L197">        button4.setText(&quot;Valora la Pel\u00edcula&quot;);</span>
+<span class="nc" id="L198">        contentPane.add(button4);</span>
+<span class="nc" id="L199">        button4.setBounds(235, 605, 190, 40);</span>
+<span class="nc" id="L200">        button4.addActionListener(new ActionListener() {</span>
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // prompt the user to enter their name
+<span class="nc" id="L204">                String valoracion = JOptionPane.showInputDialog(ventana, &quot;Indica la puntuación de&quot; +</span>
+                        &quot; 1 a 10 por favor&quot;);
+                try {
+<span class="nc bnc" id="L207" title="All 4 branches missed.">                    if (Float.parseFloat(valoracion) &lt; 1 || Float.parseFloat(valoracion) &gt; 10) {</span>
+<span class="nc" id="L208">                        JOptionPane.showMessageDialog(ventana, &quot;Inserte un valor entre el 1 y el 10&quot; +</span>
+                                &quot;, por favor.&quot;);
+                    }
+                    else {
+<span class="nc" id="L212">                        FestivalCineController.getInstance().valorarPelicula(pelicula.getTitulo(),</span>
+<span class="nc" id="L213">                                Float.parseFloat(valoracion));</span>
+<span class="nc" id="L214">                        logger.info(&quot;La pelicula se ha valorado correctamente.&quot;);</span>
+<span class="nc" id="L215">                        JOptionPane.showConfirmDialog(ventana, &quot;La pelicula se ha valorado correctamente. &quot; +</span>
+                                        &quot;Recarga el informe de película para ver la valoración actualizada.&quot;,
+                                &quot;CONF-A01 - Confirmación de película valorada&quot;,JOptionPane.DEFAULT_OPTION);
+                    }
+                }
+<span class="nc" id="L220">                catch (NumberFormatException exc) {</span>
+<span class="nc" id="L221">                    JOptionPane.showMessageDialog(ventana, &quot;Inserte un valor numérico en el campo &quot; +</span>
+                            &quot;de la puntuacion, por favor.&quot;);
+<span class="nc" id="L223">                }</span>
+                //Con la nueva manera de integrar la Valoración en la ficha nunca se dará esta Excepción.
+                //catch (NullPointerException exc) {
+                //    JOptionPane.showMessageDialog(ventana, &quot;La pelicula que se ha querido valorar no está&quot; +
+                //           &quot; entre las peliculas disponibles.&quot;);
+                //}
+<span class="nc" id="L229">            }</span>
+        });
+
+        {
+            // compute preferred size
+<span class="nc" id="L234">            Dimension preferredSize = new Dimension();</span>
+<span class="nc bnc" id="L235" title="All 2 branches missed.">            for(int i = 0; i &lt; contentPane.getComponentCount(); i++) {</span>
+<span class="nc" id="L236">                Rectangle bounds = contentPane.getComponent(i).getBounds();</span>
+<span class="nc" id="L237">                preferredSize.width = Math.max(bounds.x + bounds.width, preferredSize.width);</span>
+<span class="nc" id="L238">                preferredSize.height = Math.max(bounds.y + bounds.height, preferredSize.height);</span>
+            }
+<span class="nc" id="L240">            Insets insets = contentPane.getInsets();</span>
+<span class="nc" id="L241">            preferredSize.width += insets.right;</span>
+<span class="nc" id="L242">            preferredSize.height += insets.bottom;</span>
+<span class="nc" id="L243">            contentPane.setMinimumSize(preferredSize);</span>
+<span class="nc" id="L244">            contentPane.setPreferredSize(preferredSize);</span>
+        }
+<span class="nc" id="L246">        pack();</span>
+<span class="nc" id="L247">        setLocationRelativeTo(getOwner());</span>
+        // JFormDesigner - End of component initialization  //GEN-END:initComponents
+<span class="nc" id="L249">    }</span>
+
+    // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
+    // Generated using JFormDesigner Evaluation license - Beñat
+    private JLabel label1;
+    private JLabel label2;
+    private JLabel label3;
+    private JLabel label4;
+    private JLabel label5;
+    private JLabel label6;
+    private JLabel label7;
+    private JLabel label8;
+    private JLabel label9;
+    private JLabel label10;
+    private JLabel label11;
+    private JLabel label12;
+    private JLabel label13;
+    private JLabel label16;
+    private JLabel label17;
+    private JScrollPane scrollPane1;
+    private JTextArea textArea1;
+    private JTextArea textArea2;
+    private JLabel label14;
+    private JButton button3;
+    private JButton button4;
+    private JLabel label15;
+    private JLabel label18;
+    private JFrame ventana;
+    // JFormDesigner - End of variables declaration  //GEN-END:variables
+
+    /**
+     * Método para redimensionar un ImageIcon al mismo tamaño que un JLabel.
+     */
+    public ImageIcon ResizeImage(String ImagePath, JLabel label)
+    {
+<span class="nc" id="L284">        ImageIcon MyImage = new ImageIcon(ImagePath);</span>
+<span class="nc" id="L285">        Image img = MyImage.getImage();</span>
+<span class="nc" id="L286">        Image newImg = img.getScaledInstance(label.getWidth(), label.getHeight(), Image.SCALE_SMOOTH);</span>
+<span class="nc" id="L287">        ImageIcon image = new ImageIcon(newImg);</span>
+<span class="nc" id="L288">        return image;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>

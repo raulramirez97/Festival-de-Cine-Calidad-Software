@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>VerComentariosPelicula.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Festival_Cine</a> &gt; <a href="index.source.html" class="el_package">es.deusto.client.gui</a> &gt; <span class="el_source">VerComentariosPelicula.java</span></div><h1>VerComentariosPelicula.java</h1><pre class="source lang-java linenums">/*
+ * Created by JFormDesigner on Fri Dec 06 15:21:40 CET 2019
+ */
+
+package es.deusto.client.gui;
+
+import es.deusto.server.data.PeliculaDTO;
+import es.deusto.server.data.UsuarioDTO;
+
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Date;
+import javax.swing.*;
+
+/**
+ * @author Beñat
+ */
+public class VerComentariosPelicula extends JFrame {
+<span class="nc" id="L20">    public VerComentariosPelicula(UsuarioDTO usuario, PeliculaDTO pelicula) {</span>
+<span class="nc" id="L21">        initComponents(usuario, pelicula);</span>
+<span class="nc" id="L22">    }</span>
+
+    //TODO: Meter todo el layout en un ScrollPane para scrollear por diversos comentarios. Se hará cuando se meta
+    //todo en un layout que no sea NullLayout.
+    private void initComponents(UsuarioDTO usuario, PeliculaDTO pelicula) {
+        // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
+        // Generated using JFormDesigner Evaluation license - Beñat
+<span class="nc" id="L29">        label1 = new JLabel();</span>
+<span class="nc" id="L30">        label2 = new JLabel();</span>
+<span class="nc" id="L31">        label3 = new JLabel();</span>
+<span class="nc" id="L32">        scrollPane1 = new JScrollPane();</span>
+<span class="nc" id="L33">        textArea1 = new JTextArea();</span>
+<span class="nc" id="L34">        label4 = new JLabel();</span>
+<span class="nc" id="L35">        label5 = new JLabel();</span>
+<span class="nc" id="L36">        textArea2 = new JTextArea();</span>
+<span class="nc" id="L37">        label6 = new JLabel();</span>
+<span class="nc" id="L38">        label7 = new JLabel();</span>
+<span class="nc" id="L39">        label8 = new JLabel();</span>
+<span class="nc" id="L40">        textArea3 = new JTextArea();</span>
+<span class="nc" id="L41">        button1 = new JButton();</span>
+<span class="nc" id="L42">        button2 = new JButton();</span>
+
+        //======== this ========
+<span class="nc" id="L45">        setTitle(&quot;Comentarios: &quot;+pelicula.getTitulo());</span>
+<span class="nc" id="L46">        Container contentPane = getContentPane();</span>
+<span class="nc" id="L47">        contentPane.setLayout(null);</span>
+
+        //---- label1 ----
+<span class="nc" id="L50">        label1.setText(&quot;Comentarios: &quot;+pelicula.getTitulo());</span>
+<span class="nc" id="L51">        label1.setFont(label1.getFont().deriveFont(label1.getFont().getSize() + 10f));</span>
+<span class="nc" id="L52">        label1.setHorizontalAlignment(SwingConstants.CENTER);</span>
+<span class="nc" id="L53">        contentPane.add(label1);</span>
+<span class="nc" id="L54">        label1.setBounds(200, 70, 610, 75);</span>
+
+        //ArrayList&lt;ComentarioDTO&gt; peliComentarios =
+<span class="nc bnc" id="L57" title="All 2 branches missed.">        if (pelicula.getComentarios() == null) {</span>
+            //---- label8 ----
+<span class="nc" id="L59">            label8.setText(&quot;Esta pel\u00edcula no tiene comentarios registrados.&quot;);</span>
+<span class="nc" id="L60">            contentPane.add(label8);</span>
+<span class="nc" id="L61">            label8.setBounds(345, 305, 300, 25);</span>
+        }
+        else {
+<span class="nc" id="L64">            int tam = pelicula.getComentarios().size();</span>
+<span class="nc bnc" id="L65" title="All 2 branches missed.">            if (tam &gt; 0) {</span>
+                //---- label2 ----
+<span class="nc" id="L67">                label2.setText(pelicula.getComentarios().get(0).getUsuario());</span>
+<span class="nc" id="L68">                contentPane.add(label2);</span>
+<span class="nc" id="L69">                label2.setBounds(90, 185, 145, 20);</span>
+
+                //---- label3 ----
+<span class="nc" id="L72">                label3.setText((new Date(pelicula.getComentarios().get(0).getTimestamp())).toString());</span>
+<span class="nc" id="L73">                contentPane.add(label3);</span>
+<span class="nc" id="L74">                label3.setBounds(270, 185, 195, 20);</span>
+
+                //======== scrollPane1 ========
+                {
+                    //---- textArea1 ----
+<span class="nc" id="L79">                    textArea1.setText(pelicula.getComentarios().get(0).getContenido());</span>
+<span class="nc" id="L80">                    scrollPane1.setViewportView(textArea1);</span>
+<span class="nc" id="L81">                    textArea1.setEditable(false);</span>
+                }
+<span class="nc" id="L83">                contentPane.add(scrollPane1);</span>
+<span class="nc" id="L84">                scrollPane1.setBounds(90, 225, 815, 60);</span>
+
+<span class="nc bnc" id="L86" title="All 2 branches missed.">                if (tam &gt; 1) {</span>
+                    //---- label4 ----
+<span class="nc" id="L88">                    label4.setText(pelicula.getComentarios().get(1).getUsuario());</span>
+<span class="nc" id="L89">                    contentPane.add(label4);</span>
+<span class="nc" id="L90">                    label4.setBounds(90, 325, 145, 20);</span>
+
+                    //---- label5 ----
+<span class="nc" id="L93">                    label5.setText((new Date(pelicula.getComentarios().get(1).getTimestamp())).toString());</span>
+<span class="nc" id="L94">                    contentPane.add(label5);</span>
+<span class="nc" id="L95">                    label5.setBounds(270, 325, 195, 20);</span>
+
+                    //---- textArea2 ----
+<span class="nc" id="L98">                    textArea2.setText(pelicula.getComentarios().get(1).getContenido());</span>
+<span class="nc" id="L99">                    contentPane.add(textArea2);</span>
+<span class="nc" id="L100">                    textArea2.setBounds(90, 365, 813, 58);</span>
+<span class="nc" id="L101">                    textArea2.setEditable(false);</span>
+                }
+
+<span class="nc bnc" id="L104" title="All 2 branches missed.">                if (tam &gt; 2) {</span>
+                    //---- label6 ----
+<span class="nc" id="L106">                    label6.setText(pelicula.getComentarios().get(2).getUsuario());</span>
+<span class="nc" id="L107">                    contentPane.add(label6);</span>
+<span class="nc" id="L108">                    label6.setBounds(90, 460, 145, 20);</span>
+
+                    //---- label7 ----
+<span class="nc" id="L111">                    label7.setText((new Date(pelicula.getComentarios().get(2).getTimestamp())).toString());</span>
+<span class="nc" id="L112">                    contentPane.add(label7);</span>
+<span class="nc" id="L113">                    label7.setBounds(270, 460, 195, 20);</span>
+
+                    //---- textArea3 ----
+<span class="nc" id="L116">                    textArea3.setText(pelicula.getComentarios().get(2).getContenido());</span>
+<span class="nc" id="L117">                    contentPane.add(textArea3);</span>
+<span class="nc" id="L118">                    textArea3.setBounds(90, 500, 813, 58);</span>
+<span class="nc" id="L119">                    textArea3.setEditable(false);</span>
+
+                }
+            }
+        }
+
+        //---- button1 ----
+<span class="nc" id="L126">        button1.setText(&quot;Comentar&quot;);</span>
+<span class="nc" id="L127">        contentPane.add(button1);</span>
+<span class="nc" id="L128">        button1.setBounds(235, 595, 205, 50);</span>
+<span class="nc" id="L129">        button1.addActionListener(new ActionListener() {</span>
+            @Override
+            public void actionPerformed(ActionEvent e) {
+<span class="nc" id="L132">                ComentarPeliculaTest m = new ComentarPeliculaTest (usuario,pelicula);</span>
+<span class="nc" id="L133">                m.setVisible(true);</span>
+<span class="nc" id="L134">                dispose();</span>
+<span class="nc" id="L135">            }</span>
+        });
+
+        //---- button2 ----
+<span class="nc" id="L139">        button2.setText(&quot;Volver&quot;);</span>
+<span class="nc" id="L140">        contentPane.add(button2);</span>
+<span class="nc" id="L141">        button2.setBounds(575, 595, 205, 50);</span>
+<span class="nc" id="L142">        button2.addActionListener(new ActionListener() {</span>
+            @Override
+            public void actionPerformed(ActionEvent e) {
+<span class="nc" id="L145">                InformePelicula m = new InformePelicula(pelicula,usuario);</span>
+<span class="nc" id="L146">                m.setVisible(true);</span>
+<span class="nc" id="L147">                dispose();</span>
+<span class="nc" id="L148">            }</span>
+        });
+
+        {
+            // compute preferred size
+<span class="nc" id="L153">            Dimension preferredSize = new Dimension();</span>
+<span class="nc bnc" id="L154" title="All 2 branches missed.">            for(int i = 0; i &lt; contentPane.getComponentCount(); i++) {</span>
+<span class="nc" id="L155">                Rectangle bounds = contentPane.getComponent(i).getBounds();</span>
+<span class="nc" id="L156">                preferredSize.width = Math.max(bounds.x + bounds.width, preferredSize.width);</span>
+<span class="nc" id="L157">                preferredSize.height = Math.max(bounds.y + bounds.height, preferredSize.height);</span>
+            }
+<span class="nc" id="L159">            Insets insets = contentPane.getInsets();</span>
+<span class="nc" id="L160">            preferredSize.width += insets.right;</span>
+<span class="nc" id="L161">            preferredSize.height += insets.bottom;</span>
+<span class="nc" id="L162">            contentPane.setMinimumSize(preferredSize);</span>
+<span class="nc" id="L163">            contentPane.setPreferredSize(preferredSize);</span>
+        }
+<span class="nc" id="L165">        pack();</span>
+<span class="nc" id="L166">        setLocationRelativeTo(getOwner());</span>
+        // JFormDesigner - End of component initialization  //GEN-END:initComponents
+<span class="nc" id="L168">    }</span>
+
+    // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
+    // Generated using JFormDesigner Evaluation license - Beñat
+    private JLabel label1;
+    private JLabel label2;
+    private JLabel label3;
+    private JScrollPane scrollPane1;
+    private JTextArea textArea1;
+    private JLabel label4;
+    private JLabel label5;
+    private JTextArea textArea2;
+    private JLabel label6;
+    private JLabel label7;
+    private JLabel label8;
+    private JTextArea textArea3;
+    private JButton button1;
+    private JButton button2;
+    // JFormDesigner - End of variables declaration  //GEN-END:variables
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>

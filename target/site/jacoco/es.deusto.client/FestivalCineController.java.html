@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>FestivalCineController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Festival_Cine</a> &gt; <a href="index.source.html" class="el_package">es.deusto.client</a> &gt; <span class="el_source">FestivalCineController.java</span></div><h1>FestivalCineController.java</h1><pre class="source lang-java linenums">package es.deusto.client;
+
+import es.deusto.client.gui.MenuAnonimo;
+import es.deusto.client.gui.ProgressBar;
+import es.deusto.client.remote.ServiceLocator;
+import es.deusto.server.data.*;
+
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.WebTarget;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Logger;
+
+/**
+ * Implementación del patrón de diseño Controller. Este bloque de código es quien coordina las funciones a proveer
+ * para la interfaz del cliente, y está conectado con el ServiceLocator, el cual toma la información de la parte
+ * servidora de la aplicación.
+ * @author Grupo RMBJ
+ * @version 3.0
+ * @since 1.0
+ */
+public class FestivalCineController {
+
+<span class="nc" id="L25">	static Logger logger = Logger.getLogger(FestivalCineController.class.getName());</span>
+	private static FestivalCineController instance;
+	private ServiceLocator rsl;
+	private Client client;
+	private WebTarget webTarget;
+
+	public static FestivalCineController getInstance() {
+<span class="nc" id="L32">		return instance;</span>
+	}
+
+<span class="nc" id="L35">	private FestivalCineController(String[] args) {</span>
+<span class="nc" id="L36">		instance = this;</span>
+
+<span class="nc" id="L38">		rsl = new ServiceLocator();</span>
+<span class="nc" id="L39">		rsl.setService(args);</span>
+<span class="nc" id="L40">		client = ClientBuilder.newClient();</span>
+<span class="nc" id="L41">		webTarget = client.target(String.format(&quot;http://%s:%s/rest/server&quot;, args[0], args[1]));</span>
+<span class="nc" id="L42">		PeliculaList peliculaList = this.getPeliculaList();</span>
+<span class="nc" id="L43">		int tam = peliculaList.getPeliculasDTO().size();</span>
+<span class="nc bnc" id="L44" title="All 2 branches missed.">		if (tam == 0) {</span>
+<span class="nc" id="L45">			ProgressBar bar = new ProgressBar(&quot;Insertando los datos por primera vez,&quot; +</span>
+					&quot; espere un poco por favor...&quot;);
+<span class="nc" id="L47">			bar.setVisible(true);</span>
+<span class="nc" id="L48">		}</span>
+		else {
+<span class="nc" id="L50">			MenuAnonimo frame = new MenuAnonimo();</span>
+<span class="nc" id="L51">			frame.setVisible(true);</span>
+		}
+<span class="nc" id="L53">	}</span>
+
+	/**
+	 * Este método permite generar los datos de partida para que la aplicación pueda operar con algo. Además, cubre
+	 * una función importante, que es la de generar el usuario &quot;admin&quot;, el cual es el único que puede crear más
+	 * películas y actores dentro del sistema.
+	 *
+	 * De este modo, este método es importante tanto para el debug de la aplicación como para el propio funcionamiento
+	 * de la misma.
+	 */
+	public void generateFixtures(){
+
+<span class="nc" id="L65">		logger.info(&quot;Generating Fixtures when beginning execution:&quot;);</span>
+<span class="nc" id="L66">		logger.info(&quot;Register a user for the first time: admin&quot;);</span>
+<span class="nc" id="L67">		FestivalCineController.getInstance().registerUser(&quot;admin&quot;, &quot;admin&quot;);</span>
+<span class="nc" id="L68">		logger.info(&quot;Change the password as the user is already registered: admin&quot;);</span>
+<span class="nc" id="L69">		FestivalCineController.getInstance().registerUser(&quot;admin&quot;, &quot;admin&quot;);</span>
+<span class="nc" id="L70">		logger.info(&quot;* Message coming from the server: '&quot;</span>
+<span class="nc" id="L71">				+ FestivalCineController.getInstance().sayMessage(&quot;admin&quot;,</span>
+				&quot;admin&quot;, &quot;This is test 1!&quot;) + &quot;'&quot;);
+<span class="nc" id="L73">		logger.info(&quot;* Message coming from the server: '&quot;</span>
+<span class="nc" id="L74">				+ FestivalCineController.getInstance().sayMessage(&quot;admin&quot;,</span>
+				&quot;admin&quot;, &quot;This is test 2!&quot;) + &quot;'&quot;);
+
+<span class="nc" id="L77">		MessageList messages = FestivalCineController.getInstance().getUserMessages(&quot;admin&quot;);</span>
+<span class="nc bnc" id="L78" title="All 2 branches missed.">		for (Message m : messages.getMessages()) {</span>
+<span class="nc" id="L79">			logger.info(m.toString());</span>
+<span class="nc" id="L80">		}</span>
+
+
+<span class="nc" id="L83">		logger.info(&quot;Registering some peliculas:&quot;);</span>
+<span class="nc" id="L84">		List&lt;ActorDTO&gt; randomActors = new ArrayList&lt;ActorDTO&gt;();</span>
+		//TODO: Aqui interesa guardar solo el /src/main/resources/img, no más, porque el user.dir cambiará en cada PC.
+		//TODO: El user.dir es necesario para la carga de la imagen, pero no para la persistencia en la BD.
+<span class="nc" id="L87">		String store = &quot;/src/main/resources/img&quot;;</span>
+		//String store = System.getProperty(&quot;user.dir&quot;)+&quot;/src/main/resources/img&quot;;
+
+<span class="nc" id="L90">		logger.info(&quot;Registering an actor for the first time: Nicholas Cage&quot;);</span>
+<span class="nc" id="L91">		FestivalCineController.getInstance().registerActor(&quot;ID1&quot;, &quot;Nicholas&quot;, &quot;Cage&quot;, 50);</span>
+<span class="nc" id="L92">		FestivalCineController.getInstance().registerActor(&quot;ID1&quot;, &quot;Pepe&quot;, &quot;Juanito&quot;, 57);</span>
+<span class="nc" id="L93">		FestivalCineController.getInstance().registerActor(&quot;ID2&quot;, &quot;Perico&quot;, &quot;Cage&quot;, 120);</span>
+
+
+<span class="nc" id="L96">		randomActors.add(FestivalCineController.getInstance().getActorList().getActorsDTO().get(0));</span>
+<span class="nc" id="L97">		randomActors.add(FestivalCineController.getInstance().getActorList().getActorsDTO().get(1));</span>
+
+<span class="nc" id="L99">		FestivalCineController.getInstance().registerPelicula(&quot;Lo que el viento se llevo&quot;,&quot;Uno de los&quot; +</span>
+						&quot; mayores clasicos de la historia&quot;, &quot;drama&quot;,145, 1962,&quot;Alguien&quot;,
+				&quot;MIURL&quot;, &quot;Muchos y variados&quot;,&quot;clasicos&quot;,randomActors,
+				store+&quot;/loqueelvientosellevo.jpg&quot;);
+
+<span class="nc" id="L104">		randomActors.clear();</span>
+
+<span class="nc" id="L106">		FestivalCineController.getInstance().registerActor(&quot;ID3&quot;, &quot;Mufasa&quot;, &quot;Mufasa&quot;, 5);</span>
+<span class="nc" id="L107">		FestivalCineController.getInstance().registerActor(&quot;ID4&quot;, &quot;Timon&quot;, &quot;Timon&quot;, 6);</span>
+<span class="nc" id="L108">		FestivalCineController.getInstance().registerActor(&quot;ID5&quot;, &quot;Pumba&quot;, &quot;Pumba&quot;, 7);</span>
+
+<span class="nc" id="L110">		randomActors.add(FestivalCineController.getInstance().getActorList().getActorsDTO().get(2));</span>
+<span class="nc" id="L111">		randomActors.add(FestivalCineController.getInstance().getActorList().getActorsDTO().get(3));</span>
+<span class="nc" id="L112">		randomActors.add(FestivalCineController.getInstance().getActorList().getActorsDTO().get(4));</span>
+
+<span class="nc" id="L114">		FestivalCineController.getInstance().registerPelicula(&quot;El Rey Leon&quot;,&quot;Otro de los&quot; +</span>
+						&quot; mayores clasicos de la historia&quot;, &quot;drama&quot;,121, 1985,&quot;Alguien&quot;,
+				&quot;MIURL&quot;, &quot;Muchos y variados&quot;,&quot;clasicos&quot;,randomActors,
+				store+&quot;/elreyleon.jpg&quot;);
+
+<span class="nc" id="L119">		randomActors.clear();</span>
+<span class="nc" id="L120">		randomActors.add(FestivalCineController.getInstance().getActorList().getActorsDTO().get(0));</span>
+<span class="nc" id="L121">		randomActors.add(FestivalCineController.getInstance().getActorList().getActorsDTO().get(3));</span>
+<span class="nc" id="L122">		randomActors.add(FestivalCineController.getInstance().getActorList().getActorsDTO().get(4));</span>
+
+<span class="nc" id="L124">		FestivalCineController.getInstance().registerPelicula(&quot;La Comedia&quot;,&quot;Otro de los&quot; +</span>
+						&quot; mayores clasicos de la historia&quot;, &quot;comedia&quot;,97, 2019,
+				&quot;Yo mismo&quot;,&quot;MIURL&quot;, &quot;Muchos y variados&quot;,&quot;novedades&quot;,randomActors,
+				store+&quot;/lacomedia.jpg&quot;);
+<span class="nc" id="L128">		logger.info(&quot;Fixtures generated successfully.&quot;);</span>
+
+<span class="nc" id="L130">	}</span>
+
+	public void registerUser(String login, String password) {
+<span class="nc" id="L133">		rsl.registerUser(login,password);</span>
+<span class="nc" id="L134">	}</span>
+	public String sayMessage(String login, String password, String message) {
+<span class="nc" id="L136">		return rsl.sayMessage(login,password, message);</span>
+	}
+	public UsuarioDTO getUser(String login, String pwd) {
+<span class="nc" id="L139">		return rsl.getUser(login, pwd);</span>
+	}
+	public MessageList getUserMessages(String login) {
+<span class="nc" id="L142">		return rsl.getUserMessages(login);</span>
+	}
+	public void registerActor(String id, String nombre, String apellido, int edad) {
+<span class="nc" id="L145">		rsl.registerActor(id,nombre,apellido,edad);</span>
+<span class="nc" id="L146">	}</span>
+	public ActorList getActorList() {
+<span class="nc" id="L148">		return rsl.getActorList();</span>
+	}
+	public void registerPelicula(String titulo, String sinopsis, String genero, int duracion, int anyo,
+								 String director, String enlacetrailer, String premios, String seccion,
+								 List&lt;ActorDTO&gt; actores, String imagen) {
+<span class="nc" id="L153">		rsl.registerPelicula(titulo,sinopsis,genero,duracion,anyo,director,enlacetrailer,premios, seccion, actores,</span>
+				imagen);
+<span class="nc" id="L155">	}</span>
+	public PeliculaList getPeliculaList() {
+<span class="nc" id="L157">		return rsl.getPeliculaList();</span>
+	}
+	public void valorarPelicula (String titulo, float valoracion) throws NullPointerException {
+<span class="nc" id="L160">		rsl.valorarPelicula(titulo, valoracion);</span>
+<span class="nc" id="L161">	}</span>
+<span class="nc" id="L162">	public ArrayList&lt;String&gt; getFiltros(String filtro) { return rsl.getFiltroList(filtro);}</span>
+	public PeliculaList getFilteredPeliculaList(String filtro, String criterio) {
+<span class="nc" id="L164">		return rsl.getFilteredPeliculaList(filtro, criterio);</span>
+	}
+
+	public void comentarPelicula (String titulo, String usuario, String contenido) throws NullPointerException {
+<span class="nc" id="L168">		rsl.comentarPelicula(titulo, usuario, contenido);</span>
+<span class="nc" id="L169">	}</span>
+
+	public static void main(String[] args) {
+<span class="nc" id="L172">		new FestivalCineController(args);</span>
+<span class="nc" id="L173">		FestivalCineController.getInstance().generateFixtures();</span>
+<span class="nc bnc" id="L174" title="All 2 branches missed.">		if (args.length != 2) {</span>
+<span class="nc" id="L175">			logger.warning(&quot;Use: java Client.Client [host] [port]&quot;);</span>
+<span class="nc" id="L176">			System.exit(0);</span>
+		}
+<span class="nc" id="L178">	}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>

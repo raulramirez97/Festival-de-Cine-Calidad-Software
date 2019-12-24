@@ -1,0 +1,417 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CreacionPelicula.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Festival_Cine</a> &gt; <a href="index.source.html" class="el_package">es.deusto.client.gui</a> &gt; <span class="el_source">CreacionPelicula.java</span></div><h1>CreacionPelicula.java</h1><pre class="source lang-java linenums">/*
+ * Created by JFormDesigner on Thu Dec 05 09:53:02 CET 2019
+ */
+
+package es.deusto.client.gui;
+
+import java.awt.*;
+import java.awt.event.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Logger;
+
+import javax.imageio.ImageIO;
+import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
+
+import es.deusto.client.FestivalCineController;
+import es.deusto.server.data.ActorDTO;
+import es.deusto.server.data.UsuarioDTO;
+
+/**
+ * @author Beñat
+ * Inspiración para JFileChooser tomada de: http://1bestcsharp.blogspot.com/2015/04/java-how-to-browse-image-file-and-And-Display-It-Using-JFileChooser-In-Java.html
+ * Inspiración para tomar working directory: https://stackoverflow.com/questions/4871051/getting-the-current-working-directory-in-java
+ * Inspiración para recoger imagen: https://docs.oracle.com/javase/tutorial/2d/images/loadimage.html
+ */
+public class CreacionPelicula extends JFrame {
+
+<span class="nc" id="L32">    static Logger logger = Logger.getLogger(CreacionPelicula.class.getName());</span>
+
+<span class="nc" id="L34">    public CreacionPelicula(UsuarioDTO aux) {</span>
+<span class="nc" id="L35">        initComponents(aux);</span>
+<span class="nc" id="L36">    }</span>
+
+    private void initComponents(UsuarioDTO aux) {
+        // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
+        // Generated using JFormDesigner Evaluation license - Beñat
+<span class="nc" id="L41">        label1 = new JLabel();</span>
+<span class="nc" id="L42">        label2 = new JLabel();</span>
+<span class="nc" id="L43">        label3 = new JLabel();</span>
+<span class="nc" id="L44">        label4 = new JLabel();</span>
+<span class="nc" id="L45">        label5 = new JLabel();</span>
+<span class="nc" id="L46">        label6 = new JLabel();</span>
+<span class="nc" id="L47">        label7 = new JLabel();</span>
+<span class="nc" id="L48">        label8 = new JLabel();</span>
+<span class="nc" id="L49">        label9 = new JLabel();</span>
+<span class="nc" id="L50">        label14 = new JLabel();</span>
+<span class="nc" id="L51">        label15 = new JLabel();</span>
+<span class="nc" id="L52">        button3 = new JButton();</span>
+<span class="nc" id="L53">        button4 = new JButton();</span>
+<span class="nc" id="L54">        button5 = new JButton();</span>
+<span class="nc" id="L55">        textFieldNomPeli = new JTextField();</span>
+<span class="nc" id="L56">        textFieldAnyoPeli = new JTextField();</span>
+<span class="nc" id="L57">        textFieldDurPeli = new JTextField();</span>
+<span class="nc" id="L58">        textFieldGenPeli = new JTextField();</span>
+<span class="nc" id="L59">        textFieldDirPeli = new JTextField();</span>
+<span class="nc" id="L60">        textFieldActoresPeli = new JTextField();</span>
+<span class="nc" id="L61">        textFieldURLTrailer = new JTextField();</span>
+<span class="nc" id="L62">        scrollPane1 = new JScrollPane();</span>
+<span class="nc" id="L63">        textAreaSinopsisPeli = new JTextArea();</span>
+<span class="nc" id="L64">        textAreaPremiosPeli = new JTextArea();</span>
+
+<span class="nc" id="L66">        ventana = this;</span>
+
+        //======== this ========
+<span class="nc" id="L69">        setTitle(&quot;Creación de nueva película&quot;);</span>
+<span class="nc" id="L70">        Container contentPane = getContentPane();</span>
+<span class="nc" id="L71">        contentPane.setLayout(null);</span>
+
+        //---- label1 ----
+<span class="nc" id="L74">        label1.setText(&quot;Inserta a continuaci\u00f3n los datos de la nueva pel\u00edcula&quot;);</span>
+<span class="nc" id="L75">        label1.setFont(label1.getFont().deriveFont(label1.getFont().getSize() + 6f));</span>
+<span class="nc" id="L76">        label1.setHorizontalAlignment(SwingConstants.CENTER);</span>
+<span class="nc" id="L77">        contentPane.add(label1);</span>
+<span class="nc" id="L78">        label1.setBounds(225, 55, 489, 35);</span>
+
+        //---- label2 ----
+<span class="nc" id="L81">        label2.setText(&quot;A\u00f1o&quot;);</span>
+<span class="nc" id="L82">        label2.setHorizontalAlignment(SwingConstants.RIGHT);</span>
+<span class="nc" id="L83">        contentPane.add(label2);</span>
+<span class="nc" id="L84">        label2.setBounds(105, 165, 75, 20);</span>
+
+        //---- label3 ----
+<span class="nc" id="L87">        label3.setText(&quot;Duraci\u00f3n&quot;);</span>
+<span class="nc" id="L88">        label3.setHorizontalAlignment(SwingConstants.RIGHT);</span>
+<span class="nc" id="L89">        contentPane.add(label3);</span>
+<span class="nc" id="L90">        label3.setBounds(105, 200, 75, 20);</span>
+
+        //---- label4 ----
+<span class="nc" id="L93">        label4.setText(&quot;G\u00e9nero&quot;);</span>
+<span class="nc" id="L94">        label4.setHorizontalAlignment(SwingConstants.RIGHT);</span>
+<span class="nc" id="L95">        contentPane.add(label4);</span>
+<span class="nc" id="L96">        label4.setBounds(105, 240, 75, 20);</span>
+
+        //---- label5 ----
+<span class="nc" id="L99">        label5.setText(&quot;Reparto&quot;);</span>
+<span class="nc" id="L100">        label5.setHorizontalAlignment(SwingConstants.RIGHT);</span>
+<span class="nc" id="L101">        contentPane.add(label5);</span>
+<span class="nc" id="L102">        label5.setBounds(105, 315, 75, 20);</span>
+
+        //---- label6 ----
+<span class="nc" id="L105">        label6.setText(&quot;Sinopsis&quot;);</span>
+<span class="nc" id="L106">        label6.setHorizontalAlignment(SwingConstants.RIGHT);</span>
+<span class="nc" id="L107">        contentPane.add(label6);</span>
+<span class="nc" id="L108">        label6.setBounds(105, 355, 75, 20);</span>
+
+        //---- label7 ----
+<span class="nc" id="L111">        label7.setText(&quot;Premios&quot;);</span>
+<span class="nc" id="L112">        label7.setHorizontalAlignment(SwingConstants.RIGHT);</span>
+<span class="nc" id="L113">        contentPane.add(label7);</span>
+<span class="nc" id="L114">        label7.setBounds(105, 470, 75, 20);</span>
+
+        //---- label9 ----
+<span class="nc" id="L117">        label9.setText(&quot;Tr\u00e1iler&quot;);</span>
+<span class="nc" id="L118">        label9.setHorizontalAlignment(SwingConstants.RIGHT);</span>
+<span class="nc" id="L119">        contentPane.add(label9);</span>
+<span class="nc" id="L120">        label9.setBounds(105, 535, 75, 20);</span>
+
+        //======== scrollPane1 ========
+        {
+<span class="nc" id="L124">            scrollPane1.setViewportView(textAreaSinopsisPeli);</span>
+        }
+<span class="nc" id="L126">        contentPane.add(scrollPane1);</span>
+<span class="nc" id="L127">        scrollPane1.setBounds(230, 360, 270, 90);</span>
+
+<span class="nc" id="L129">        contentPane.add(textAreaPremiosPeli);</span>
+<span class="nc" id="L130">        textAreaPremiosPeli.setBounds(230, 470, 270, 45);</span>
+<span class="nc" id="L131">        textAreaPremiosPeli.addFocusListener(new FocusListener() {</span>
+            @Override
+<span class="nc" id="L133">            public void focusGained(FocusEvent e) {}</span>
+            @Override
+            public void focusLost(FocusEvent e) {
+<span class="nc bnc" id="L136" title="All 2 branches missed.">                if (textAreaPremiosPeli.getText().isEmpty()){</span>
+<span class="nc" id="L137">                    JOptionPane.showMessageDialog(ventana, &quot;Inserte contenido en el cuadro de premios, o N/A&quot; +</span>
+                            &quot;si no tiene, por favor.&quot;);
+                }
+<span class="nc" id="L140">            }</span>
+        });
+
+        //---- label14 ----
+<span class="nc" id="L144">        label14.setText(&quot;&lt;INSERTAR_IMAGEN_PELICULA&gt;&quot;);</span>
+<span class="nc" id="L145">        label14.setHorizontalAlignment(SwingConstants.CENTER);</span>
+<span class="nc" id="L146">        contentPane.add(label14);</span>
+<span class="nc" id="L147">        label14.setBounds(580, 165, 270, 160);</span>
+
+        //---- label15 ----
+<span class="nc" id="L150">        label15.setText(&quot;Director&quot;);</span>
+<span class="nc" id="L151">        label15.setHorizontalAlignment(SwingConstants.RIGHT);</span>
+<span class="nc" id="L152">        contentPane.add(label15);</span>
+<span class="nc" id="L153">        label15.setBounds(115, 280, 65, label15.getPreferredSize().height);</span>
+
+        //---- label8 ----
+<span class="nc" id="L156">        label8.setText(&quot;Nombre&quot;);</span>
+<span class="nc" id="L157">        label8.setHorizontalAlignment(SwingConstants.RIGHT);</span>
+<span class="nc" id="L158">        contentPane.add(label8);</span>
+<span class="nc" id="L159">        label8.setBounds(105, 130, 75, 20);</span>
+
+<span class="nc" id="L161">        contentPane.add(textFieldNomPeli);</span>
+<span class="nc" id="L162">        textFieldNomPeli.setBounds(225, 130, 275, textFieldNomPeli.getPreferredSize().height);</span>
+<span class="nc" id="L163">        textFieldNomPeli.addFocusListener(new FocusListener() {</span>
+            @Override
+<span class="nc" id="L165">            public void focusGained(FocusEvent e) {}</span>
+            @Override
+            public void focusLost(FocusEvent e) {
+<span class="nc bnc" id="L168" title="All 2 branches missed.">                if (textFieldNomPeli.getText().isEmpty()){</span>
+<span class="nc" id="L169">                    JOptionPane.showMessageDialog(ventana, &quot;Inserte contenido en el cuadro del nombre de la&quot; +</span>
+                            &quot;película, por favor.&quot;);
+                }
+<span class="nc" id="L172">            }</span>
+        });
+
+<span class="nc" id="L175">        contentPane.add(textFieldAnyoPeli);</span>
+<span class="nc" id="L176">        textFieldAnyoPeli.setBounds(225, 165, 275, 30);</span>
+<span class="nc" id="L177">        textFieldAnyoPeli.addFocusListener(new FocusListener() {</span>
+            @Override
+<span class="nc" id="L179">            public void focusGained(FocusEvent e) {}</span>
+            @Override
+            public void focusLost(FocusEvent e) {
+                try {
+<span class="nc" id="L183">                    Integer.parseInt(textFieldAnyoPeli.getText());</span>
+<span class="nc" id="L184">                } catch (NumberFormatException exc) {</span>
+<span class="nc" id="L185">                    JOptionPane.showMessageDialog(ventana, &quot;Inserte un valor numérico en el campo,&quot; +</span>
+                            &quot; por favor.&quot;);
+<span class="nc" id="L187">                }</span>
+<span class="nc" id="L188">            }</span>
+        });
+
+<span class="nc" id="L191">        contentPane.add(textFieldDurPeli);</span>
+<span class="nc" id="L192">        textFieldDurPeli.setBounds(225, 205, 275, 30);</span>
+<span class="nc" id="L193">        textFieldDurPeli.addFocusListener(new FocusListener() {</span>
+            @Override
+<span class="nc" id="L195">            public void focusGained(FocusEvent e) {}</span>
+            @Override
+            public void focusLost(FocusEvent e) {
+                try {
+<span class="nc" id="L199">                    Integer.parseInt(textFieldDurPeli.getText());</span>
+<span class="nc" id="L200">                } catch (NumberFormatException exc) {</span>
+<span class="nc" id="L201">                    JOptionPane.showMessageDialog(ventana, &quot;Inserte un valor numérico en el campo,&quot; +</span>
+                            &quot; por favor.&quot;);
+<span class="nc" id="L203">                }</span>
+<span class="nc" id="L204">            }</span>
+        });
+
+<span class="nc" id="L207">        contentPane.add(textFieldGenPeli);</span>
+<span class="nc" id="L208">        textFieldGenPeli.setBounds(225, 245, 275, 30);</span>
+<span class="nc" id="L209">        textFieldGenPeli.addFocusListener(new FocusListener() {</span>
+            @Override
+<span class="nc" id="L211">            public void focusGained(FocusEvent e) {}</span>
+            @Override
+            public void focusLost(FocusEvent e) {
+<span class="nc bnc" id="L214" title="All 2 branches missed.">                if (textFieldGenPeli.getText().isEmpty()){</span>
+<span class="nc" id="L215">                    JOptionPane.showMessageDialog(ventana, &quot;Inserte contenido en el cuadro del género,&quot; +</span>
+                            &quot;por favor.&quot;);
+                }
+<span class="nc" id="L218">            }</span>
+        });
+
+<span class="nc" id="L221">        contentPane.add(textFieldDirPeli);</span>
+<span class="nc" id="L222">        textFieldDirPeli.setBounds(225, 285, 275, 30);</span>
+<span class="nc" id="L223">        textFieldDirPeli.addFocusListener(new FocusListener() {</span>
+            @Override
+<span class="nc" id="L225">            public void focusGained(FocusEvent e) {}</span>
+            @Override
+            public void focusLost(FocusEvent e) {
+<span class="nc bnc" id="L228" title="All 2 branches missed.">                if (textFieldDirPeli.getText().isEmpty()){</span>
+<span class="nc" id="L229">                    JOptionPane.showMessageDialog(ventana, &quot;Inserte contenido en el cuadro del director,&quot; +</span>
+                            &quot;por favor.&quot;);
+                }
+<span class="nc" id="L232">            }</span>
+        });
+
+<span class="nc" id="L235">        contentPane.add(textFieldActoresPeli);</span>
+<span class="nc" id="L236">        textFieldActoresPeli.setBounds(225, 320, 275, 30);</span>
+<span class="nc" id="L237">        textFieldActoresPeli.addFocusListener(new FocusListener() {</span>
+            @Override
+<span class="nc" id="L239">            public void focusGained(FocusEvent e) {}</span>
+            @Override
+            public void focusLost(FocusEvent e) {
+<span class="nc bnc" id="L242" title="All 2 branches missed.">                if (textFieldActoresPeli.getText().isEmpty()){</span>
+<span class="nc" id="L243">                    JOptionPane.showMessageDialog(ventana, &quot;Inserte contenido en el cuadro de los actores,&quot; +</span>
+                            &quot;por favor.&quot;);
+                }
+<span class="nc" id="L246">            }</span>
+        });
+
+<span class="nc" id="L249">        contentPane.add(textFieldURLTrailer);</span>
+<span class="nc" id="L250">        textFieldURLTrailer.setBounds(225, 535, 275, 30);</span>
+<span class="nc" id="L251">        textFieldURLTrailer.addFocusListener(new FocusListener() {</span>
+            @Override
+<span class="nc" id="L253">            public void focusGained(FocusEvent e) {}</span>
+            @Override
+            public void focusLost(FocusEvent e) {
+<span class="nc bnc" id="L256" title="All 2 branches missed.">                if (textFieldURLTrailer.getText().isEmpty()){</span>
+<span class="nc" id="L257">                    JOptionPane.showMessageDialog(ventana, &quot;Inserte contenido en el cuadro de la URL,&quot; +</span>
+                            &quot;por favor.&quot;);
+                }
+<span class="nc" id="L260">            }</span>
+        });
+
+        //---- button3 ----
+<span class="nc" id="L264">        button3.setText(&quot;Vuelve al Men\u00fa Principal&quot;);</span>
+<span class="nc" id="L265">        contentPane.add(button3);</span>
+<span class="nc" id="L266">        button3.setBounds(620, 625, 190, 40);</span>
+<span class="nc" id="L267">        button3.addActionListener(new ActionListener() {</span>
+            @Override
+            public void actionPerformed(ActionEvent e) {
+<span class="nc" id="L270">                Menu m = new Menu(aux);</span>
+<span class="nc" id="L271">                m.setVisible(true);</span>
+<span class="nc" id="L272">                dispose();</span>
+<span class="nc" id="L273">            }</span>
+        });
+
+        //---- button4 ----
+<span class="nc" id="L277">        button4.setText(&quot;Inserta la Pelicula&quot;);</span>
+<span class="nc" id="L278">        contentPane.add(button4);</span>
+<span class="nc" id="L279">        button4.setBounds(160, 625, 190, 40);</span>
+<span class="nc" id="L280">        button4.addActionListener(new ActionListener() {</span>
+            @Override
+            public void actionPerformed(ActionEvent e) {
+<span class="nc" id="L283">                List&lt;ActorDTO&gt; allActors = FestivalCineController.getInstance().getActorList().getActorsDTO();</span>
+<span class="nc" id="L284">                List&lt;ActorDTO&gt; selectedActors = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L285">                String[] actorsStringList = textFieldActoresPeli.getText().split(&quot;\\s*,\\s*&quot;);</span>
+<span class="nc bnc" id="L286" title="All 2 branches missed.">                for (ActorDTO myActor: allActors) {</span>
+<span class="nc" id="L287">                    String check = myActor.getNombre() + &quot; &quot; + myActor.getApellido();</span>
+<span class="nc bnc" id="L288" title="All 2 branches missed.">                    for (int i = 0; i &lt; actorsStringList.length; i++){</span>
+<span class="nc bnc" id="L289" title="All 2 branches missed.">                        if (check.toUpperCase().compareTo(actorsStringList[i].toUpperCase())==0){</span>
+<span class="nc" id="L290">                            selectedActors.add(myActor);</span>
+                        }
+                    }
+<span class="nc" id="L293">                }</span>
+<span class="nc bnc" id="L294" title="All 2 branches missed.">                if (selectedActors.size() == 0) {</span>
+<span class="nc" id="L295">                    JOptionPane.showMessageDialog(ventana, &quot;Inserta nombre y apellido de actores, separados&quot; +</span>
+                            &quot; con comas que existan actualmente en el sistema.&quot;);
+                }
+                else {
+                    try {
+<span class="nc" id="L300">                        FestivalCineController.getInstance().registerPelicula(textFieldNomPeli.getText(),</span>
+<span class="nc" id="L301">                                textAreaSinopsisPeli.getText(), textFieldGenPeli.getText(),</span>
+<span class="nc" id="L302">                                Integer.parseInt(textFieldDurPeli.getText()),</span>
+<span class="nc" id="L303">                                Integer.parseInt(textFieldAnyoPeli.getText()),</span>
+<span class="nc" id="L304">                                textFieldDirPeli.getText(),textFieldURLTrailer.getText(),</span>
+<span class="nc" id="L305">                                textAreaPremiosPeli.getText(), &quot;novedades&quot;, selectedActors, URIImage);</span>
+<span class="nc" id="L306">                        logger.info(&quot;Pelicula generated successfully by the admin.&quot;);</span>
+<span class="nc" id="L307">                        Menu m = new Menu(aux);</span>
+<span class="nc" id="L308">                        m.setVisible(true);</span>
+<span class="nc" id="L309">                        dispose();</span>
+                    }
+<span class="nc" id="L311">                    catch (NumberFormatException exc) {</span>
+<span class="nc" id="L312">                        JOptionPane.showMessageDialog(ventana, &quot;Inserte un valor numérico en los campos&quot; +</span>
+                                &quot;numéricos, por favor.&quot;);
+<span class="nc" id="L314">                    }</span>
+                }
+<span class="nc" id="L316">            }</span>
+        });
+        //---- button5 ----
+<span class="nc" id="L319">        button5.setText(&quot;Selecciona la Imagen&quot;);</span>
+<span class="nc" id="L320">        contentPane.add(button5);</span>
+<span class="nc" id="L321">        button5.setBounds(625, 380, 190, 40);</span>
+<span class="nc" id="L322">        button5.addActionListener(new ActionListener() {</span>
+            public void actionPerformed(ActionEvent e) {
+<span class="nc" id="L324">                JFileChooser file = new JFileChooser();</span>
+<span class="nc" id="L325">                file.setCurrentDirectory(new File(System.getProperty(&quot;user.home&quot;)));</span>
+                //filter the files
+<span class="nc" id="L327">                FileNameExtensionFilter filter = new FileNameExtensionFilter(&quot;*.Images&quot;,</span>
+                        &quot;jpg&quot;,&quot;gif&quot;,&quot;png&quot;);
+<span class="nc" id="L329">                file.addChoosableFileFilter(filter);</span>
+<span class="nc" id="L330">                int result = file.showSaveDialog(null);</span>
+                //if the user click on save in Jfilechooser
+<span class="nc bnc" id="L332" title="All 2 branches missed.">                if(result == JFileChooser.APPROVE_OPTION){</span>
+<span class="nc" id="L333">                    File selectedFile = file.getSelectedFile();</span>
+<span class="nc" id="L334">                    String path = selectedFile.getAbsolutePath();</span>
+<span class="nc" id="L335">                    label14.setIcon(ResizeImage(path));</span>
+                    //Store image in resources/img folder:
+<span class="nc" id="L337">                    String store = System.getProperty(&quot;user.dir&quot;)+&quot;/src/main/resources/img&quot;;</span>
+<span class="nc" id="L338">                    BufferedImage img = null;</span>
+                    try {
+<span class="nc" id="L340">                        img = ImageIO.read(selectedFile);</span>
+<span class="nc" id="L341">                        ImageIO.write(img,&quot;png&quot;,new File(store+&quot;/&quot;+selectedFile.getName()));</span>
+<span class="nc" id="L342">                        URIImage = &quot;/src/main/resources/img/&quot;+selectedFile.getName();</span>
+<span class="nc" id="L343">                    } catch (IOException ex) {</span>
+<span class="nc" id="L344">                        JOptionPane.showMessageDialog(ventana, &quot;Se ha seleeccionado un tipo de fichero&quot; +</span>
+                                &quot; distinto a una imagen&quot;);
+<span class="nc" id="L346">                        logger.info(&quot;Se ha seleeccionado un tipo de fichero distinto a una imagen.&quot;);</span>
+<span class="nc" id="L347">                    }</span>
+<span class="nc" id="L348">                }</span>
+                //if the user click on cancel in Jfilechooser
+<span class="nc bnc" id="L350" title="All 2 branches missed.">                else if(result == JFileChooser.CANCEL_OPTION){</span>
+<span class="nc" id="L351">                    logger.info(&quot;No se ha seleccionado ninguna imagen&quot;);</span>
+                }
+<span class="nc" id="L353">            }</span>
+        });
+
+        {
+            // compute preferred size
+<span class="nc" id="L358">            Dimension preferredSize = new Dimension();</span>
+<span class="nc bnc" id="L359" title="All 2 branches missed.">            for(int i = 0; i &lt; contentPane.getComponentCount(); i++) {</span>
+<span class="nc" id="L360">                Rectangle bounds = contentPane.getComponent(i).getBounds();</span>
+<span class="nc" id="L361">                preferredSize.width = Math.max(bounds.x + bounds.width, preferredSize.width);</span>
+<span class="nc" id="L362">                preferredSize.height = Math.max(bounds.y + bounds.height, preferredSize.height);</span>
+            }
+<span class="nc" id="L364">            Insets insets = contentPane.getInsets();</span>
+<span class="nc" id="L365">            preferredSize.width += insets.right;</span>
+<span class="nc" id="L366">            preferredSize.height += insets.bottom;</span>
+<span class="nc" id="L367">            contentPane.setMinimumSize(preferredSize);</span>
+<span class="nc" id="L368">            contentPane.setPreferredSize(preferredSize);</span>
+        }
+<span class="nc" id="L370">        pack();</span>
+<span class="nc" id="L371">        setLocationRelativeTo(getOwner());</span>
+        // JFormDesigner - End of component initialization  //GEN-END:initComponents
+<span class="nc" id="L373">    }</span>
+
+    // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
+    // Generated using JFormDesigner Evaluation license - Beñat
+    private JLabel label1;
+    private JLabel label2;
+    private JLabel label3;
+    private JLabel label4;
+    private JLabel label5;
+    private JLabel label6;
+    private JLabel label7;
+    private JLabel label8;
+    private JLabel label9;
+    private JLabel label14;
+    private JLabel label15;
+    private JButton button3;
+    private JButton button4;
+    private JButton button5;
+    private JTextField textFieldNomPeli;
+    private JTextField textFieldAnyoPeli;
+    private JTextField textFieldDurPeli;
+    private JTextField textFieldGenPeli;
+    private JTextField textFieldDirPeli;
+    private JTextField textFieldActoresPeli;
+    private JTextField textFieldURLTrailer;
+    private JScrollPane scrollPane1;
+    private JTextArea textAreaSinopsisPeli;
+    private JTextArea textAreaPremiosPeli;
+    private JFrame ventana;
+    private String URIImage;
+    // JFormDesigner - End of variables declaration  //GEN-END:variables
+
+    /**
+     * Método para redimensionar un ImageIcon al mismo tamaño que un JLabel.
+     */
+    public ImageIcon ResizeImage(String ImagePath)
+    {
+<span class="nc" id="L410">        ImageIcon MyImage = new ImageIcon(ImagePath);</span>
+<span class="nc" id="L411">        Image img = MyImage.getImage();</span>
+<span class="nc" id="L412">        Image newImg = img.getScaledInstance(label14.getWidth(), label14.getHeight(), Image.SCALE_SMOOTH);</span>
+<span class="nc" id="L413">        ImageIcon image = new ImageIcon(newImg);</span>
+<span class="nc" id="L414">        return image;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>

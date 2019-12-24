@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Inicio.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Festival_Cine</a> &gt; <a href="index.source.html" class="el_package">es.deusto.client.gui</a> &gt; <span class="el_source">Inicio.java</span></div><h1>Inicio.java</h1><pre class="source lang-java linenums">package es.deusto.client.gui;
+
+import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class Inicio extends JFrame {
+
+	private static final long serialVersionUID = 1L;
+	private JPanel contentPane;
+	private JFrame ventana;
+	
+	public Inicio() 
+<span class="nc" id="L16">	{</span>
+<span class="nc" id="L17">		ventana = this;</span>
+<span class="nc" id="L18">		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);</span>
+<span class="nc" id="L19">		setBounds(100, 100, 650, 484);</span>
+<span class="nc" id="L20">		contentPane = new JPanel();</span>
+<span class="nc" id="L21">		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));</span>
+<span class="nc" id="L22">		setContentPane(contentPane);</span>
+<span class="nc" id="L23">		contentPane.setLayout(null);</span>
+<span class="nc" id="L24">		getContentPane().setBackground(Color.white);</span>
+<span class="nc" id="L25">		setTitle(&quot;Menú Principal - Festival de Cine&quot;);</span>
+
+		
+<span class="nc" id="L28">		JLabel lblFestivalCine = new JLabel(&quot;Bienvenido al Festival de Cine&quot;);</span>
+<span class="nc" id="L29">		lblFestivalCine.setFont(new Font(&quot;Tahoma&quot;, Font.PLAIN, 31));</span>
+<span class="nc" id="L30">		lblFestivalCine.setBounds(58, 50, 418, 81);</span>
+<span class="nc" id="L31">		contentPane.add(lblFestivalCine);</span>
+		
+<span class="nc" id="L33">		JButton btnDarseDeAlta = new JButton(&quot;Darse de alta&quot;);</span>
+<span class="nc" id="L34">		btnDarseDeAlta.setBounds(175, 186, 191, 46);</span>
+<span class="nc" id="L35">		contentPane.add(btnDarseDeAlta);</span>
+<span class="nc" id="L36">		btnDarseDeAlta.addActionListener(new ActionListener() {</span>
+		    @Override
+		    public void actionPerformed(ActionEvent e) {
+<span class="nc" id="L39">		    	Alta f = new Alta();</span>
+<span class="nc" id="L40">				f.setVisible(true);</span>
+<span class="nc" id="L41">				dispose();</span>
+<span class="nc" id="L42">		    }</span>
+		});
+		
+<span class="nc" id="L45">		JButton btnIniciarSesion = new JButton(&quot;Iniciar sesión&quot;);</span>
+<span class="nc" id="L46">		btnIniciarSesion.setBounds(175, 248, 191, 46);</span>
+<span class="nc" id="L47">		contentPane.add(btnIniciarSesion);</span>
+<span class="nc" id="L48">		btnIniciarSesion.addActionListener(new ActionListener() {</span>
+			@Override
+		    public void actionPerformed(ActionEvent e)
+		    {
+<span class="nc" id="L52">		    	Login f1 = new Login();</span>
+<span class="nc" id="L53">				f1.setVisible(true);</span>
+<span class="nc" id="L54">				dispose();</span>
+<span class="nc" id="L55">		    }</span>
+		});
+<span class="nc" id="L57">		JButton btnNoUsuario = new JButton(&quot;Seguir sin usuario&quot;);</span>
+<span class="nc" id="L58">		btnNoUsuario.setBounds(175, 300, 191, 46);</span>
+<span class="nc" id="L59">		contentPane.add(btnNoUsuario);</span>
+<span class="nc" id="L60">		btnNoUsuario.addActionListener(new ActionListener() {</span>
+			@Override
+			public void actionPerformed(ActionEvent e)
+			{
+<span class="nc" id="L64">				MenuAnonimo frame = new MenuAnonimo();</span>
+<span class="nc" id="L65">				frame.setVisible(true);</span>
+<span class="nc" id="L66">				dispose();</span>
+<span class="nc" id="L67">			}</span>
+		});
+<span class="nc" id="L69">	}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>
