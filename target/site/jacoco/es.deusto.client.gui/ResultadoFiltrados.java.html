@@ -21,62 +21,75 @@ public class ResultadoFiltrados extends JFrame {
 
 <span class="nc" id="L22">    static Logger logger = Logger.getLogger(ResultadoFiltrados.class.getName());</span>
 
-<span class="nc" id="L24">    public ResultadoFiltrados(String pelicula) {</span>
-<span class="nc" id="L25">        initComponents(pelicula);</span>
+<span class="nc" id="L24">    public ResultadoFiltrados(PeliculaList peliculaList) {</span>
+<span class="nc" id="L25">        initComponents(peliculaList);</span>
 <span class="nc" id="L26">    }</span>
 
     private void button1ActionPerformed(ActionEvent e) {
         // TODO add your code here
 <span class="nc" id="L30">    }</span>
 
-    private void initComponents(String pelicula) {
+    private void initComponents(PeliculaList peliculaList) {
 
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         // Generated using JFormDesigner Evaluation license - unknown
 <span class="nc" id="L36">        label1 = new JLabel();</span>
-<span class="nc" id="L37">        textField1 = new JTextField();</span>
-<span class="nc" id="L38">        button1 = new JButton();</span>
+<span class="nc" id="L37">        button1 = new JButton();</span>
+<span class="nc" id="L38">        textArea1 = new JTextArea();</span>
 
         //======== this ========
-<span class="nc" id="L41">        Container contentPane = getContentPane();</span>
-<span class="nc" id="L42">        contentPane.setLayout(null);</span>
+<span class="nc" id="L41">        setTitle(&quot;Peliculas Filtradas &quot;);</span>
+<span class="nc" id="L42">        Container contentPane = getContentPane();</span>
+<span class="nc" id="L43">        contentPane.setLayout(null);</span>
 
         //---- label1 ----
-<span class="nc" id="L45">        label1.setText(&quot;text&quot;);</span>
-<span class="nc" id="L46">        contentPane.add(label1);</span>
-<span class="nc" id="L47">        label1.setBounds(new Rectangle(new Point(25, 55), label1.getPreferredSize()));</span>
-<span class="nc" id="L48">        contentPane.add(textField1);</span>
-<span class="nc" id="L49">        textField1.setBounds(65, 55, 160, 25);</span>
+<span class="nc bnc" id="L46" title="All 2 branches missed.">        for (PeliculaDTO aux : peliculaList.getPeliculasDTO()) {</span>
+<span class="nc" id="L47">            logger.info(aux.toString());</span>
+<span class="nc" id="L48">        label1.setText(aux.getTitulo());</span>
+<span class="nc" id="L49">        contentPane.add(label1);</span>
+<span class="nc" id="L50">        label1.setBounds(new Rectangle(new Point(20, 55), label1.getPreferredSize()));</span>
 
         //---- button1 ----
-<span class="nc" id="L52">        button1.setText(&quot;+info&quot;);</span>
-<span class="nc" id="L53">        contentPane.add(button1);</span>
-<span class="nc" id="L54">        button1.setBounds(new Rectangle(new Point(255, 55), button1.getPreferredSize()));</span>
+<span class="nc" id="L53">        button1.setText(&quot;+info&quot;);</span>
+<span class="nc" id="L54">        contentPane.add(button1);</span>
+<span class="nc" id="L55">        button1.setBounds(new Rectangle(new Point(265, 55), button1.getPreferredSize()));</span>
+<span class="nc" id="L56">            button1.addActionListener(new ActionListener() {</span>
+                @Override
+                public void actionPerformed(ActionEvent e) {
+<span class="nc" id="L59">                    InformePeliculaAnonimo m = new InformePeliculaAnonimo(peliculaList.getPeliculasDTO().get(0));</span>
+<span class="nc" id="L60">                    m.setVisible(true);</span>
+<span class="nc" id="L61">                    dispose();</span>
+<span class="nc" id="L62">                }</span>
+            });
+
+<span class="nc" id="L65">        textArea1.setText(aux.getSinopsis());</span>
+<span class="nc" id="L66">        contentPane.add(textArea1);</span>
+<span class="nc" id="L67">        textArea1.setBounds(75, 55, 170, 50);}</span>
 
         {
             // compute preferred size
-<span class="nc" id="L58">            Dimension preferredSize = new Dimension();</span>
-<span class="nc bnc" id="L59" title="All 2 branches missed.">            for(int i = 0; i &lt; contentPane.getComponentCount(); i++) {</span>
-<span class="nc" id="L60">                Rectangle bounds = contentPane.getComponent(i).getBounds();</span>
-<span class="nc" id="L61">                preferredSize.width = Math.max(bounds.x + bounds.width, preferredSize.width);</span>
-<span class="nc" id="L62">                preferredSize.height = Math.max(bounds.y + bounds.height, preferredSize.height);</span>
+<span class="nc" id="L71">            Dimension preferredSize = new Dimension();</span>
+<span class="nc bnc" id="L72" title="All 2 branches missed.">            for(int i = 0; i &lt; contentPane.getComponentCount(); i++) {</span>
+<span class="nc" id="L73">                Rectangle bounds = contentPane.getComponent(i).getBounds();</span>
+<span class="nc" id="L74">                preferredSize.width = Math.max(bounds.x + bounds.width, preferredSize.width);</span>
+<span class="nc" id="L75">                preferredSize.height = Math.max(bounds.y + bounds.height, preferredSize.height);</span>
             }
-<span class="nc" id="L64">            Insets insets = contentPane.getInsets();</span>
-<span class="nc" id="L65">            preferredSize.width += insets.right;</span>
-<span class="nc" id="L66">            preferredSize.height += insets.bottom;</span>
-<span class="nc" id="L67">            contentPane.setMinimumSize(preferredSize);</span>
-<span class="nc" id="L68">            contentPane.setPreferredSize(preferredSize);</span>
+<span class="nc" id="L77">            Insets insets = contentPane.getInsets();</span>
+<span class="nc" id="L78">            preferredSize.width += insets.right;</span>
+<span class="nc" id="L79">            preferredSize.height += insets.bottom;</span>
+<span class="nc" id="L80">            contentPane.setMinimumSize(preferredSize);</span>
+<span class="nc" id="L81">            contentPane.setPreferredSize(preferredSize);</span>
         }
-<span class="nc" id="L70">        pack();</span>
-<span class="nc" id="L71">        setLocationRelativeTo(getOwner());</span>
+<span class="nc" id="L83">        pack();</span>
+<span class="nc" id="L84">        setLocationRelativeTo(getOwner());</span>
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
-<span class="nc" id="L73">    }</span>
+<span class="nc" id="L86">    }</span>
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
     // Generated using JFormDesigner Evaluation license - unknown
     private JLabel label1;
-    private JTextField textField1;
     private JButton button1;
+    private JTextArea textArea1;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 
     /**
@@ -84,11 +97,11 @@ public class ResultadoFiltrados extends JFrame {
      */
     public ImageIcon ResizeImage(String ImagePath, JLabel label)
     {
-<span class="nc" id="L87">        ImageIcon MyImage = new ImageIcon(ImagePath);</span>
-<span class="nc" id="L88">        Image img = MyImage.getImage();</span>
-<span class="nc" id="L89">        Image newImg = img.getScaledInstance(label.getWidth(), label.getHeight(), Image.SCALE_SMOOTH);</span>
-<span class="nc" id="L90">        ImageIcon image = new ImageIcon(newImg);</span>
-<span class="nc" id="L91">        return image;</span>
+<span class="nc" id="L100">        ImageIcon MyImage = new ImageIcon(ImagePath);</span>
+<span class="nc" id="L101">        Image img = MyImage.getImage();</span>
+<span class="nc" id="L102">        Image newImg = img.getScaledInstance(label.getWidth(), label.getHeight(), Image.SCALE_SMOOTH);</span>
+<span class="nc" id="L103">        ImageIcon image = new ImageIcon(newImg);</span>
+<span class="nc" id="L104">        return image;</span>
     }
 
 }

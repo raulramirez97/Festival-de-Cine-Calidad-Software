@@ -344,7 +344,7 @@ public class MenuAnonimo extends JFrame {
                         for (PeliculaDTO aux : peliculaList.getPeliculasDTO()) {
                             logger.info(aux.toString());
 
-                            ResultadoFiltrados m = new ResultadoFiltrados(aux.toString());
+                            ResultadoFiltrados m = new ResultadoFiltrados(peliculaList);
 
                             m.setVisible(true);
                             dispose();

@@ -21,37 +21,50 @@ public class ResultadoFiltrados extends JFrame {
 
     static Logger logger = Logger.getLogger(ResultadoFiltrados.class.getName());
 
-    public ResultadoFiltrados(String pelicula) {
-        initComponents(pelicula);
+    public ResultadoFiltrados(PeliculaList peliculaList) {
+        initComponents(peliculaList);
     }
 
     private void button1ActionPerformed(ActionEvent e) {
         // TODO add your code here
     }
 
-    private void initComponents(String pelicula) {
+    private void initComponents(PeliculaList peliculaList) {
 
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         // Generated using JFormDesigner Evaluation license - unknown
         label1 = new JLabel();
-        textField1 = new JTextField();
         button1 = new JButton();
+        textArea1 = new JTextArea();
 
         //======== this ========
+        setTitle("Peliculas Filtradas ");
         Container contentPane = getContentPane();
         contentPane.setLayout(null);
 
         //---- label1 ----
-        label1.setText("text");
+        for (PeliculaDTO aux : peliculaList.getPeliculasDTO()) {
+            logger.info(aux.toString());
+        label1.setText(aux.getTitulo());
         contentPane.add(label1);
-        label1.setBounds(new Rectangle(new Point(25, 55), label1.getPreferredSize()));
-        contentPane.add(textField1);
-        textField1.setBounds(65, 55, 160, 25);
+        label1.setBounds(new Rectangle(new Point(20, 55), label1.getPreferredSize()));
 
         //---- button1 ----
         button1.setText("+info");
         contentPane.add(button1);
-        button1.setBounds(new Rectangle(new Point(255, 55), button1.getPreferredSize()));
+        button1.setBounds(new Rectangle(new Point(265, 55), button1.getPreferredSize()));
+            button1.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    InformePeliculaAnonimo m = new InformePeliculaAnonimo(peliculaList.getPeliculasDTO().get(0));
+                    m.setVisible(true);
+                    dispose();
+                }
+            });
+
+        textArea1.setText(aux.getSinopsis());
+        contentPane.add(textArea1);
+        textArea1.setBounds(75, 55, 170, 50);}
 
         {
             // compute preferred size
@@ -75,8 +88,8 @@ public class ResultadoFiltrados extends JFrame {
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
     // Generated using JFormDesigner Evaluation license - unknown
     private JLabel label1;
-    private JTextField textField1;
     private JButton button1;
+    private JTextArea textArea1;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 
     /**

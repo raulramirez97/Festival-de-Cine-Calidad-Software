@@ -79,4 +79,5 @@ es/deusto/server/data/ComentarioDTO.class
 es/deusto/client/gui/ProgressBar$MiRunnable.class
 es/deusto/client/gui/InformePelicula.class
 es/deusto/server/dao/IDAO.class
+es/deusto/client/gui/ResultadoFiltrados$1.class
 es/deusto/server/data/PeliculaList.class

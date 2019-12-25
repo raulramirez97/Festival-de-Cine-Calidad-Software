@@ -344,7 +344,7 @@ public class MenuAnonimo extends JFrame {
 <span class="nc bnc" id="L344" title="All 2 branches missed.">                        for (PeliculaDTO aux : peliculaList.getPeliculasDTO()) {</span>
 <span class="nc" id="L345">                            logger.info(aux.toString());</span>
 
-<span class="nc" id="L347">                            ResultadoFiltrados m = new ResultadoFiltrados(aux.toString());</span>
+<span class="nc" id="L347">                            ResultadoFiltrados m = new ResultadoFiltrados(peliculaList);</span>
 
 <span class="nc" id="L349">                            m.setVisible(true);</span>
 <span class="nc" id="L350">                            dispose();</span>

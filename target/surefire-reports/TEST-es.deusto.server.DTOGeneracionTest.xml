@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="7" failures="0" name="es.deusto.server.DTOGeneracionTest" time="0.065" errors="0" skipped="0">
+<testsuite tests="7" failures="0" name="es.deusto.server.DTOGeneracionTest" time="0.073" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_181.jdk/Contents/Home/jre/lib"/>
@@ -62,10 +62,10 @@
     <property name="sun.cpu.isalist" value=""/>
   </properties>
   <testcase classname="es.deusto.server.DTOGeneracionTest" name="testGenerateActorDTOCorrectly" time="0.007"/>
-  <testcase classname="es.deusto.server.DTOGeneracionTest" name="testGeneratePeliculaDTOCorrectly" time="0.01"/>
-  <testcase classname="es.deusto.server.DTOGeneracionTest" name="testSetComentarioDTOCorrectly" time="0.013"/>
-  <testcase classname="es.deusto.server.DTOGeneracionTest" name="testGenerateUsuarioDTOCorrectly" time="0.004"/>
-  <testcase classname="es.deusto.server.DTOGeneracionTest" name="testGenerateValoracionDTOCorrectly" time="0.006"/>
-  <testcase classname="es.deusto.server.DTOGeneracionTest" name="testSetComentarioDTOIncorrectly" time="0.017"/>
-  <testcase classname="es.deusto.server.DTOGeneracionTest" name="testGenerateComentarioDTOCorrectly" time="0.008"/>
+  <testcase classname="es.deusto.server.DTOGeneracionTest" name="testGeneratePeliculaDTOCorrectly" time="0.007"/>
+  <testcase classname="es.deusto.server.DTOGeneracionTest" name="testSetComentarioDTOCorrectly" time="0.011"/>
+  <testcase classname="es.deusto.server.DTOGeneracionTest" name="testGenerateUsuarioDTOCorrectly" time="0.005"/>
+  <testcase classname="es.deusto.server.DTOGeneracionTest" name="testGenerateValoracionDTOCorrectly" time="0.016"/>
+  <testcase classname="es.deusto.server.DTOGeneracionTest" name="testSetComentarioDTOIncorrectly" time="0.018"/>
+  <testcase classname="es.deusto.server.DTOGeneracionTest" name="testGenerateComentarioDTOCorrectly" time="0.009"/>
 </testsuite>

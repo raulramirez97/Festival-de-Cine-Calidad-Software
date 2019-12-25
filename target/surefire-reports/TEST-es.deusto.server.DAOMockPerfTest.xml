@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="3" failures="0" name="es.deusto.server.DAOMockPerfTest" time="0.463" errors="0" skipped="0">
+<testsuite tests="3" failures="0" name="es.deusto.server.DAOMockPerfTest" time="0.418" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_181.jdk/Contents/Home/jre/lib"/>
@@ -61,7 +61,7 @@
     <property name="sun.io.unicode.encoding" value="UnicodeBig"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase classname="es.deusto.server.DAOMockPerfTest" name="testRegisterDAOUserCorrectly" time="0.403"/>
-  <testcase classname="es.deusto.server.DAOMockPerfTest" name="testSayMessageDAOUserValid" time="0.053"/>
-  <testcase classname="es.deusto.server.DAOMockPerfTest" name="testRegisterDAOUserAlreadyExists" time="0.007"/>
+  <testcase classname="es.deusto.server.DAOMockPerfTest" name="testRegisterDAOUserCorrectly" time="0.358"/>
+  <testcase classname="es.deusto.server.DAOMockPerfTest" name="testSayMessageDAOUserValid" time="0.05"/>
+  <testcase classname="es.deusto.server.DAOMockPerfTest" name="testRegisterDAOUserAlreadyExists" time="0.01"/>
 </testsuite>
