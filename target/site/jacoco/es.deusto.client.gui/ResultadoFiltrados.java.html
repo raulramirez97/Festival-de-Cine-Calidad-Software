@@ -7,159 +7,76 @@ import es.deusto.server.data.PeliculaDTO;
 
 
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.logging.Logger;
+import java.util.ArrayList;
+
 
 //TODO: Esto debería cambiarse por una ventana medio bien hecha que muestre la información como en el prototipo.
 //TODO: Es decir: https://marvelapp.com/d2h27dh/screen/63129721
 public class ResultadoFiltrados extends JFrame {
 
-<span class="nc" id="L20">    static Logger logger = Logger.getLogger(ResultadoFiltrados.class.getName());</span>
+<span class="nc" id="L22">    static Logger logger = Logger.getLogger(ResultadoFiltrados.class.getName());</span>
 
-<span class="nc" id="L22">    public ResultadoFiltrados(PeliculaList pelicula) {</span>
-<span class="nc" id="L23">        initComponents(pelicula);</span>
-<span class="nc" id="L24">    }</span>
+<span class="nc" id="L24">    public ResultadoFiltrados(String pelicula) {</span>
+<span class="nc" id="L25">        initComponents(pelicula);</span>
+<span class="nc" id="L26">    }</span>
 
-    private void initComponents(PeliculaList pelicula) {
+    private void button1ActionPerformed(ActionEvent e) {
+        // TODO add your code here
+<span class="nc" id="L30">    }</span>
 
-   /* private static final long serialVersionUID = 1L;
-    private JPanel contentPane;
-    private JTextField textField;
-    private JTextField textField2;
-    private JComboBox listafiltros;
-    private JComboBox criterios;
-    private boolean flag = false;
-    private JFrame ventana;*/
+    private void initComponents(String pelicula) {
 
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        // Generated using JFormDesigner Evaluation license - Beñat
-<span class="nc" id="L39">        label1 = new JLabel();</span>
-<span class="nc" id="L40">        label2 = new JLabel();</span>
-<span class="nc" id="L41">        label3 = new JLabel();</span>
-<span class="nc" id="L42">        label4 = new JLabel();</span>
-<span class="nc" id="L43">        label5 = new JLabel();</span>
-<span class="nc" id="L44">        label6 = new JLabel();</span>
-<span class="nc" id="L45">        label7 = new JLabel();</span>
-<span class="nc" id="L46">        label8 = new JLabel();</span>
-<span class="nc" id="L47">        label9 = new JLabel();</span>
-<span class="nc" id="L48">        label10 = new JLabel();</span>
-<span class="nc" id="L49">        label11 = new JLabel();</span>
-<span class="nc" id="L50">        label12 = new JLabel();</span>
-<span class="nc" id="L51">        label13 = new JLabel();</span>
-<span class="nc" id="L52">        label16 = new JLabel();</span>
-<span class="nc" id="L53">        label17 = new JLabel();</span>
-<span class="nc" id="L54">        scrollPane1 = new JScrollPane();</span>
-<span class="nc" id="L55">        textArea1 = new JTextArea();</span>
-<span class="nc" id="L56">        textArea2 = new JTextArea();</span>
-<span class="nc" id="L57">        label14 = new JLabel();</span>
-<span class="nc" id="L58">        button3 = new JButton();</span>
-<span class="nc" id="L59">        button4 = new JButton();</span>
-<span class="nc" id="L60">        label15 = new JLabel();</span>
-<span class="nc" id="L61">        label18 = new JLabel();</span>
+        // Generated using JFormDesigner Evaluation license - unknown
+<span class="nc" id="L36">        label1 = new JLabel();</span>
+<span class="nc" id="L37">        textField1 = new JTextField();</span>
+<span class="nc" id="L38">        button1 = new JButton();</span>
 
-<span class="nc" id="L63">        ventana = this;</span>
-
-        //this//
-
-<span class="nc" id="L67">        String myPath = System.getProperty(&quot;user.dir&quot;);</span>
-
-        // setTitle(&quot;Películas filtradas: &quot;+pelicula.getTitulo());
-<span class="nc" id="L70">        setTitle(&quot;Películas filtradas: &quot;);</span>
-<span class="nc" id="L71">        Container contentPane = getContentPane();</span>
-<span class="nc" id="L72">        contentPane.setLayout(null);</span>
-
-
-       /* setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBounds(100, 100, 452, 367);
-        contentPane = new JPanel();
-        contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-        setContentPane(contentPane);
-        contentPane.setLayout(null);
-        getContentPane().setBackground(Color.white);
-        setTitle(&quot;Películas filtradas&quot;);*/
+        //======== this ========
+<span class="nc" id="L41">        Container contentPane = getContentPane();</span>
+<span class="nc" id="L42">        contentPane.setLayout(null);</span>
 
         //---- label1 ----
-<span class="nc" id="L85">        label1.setText(&quot;Festival Cine&quot;);</span>
-<span class="nc" id="L86">        label1.setFont(label1.getFont().deriveFont(label1.getFont().getSize() + 18f));</span>
-<span class="nc" id="L87">        label1.setHorizontalAlignment(SwingConstants.CENTER);</span>
-<span class="nc" id="L88">        contentPane.add(label1);</span>
-<span class="nc" id="L89">        label1.setBounds(290, 95, 275, 30);</span>
+<span class="nc" id="L45">        label1.setText(&quot;text&quot;);</span>
+<span class="nc" id="L46">        contentPane.add(label1);</span>
+<span class="nc" id="L47">        label1.setBounds(new Rectangle(new Point(25, 55), label1.getPreferredSize()));</span>
+<span class="nc" id="L48">        contentPane.add(textField1);</span>
+<span class="nc" id="L49">        textField1.setBounds(65, 55, 160, 25);</span>
 
-       /* btnPeliculas.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                //TODO: POR EL MOMENTO ENSENADOS POR CONSOLA. POSTERIORMENTE SE APLICARA GUI (FILTRADOS.JAVA).
-//                PeliculaList peliculaList = FestivalCineController.getInstance().getFilteredPeliculaList((String)(listafiltros.getSelectedItem()));
-//                for (PeliculaDTO aux : peliculaList.getPeliculasDTO()) {
-//                    System.out.println(aux.toString());
-//                }
-//                Menu m = new Menu(aux);
-//                m.setVisible(true);
-//                dispose();
-//            	Filtrados filtrados = new Filtrados(aux);
-//            	filtrados.setVisible(true);
-//            	dispose();
+        //---- button1 ----
+<span class="nc" id="L52">        button1.setText(&quot;+info&quot;);</span>
+<span class="nc" id="L53">        contentPane.add(button1);</span>
+<span class="nc" id="L54">        button1.setBounds(new Rectangle(new Point(255, 55), button1.getPreferredSize()));</span>
 
-                *//*PeliculaList peliculaList = FestivalCineController.getInstance().getFilteredPeliculaList((String)(listafiltros.getSelectedItem()),(String)(criterios.getSelectedItem()));
-                for (PeliculaDTO aux : peliculaList.getPeliculasDTO()) {
-                    System.out.println(aux.toString());
-                }
-                Menu m = new Menu(aux);
-                m.setVisible(true);
-                dispose();*//*
-            	//Filtrados filtrados = new Filtrados(aux);
-            	//filtrados.setVisible(true);
-           //	dispose();
-            }
-        });*/
         {
             // compute preferred size
-<span class="nc" id="L120">            Dimension preferredSize = new Dimension();</span>
-<span class="nc bnc" id="L121" title="All 2 branches missed.">            for(int i = 0; i &lt; contentPane.getComponentCount(); i++) {</span>
-<span class="nc" id="L122">                Rectangle bounds = contentPane.getComponent(i).getBounds();</span>
-<span class="nc" id="L123">                preferredSize.width = Math.max(bounds.x + bounds.width, preferredSize.width);</span>
-<span class="nc" id="L124">                preferredSize.height = Math.max(bounds.y + bounds.height, preferredSize.height);</span>
+<span class="nc" id="L58">            Dimension preferredSize = new Dimension();</span>
+<span class="nc bnc" id="L59" title="All 2 branches missed.">            for(int i = 0; i &lt; contentPane.getComponentCount(); i++) {</span>
+<span class="nc" id="L60">                Rectangle bounds = contentPane.getComponent(i).getBounds();</span>
+<span class="nc" id="L61">                preferredSize.width = Math.max(bounds.x + bounds.width, preferredSize.width);</span>
+<span class="nc" id="L62">                preferredSize.height = Math.max(bounds.y + bounds.height, preferredSize.height);</span>
             }
-<span class="nc" id="L126">            Insets insets = contentPane.getInsets();</span>
-<span class="nc" id="L127">            preferredSize.width += insets.right;</span>
-<span class="nc" id="L128">            preferredSize.height += insets.bottom;</span>
-<span class="nc" id="L129">            contentPane.setMinimumSize(preferredSize);</span>
-<span class="nc" id="L130">            contentPane.setPreferredSize(preferredSize);</span>
+<span class="nc" id="L64">            Insets insets = contentPane.getInsets();</span>
+<span class="nc" id="L65">            preferredSize.width += insets.right;</span>
+<span class="nc" id="L66">            preferredSize.height += insets.bottom;</span>
+<span class="nc" id="L67">            contentPane.setMinimumSize(preferredSize);</span>
+<span class="nc" id="L68">            contentPane.setPreferredSize(preferredSize);</span>
         }
-<span class="nc" id="L132">        pack();</span>
-<span class="nc" id="L133">        setLocationRelativeTo(getOwner());</span>
+<span class="nc" id="L70">        pack();</span>
+<span class="nc" id="L71">        setLocationRelativeTo(getOwner());</span>
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
-<span class="nc" id="L135">    }</span>
+<span class="nc" id="L73">    }</span>
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - Beñat
+    // Generated using JFormDesigner Evaluation license - unknown
     private JLabel label1;
-    private JLabel label2;
-    private JLabel label3;
-    private JLabel label4;
-    private JLabel label5;
-    private JLabel label6;
-    private JLabel label7;
-    private JLabel label8;
-    private JLabel label9;
-    private JLabel label10;
-    private JLabel label11;
-    private JLabel label12;
-    private JLabel label13;
-    private JLabel label16;
-    private JLabel label17;
-    private JScrollPane scrollPane1;
-    private JTextArea textArea1;
-    private JTextArea textArea2;
-    private JLabel label14;
-    private JButton button3;
-    private JButton button4;
-    private JLabel label15;
-    private JLabel label18;
-    private JFrame ventana;
+    private JTextField textField1;
+    private JButton button1;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 
     /**
@@ -167,11 +84,12 @@ public class ResultadoFiltrados extends JFrame {
      */
     public ImageIcon ResizeImage(String ImagePath, JLabel label)
     {
-<span class="nc" id="L170">        ImageIcon MyImage = new ImageIcon(ImagePath);</span>
-<span class="nc" id="L171">        Image img = MyImage.getImage();</span>
-<span class="nc" id="L172">        Image newImg = img.getScaledInstance(label.getWidth(), label.getHeight(), Image.SCALE_SMOOTH);</span>
-<span class="nc" id="L173">        ImageIcon image = new ImageIcon(newImg);</span>
-<span class="nc" id="L174">        return image;</span>
+<span class="nc" id="L87">        ImageIcon MyImage = new ImageIcon(ImagePath);</span>
+<span class="nc" id="L88">        Image img = MyImage.getImage();</span>
+<span class="nc" id="L89">        Image newImg = img.getScaledInstance(label.getWidth(), label.getHeight(), Image.SCALE_SMOOTH);</span>
+<span class="nc" id="L90">        ImageIcon image = new ImageIcon(newImg);</span>
+<span class="nc" id="L91">        return image;</span>
     }
+
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>

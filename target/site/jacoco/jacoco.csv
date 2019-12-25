@@ -12,7 +12,7 @@ Festival_Cine,es.deusto.client.gui,VerComentariosPelicula.new ActionListener() {
 Festival_Cine,es.deusto.client.gui,InformePeliculaAnonimo.new ActionListener() {...},57,0,4,0,12,0,4,0,2,0
 Festival_Cine,es.deusto.client.gui,CreacionPelicula.new ActionListener() {...},123,0,4,0,23,0,4,0,2,0
 Festival_Cine,es.deusto.client.gui,CreacionPelicula.new ActionListener() {...},141,0,8,0,26,0,6,0,2,0
-Festival_Cine,es.deusto.client.gui,ResultadoFiltrados,265,0,2,0,55,0,5,0,4,0
+Festival_Cine,es.deusto.client.gui,ResultadoFiltrados,181,0,2,0,36,0,6,0,5,0
 Festival_Cine,es.deusto.client.gui,CreacionActor,386,0,2,0,73,0,4,0,3,0
 Festival_Cine,es.deusto.client.gui,Alta.new ActionListener() {...},17,0,0,0,5,0,2,0,2,0
 Festival_Cine,es.deusto.client.gui,Alta.new ActionListener() {...},44,0,0,0,7,0,2,0,2,0
@@ -37,7 +37,7 @@ Festival_Cine,es.deusto.client.gui,MenuAnonimo.new ActionListener() {...},26,0,0
 Festival_Cine,es.deusto.client.gui,Menu.new ActionListener() {...},22,0,0,0,5,0,2,0,2,0
 Festival_Cine,es.deusto.client.gui,Menu.new ActionListener() {...},181,0,22,0,32,0,13,0,2,0
 Festival_Cine,es.deusto.client.gui,MenuAnonimo.new ActionListener() {...},26,0,0,0,5,0,2,0,2,0
-Festival_Cine,es.deusto.client.gui,MenuAnonimo.new ActionListener() {...},192,0,22,0,35,0,13,0,2,0
+Festival_Cine,es.deusto.client.gui,MenuAnonimo.new ActionListener() {...},193,0,22,0,35,0,13,0,2,0
 Festival_Cine,es.deusto.client.gui,Menu.new ActionListener() {...},361,0,28,0,67,0,16,0,2,0
 Festival_Cine,es.deusto.client.gui,Menu.new ActionListener() {...},31,0,0,0,5,0,2,0,2,0
 Festival_Cine,es.deusto.client.gui,MenuAnonimo.new ActionListener() {...},361,0,28,0,67,0,16,0,2,0

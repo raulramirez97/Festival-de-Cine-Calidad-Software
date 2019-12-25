@@ -15,6 +15,7 @@ import javax.swing.*;
 import es.deusto.client.FestivalCineController;
 import es.deusto.server.data.PeliculaDTO;
 import es.deusto.server.data.PeliculaList;
+import es.deusto.client.gui.ResultadoFiltrados;
 
 /**
  * @author unknown
@@ -319,6 +320,8 @@ public class MenuAnonimo extends JFrame {
                                 comboBox1.getSelectedIndex() == 8) {
                             peliculaList = FestivalCineController.getInstance().getFilteredPeliculaList(
                                     (String) (comboBox2.getSelectedItem()), (String) comboBox1.getSelectedItem());
+
+
                         }
                         else if (comboBox1.getSelectedIndex() == 4) {
                             Double.parseDouble(textField1.getText());
@@ -340,16 +343,16 @@ public class MenuAnonimo extends JFrame {
                         }
                         for (PeliculaDTO aux : peliculaList.getPeliculasDTO()) {
                             logger.info(aux.toString());
+
+                            ResultadoFiltrados m = new ResultadoFiltrados(aux.toString());
+
+                            m.setVisible(true);
+                            dispose();
                         }
                         //TODO: Se debería mostrar el listado de películas filtradas, en formato búsqueda.
-                        //Menu m = new Menu(aux);
-                        //m.setVisible(true);
-                        //dispose();
 
-                        ResultadoFiltrados m = new ResultadoFiltrados(peliculaList);
 
-                        m.setVisible(true);
-                        dispose();
+
 
                     }
                     catch (NumberFormatException e1){
