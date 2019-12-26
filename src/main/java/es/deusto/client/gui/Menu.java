@@ -13,7 +13,6 @@ import java.util.logging.Logger;
 import javax.swing.*;
 
 import es.deusto.client.FestivalCineController;
-import es.deusto.server.data.PeliculaDTO;
 import es.deusto.server.data.PeliculaList;
 import es.deusto.server.data.UsuarioDTO;
 
@@ -98,7 +97,6 @@ public class Menu extends JFrame {
 
         if (tam > 0 ) {
             //---- label2 ----
-            //label2.setText(peliculaList.getPeliculasDTO().get(0).getURIimagen());
             label2.setBounds(220, 215, 130, 90);
             label2.setIcon(ResizeImage(myPath+peliculaList.getPeliculasDTO().get(0).getURIimagen(), label2));
             contentPane.add(label2);
@@ -201,6 +199,7 @@ public class Menu extends JFrame {
             }
         }
 
+
         ArrayList<String> filtrosGenerales = new ArrayList<String>();
         filtrosGenerales.add("Opciones:"); // CODE: 0
         filtrosGenerales.add("Género"); // CODE: 1
@@ -218,16 +217,16 @@ public class Menu extends JFrame {
 
         logger.info("Strings de Filtros cargados");
         contentPane.add(comboBox2);
-        comboBox2.setBounds(760, 235, 110, 30);
+        comboBox2.setBounds(760, 225, 110, 30);
         comboBox2.setVisible(false);
 
         contentPane.add(textField1);
-        textField1.setBounds(715, 275, 210, 35);
+        textField1.setBounds(715, 265, 210, 35);
         textField1.setVisible(false);
 
         comboBox1 = new JComboBox(filtrosGeneralesStrings);
         contentPane.add(comboBox1);
-        comboBox1.setBounds(760, 195, 110, comboBox1.getPreferredSize().height);
+        comboBox1.setBounds(760, 185, 110, comboBox1.getPreferredSize().height);
 
         comboBox1.addActionListener(new ActionListener() {
             @Override
@@ -250,7 +249,7 @@ public class Menu extends JFrame {
                     comboBox2.setModel( model );
                     comboBox2.setVisible(true);
 
-                } //TODO: Es decir, si se selecciona otra opción.
+                }
                 else if (comboBox1.getSelectedIndex()==2) {
                     textField1.setVisible(false);
                     ArrayList<String> filtrosEspecificos = new ArrayList<String>();
@@ -326,9 +325,8 @@ public class Menu extends JFrame {
         button6.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //TODO: POR EL MOMENTO ENSENADOS POR CONSOLA. POSTERIORMENTE SE APLICARA GUI (FILTRADOS.JAVA).
                 if (comboBox1.getSelectedIndex() == 0) {
-                    JOptionPane.showMessageDialog(ventana,"Selecciona una opción, por favor!",
+                    JOptionPane.showMessageDialog(ventana,"¡Selecciona una opción, por favor!",
                             "ERR-A01 - Selección errónea de filtro",JOptionPane.ERROR_MESSAGE);
                 }
                 else {
@@ -358,17 +356,19 @@ public class Menu extends JFrame {
                             peliculaList = FestivalCineController.getInstance().getFilteredPeliculaList(
                                     (textField1.getText()), (String) comboBox1.getSelectedItem());
                         }
-                        for (PeliculaDTO aux : peliculaList.getPeliculasDTO()) {
-                            logger.info(aux.toString());
-                            ResultadoFiltrados m = new ResultadoFiltrados(peliculaList);
-
+                        if (peliculaList.getPeliculasDTO().size() == 0)
+                        {
+                            JOptionPane.showMessageDialog(ventana,
+                                    "No hay películas que cumplan este filtro.",
+                                    "ERR-A04 - No hay películas que cumplan este filtro.",
+                                    JOptionPane.ERROR_MESSAGE);
+                            logger.info("ERR-A04 - No hay películas que cumplan este filtro.");
+                        }
+                        else {
+                            ResultadoFiltrados m = new ResultadoFiltrados(peliculaList,aux);
                             m.setVisible(true);
                             dispose();
                         }
-                        //TODO: Se debería mostrar el listado de películas filtradas, en formato búsqueda.
-                        //Menu m = new Menu(aux);
-                        //m.setVisible(true);
-                        //dispose();
                     }
                     catch (NumberFormatException e1){
                         JOptionPane.showMessageDialog(ventana, "¡No has insertado un valor numérico correcto!",

@@ -199,6 +199,7 @@ public class MenuAnonimo extends JFrame {
             filtrosGeneralesStrings[i] = filtrosGenerales.get(i);
         }
 
+        logger.info("Strings de Filtros cargados");
         contentPane.add(comboBox2);
         comboBox2.setBounds(760, 225, 110, 30);
         comboBox2.setVisible(false);
@@ -232,7 +233,7 @@ public class MenuAnonimo extends JFrame {
                     comboBox2.setModel( model );
                     comboBox2.setVisible(true);
 
-                } //TODO: Es decir, si se selecciona otra opción.
+                }
                 else if (comboBox1.getSelectedIndex()==2) {
                     textField1.setVisible(false);
                     ArrayList<String> filtrosEspecificos = new ArrayList<String>();
@@ -299,6 +300,7 @@ public class MenuAnonimo extends JFrame {
                 }
             }
         });
+        logger.info("Filtros cargados");
 
         //---- button6 ----
         button6.setText("Buscar");
@@ -307,9 +309,8 @@ public class MenuAnonimo extends JFrame {
         button6.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //TODO: POR EL MOMENTO ENSENADOS POR CONSOLA. POSTERIORMENTE SE APLICARA GUI (FILTRADOS.JAVA).
                 if (comboBox1.getSelectedIndex() == 0) {
-                    JOptionPane.showMessageDialog(ventana,"Selecciona una opción, por favor!",
+                    JOptionPane.showMessageDialog(ventana,"¡Selecciona una opción, por favor!",
                             "ERR-A01 - Selección errónea de filtro",JOptionPane.ERROR_MESSAGE);
                 }
                 else {
@@ -320,8 +321,6 @@ public class MenuAnonimo extends JFrame {
                                 comboBox1.getSelectedIndex() == 8) {
                             peliculaList = FestivalCineController.getInstance().getFilteredPeliculaList(
                                     (String) (comboBox2.getSelectedItem()), (String) comboBox1.getSelectedItem());
-
-
                         }
                         else if (comboBox1.getSelectedIndex() == 4) {
                             Double.parseDouble(textField1.getText());
@@ -341,19 +340,19 @@ public class MenuAnonimo extends JFrame {
                             peliculaList = FestivalCineController.getInstance().getFilteredPeliculaList(
                                     (textField1.getText()), (String) comboBox1.getSelectedItem());
                         }
-                        for (PeliculaDTO aux : peliculaList.getPeliculasDTO()) {
-                            logger.info(aux.toString());
-
-                            ResultadoFiltrados m = new ResultadoFiltrados(peliculaList);
-
+                        if (peliculaList.getPeliculasDTO().size() == 0)
+                        {
+                            JOptionPane.showMessageDialog(ventana,
+                                    "No hay películas que cumplan este filtro.",
+                                    "ERR-A04 - No hay películas que cumplan este filtro.",
+                                    JOptionPane.ERROR_MESSAGE);
+                            logger.info("ERR-A04 - No hay películas que cumplan este filtro.");
+                        }
+                        else {
+                            ResultadoFiltradosAnonimo m = new ResultadoFiltradosAnonimo(peliculaList);
                             m.setVisible(true);
                             dispose();
                         }
-                        //TODO: Se debería mostrar el listado de películas filtradas, en formato búsqueda.
-
-
-
-
                     }
                     catch (NumberFormatException e1){
                         JOptionPane.showMessageDialog(ventana, "¡No has insertado un valor numérico correcto!",
@@ -367,7 +366,7 @@ public class MenuAnonimo extends JFrame {
                 }
             }
         });
-
+        logger.info("Botón de búsqueda con Filtros cargado.");
         {
             // compute preferred size
             Dimension preferredSize = new Dimension();
