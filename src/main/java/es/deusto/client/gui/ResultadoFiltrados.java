@@ -45,9 +45,23 @@ public class ResultadoFiltrados extends JFrame {
         //---- label1 ----
         for (PeliculaDTO aux : peliculaList.getPeliculasDTO()) {
             logger.info(aux.toString());
-        label1.setText(aux.getTitulo());
-        contentPane.add(label1);
-        label1.setBounds(new Rectangle(new Point(20, 55), label1.getPreferredSize()));
+       // label1.setText(aux.getTitulo());
+        //contentPane.add(label1);
+      //  label1.setBounds(new Rectangle(new Point(20, 55), label1.getPreferredSize()));
+
+
+                JLabel[] labels=new JLabel[10];
+                for (int i=0;i<10;i++){
+                    labels[i]=new JLabel("message" + i);
+                    labels[i].setText(aux.getTitulo());
+                    contentPane.add(labels[i]);
+                    labels[i].setBounds(new Rectangle(new Point(20, 55), labels[i].getPreferredSize()));
+                }
+              //  return labels;
+
+
+
+
 
         //---- button1 ----
         button1.setText("+info");
