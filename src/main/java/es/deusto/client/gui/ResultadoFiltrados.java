@@ -45,28 +45,23 @@ public class ResultadoFiltrados extends JFrame {
         //---- label1 ----
         for (PeliculaDTO aux : peliculaList.getPeliculasDTO()) {
             logger.info(aux.toString());
-       // label1.setText(aux.getTitulo());
-        //contentPane.add(label1);
-      //  label1.setBounds(new Rectangle(new Point(20, 55), label1.getPreferredSize()));
+            // label1.setText(aux.getTitulo());
+            //contentPane.add(label1);
+            //  label1.setBounds(new Rectangle(new Point(20, 55), label1.getPreferredSize()));
+            JLabel[] labels=new JLabel[10];
+            for (int i=0;i<10;i++){
+                labels[i]=new JLabel("message" + i);
+                labels[i].setText(aux.getTitulo());
+                contentPane.add(labels[i]);
+                labels[i].setBounds(new Rectangle(new Point(20, 55), labels[i].getPreferredSize()));
+                //labels.setBounds(20, 55, 45, labels.getPreferredSize().height);
+            }
+            //  return labels;
 
-
-                JLabel[] labels=new JLabel[10];
-                for (int i=0;i<10;i++){
-                    labels[i]=new JLabel("message" + i);
-                    labels[i].setText(aux.getTitulo());
-                    contentPane.add(labels[i]);
-                    labels[i].setBounds(new Rectangle(new Point(20, 55), labels[i].getPreferredSize()));
-                }
-              //  return labels;
-
-
-
-
-
-        //---- button1 ----
-        button1.setText("+info");
-        contentPane.add(button1);
-        button1.setBounds(new Rectangle(new Point(265, 55), button1.getPreferredSize()));
+            //---- button1 ----
+            button1.setText("+info");
+            contentPane.add(button1);
+            button1.setBounds(new Rectangle(new Point(265, 55), button1.getPreferredSize()));
             button1.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
@@ -76,9 +71,10 @@ public class ResultadoFiltrados extends JFrame {
                 }
             });
 
-        textArea1.setText(aux.getSinopsis());
-        contentPane.add(textArea1);
-        textArea1.setBounds(75, 55, 170, 50);}
+            textArea1.setText(aux.getSinopsis());
+            contentPane.add(textArea1);
+            textArea1.setBounds(100, 70, 200, 100);}
+
 
         {
             // compute preferred size
