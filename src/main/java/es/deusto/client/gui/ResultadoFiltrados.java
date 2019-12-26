@@ -36,6 +36,10 @@ public class ResultadoFiltrados extends JFrame {
         label1 = new JLabel();
         button1 = new JButton();
         textArea1 = new JTextArea();
+        label2 = new JLabel();
+        scrollPane1 = new JScrollPane();
+        textArea2 = new JTextArea();
+        button2 = new JButton();
 
         //======== this ========
         setTitle("Peliculas Filtradas ");
@@ -61,7 +65,7 @@ public class ResultadoFiltrados extends JFrame {
             //---- button1 ----
             button1.setText("+info");
             contentPane.add(button1);
-            button1.setBounds(new Rectangle(new Point(265, 55), button1.getPreferredSize()));
+            button1.setBounds(new Rectangle(new Point(395, 55), button1.getPreferredSize()));
             button1.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
@@ -75,6 +79,25 @@ public class ResultadoFiltrados extends JFrame {
             contentPane.add(textArea1);
             textArea1.setBounds(100, 70, 200, 100);}
 
+
+
+
+        //---- label2 ----
+        //label2.setText("text");
+        //contentPane.add(label2);
+      //  label2.setBounds(15, 200, 40, label2.getPreferredSize().height);
+
+        //======== scrollPane1 ========
+        {
+            scrollPane1.setViewportView(textArea2);
+        }
+        contentPane.add(scrollPane1);
+        scrollPane1.setBounds(130, 200, 210, 40);
+
+        //---- button2 ----
+        button2.setText("+info");
+        contentPane.add(button2);
+        button2.setBounds(new Rectangle(new Point(395, 210), button2.getPreferredSize()));
 
         {
             // compute preferred size
@@ -100,6 +123,10 @@ public class ResultadoFiltrados extends JFrame {
     private JLabel label1;
     private JButton button1;
     private JTextArea textArea1;
+    private JLabel label2;
+    private JScrollPane scrollPane1;
+    private JTextArea textArea2;
+    private JButton button2;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 
     /**

@@ -360,6 +360,10 @@ public class Menu extends JFrame {
                         }
                         for (PeliculaDTO aux : peliculaList.getPeliculasDTO()) {
                             logger.info(aux.toString());
+                            ResultadoFiltrados m = new ResultadoFiltrados(peliculaList);
+
+                            m.setVisible(true);
+                            dispose();
                         }
                         //TODO: Se debería mostrar el listado de películas filtradas, en formato búsqueda.
                         //Menu m = new Menu(aux);
