@@ -1,19 +1,12 @@
 package es.deusto.client.gui;
 
-import es.deusto.server.data.UsuarioDTO;
-import es.deusto.client.FestivalCineController;
 import es.deusto.server.data.PeliculaList;
-import es.deusto.server.data.PeliculaDTO;
-import jdk.nashorn.internal.scripts.JO;
-
 
 import javax.swing.*;
-
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.logging.Logger;
-import java.util.ArrayList;
 
 
 //TODO: Esto debería cambiarse por una ventana medio bien hecha que muestre la información como en el prototipo.
@@ -21,15 +14,15 @@ import java.util.ArrayList;
 //TODO: Posible mejora: Si se quieren enseñar de 4 en 4, se podría hacer la selección por mútiplos de 4, o con módulos
 //TODO: de 4.
 
-public class ResultadoFiltrados extends JFrame {
+public class ResultadoFiltradosAnonimo extends JFrame {
 
-    static Logger logger = Logger.getLogger(ResultadoFiltrados.class.getName());
+    static Logger logger = Logger.getLogger(ResultadoFiltradosAnonimo.class.getName());
 
-    public ResultadoFiltrados(PeliculaList peliculaList, UsuarioDTO user) {
-        initComponents(peliculaList, user);
+    public ResultadoFiltradosAnonimo(PeliculaList peliculaList) {
+        initComponents(peliculaList);
     }
 
-    private void initComponents(PeliculaList peliculaList, UsuarioDTO aux) {
+    private void initComponents(PeliculaList peliculaList) {
 
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         // Generated using JFormDesigner Evaluation license - ben
@@ -47,12 +40,9 @@ public class ResultadoFiltrados extends JFrame {
         label4 = new JLabel();
         textArea3 = new JTextArea();
         button4 = new JButton();
-        userName = new JLabel();
-        userIcon = new JLabel();
 
         ventana = this;
         //======== this ========
-        String myPath = System.getProperty("user.dir");
         int tam = peliculaList.getPeliculasDTO().size();
 
         setTitle("Resultado Filtrados");
@@ -60,17 +50,6 @@ public class ResultadoFiltrados extends JFrame {
         contentPane.setLayout(null);
 
         if (tam > 0) {
-
-            //---- label10 ----
-            userName.setText(aux.getLogin());
-            userName.setHorizontalAlignment(SwingConstants.CENTER);
-            contentPane.add(userName);
-            userName.setBounds(750, 110, 155, 20);
-
-            //---- label11 ----
-            userIcon.setBounds(770, 50, 120, 55);
-            userIcon.setIcon(ResizeImage(myPath+"/src/main/resources/img/avataricon.jpg", userIcon));
-            contentPane.add(userIcon);
 
             //---- label1 ----
             label1.setText(peliculaList.getPeliculasDTO().get(0).getTitulo());
@@ -102,10 +81,14 @@ public class ResultadoFiltrados extends JFrame {
                 contentPane.add(label2);
                 label2.setBounds(20, 275, 195, 35);
 
-                contentPane.add(textArea2);
-                textArea2.setBounds(235, 250, 445, 85);
-                textArea2.setText(peliculaList.getPeliculasDTO().get(1).getSinopsis());
-                textArea2.setEditable(false);
+                //======== scrollPane1 ========
+                {
+                    scrollPane1.setViewportView(textArea2);
+                    textArea2.setText(peliculaList.getPeliculasDTO().get(1).getSinopsis());
+                    textArea2.setEditable(false);
+                }
+                contentPane.add(scrollPane1);
+                scrollPane1.setBounds(235, 250, 445, 85);
 
                 //---- button2 ----
                 button2.setText("+ Info");
@@ -121,6 +104,7 @@ public class ResultadoFiltrados extends JFrame {
                 });
 
                 if (tam > 2) {
+
                     //---- label3 ----
                     label3.setText(peliculaList.getPeliculasDTO().get(2).getTitulo());
                     contentPane.add(label3);
@@ -145,6 +129,7 @@ public class ResultadoFiltrados extends JFrame {
                     });
 
                     if (tam > 3){
+
                         //---- label4 ----
                         label4.setText(peliculaList.getPeliculasDTO().get(3).getTitulo());
                         contentPane.add(label4);
@@ -178,7 +163,7 @@ public class ResultadoFiltrados extends JFrame {
             buttonMenu.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    Menu m = new Menu(aux);
+                    MenuAnonimo m = new MenuAnonimo();
                     m.setVisible(true);
                     dispose();
                 }
@@ -221,9 +206,6 @@ public class ResultadoFiltrados extends JFrame {
     private JTextArea textArea3;
     private JButton button4;
     private JFrame ventana;
-    private JLabel userName;
-    private JLabel userIcon;
-
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 
     /**
