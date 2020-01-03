@@ -25,8 +25,6 @@ tecnologías:
 
 ## Ejecución
 
-Se dan algunas pautas a continuación para poder replicar la ejecución del código subido a este repo.
-
 ## 0. Requisitos previos a la ejecución
 
 Antes de llevar a cabo los pasos de ejecución, cabe destacar que:
@@ -57,29 +55,37 @@ Para testear la aplicación, hay que ejecutar los siguientes comandos en dos ven
 
 ## Prototipo
 
-Para entender mejor a qué va a tender esta aplicación, se ha generado un prototipo mediante Marvel App para poder 
-ilustrarlo. URL: https://marvelapp.com/d2h27dh/screen/63095209
+La aplicación ha tomado como referencia un prototipo creado mediante Marvel App para su diseño y desarrollo. 
+URL: https://marvelapp.com/d2h27dh/screen/63095209
 
 ## Sobre las imágenes
 
-Solamente destacar que para que el cargado de imágenes sea óptimo en cualquier situación, es recomendble
-que los nombres de estas no tengan espacios intermedios, sino que sean del formato ```el_rey_leon.jpg```.
+Un usuario de tipo administrador, con credenciales:
+
+```
+    - Nombre de usuario: admin
+    - Contraseña: admin
+```
+
+Es capaz de insertar películas y actores en el sistema, y en el caso de estos primeros, puede seleccionar una imagen
+para completar la ficha de una película. Para que el cargado de imágenes sea óptimo en cualquier situación, es 
+recomendable que los nombres de estas no tengan espacios intermedios, sino que sean del formato `el_rey_leon.jpg`.
 
 ## 2. Testeo
 
 Otra parte fundamental que se ha querido trabajar en este proyecto han sido los tests. Se han hecho tests y mejoras
 de diverso tipo a lo largo de la aplicación:
+
 1. Tests unitarios con `JUnit3/4`.
 2. Tests de rendimiento con `ContiPERF`.
 3. Mocking o simulación de clases con `Mockito`.
-4. Revisar el code coverage con `JaCoCo`.
+4. Mejora del code coverage con `JaCoCo`.
 5. Uso de Logging mediante `Log4j`.
 6. Integración de este repositorio con una herramienta de CI como `TravisCI`.
 
 A modo complementario, se ha hecho algo de profiling de la aplicación mediante la información obtenida con `VisualVM`.
-Se han hecho algunas correcciones de checkstyle, aunque aún quedan unas cuantas pendientes por hacer.
-Finalmente, se ha empezado a agregar algo de documentación JavaDoc, que posteriormente es interpretada por el 
-plugin `Doxygen`.
+Se han hecho algunas correcciones de checkstyle, y se ha agregado documentación JavaDoc, que posteriormente es 
+interpretada por el plugin `Doxygen`.
 
 La información sobre profiling con VisualVM se ha incluido en el directorio `profiling` de este repo. El log que muestra 
 la integración correcta con TravisCI y la ejecución automatizada de este test se muestra en `travisci_log`.
@@ -90,12 +96,12 @@ reducido a niveles bastante bajos los indicadores de code coverage, para que JaC
 
 ### Comandos para ejecutar tests
 
-Se insertan a continuación diversos comandos para poder jugar con las clases de testeo. Antes de ejecutar estos,
-habrá que ejecutar `mvn clean` y `mvn compile`. Los comandos son los que siguen:
+Se insertan a continuación diversos comandos para poder interactuar con las clases de testeo. Antes de ejecutar estos,
+habrá que ejecutar `mvn clean` y `mvn compile`. Los comandos son:
 
 - Ejecución de tests a nivel general: ```mvn test```
 - Ejecución de code coverage: ```mvn jacoco:check```
-- Ejecución de plugin de checkstyle, para corregir errores de estilo en la aplicación: ```mvn checkstyle:checkstyle```
+- Ejecución de plugin de checkstyle, para detectar errores de estilo en la aplicación: ```mvn checkstyle:checkstyle```
 - Generación de un dashboard completo del proyecto: ```mvn site```
 
 NOTA: A la hora de utilizar el comando `mvn site`, es probable que haya errores a la hora de crear el directorio de

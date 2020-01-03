@@ -26,6 +26,14 @@ public class Menu extends JFrame {
     	PeliculaList peliculaList = FestivalCineController.getInstance().getPeliculaList();
         initComponents(peliculaList,aux);
     }
+    /**
+     * Constructor generado para su uso en GeneracionVentanasTest.java.
+     * @param peliculaList
+     * @param aux
+     */
+    public Menu(PeliculaList peliculaList, UsuarioDTO aux) {
+        initComponents(peliculaList,aux);
+    }
 
     private void initComponents(PeliculaList peliculaList,UsuarioDTO aux) {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents

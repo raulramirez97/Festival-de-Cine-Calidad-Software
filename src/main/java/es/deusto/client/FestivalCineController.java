@@ -32,6 +32,14 @@ public class FestivalCineController {
 		return instance;
 	}
 
+	public FestivalCineController (String[] args, String test){
+		instance = this;
+		rsl = new ServiceLocator();
+		rsl.setService(args);
+		client = ClientBuilder.newClient();
+		webTarget = client.target(String.format("http://%s:%s/rest/server", args[0], args[1]));
+	}
+
 	private FestivalCineController(String[] args) {
 		instance = this;
 

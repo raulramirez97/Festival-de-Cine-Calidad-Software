@@ -87,7 +87,7 @@ public class CreacionActor extends JFrame {
             @Override
             public void focusLost(FocusEvent e) {
                 if (textFieldIDActor.getText().isEmpty()){
-                    JOptionPane.showMessageDialog(ventana, "Inserte contenido en el cuadro de los actores," +
+                    JOptionPane.showMessageDialog(ventana, "Inserte contenido en el cuadro de los actores, " +
                             "por favor.");
                 }
             }
@@ -101,7 +101,7 @@ public class CreacionActor extends JFrame {
             @Override
             public void focusLost(FocusEvent e) {
                 if (textFieldNomActor.getText().isEmpty()){
-                    JOptionPane.showMessageDialog(ventana, "Inserte contenido en el cuadro de los actores," +
+                    JOptionPane.showMessageDialog(ventana, "Inserte contenido en el cuadro de los actores, " +
                             "por favor.");
                 }
             }

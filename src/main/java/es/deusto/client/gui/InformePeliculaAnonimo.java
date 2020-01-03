@@ -219,7 +219,7 @@ public class InformePeliculaAnonimo extends JFrame {
                 }
                 catch (NumberFormatException exc) {
                     JOptionPane.showMessageDialog(ventana, "Inserte un valor numérico en el campo " +
-                            "de la puntuacion, por favor.");
+                            "de la puntuación, por favor.");
                 }
                 //Con la nueva manera de integrar la Valoración en la ficha nunca se dará esta Excepción.
                 //catch (NullPointerException exc) {

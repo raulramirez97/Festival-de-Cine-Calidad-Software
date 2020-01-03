@@ -166,7 +166,7 @@ public class CreacionPelicula extends JFrame {
             @Override
             public void focusLost(FocusEvent e) {
                 if (textFieldNomPeli.getText().isEmpty()){
-                    JOptionPane.showMessageDialog(ventana, "Inserte contenido en el cuadro del nombre de la" +
+                    JOptionPane.showMessageDialog(ventana, "Inserte contenido en el cuadro del nombre de la "+
                             "película, por favor.");
                 }
             }
@@ -212,7 +212,7 @@ public class CreacionPelicula extends JFrame {
             @Override
             public void focusLost(FocusEvent e) {
                 if (textFieldGenPeli.getText().isEmpty()){
-                    JOptionPane.showMessageDialog(ventana, "Inserte contenido en el cuadro del género," +
+                    JOptionPane.showMessageDialog(ventana, "Inserte contenido en el cuadro del género, " +
                             "por favor.");
                 }
             }
@@ -226,7 +226,7 @@ public class CreacionPelicula extends JFrame {
             @Override
             public void focusLost(FocusEvent e) {
                 if (textFieldDirPeli.getText().isEmpty()){
-                    JOptionPane.showMessageDialog(ventana, "Inserte contenido en el cuadro del director," +
+                    JOptionPane.showMessageDialog(ventana, "Inserte contenido en el cuadro del director, " +
                             "por favor.");
                 }
             }
@@ -240,7 +240,7 @@ public class CreacionPelicula extends JFrame {
             @Override
             public void focusLost(FocusEvent e) {
                 if (textFieldActoresPeli.getText().isEmpty()){
-                    JOptionPane.showMessageDialog(ventana, "Inserte contenido en el cuadro de los actores," +
+                    JOptionPane.showMessageDialog(ventana, "Inserte contenido en el cuadro de los actores, " +
                             "por favor.");
                 }
             }
@@ -254,7 +254,7 @@ public class CreacionPelicula extends JFrame {
             @Override
             public void focusLost(FocusEvent e) {
                 if (textFieldURLTrailer.getText().isEmpty()){
-                    JOptionPane.showMessageDialog(ventana, "Inserte contenido en el cuadro de la URL," +
+                    JOptionPane.showMessageDialog(ventana, "Inserte contenido en el cuadro de la URL, " +
                             "por favor.");
                 }
             }

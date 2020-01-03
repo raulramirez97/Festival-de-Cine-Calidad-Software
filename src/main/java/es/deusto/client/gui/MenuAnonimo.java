@@ -28,6 +28,14 @@ public class MenuAnonimo extends JFrame {
         initComponents(peliculaList);
     }
 
+    /**
+     * Constructor generado para su uso en GeneracionVentanasTest.java.
+     * @param peliculaList
+     */
+    public MenuAnonimo(PeliculaList peliculaList) {
+        initComponents(peliculaList);
+    }
+
     private void initComponents(PeliculaList peliculaList) {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         // Generated using JFormDesigner Evaluation license - Beñat
