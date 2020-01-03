@@ -1,5 +1,7 @@
 # Festival de Cine
 
+[![Build Status](https://travis-ci.com/raulramirez97/Festival-de-Cine-Calidad-Software.svg?branch=master)](https://travis-ci.com/raulramirez97/Festival-de-Cine-Calidad-Software/)
+
 ## Contexto
 
 Repo que contiene un proyecto para la asignatura Proceso y Calidad de Software, impartida por la Universidad de Deusto.
@@ -82,10 +84,9 @@ plugin `Doxygen`.
 La información sobre profiling con VisualVM se ha incluido en el directorio `profiling` de este repo. El log que muestra 
 la integración correcta con TravisCI y la ejecución automatizada de este test se muestra en `travisci_log`.
 
-NOTA: Se ha hecho una pequeña trampa en esta aplicación: Dado que buena parte de las líneas de código se encuentran en 
-la parte Cliente de la aplicación, y esta consta de  muchas líneas para la interfaz gráfica de usuario, el code coverage 
-obtenido es bastante bajo de base. Por ello, se ha  reducido a niveles bastante bajos los indicadores de code coverage,
-para que JaCoCo no bloqueara la ejecución de los tests.
+NOTA: Dado que buena parte de las líneas de código se encuentran en la parte Cliente de la aplicación, y esta consta de 
+muchas líneas para la interfaz gráfica de usuario, el code coverage obtenido es bastante bajo de base. Por ello, se ha 
+reducido a niveles bastante bajos los indicadores de code coverage, para que JaCoCo no bloqueara la ejecución de los tests.
 
 ### Comandos para ejecutar tests
 
