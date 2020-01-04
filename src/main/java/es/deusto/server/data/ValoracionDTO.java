@@ -4,6 +4,12 @@ import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.PrimaryKey;
 import java.io.Serializable;
 
+/**
+ * Este bloque de código recoge la estructura de datos con la que se representan las Valoraciones en el sistema.
+ * @author Grupo RMBJ
+ * @version 3.0
+ * @since 1.0
+ */
 @PersistenceCapable(detachable = "true")
 public class ValoracionDTO implements Serializable {
 

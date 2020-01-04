@@ -1,4 +1,3 @@
-
 /**
  * Es el paquete de nivel principal que contiene las clases de test referidas tanto a nivel cliente como servidor de la
  * aplicación desarrollada.

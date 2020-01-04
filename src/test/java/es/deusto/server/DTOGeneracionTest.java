@@ -15,8 +15,6 @@ import java.util.logging.Logger;
 
 import static org.junit.Assert.*;
 
-//import org.junit.Ignore;
-
 /**
  * Este bloque de código representa un conjunto de pruebas unitarias con el objetivo de validar que las clases DTO
  * se generan correctamente, tanto en su contenido como en el proceso de creación (p. ej. para añadir un ComentarioDTO

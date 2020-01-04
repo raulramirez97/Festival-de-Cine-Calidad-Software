@@ -46,6 +46,11 @@ public class FestivalCineManager {
 		dao = udao;
 	}
 
+	/**
+	 * Método que permite tomar la información del Cliente para hacer un registro de un nuevo UsuarioDTO.
+	 * @param usuarioDTOData UsuarioDTO que contiene la información relevante a ser insertada.
+	 * @return Respuesta indicando que la operación se ha hecho correcta o incorrectamente.
+	 */
 	@POST
 	@Path("/registerUser")
 	public Response registerUser(UsuarioDTO usuarioDTOData) {
@@ -76,6 +81,12 @@ public class FestivalCineManager {
 		return Response.ok().build();
 	}
 
+	/**
+	 * Método que permite tomar la información del Cliente para hacer un registro de un nuevo mensaje dirigido (una
+	 * de las clases a ser Mockeadas).
+	 * @param directedMessage DirectedMessage que contiene la información relevante a ser insertada.
+	 * @return Respuesta indicando que la operación se ha hecho correcta o incorrectamente.
+	 */
 	@POST
 	@Path("/sayMessage")
 	public Response sayMessage(DirectedMessage directedMessage) {
@@ -107,6 +118,11 @@ public class FestivalCineManager {
 		}
 	}
 
+	/**
+	 * Método que permite enviar los Mensajes de un UsuarioDTO, en base a un nombre de usuario recibido.
+	 * @param login Nombre de usuario para el cual se buscan los mensajes.
+	 * @return Respuesta indicando que la operación se ha hecho correcta o incorrectamente, con el listado de Mensajes.
+	 */
 	@GET
 	@Path("/messages")
 	public Response getUserMessages(@QueryParam("login") String login) {
@@ -133,6 +149,13 @@ public class FestivalCineManager {
 		}
 	}
 
+	/**
+	 * Método que valida una autenticación de un UsuarioDTO, en base a las credenciales recibidas (nombre de usuario
+	 * y contraseña).
+	 * @param login Nombre de usuario que se quiere validar.
+	 * @param pwd Contraseña del usuario que se quiere validar.
+	 * @return Respuesta indicando que la operación se ha hecho correcta o incorrectamente, con el UsuarioDTO.
+	 */
 	@GET
 	@Path("obtainUser")
 	public Response getUser(@QueryParam("login") String login, @QueryParam("pwd") String pwd) {
@@ -155,6 +178,11 @@ public class FestivalCineManager {
 		}
 	}
 
+	/**
+	 * Método que facilita el registro de un ActorDTO al sistema mediante la información tomada del Cliente.
+	 * @param actorDTOData ActorDTO que se quiere insertar en la base de datos.
+	 * @return Respuesta indicando que la operación se ha hecho correcta o incorrectamente.
+	 */
 	@POST
 	@Path("/registerActor")
 	public Response registerActor(ActorDTO actorDTOData) {
@@ -180,6 +208,10 @@ public class FestivalCineManager {
 		return Response.ok().build();
 	}
 
+	/**
+	 * Método que permite recuperar un listado de ActoresDTO que se encuentran en la base de datos.
+	 * @return Respuesta indicando que la operación se ha hecho correcta o incorrectamente, con el listado de ActoresDTO.
+	 */
 	@GET
 	@Path("/obtainActors")
 	public Response getActors() {
@@ -196,6 +228,11 @@ public class FestivalCineManager {
 		}
 	}
 
+	/**
+	 * Método que permite actualizar los datos de un ActorDTO, en base a la información recibida por el Cliente.
+	 * @param actorDTOData Información a actualizar de un ActorDTO.
+	 * @return Respuesta indicando que la operación se ha hecho correcta o incorrectamente.
+	 */
 	@POST
 	@Path("/updateActor")
 	public Response updateActor(ActorDTO actorDTOData) {
@@ -220,6 +257,11 @@ public class FestivalCineManager {
 		return Response.ok().build();
 	}
 
+	/**
+	 * Método que permite insertar los datos de una nueva PeliculaDTO, en base a la información del Cliente.
+	 * @param peliculaDTOData Información a insertar de una PeliculaDTO.
+	 * @return Respuesta indicando que la operación se ha hecho correcta o incorrectamente.
+	 */
 	@POST
 	@Path("/registerPelicula")
 	public Response registerPelicula(PeliculaDTO peliculaDTOData) {
@@ -248,6 +290,10 @@ public class FestivalCineManager {
 		return Response.ok().build();
 	}
 
+	/**
+	 * Método que permite recuperar un listado de PeliculasDTO que se encuentran en la base de datos.
+	 * @return Respuesta indicando que la operación se ha hecho correcta o incorrectamente, con el listado de PeliculasDTO.
+	 */
 	@GET
 	@Path("/obtainPeliculas")
 	public Response getPeliculas() {
@@ -265,6 +311,12 @@ public class FestivalCineManager {
 		}
 	}
 
+	/**
+	 * Método que permite insertar una ValoracionDTO de una PeliculaDTO en el sistema.
+	 * @param valoracionDTOData Información relativa a la ValoracionDTO a insertar.
+	 * @return Respuesta indicando que la operación se ha hecho correcta o incorrectamente.
+	 * @throws NullPointerException
+	 */
 	@POST
 	@Path("/registerValoracion")
 	public Response registerValoracion(ValoracionDTO valoracionDTOData) throws NullPointerException {
@@ -323,6 +375,11 @@ public class FestivalCineManager {
 		return Response.ok().build();
 	}
 
+	/**
+	 * Método que permite recuperar un listado de ValoracionesDTO que se encuentran guardadas en la base de datos. Este
+	 * método no tiene verbos HTTP dado que su uso se delimita al ámbito del Servidor.
+	 * @return Listado de ValoracionesDTO para posteriormente ser usadas por otro método del Servidor.
+	 */
 	public ValoracionList getLocalValoraciones() {
 		logger.info("Returning the valoraciones");
 
@@ -336,6 +393,13 @@ public class FestivalCineManager {
 		}
 	}
 
+	/**
+	 * Método cuyo objetivo es el de registrar un nuevo ComentarioDTO en la base de datos, en base a la información
+	 * recibida del Cliente.
+	 * @param comentarioDTOData Información a insertar en la base de datos.
+	 * @return Respuesta indicando que la operación se ha hecho correcta o incorrectamente.
+	 * @throws NullPointerException
+	 */
 	@POST
 	@Path("/registerComment")
 	public Response registerComment(ComentarioDTO comentarioDTOData) throws NullPointerException {
@@ -381,6 +445,11 @@ public class FestivalCineManager {
 		}
 	}
 
+	/**
+	 * Método que permite recuperar un listado de ComentariosDTO que se encuentran guardados en la base de datos. Este
+	 * método no tiene verbos HTTP dado que su uso se delimita al ámbito del Servidor.
+	 * @return Listado de ComentariosDTO para posteriormente ser usadas por otro método del Servidor.
+	 */
 	public ComentarioList getLocalComentarios() {
 		logger.info("Returning the comentarios");
 

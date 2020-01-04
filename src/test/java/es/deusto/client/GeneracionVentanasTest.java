@@ -35,6 +35,10 @@ public class GeneracionVentanasTest {
 	@Before
 	public void setUp() {}
 
+	/**
+	 * Método que testea el tiempo que dura el ProgressBar. Se ha añadido un timeout de 18 segundos dado que no
+	 * debería excederse nunca de ese tiempo.
+	 */
 	@Test (timeout = 18000)
 	public void testProgressBar() {
 		testName = "testProgressBar";

@@ -20,7 +20,6 @@ import static org.junit.Assert.assertTrue;
 /**
  * Este bloque de código representa un conjunto de pruebas unitarias con el objetivo de validar que el Controller
  * busca la conexión correctamente.
- *
  * @author Grupo RMBJ
  * @version 3.0
  * @since 3.0
@@ -42,6 +41,10 @@ public class FestivalCineControllerTest {
 		return new JUnit4TestAdapter(FestivalCineControllerTest.class);
 	}
 
+	/**
+	 * Método que inicializa el Servidor y Servlet JeTTY contra el cual interactuarán los tests unitarios de esta clase.
+	 * @throws Exception
+	 */
 	@BeforeClass
 	public static void startJetty() throws Exception
 	{
@@ -134,6 +137,9 @@ public class FestivalCineControllerTest {
 		logger.info(testName + " completado satisfactoriamente.");
 	}
 
+	/**
+	 * Método que detiene el Servidor JeTTY.
+	 */
 	@AfterClass
 	public static void stopJetty()
 	{

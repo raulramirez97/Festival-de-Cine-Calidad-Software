@@ -1,4 +1,3 @@
-
 /**
  * Es el paquete de nivel principal que contiene las clases de test referidas al servidor. Esencialmente son dos:
  * DAOMockPerfTest y DTOGeneracionTest.

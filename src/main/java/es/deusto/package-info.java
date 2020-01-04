@@ -1,4 +1,3 @@
-
 /**
  * Es el paquete de nivel principal que contiene las clases referidas tanto a nivel cliente como servidor de la
  * aplicación desarrollada. Este paquete toma recursos de otras carpetas, así como resources, sql, webapp o test, y

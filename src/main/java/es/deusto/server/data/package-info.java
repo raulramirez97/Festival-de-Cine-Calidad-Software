@@ -7,7 +7,7 @@
  * cuyo objetivo es que sean Mockeadas y puedan mostrar una mayor variedad de Mocks en la clase DAOMockTest, usada
  * para hacer Mocking de la base de datos.</p>
  * @author Grupo RMBJ
- * @version 2.0
+ * @version 3.0
  * @since 1.0
  */
 package es.deusto.server.data;

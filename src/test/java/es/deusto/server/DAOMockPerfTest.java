@@ -110,6 +110,10 @@ public class DAOMockPerfTest {
 
 		assertEquals("admin", newUsuarioDTO.getMessages().get(0).getUsuarioDTO().getLogin());
 	}
+	/**
+	 * El objetivo de este método es mostrar por pantalla al ejecutar Maven que los tests unitarios se han realizado
+	 * correctamente.
+	 */
 	@After
 	public void printLastMessage() {
 		logger.info(testName + " completado satisfactoriamente.");

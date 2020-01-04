@@ -8,6 +8,12 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Este bloque de código recoge la estructura de datos con la que se representan los Usuarios en el sistema.
+ * @author Grupo RMBJ
+ * @version 3.0
+ * @since 1.0
+ */
 @PersistenceCapable(detachable = "true")
 public class UsuarioDTO implements Serializable {
 
