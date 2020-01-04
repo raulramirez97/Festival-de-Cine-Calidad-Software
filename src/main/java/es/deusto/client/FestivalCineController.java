@@ -87,13 +87,9 @@ public class FestivalCineController {
 			logger.info(m.toString());
 		}
 
-
 		logger.info("Registering some peliculas:");
-		List<ActorDTO> randomActors = new ArrayList<ActorDTO>();
-		//TODO: Aqui interesa guardar solo el /src/main/resources/img, no más, porque el user.dir cambiará en cada PC.
-		//TODO: El user.dir es necesario para la carga de la imagen, pero no para la persistencia en la BD.
+		List<ActorDTO> randomActors = new ArrayList<>();
 		String store = "/src/main/resources/img";
-		//String store = System.getProperty("user.dir")+"/src/main/resources/img";
 
 		logger.info("Registering an actor for the first time: Nicholas Cage");
 		FestivalCineController.getInstance().registerActor("ID1", "Nicholas", "Cage", 50);

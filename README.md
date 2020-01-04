@@ -78,38 +78,45 @@ recomendable que los nombres de estas no tengan espacios intermedios, sino que s
 Otra parte fundamental que se ha querido trabajar en este proyecto han sido los tests. Se han hecho tests y mejoras
 de diverso tipo a lo largo de la aplicación:
 
-1. Tests unitarios con `JUnit3/4`.
-2. Tests de rendimiento con `ContiPERF`.
-3. Mocking o simulación de clases con `Mockito`.
-4. Mejora del code coverage con `JaCoCo`.
-5. Uso de Logging mediante `Log4j`.
-6. Integración de este repositorio con una herramienta de CI como `TravisCI`.
-
-A modo complementario, se ha hecho algo de profiling de la aplicación mediante la información obtenida con `VisualVM`.
-Se han hecho algunas correcciones de checkstyle, y se ha agregado documentación JavaDoc, que posteriormente es 
-interpretada por el plugin `Doxygen`.
+| Objetivo | Tecnología |
+| --- | --- |
+| Desarrollo de tests unitarios | `JUnit3/4` |
+| Desarrollo de tests de rendimiento | `ContiPERF` |
+| Desarrollo de Mocking o simulación de clases | `Mockito` |
+| Mejora del code coverage | `JaCoCo` |
+| Uso de Logging | `Log4j` |
+| Comprobación de checkstyle | `Maven Checkstyle Plugin` |
+| Profiling de la aplicación | `VisualVM` |
+| Generación de documentación JavaDoc (Apache) | `Maven Project Info Reports Plugin` |
+| Generación de documentación JavaDoc (Doxygen) | `Doxygen` |
+| Integración continua (CI) de este repositorio | `TravisCI` |
 
 La información sobre profiling con VisualVM se ha incluido en el directorio `profiling` de este repo. El log que muestra 
 la integración correcta con TravisCI y la ejecución automatizada de este test se muestra en `travisci_log`.
 
-NOTA: Dado que buena parte de las líneas de código se encuentran en la parte Cliente de la aplicación, y esta consta de 
-muchas líneas para la interfaz gráfica de usuario, el code coverage obtenido es bastante bajo de base. Por ello, se ha 
-reducido a niveles bastante bajos los indicadores de code coverage, para que JaCoCo no bloqueara la ejecución de los tests.
+NOTA: El code coverage obtenido es relativamente bajo de base (50% en recorrido de código general sobre el 30% de 
+variantes disponibles). Por ello, se ha reducido a niveles bajos los indicadores de code coverage para que JaCoCo no 
+bloqueara la ejecución de los tests.
 
 ### Comandos para ejecutar tests
 
 Se insertan a continuación diversos comandos para poder interactuar con las clases de testeo. Antes de ejecutar estos,
-habrá que ejecutar `mvn clean` y `mvn compile`. Los comandos son:
+habrá que ejecutar `mvn clean`. Los comandos son:
 
 - Ejecución de tests a nivel general: ```mvn test```
 - Ejecución de code coverage: ```mvn jacoco:check```
 - Ejecución de plugin de checkstyle, para detectar errores de estilo en la aplicación: ```mvn checkstyle:checkstyle```
-- Generación de un dashboard completo del proyecto: ```mvn site```
+- Generación de un dashboard completo del proyecto, tanto en formato Doxygen como en formato Apache Maven: ```mvn site```
+
+A su vez, el comando ```mvn site``` genera una carpeta ```docs``` en el nivel superior, la cual alimenta a la
+documentación on-line generada para este proyecto.
+
+URL de la documentación: https://github.com/Benny96
 
 NOTA: A la hora de utilizar el comando `mvn site`, es probable que haya errores a la hora de crear el directorio de
-`Dependencies` del informe. Esto es así porque al parecer, Log4j intenta cargar JARs de Java 8 y Java 9, lo que
-lleva a que Maven no sepa integrarlos correctamente en el informe. Más info: 
-https://stackoverflow.com/questions/49383179/org-apache-bcel-classfile-classformatexception-invalid-byte-tag-in-constant-poo
+`Dependencies` del informe de Apache. Esto es así por la utilización de diversas versiones en este proyecto. 
+Se ha decidido dejar así dado que no es un error bloqueante y porque la documentación generada vía Doxygen se actualiza 
+sin problema.
 _____
 
 # Autores:
