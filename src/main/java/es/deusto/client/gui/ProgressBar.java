@@ -24,6 +24,8 @@ public class ProgressBar extends JFrame {
 
         setBounds(450, 300, 400, 140);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        String myPath = System.getProperty("user.dir");
+        this.setIconImage(new ImageIcon(myPath+"/src/main/resources/img/filmicon.png").getImage());
         getContentPane().setLayout(null);
 
         setTitle(titulo);

@@ -8,12 +8,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.logging.Logger;
 
-
-//TODO: Esto debería cambiarse por una ventana medio bien hecha que muestre la información como en el prototipo.
-//TODO: Es decir: https://marvelapp.com/d2h27dh/screen/63129721
-//TODO: Posible mejora: Si se quieren enseñar de 4 en 4, se podría hacer la selección por mútiplos de 4, o con módulos
-//TODO: de 4.
-
 public class ResultadoFiltradosAnonimo extends JFrame {
 
     static Logger logger = Logger.getLogger(ResultadoFiltradosAnonimo.class.getName());
@@ -42,6 +36,12 @@ public class ResultadoFiltradosAnonimo extends JFrame {
         button4 = new JButton();
 
         ventana = this;
+
+        String myPath = System.getProperty("user.dir");
+        this.setIconImage(new ImageIcon(myPath+"/src/main/resources/img/filmicon.png").getImage());
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setBounds(100, 100, 960, 960);
+
         //======== this ========
         int tam = peliculaList.getPeliculasDTO().size();
 
@@ -186,6 +186,9 @@ public class ResultadoFiltradosAnonimo extends JFrame {
         }
         pack();
         setLocationRelativeTo(getOwner());
+        Rectangle r = ventana.getBounds();
+        r.grow(45,45);
+        ventana.setBounds(r);
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
     }
 

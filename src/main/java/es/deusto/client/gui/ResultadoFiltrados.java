@@ -1,11 +1,7 @@
 package es.deusto.client.gui;
 
 import es.deusto.server.data.UsuarioDTO;
-import es.deusto.client.FestivalCineController;
 import es.deusto.server.data.PeliculaList;
-import es.deusto.server.data.PeliculaDTO;
-import jdk.nashorn.internal.scripts.JO;
-
 
 import javax.swing.*;
 
@@ -13,13 +9,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.logging.Logger;
-import java.util.ArrayList;
-
-
-//TODO: Esto debería cambiarse por una ventana medio bien hecha que muestre la información como en el prototipo.
-//TODO: Es decir: https://marvelapp.com/d2h27dh/screen/63129721
-//TODO: Posible mejora: Si se quieren enseñar de 4 en 4, se podría hacer la selección por mútiplos de 4, o con módulos
-//TODO: de 4.
 
 public class ResultadoFiltrados extends JFrame {
 
@@ -53,6 +42,8 @@ public class ResultadoFiltrados extends JFrame {
         ventana = this;
         //======== this ========
         String myPath = System.getProperty("user.dir");
+        this.setIconImage(new ImageIcon(myPath+"/src/main/resources/img/filmicon.png").getImage());
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         int tam = peliculaList.getPeliculasDTO().size();
 
         setTitle("Resultado Filtrados");
@@ -89,7 +80,7 @@ public class ResultadoFiltrados extends JFrame {
             button1.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    InformePeliculaAnonimo m = new InformePeliculaAnonimo(peliculaList.getPeliculasDTO().get(0));
+                    InformePelicula m = new InformePelicula(peliculaList.getPeliculasDTO().get(0), aux);
                     m.setVisible(true);
                     dispose();
                 }
@@ -114,7 +105,7 @@ public class ResultadoFiltrados extends JFrame {
                 button2.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        InformePeliculaAnonimo m = new InformePeliculaAnonimo(peliculaList.getPeliculasDTO().get(1));
+                        InformePelicula m = new InformePelicula(peliculaList.getPeliculasDTO().get(1), aux);
                         m.setVisible(true);
                         dispose();
                     }
@@ -138,7 +129,7 @@ public class ResultadoFiltrados extends JFrame {
                     button3.addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e) {
-                            InformePeliculaAnonimo m = new InformePeliculaAnonimo(peliculaList.getPeliculasDTO().get(2));
+                            InformePelicula m = new InformePelicula(peliculaList.getPeliculasDTO().get(2), aux);
                             m.setVisible(true);
                             dispose();
                         }
@@ -162,8 +153,7 @@ public class ResultadoFiltrados extends JFrame {
                         button4.addActionListener(new ActionListener() {
                             @Override
                             public void actionPerformed(ActionEvent e) {
-                                InformePeliculaAnonimo m = new InformePeliculaAnonimo(peliculaList.
-                                        getPeliculasDTO().get(3));
+                                InformePelicula m = new InformePelicula(peliculaList.getPeliculasDTO().get(3), aux);
                                 m.setVisible(true);
                                 dispose();
                             }
@@ -201,6 +191,9 @@ public class ResultadoFiltrados extends JFrame {
         }
         pack();
         setLocationRelativeTo(getOwner());
+        Rectangle r = ventana.getBounds();
+        r.grow(45,45);
+        ventana.setBounds(r);
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
     }
 

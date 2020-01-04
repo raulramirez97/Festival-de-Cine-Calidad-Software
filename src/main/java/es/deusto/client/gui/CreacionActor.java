@@ -43,6 +43,10 @@ public class CreacionActor extends JFrame {
 
         ventana = this;
 
+        String myPath = System.getProperty("user.dir");
+        this.setIconImage(new ImageIcon(myPath+"/src/main/resources/img/filmicon.png").getImage());
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
         //======== this ========
         setTitle("Creación de nuevo actor");
         Container contentPane = getContentPane();
@@ -188,6 +192,9 @@ public class CreacionActor extends JFrame {
         }
         pack();
         setLocationRelativeTo(getOwner());
+        Rectangle r = ventana.getBounds();
+        r.grow(45,45);
+        ventana.setBounds(r);
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
     }
 

@@ -60,6 +60,8 @@ public class InformePelicula extends JFrame {
         //======== this ========
 
         String myPath = System.getProperty("user.dir");
+        this.setIconImage(new ImageIcon(myPath+"/src/main/resources/img/filmicon.png").getImage());
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         setTitle("Informe: "+pelicula.getTitulo()+" - "+aux.getLogin());
         Container contentPane = getContentPane();
@@ -274,6 +276,9 @@ public class InformePelicula extends JFrame {
         }
         pack();
         setLocationRelativeTo(getOwner());
+        Rectangle r = ventana.getBounds();
+        r.grow(45,45);
+        ventana.setBounds(r);
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
     }
 

@@ -36,6 +36,10 @@ public class ComentarPeliculaTest extends JFrame {
         button1 = new JButton();
         button2 = new JButton();
 
+        String myPath = System.getProperty("user.dir");
+        this.setIconImage(new ImageIcon(myPath+"/src/main/resources/img/filmicon.png").getImage());
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
         //======== this ========
         setTitle("Comentar Pelicula: "+pelicula.getTitulo());
         Container contentPane = getContentPane();
@@ -114,6 +118,9 @@ public class ComentarPeliculaTest extends JFrame {
         }
         pack();
         setLocationRelativeTo(getOwner());
+        Rectangle r = ventana.getBounds();
+        r.grow(45,45);
+        ventana.setBounds(r);
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
     }
 

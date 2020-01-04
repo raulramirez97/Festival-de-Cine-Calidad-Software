@@ -21,8 +21,6 @@ public class VerComentariosPelicula extends JFrame {
         initComponents(usuario, pelicula);
     }
 
-    //TODO: Meter todo el layout en un ScrollPane para scrollear por diversos comentarios. Se hará cuando se meta
-    //todo en un layout que no sea NullLayout.
     private void initComponents(UsuarioDTO usuario, PeliculaDTO pelicula) {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         // Generated using JFormDesigner Evaluation license - Beñat
@@ -41,6 +39,10 @@ public class VerComentariosPelicula extends JFrame {
         button1 = new JButton();
         button2 = new JButton();
 
+        String myPath = System.getProperty("user.dir");
+        this.setIconImage(new ImageIcon(myPath+"/src/main/resources/img/filmicon.png").getImage());
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
         //======== this ========
         setTitle("Comentarios: "+pelicula.getTitulo());
         Container contentPane = getContentPane();
@@ -53,7 +55,6 @@ public class VerComentariosPelicula extends JFrame {
         contentPane.add(label1);
         label1.setBounds(200, 70, 610, 75);
 
-        //ArrayList<ComentarioDTO> peliComentarios =
         if (pelicula.getComentarios() == null) {
             //---- label8 ----
             label8.setText("Esta pel\u00edcula no tiene comentarios registrados.");
@@ -164,6 +165,9 @@ public class VerComentariosPelicula extends JFrame {
         }
         pack();
         setLocationRelativeTo(getOwner());
+        Rectangle r = this.getBounds();
+        r.grow(45,45);
+        this.setBounds(r);
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
     }
 

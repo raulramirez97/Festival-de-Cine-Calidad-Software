@@ -69,6 +69,10 @@ public class Menu extends JFrame {
         contentPane.setLayout(null);
 
         String myPath = System.getProperty("user.dir");
+        this.setIconImage(new ImageIcon(myPath+"/src/main/resources/img/filmicon.png").getImage());
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setBounds(100, 100, 960, 960);
+
         int tam = peliculaList.getPeliculasDTO().size();
         logger.info("Tamaño de películas disponibles obtenido: "+ tam);
 
@@ -434,6 +438,9 @@ public class Menu extends JFrame {
         }
         pack();
         setLocationRelativeTo(getOwner());
+        Rectangle r = ventana.getBounds();
+        r.grow(45,45);
+        ventana.setBounds(r);
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
     }
 

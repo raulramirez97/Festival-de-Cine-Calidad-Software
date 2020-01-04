@@ -15,6 +15,8 @@ public class Inicio extends JFrame {
 	public Inicio() 
 	{
 		ventana = this;
+		String myPath = System.getProperty("user.dir");
+		this.setIconImage(new ImageIcon(myPath+"/src/main/resources/img/filmicon.png").getImage());
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 650, 484);
 		contentPane = new JPanel();

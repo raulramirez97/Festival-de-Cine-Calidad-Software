@@ -23,6 +23,8 @@ public class Login extends JFrame {
 	public Login() 
 	{
 		ventana = this;
+		String myPath = System.getProperty("user.dir");
+		this.setIconImage(new ImageIcon(myPath+"/src/main/resources/img/filmicon.png").getImage());
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 452, 367);
 		contentPane = new JPanel();
@@ -102,7 +104,6 @@ public class Login extends JFrame {
             }
         });
 	}
-	//TODO: SI ESO MOVER ESTO FUERA DE GUI, A LOGICA DE NEGOCIO.
 	private boolean comprobarUsuario(UsuarioDTO usu, String login, String pwd)
 	{
 		if ((usu == null))

@@ -22,6 +22,8 @@ public class Alta extends JFrame {
 	public Alta() 
 	{
 		alta = this;
+		String myPath = System.getProperty("user.dir");
+		this.setIconImage(new ImageIcon(myPath+"/src/main/resources/img/filmicon.png").getImage());
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 552, 367);
 		contentPane = new JPanel();
