@@ -23,7 +23,7 @@ public class Menu extends JFrame {
 
     static Logger logger = Logger.getLogger(Menu.class.getName());
     public Menu(UsuarioDTO aux) {
-    	PeliculaList peliculaList = FestivalCineController.getInstance().getPeliculaList();
+        PeliculaList peliculaList = FestivalCineController.getInstance().getPeliculaList();
         initComponents(peliculaList,aux);
     }
     /**
@@ -48,6 +48,10 @@ public class Menu extends JFrame {
         label7 = new JLabel();
         label8 = new JLabel();
         label9 = new JLabel();
+        label10 = new JLabel();
+        label11 = new JLabel();
+        label12 = new JLabel();
+        label13 = new JLabel();
         button2 = new JButton();
         button3 = new JButton();
         button4 = new JButton();
@@ -58,8 +62,7 @@ public class Menu extends JFrame {
         comboBox1 = new JComboBox();
         comboBox2 = new JComboBox();
         textField1 = new JTextField();
-        label10 = new JLabel();
-        label11 = new JLabel();
+
 
         ventana = this;
 
@@ -227,18 +230,25 @@ public class Menu extends JFrame {
             filtrosGeneralesStrings[i] = filtrosGenerales.get(i);
         }
 
+        //---- label12 ----
+        label12.setText("Filtrar B\u00fasqueda");
+        label12.setFont(label12.getFont().deriveFont(label12.getFont().getSize() + 4f));
+        label12.setHorizontalAlignment(SwingConstants.CENTER);
+        contentPane.add(label12);
+        label12.setBounds(750, 200, 130, label10.getPreferredSize().height);
+
         logger.info("Strings de Filtros cargados");
         contentPane.add(comboBox2);
-        comboBox2.setBounds(760, 225, 110, 30);
+        comboBox2.setBounds(760, 290, 110, 30);
         comboBox2.setVisible(false);
 
         contentPane.add(textField1);
-        textField1.setBounds(715, 265, 210, 35);
+        textField1.setBounds(715, 330, 210, 35);
         textField1.setVisible(false);
 
         comboBox1 = new JComboBox(filtrosGeneralesStrings);
         contentPane.add(comboBox1);
-        comboBox1.setBounds(760, 185, 110, comboBox1.getPreferredSize().height);
+        comboBox1.setBounds(760, 250, 110, comboBox1.getPreferredSize().height);
 
         comboBox1.addActionListener(new ActionListener() {
             @Override
@@ -333,7 +343,7 @@ public class Menu extends JFrame {
         //---- button6 ----
         button6.setText("Buscar");
         contentPane.add(button6);
-        button6.setBounds(730, 315, 180, 30);
+        button6.setBounds(730, 380, 180, 30);
         button6.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -397,9 +407,17 @@ public class Menu extends JFrame {
         logger.info("Botón de búsqueda con Filtros cargado.");
         if (aux.getLogin().compareTo("admin")==0){
             //---- button7 ----
+
+            //---- label13 ----
+            label13.setText("Funciones de Admin:");
+            label13.setFont(label13.getFont().deriveFont(label13.getFont().getSize() + 4f));
+            label13.setHorizontalAlignment(SwingConstants.CENTER);
+            contentPane.add(label13);
+            label13.setBounds(750, 450, 175, label10.getPreferredSize().height);
+
             button7.setText("Crear Actor");
             contentPane.add(button7);
-            button7.setBounds(730, 400, 180, 30);
+            button7.setBounds(730, 500, 180, 30);
             button7.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
@@ -411,7 +429,7 @@ public class Menu extends JFrame {
             //---- button7 ----
             button8.setText("Crear Película");
             contentPane.add(button8);
-            button8.setBounds(730, 450, 180, 30);
+            button8.setBounds(730, 550, 180, 30);
             button8.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
@@ -456,6 +474,10 @@ public class Menu extends JFrame {
     private JLabel label7;
     private JLabel label8;
     private JLabel label9;
+    private JLabel label10;
+    private JLabel label11;
+    private JLabel label12;
+    private JLabel label13;
     private JButton button2;
     private JButton button3;
     private JButton button4;
@@ -466,8 +488,6 @@ public class Menu extends JFrame {
     private JComboBox comboBox1;
     private JComboBox comboBox2;
     private JTextField textField1;
-    private JLabel label10;
-    private JLabel label11;
     private JFrame ventana;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 

@@ -49,6 +49,7 @@ public class MenuAnonimo extends JFrame {
         label7 = new JLabel();
         label8 = new JLabel();
         label9 = new JLabel();
+        label10 = new JLabel();
         button2 = new JButton();
         button3 = new JButton();
         button4 = new JButton();
@@ -210,18 +211,25 @@ public class MenuAnonimo extends JFrame {
             filtrosGeneralesStrings[i] = filtrosGenerales.get(i);
         }
 
+        //---- label10 ----
+        label10.setText("Filtrar B\u00fasqueda");
+        label10.setFont(label10.getFont().deriveFont(label10.getFont().getSize() + 4f));
+        label10.setHorizontalAlignment(SwingConstants.CENTER);
+        contentPane.add(label10);
+        label10.setBounds(750, 200, 130, label10.getPreferredSize().height);
+
         logger.info("Strings de Filtros cargados");
         contentPane.add(comboBox2);
-        comboBox2.setBounds(760, 225, 110, 30);
+        comboBox2.setBounds(760, 290, 110, 30);
         comboBox2.setVisible(false);
 
         contentPane.add(textField1);
-        textField1.setBounds(715, 265, 210, 35);
+        textField1.setBounds(715, 330, 210, 35);
         textField1.setVisible(false);
 
         comboBox1 = new JComboBox(filtrosGeneralesStrings);
         contentPane.add(comboBox1);
-        comboBox1.setBounds(760, 185, 110, comboBox1.getPreferredSize().height);
+        comboBox1.setBounds(760, 250, 110, comboBox1.getPreferredSize().height);
 
         comboBox1.addActionListener(new ActionListener() {
             @Override
@@ -316,7 +324,7 @@ public class MenuAnonimo extends JFrame {
         //---- button6 ----
         button6.setText("Buscar");
         contentPane.add(button6);
-        button6.setBounds(730, 315, 180, 30);
+        button6.setBounds(730, 380, 180, 30);
         button6.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -412,6 +420,7 @@ public class MenuAnonimo extends JFrame {
     private JLabel label7;
     private JLabel label8;
     private JLabel label9;
+    private JLabel label10;
     private JButton button2;
     private JButton button3;
     private JButton button4;
