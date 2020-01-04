@@ -9,7 +9,7 @@ jdk:
   - openjdk8
 
 before_install:
-  - mysql -e ./src/main/sql/create-festivalcinedb.sql
+  - mysql -u root --password="" < src/main/sql/create-festivalcinedb.sql
 
 script:
   - mvn test
