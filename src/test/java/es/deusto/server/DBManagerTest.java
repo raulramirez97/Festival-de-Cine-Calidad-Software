@@ -12,7 +12,7 @@ import java.util.logging.Logger;
 import static org.junit.Assert.*;
 import static org.junit.Assert.assertNotEquals;
 
-public class DAOTest {
+public class DBManagerTest {
 
     private ActorDTO testActorDTO;
     private PeliculaDTO testPeliculaDTO;
@@ -20,10 +20,10 @@ public class DAOTest {
     DBManager db;
     String testName;
 
-    static Logger logger = Logger.getLogger(DAOTest.class.getName());
+    static Logger logger = Logger.getLogger(DBManagerTest.class.getName());
 
     public static junit.framework.Test suite() {
-        return new JUnit4TestAdapter(DAOTest.class);
+        return new JUnit4TestAdapter(DBManagerTest.class);
     }
 
     @Before
@@ -34,7 +34,7 @@ public class DAOTest {
     @Test
     public void testStoreUsuario() {
         testName = "testStoreUsuario";
-        testUsuarioDTO = new UsuarioDTO("test","test");
+        testUsuarioDTO = new UsuarioDTO("testUser","test");
         logger.info("Registrando UsuarioDTO de test: " + testUsuarioDTO.getLogin());
         db.storeUsuario(testUsuarioDTO);
         db.deleteUsuario(testUsuarioDTO);
@@ -42,19 +42,19 @@ public class DAOTest {
     @Test
     public void testRetrieveUsuario() {
         testName = "testRetrieveUsuario";
-        testUsuarioDTO = new UsuarioDTO("test","test");
+        testUsuarioDTO = new UsuarioDTO("testUser","test");
         logger.info("Registrando UsuarioDTO de test: " + testUsuarioDTO.getLogin());
         db.storeUsuario(testUsuarioDTO);
-        testUsuarioDTO = db.retrieveUsuario("test");
+        testUsuarioDTO = db.retrieveUsuario("testUser");
         logger.info("Recuperando UsuarioDTO de test: " + testUsuarioDTO.getLogin());
-        assertEquals("test",testUsuarioDTO.getLogin());
+        assertEquals("testUser",testUsuarioDTO.getLogin());
         assertEquals("test",testUsuarioDTO.getPassword());
         db.deleteUsuario(testUsuarioDTO);
     }
     @Test
     public void testUpdateUsuario() {
         testName = "testUpdateUsuario";
-        testUsuarioDTO = new UsuarioDTO("test","test");
+        testUsuarioDTO = new UsuarioDTO("testUser","test");
         logger.info("Registrando UsuarioDTO de test: " + testUsuarioDTO.getLogin());
         db.storeUsuario(testUsuarioDTO);
         testUsuarioDTO.setPassword("myNewPassword");
@@ -65,7 +65,7 @@ public class DAOTest {
     @Test
     public void testStoreActor() {
         testName = "testStoreActor";
-        testActorDTO = new ActorDTO("ID1", "Test", "Cage", 40);
+        testActorDTO = new ActorDTO("ID100", "Test", "Cage", 40);
         logger.info("Registrando ActorDTO de test: " + testActorDTO.getIdentificador());
         db.storeActor(testActorDTO);
         db.deleteActor(testActorDTO);
@@ -73,12 +73,12 @@ public class DAOTest {
     @Test
     public void testRetrieveActor() {
         testName = "testRetrieveActor";
-        testActorDTO = new ActorDTO("ID1", "Test", "Cage", 40);
+        testActorDTO = new ActorDTO("ID100", "Test", "Cage", 40);
         logger.info("Registrando ActorDTO de test: " + testActorDTO.getIdentificador());
         db.storeActor(testActorDTO);
-        testActorDTO = db.retrieveActor("ID1");
+        testActorDTO = db.retrieveActor("ID100");
         logger.info("Recuperando ActorDTO de test: " + testActorDTO.getIdentificador());
-        assertEquals("ID1",testActorDTO.getIdentificador());
+        assertEquals("ID100",testActorDTO.getIdentificador());
         assertEquals("Test",testActorDTO.getNombre());
         assertEquals("Cage",testActorDTO.getApellido());
         assertTrue(testActorDTO.getEdad()==40);
@@ -87,7 +87,7 @@ public class DAOTest {
     @Test
     public void testUpdateActor() {
         testName = "testUpdateActor";
-        testActorDTO = new ActorDTO("ID1", "Test", "Cage", 40);
+        testActorDTO = new ActorDTO("ID100", "Test", "Cage", 40);
         logger.info("Registrando ActorDTO de test: " + testActorDTO.getIdentificador());
         db.storeActor(testActorDTO);
         testActorDTO.setNombre("myNewTestName");
@@ -100,7 +100,7 @@ public class DAOTest {
     @Test
     public void testStorePelicula() {
         testName = "testStorePelicula";
-        testActorDTO = new ActorDTO("ID1", "Test", "Cage", 40);
+        testActorDTO = new ActorDTO("ID100", "Test", "Cage", 40);
         testPeliculaDTO = new PeliculaDTO("Test", "Este es el inicio de un gran test",
                 "TestingDrama", 10, 2019, "Benat",
                 "http://www.iliketoquote.com/save-the-drama-for-your-mama/", 10.0,
@@ -113,7 +113,7 @@ public class DAOTest {
     @Test
     public void testRetrievePelicula() {
         testName = "testRetrievePelicula";
-        testActorDTO = new ActorDTO("ID1", "Test", "Cage", 40);
+        testActorDTO = new ActorDTO("ID100", "Test", "Cage", 40);
         testPeliculaDTO = new PeliculaDTO("Test", "Este es el inicio de un gran test",
                 "TestingDrama", 10, 2019, "Benat",
                 "http://www.iliketoquote.com/save-the-drama-for-your-mama/", 10.0,
@@ -140,7 +140,7 @@ public class DAOTest {
     @Test
     public void testUpdatePelicula() {
         testName = "testUpdatePelicula";
-        testActorDTO = new ActorDTO("ID1", "Test", "Cage", 40);
+        testActorDTO = new ActorDTO("ID100", "Test", "Cage", 40);
         testPeliculaDTO = new PeliculaDTO("Test", "Este es el inicio de un gran test",
                 "TestingDrama", 10, 2019, "Benat",
                 "http://www.iliketoquote.com/save-the-drama-for-your-mama/", 10.0,

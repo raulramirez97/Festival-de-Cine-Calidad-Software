@@ -140,15 +140,17 @@ public class FestivalCineController {
 	public void registerUser(String login, String password) {
 		rsl.registerUser(login,password);
 	}
-	public String sayMessage(String login, String password, String message) {
-		return rsl.sayMessage(login,password, message);
-	}
 	public UsuarioDTO getUser(String login, String pwd) {
 		return rsl.getUser(login, pwd);
+	}
+
+	public String sayMessage(String login, String password, String message) {
+		return rsl.sayMessage(login,password, message);
 	}
 	public MessageList getUserMessages(String login) {
 		return rsl.getUserMessages(login);
 	}
+
 	public void registerActor(String id, String nombre, String apellido, int edad) {
 		rsl.registerActor(id,nombre,apellido,edad);
 	}
