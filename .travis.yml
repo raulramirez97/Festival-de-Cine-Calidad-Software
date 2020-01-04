@@ -6,7 +6,7 @@ jdk:
   - openjdk8
 
 script:
-  - export DISPLAY=:0.0
+  - export DISPLAY=:0
   - mvn test
 
 branches:
