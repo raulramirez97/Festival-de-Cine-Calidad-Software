@@ -3,9 +3,13 @@ language: java
 os: linux
 services:
   - xvfb
+  - mysql
 
 jdk:
   - openjdk8
+
+before_install:
+  - mysql -e ./src/main/sql/create-festivalcinedb.sql
 
 script:
   - mvn test
