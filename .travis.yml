@@ -6,7 +6,7 @@ jdk:
   - openjdk8
 
 script:
-  - export DISPLAY=:0
+  - xhost +local:all
   - mvn test
 
 branches:
