@@ -95,7 +95,7 @@ de diverso tipo a lo largo de la aplicación:
 La información sobre profiling con VisualVM se ha incluido en el directorio `profiling` de este repo. El log que muestra 
 la integración correcta con TravisCI y la ejecución automatizada de este test se muestra en `travisci_log`.
 
-NOTA: El code coverage obtenido es relativamente bajo de base (50% en recorrido de código general sobre el 30% de 
+<b>NOTA</b>: El code coverage obtenido es relativamente bajo de base (50% en recorrido de código general sobre el 30% de 
 variantes disponibles). Por ello, se ha reducido a niveles bajos los indicadores de code coverage para que JaCoCo no 
 bloqueara la ejecución de los tests.
 

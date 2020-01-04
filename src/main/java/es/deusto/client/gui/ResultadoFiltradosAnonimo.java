@@ -8,6 +8,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.logging.Logger;
 
+/**
+ * Implementación de la ventana para que se muestre el listado de películas filtrado por un usuario
+ * anónimo/no-registrado.
+ * @author Grupo RMBJ
+ * @version 3.0
+ * @since 3.0
+ */
 public class ResultadoFiltradosAnonimo extends JFrame {
 
     static Logger logger = Logger.getLogger(ResultadoFiltradosAnonimo.class.getName());
@@ -17,9 +24,6 @@ public class ResultadoFiltradosAnonimo extends JFrame {
     }
 
     private void initComponents(PeliculaList peliculaList) {
-
-        // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        // Generated using JFormDesigner Evaluation license - ben
         label1 = new JLabel();
         button1 = new JButton();
         scrollPane1 = new JScrollPane();
@@ -189,11 +193,8 @@ public class ResultadoFiltradosAnonimo extends JFrame {
         Rectangle r = ventana.getBounds();
         r.grow(45,45);
         ventana.setBounds(r);
-        // JFormDesigner - End of component initialization  //GEN-END:initComponents
     }
 
-    // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - ben
     private JLabel label1;
     private JButton button1;
     private JScrollPane scrollPane1;
@@ -209,10 +210,12 @@ public class ResultadoFiltradosAnonimo extends JFrame {
     private JTextArea textArea3;
     private JButton button4;
     private JFrame ventana;
-    // JFormDesigner - End of variables declaration  //GEN-END:variables
 
     /**
      * Método para redimensionar un ImageIcon al mismo tamaño que un JLabel.
+     * @param ImagePath Ruta de la imagen a modificar.
+     * @param label Jlabel sobre el cual se hará el ajuste de la imagen.
+     * @return Icono de Imagen con el tamaño ajustado.
      */
     public ImageIcon ResizeImage(String ImagePath, JLabel label)
     {
@@ -222,5 +225,4 @@ public class ResultadoFiltradosAnonimo extends JFrame {
         ImageIcon image = new ImageIcon(newImg);
         return image;
     }
-
 }

@@ -1,7 +1,3 @@
-/*
- * Created by JFormDesigner on Thu Dec 05 09:35:06 CET 2019
- */
-
 package es.deusto.client.gui;
 
 import java.awt.*;
@@ -13,16 +9,22 @@ import java.util.logging.Logger;
 import javax.swing.*;
 
 import es.deusto.client.FestivalCineController;
-import es.deusto.server.data.PeliculaDTO;
 import es.deusto.server.data.PeliculaList;
-import es.deusto.client.gui.ResultadoFiltrados;
 
 /**
- * @author unknown
+ * Implementación de la ventana para que un Usuario no registrado pueda interactuar con la aplicación de Festival de
+ * Cine.
+ * @author Grupo RMBJ
+ * @version 3.0
+ * @since 3.0
  */
 public class MenuAnonimo extends JFrame {
 
     static Logger logger = Logger.getLogger(MenuAnonimo.class.getName());
+
+    /**
+     * Constructor generado para su uso en producción.
+     */
     public MenuAnonimo() {
         PeliculaList peliculaList = FestivalCineController.getInstance().getPeliculaList();
         initComponents(peliculaList);
@@ -30,15 +32,13 @@ public class MenuAnonimo extends JFrame {
 
     /**
      * Constructor generado para su uso en GeneracionVentanasTest.java.
-     * @param peliculaList
+     * @param peliculaList Listado de películas disponibles.
      */
     public MenuAnonimo(PeliculaList peliculaList) {
         initComponents(peliculaList);
     }
 
     private void initComponents(PeliculaList peliculaList) {
-        // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        // Generated using JFormDesigner Evaluation license - Beñat
         button1 = new JButton();
         label1 = new JLabel();
         label2 = new JLabel();
@@ -405,11 +405,8 @@ public class MenuAnonimo extends JFrame {
         Rectangle r = ventana.getBounds();
         r.grow(45,45);
         ventana.setBounds(r);
-        // JFormDesigner - End of component initialization  //GEN-END:initComponents
     }
 
-    // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - Beñat
     private JButton button1;
     private JLabel label1;
     private JLabel label2;
@@ -430,10 +427,12 @@ public class MenuAnonimo extends JFrame {
     private JComboBox comboBox2;
     private JTextField textField1;
     private JFrame ventana;
-    // JFormDesigner - End of variables declaration  //GEN-END:variables
 
     /**
      * Método para redimensionar un ImageIcon al mismo tamaño que un JLabel.
+     * @param ImagePath Ruta de la imagen a modificar.
+     * @param label Jlabel sobre el cual se hará el ajuste de la imagen.
+     * @return Icono de Imagen con el tamaño ajustado.
      */
     public ImageIcon ResizeImage(String ImagePath, JLabel label)
     {

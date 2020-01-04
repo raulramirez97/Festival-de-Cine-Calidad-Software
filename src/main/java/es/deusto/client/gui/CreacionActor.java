@@ -1,7 +1,3 @@
-/*
- * Created by JFormDesigner on Thu Dec 05 09:53:02 CET 2019
- */
-
 package es.deusto.client.gui;
 
 import es.deusto.client.FestivalCineController;
@@ -16,7 +12,10 @@ import java.awt.event.FocusListener;
 import java.util.logging.Logger;
 
 /**
- * @author Beñat
+ * Implementación de la ventana para que un Usuario de tipo Administrador pueda insertar un nuevo Actor al sistema.
+ * @author Grupo RMBJ
+ * @version 3.0
+ * @since 3.0
  */
 public class CreacionActor extends JFrame {
 
@@ -27,8 +26,6 @@ public class CreacionActor extends JFrame {
     }
 
     private void initComponents(UsuarioDTO aux) {
-        // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        // Generated using JFormDesigner Evaluation license - Beñat
         label1 = new JLabel();
         label2 = new JLabel();
         label3 = new JLabel();
@@ -195,11 +192,8 @@ public class CreacionActor extends JFrame {
         Rectangle r = ventana.getBounds();
         r.grow(45,45);
         ventana.setBounds(r);
-        // JFormDesigner - End of component initialization  //GEN-END:initComponents
     }
 
-    // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - Beñat
     private JLabel label1;
     private JLabel label2;
     private JLabel label3;
@@ -212,5 +206,4 @@ public class CreacionActor extends JFrame {
     private JTextField textFieldApeActor;
     private JTextField textFieldEdadActor;
     private JFrame ventana;
-    // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

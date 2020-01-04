@@ -130,7 +130,7 @@ public class VerComentariosPelicula extends JFrame {
         button1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ComentarPeliculaTest m = new ComentarPeliculaTest (usuario,pelicula);
+                ComentarPelicula m = new ComentarPelicula(usuario,pelicula);
                 m.setVisible(true);
                 dispose();
             }

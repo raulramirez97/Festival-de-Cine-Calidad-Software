@@ -1,7 +1,3 @@
-/*
- * Created by JFormDesigner on Fri Dec 06 15:27:37 CET 2019
- */
-
 package es.deusto.client.gui;
 
 import es.deusto.client.FestivalCineController;
@@ -15,19 +11,20 @@ import java.util.logging.Logger;
 import javax.swing.*;
 
 /**
- * @author Beñat
+ * Implementación de la ventana para que un Usuario pueda comentar sobre una Película.
+ * @author Grupo RMBJ
+ * @version 3.0
+ * @since 3.0
  */
-public class ComentarPeliculaTest extends JFrame {
+public class ComentarPelicula extends JFrame {
 
-    static Logger logger = Logger.getLogger(ComentarPeliculaTest.class.getName());
+    static Logger logger = Logger.getLogger(ComentarPelicula.class.getName());
 
-    public ComentarPeliculaTest(UsuarioDTO aux, PeliculaDTO pelicula) {
+    public ComentarPelicula(UsuarioDTO aux, PeliculaDTO pelicula) {
         initComponents(aux, pelicula);
     }
 
     private void initComponents(UsuarioDTO aux, PeliculaDTO pelicula) {
-        // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        // Generated using JFormDesigner Evaluation license - Beñat
         ventana = this;
         label1 = new JLabel();
         label2 = new JLabel();
@@ -121,11 +118,8 @@ public class ComentarPeliculaTest extends JFrame {
         Rectangle r = ventana.getBounds();
         r.grow(45,45);
         ventana.setBounds(r);
-        // JFormDesigner - End of component initialization  //GEN-END:initComponents
     }
 
-    // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - Beñat
     private JLabel label1;
     private JLabel label2;
     private JLabel label3;
@@ -133,5 +127,4 @@ public class ComentarPeliculaTest extends JFrame {
     private JButton button1;
     private JButton button2;
     private JFrame ventana;
-    // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

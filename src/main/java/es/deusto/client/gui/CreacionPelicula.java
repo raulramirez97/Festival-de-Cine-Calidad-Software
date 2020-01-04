@@ -1,7 +1,3 @@
-/*
- * Created by JFormDesigner on Thu Dec 05 09:53:02 CET 2019
- */
-
 package es.deusto.client.gui;
 
 import java.awt.*;
@@ -22,10 +18,14 @@ import es.deusto.server.data.ActorDTO;
 import es.deusto.server.data.UsuarioDTO;
 
 /**
- * @author Beñat
+ * Implementación de la ventana para que un Usuario de tipo Administrador pueda insertar una nueva Película al sistema.
+ * Se referencian distintas inspiraciones que han valido para generar este código:
  * Inspiración para JFileChooser tomada de: http://1bestcsharp.blogspot.com/2015/04/java-how-to-browse-image-file-and-And-Display-It-Using-JFileChooser-In-Java.html
  * Inspiración para tomar working directory: https://stackoverflow.com/questions/4871051/getting-the-current-working-directory-in-java
  * Inspiración para recoger imagen: https://docs.oracle.com/javase/tutorial/2d/images/loadimage.html
+ * @author Grupo RMBJ
+ * @version 3.0
+ * @since 3.0
  */
 public class CreacionPelicula extends JFrame {
 
@@ -36,8 +36,6 @@ public class CreacionPelicula extends JFrame {
     }
 
     private void initComponents(UsuarioDTO aux) {
-        // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        // Generated using JFormDesigner Evaluation license - Beñat
         label1 = new JLabel();
         label2 = new JLabel();
         label3 = new JLabel();
@@ -411,6 +409,8 @@ public class CreacionPelicula extends JFrame {
 
     /**
      * Método para redimensionar un ImageIcon al mismo tamaño que un JLabel.
+     * @param ImagePath Ruta de la imagen a modificar.
+     * @return Icono de Imagen con el tamaño ajustado.
      */
     public ImageIcon ResizeImage(String ImagePath)
     {

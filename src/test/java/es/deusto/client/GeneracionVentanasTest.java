@@ -194,7 +194,7 @@ public class GeneracionVentanasTest {
 				testActorDTO.getNombre() + " "+ testActorDTO.getApellido(), "MyDrama");
 		testUsuarioDTO = new UsuarioDTO("usuario", "pass");
 
-		ComentarPeliculaTest testCP = new ComentarPeliculaTest(testUsuarioDTO, testPeliculaDTO);
+		ComentarPelicula testCP = new ComentarPelicula(testUsuarioDTO, testPeliculaDTO);
 		testCP.setVisible(true);
 	}
 

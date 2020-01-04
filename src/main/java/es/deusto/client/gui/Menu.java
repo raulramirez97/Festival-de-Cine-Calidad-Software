@@ -1,7 +1,3 @@
-/*
- * Created by JFormDesigner on Thu Dec 05 09:35:06 CET 2019
- */
-
 package es.deusto.client.gui;
 
 import java.awt.*;
@@ -17,27 +13,34 @@ import es.deusto.server.data.PeliculaList;
 import es.deusto.server.data.UsuarioDTO;
 
 /**
- * @author unknown
+ * Implementación de la ventana para que un Usuario pueda interactuar con la aplicación de Festival de Cine. Además,
+ * si se trata del Usuario Administrador, podrá insertar Actores y Películas al sistema.
+ * @author Grupo RMBJ
+ * @version 3.0
+ * @since 3.0
  */
 public class Menu extends JFrame {
 
     static Logger logger = Logger.getLogger(Menu.class.getName());
+
+    /**
+     * Constructor generado para su uso en producción.
+     * @param aux Usuario que está navegando actualmente en la aplicación.
+     */
     public Menu(UsuarioDTO aux) {
         PeliculaList peliculaList = FestivalCineController.getInstance().getPeliculaList();
         initComponents(peliculaList,aux);
     }
     /**
      * Constructor generado para su uso en GeneracionVentanasTest.java.
-     * @param peliculaList
-     * @param aux
+     * @param peliculaList Lista de películas.
+     * @param aux Usuario que está navegando actualmente en la aplicación.
      */
     public Menu(PeliculaList peliculaList, UsuarioDTO aux) {
         initComponents(peliculaList,aux);
     }
 
     private void initComponents(PeliculaList peliculaList,UsuarioDTO aux) {
-        // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        // Generated using JFormDesigner Evaluation license - Beñat
         button1 = new JButton();
         label1 = new JLabel();
         label2 = new JLabel();
@@ -459,11 +462,8 @@ public class Menu extends JFrame {
         Rectangle r = ventana.getBounds();
         r.grow(45,45);
         ventana.setBounds(r);
-        // JFormDesigner - End of component initialization  //GEN-END:initComponents
     }
 
-    // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - Beñat
     private JButton button1;
     private JLabel label1;
     private JLabel label2;
@@ -489,10 +489,12 @@ public class Menu extends JFrame {
     private JComboBox comboBox2;
     private JTextField textField1;
     private JFrame ventana;
-    // JFormDesigner - End of variables declaration  //GEN-END:variables
 
     /**
      * Método para redimensionar un ImageIcon al mismo tamaño que un JLabel.
+     * @param ImagePath Ruta de la imagen a modificar.
+     * @param label Jlabel sobre el cual se hará el ajuste de la imagen.
+     * @return Icono de Imagen con el tamaño ajustado.
      */
     public ImageIcon ResizeImage(String ImagePath, JLabel label)
     {

@@ -17,7 +17,7 @@ import java.util.logging.Logger;
  * FestivalCineController, y es el que establece la conexión con la parte servidora de esta aplicación mediante el
  * consumo de una API RESTful.
  * @author Grupo RMBJ
- * @version 2.0
+ * @version 3.0
  * @since 1.0
  */
 public class ServiceLocator {
@@ -28,12 +28,21 @@ public class ServiceLocator {
 
 	public ServiceLocator() {}
 
+	/**
+	 * Método que prepara el servicio Cliente para que se pueda ejecutar contra el Servidor.
+	 * @param args Array de Strings que contienen la dirección host y el puerto.
+	 */
 	public void setService(String[] args) {
 		client = ClientBuilder.newClient();
 		webTargetService = client.target(String.format("http://%s:%s/rest/server/", args[0], args[1]));
 		logger.info(String.format("http://%s:%s/rest/server/", args[0], args[1]));
 	}
 
+	/**
+	 * Método que permite el registro de un usuario en el sistema, enviando la información al Servidor.
+	 * @param login Nombre de usuario.
+	 * @param password Contraseña del usuario.
+	 */
 	public void registerUser(String login, String password) {
 		WebTarget registerUserWebTarget = webTargetService.path("registerUser");
 		Invocation.Builder invocationBuilder = registerUserWebTarget.request(MediaType.APPLICATION_JSON);
@@ -47,6 +56,36 @@ public class ServiceLocator {
 		}
 	}
 
+	/**
+	 * Método que permite recuperar un usuario del servidor del sistema, enviando la petición al Servidor.
+	 * @param login Nombre de usuario a buscar.
+	 * @param pwd Contraseña que ha insertado el usuario.
+	 * @return Usuario encontrado con credenciales correctas.
+	 */
+	public UsuarioDTO getUser(String login, String pwd) {
+		WebTarget sayHelloWebTarget = webTargetService.path("obtainUser");
+		sayHelloWebTarget = sayHelloWebTarget.queryParam("login", login);
+		Invocation.Builder invocationBuilder = sayHelloWebTarget.queryParam("pwd", pwd).request(
+				MediaType.APPLICATION_JSON);
+
+		Response response = invocationBuilder.get();
+		if (response.getStatus() != Status.OK.getStatusCode()) {
+			logger.warning("Error connecting with the server. Code: " + response.getStatus());
+			return new UsuarioDTO();
+		} else {
+			UsuarioDTO user = response.readEntity(UsuarioDTO.class);
+			return user;
+		}
+	}
+
+	/**
+	 * Método utilizado para su Mockeo en las clases de Test. El objetivo es "enviar un mensaje", aunque no tiene
+	 * que ver con la aplicación desarrollada en sí.
+	 * @param login Nombre de usuario que envía el mensaje.
+	 * @param password Contraseña que ha insertado el usuario que envía el mensaje.
+	 * @param message Mensaje a enviar.
+	 * @return Confirmación de mensaje enviado, en caso de haberse hecho correctamente.
+	 */
 	public String sayMessage(String login, String password, String message) {
 		WebTarget sayHelloWebTarget = webTargetService.path("sayMessage");
 		Invocation.Builder invocationBuilder = sayHelloWebTarget.request(MediaType.APPLICATION_JSON);
@@ -67,24 +106,15 @@ public class ServiceLocator {
 		}
 	}
 
-	public UsuarioDTO getUser(String login, String pwd) {
-		WebTarget sayHelloWebTarget = webTargetService.path("obtainUser");
-		sayHelloWebTarget = sayHelloWebTarget.queryParam("login", login);
-		Invocation.Builder invocationBuilder = sayHelloWebTarget.queryParam("pwd", pwd).request(MediaType.APPLICATION_JSON);
-
-		Response response = invocationBuilder.get();
-		if (response.getStatus() != Status.OK.getStatusCode()) {
-			logger.warning("Error connecting with the server. Code: " + response.getStatus());
-			return new UsuarioDTO();
-		} else {
-			UsuarioDTO user = response.readEntity(UsuarioDTO.class);
-			return user;
-		}
-	}
-
+	/**
+	 * Método utilizado para recuperar una lista de mensajes enviados por un usuario con nombre "login".
+	 * @param login Nombre de usuario para el cual se busca la lista de mensajes enviados.
+	 * @return Listado de mensajes enviado por el usuario.
+	 */
 	public MessageList getUserMessages(String login) {
 		WebTarget sayHelloWebTarget = webTargetService.path("messages");
-		Invocation.Builder invocationBuilder = sayHelloWebTarget.queryParam("login", "dipina").request(MediaType.APPLICATION_JSON);
+		Invocation.Builder invocationBuilder = sayHelloWebTarget.queryParam("login", "dipina").request(
+				MediaType.APPLICATION_JSON);
 
 		Response response = invocationBuilder.get();
 		if (response.getStatus() != Status.OK.getStatusCode()) {
@@ -96,6 +126,13 @@ public class ServiceLocator {
 		}
 	}
 
+	/**
+	 * Método que permite registrar un actor en el sistema, enviando su información al Servidor.
+	 * @param id Identificativo unívoco del actor.
+	 * @param nombre Nombre del actor.
+	 * @param apellido Primer apellido del actor.
+	 * @param edad Edad del actor.
+	 */
 	public void registerActor(String id, String nombre, String apellido, int edad) {
 		WebTarget registerUserWebTarget = webTargetService.path("registerActor");
 		Invocation.Builder invocationBuilder = registerUserWebTarget.request(MediaType.APPLICATION_JSON);
@@ -109,6 +146,10 @@ public class ServiceLocator {
 		}
 	}
 
+	/**
+	 * Método que permite recuperar una lista de actores registrados en el sistema.
+	 * @return Listado de actores registrados en el sistema.
+	 */
 	public ActorList getActorList() {
 		WebTarget sayHelloWebTarget = webTargetService.path("obtainActors");
 		Invocation.Builder invocationBuilder = sayHelloWebTarget.request(MediaType.APPLICATION_JSON);
@@ -122,6 +163,20 @@ public class ServiceLocator {
 		}
 	}
 
+	/**
+	 * Método que permite registrar una película en el sistema, enviando su información al Servidor.
+	 * @param titulo Nombre de la película.
+	 * @param sinopsis Sinopsis de la película.
+	 * @param genero Género de la película.
+	 * @param duracion Duración (en minutos) de la película.
+	 * @param anyo Año de la película.
+	 * @param director Director de la película.
+	 * @param enlacetrailer URL del trailer de la película.
+	 * @param premios Premios que ha recibido la película en formato texto.
+	 * @param seccion Sección del Festival de Cine en la que se encuentra la película.
+	 * @param actores Actores principales que participan en la película.
+	 * @param imagen Ruta de la imagen asociada a la cartelera de la película.
+	 */
 	public void registerPelicula(String titulo, String sinopsis, String genero, int duracion, int anyo,
 								 String director, String enlacetrailer, String premios, String seccion,
 								 List<ActorDTO> actores, String imagen) {
@@ -143,6 +198,10 @@ public class ServiceLocator {
 		}
 	}
 
+	/**
+	 * Método que permite recuperar el listado de películas existentes en el sistema.
+	 * @return Listado de películas existentes en el sistema.
+	 */
 	public PeliculaList getPeliculaList() {
 		WebTarget sayHelloWebTarget = webTargetService.path("obtainPeliculas");
 		Invocation.Builder invocationBuilder = sayHelloWebTarget.request(MediaType.APPLICATION_JSON);
@@ -156,6 +215,12 @@ public class ServiceLocator {
 		}
 	}
 
+	/**
+	 * Método cuyo objetivo es valorar una película entre el 1 y el 10.
+	 * @param titulo Título de la película que se valorará.
+	 * @param valoracion Puntuación (entre el 1 y el 10) que el usuario ha dado a una película.
+	 * @throws NullPointerException
+	 */
 	public void valorarPelicula(String titulo, float valoracion) throws NullPointerException {
 		WebTarget registerValoracionWebTarget = webTargetService.path("registerValoracion");
 		Invocation.Builder invocationBuilder = registerValoracionWebTarget.request(MediaType.APPLICATION_JSON);
@@ -169,6 +234,13 @@ public class ServiceLocator {
 		}
 	}
 
+	/**
+	 * Método que permite comentar una película, enviando la información relevante al Servidor.
+	 * @param titulo Nombre de la película sobre la que comentar.
+	 * @param usuario Nombre de usuario que comenta en la película.
+	 * @param contenido Contenido del comentario que se hace sobre la película.
+	 * @throws NullPointerException
+	 */
 	public void comentarPelicula(String titulo, String usuario, String contenido) {
 		WebTarget registerUserWebTarget = webTargetService.path("registerComment");
 		Invocation.Builder invocationBuilder = registerUserWebTarget.request(MediaType.APPLICATION_JSON);
@@ -181,7 +253,6 @@ public class ServiceLocator {
 				break;
 			}
 		}
-
 		logger.info("Enviando comentario: " + miComentario.getPelicula().getTitulo());
 		Response response = invocationBuilder.post(Entity.entity(miComentario, MediaType.APPLICATION_JSON));
 		if (response.getStatus() != Status.OK.getStatusCode()) {
@@ -191,6 +262,11 @@ public class ServiceLocator {
 		}
 	}
 
+	/**
+	 * Método que permite obtener un listado de Filtros secundarios disponibles, en base a un Filtro primario.
+	 * @param filtro Filtro primario (Género, Director, Año, etc.) que el usuario elige en el primer ComboBox.
+	 * @return ArrayList de Strings de Filtros secundarios.
+	 */
 	public ArrayList<String> getFiltroList(String filtro) throws NullPointerException {
 		List<PeliculaDTO> peliculasFestival = new ArrayList<PeliculaDTO>();
 		peliculasFestival = getPeliculaList().getPeliculasDTO();
@@ -263,6 +339,12 @@ public class ServiceLocator {
 		}
 	}
 
+	/**
+	 * Método que busca obtener un listado de películas en base a un Filtro primario y un Criterio o Filtro secundario.
+	 * @param filtro Filtro primario (Género, Director, Año, etc.) que el usuario elige en el primer ComboBox.
+	 * @param criterio Filtro secundario que el usuario elige en el segundo ComboBox o en un TextField.
+	 * @return Listado de películas que cumplen ambos filtros.
+	 */
 	public PeliculaList getFilteredPeliculaList(String filtro, String criterio) {
 		List<PeliculaDTO> peliculasFestival = new ArrayList<PeliculaDTO>();
 		peliculasFestival = getPeliculaList().getPeliculasDTO();

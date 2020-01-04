@@ -28,10 +28,20 @@ public class FestivalCineController {
 	private Client client;
 	private WebTarget webTarget;
 
+	/**
+	 * Método que fuerza a que se tenga solamente una instancia de FestivalCineController, cumpliendo así con el
+	 * patrón de diseño Singleton.
+	 * @return Singleton de FestivalCineController
+	 */
 	public static FestivalCineController getInstance() {
 		return instance;
 	}
 
+	/**
+	 * Constructor generado para las clases de test; en la ejecución en producción no se utiliza.
+	 * @param args Argumentos del main (dirección y puerto).
+	 * @param test Argumento no-utilizado para diferenciar este constructor del de producción.
+	 */
 	public FestivalCineController (String[] args, String test){
 		instance = this;
 		rsl = new ServiceLocator();
@@ -40,6 +50,10 @@ public class FestivalCineController {
 		webTarget = client.target(String.format("http://%s:%s/rest/server", args[0], args[1]));
 	}
 
+	/**
+	 * Constructor de producción generado para la ejecución normal de la aplicación.
+	 * @param args Argumentos del main (dirección y puerto).
+	 */
 	private FestivalCineController(String[] args) {
 		instance = this;
 
@@ -133,47 +147,136 @@ public class FestivalCineController {
 
 	}
 
+	/**
+	 * Método que permite el registro de un usuario en el sistema, enviando la información al ServiceLocator.
+	 * @param login Nombre de usuario.
+	 * @param password Contraseña del usuario.
+	 */
 	public void registerUser(String login, String password) {
 		rsl.registerUser(login,password);
 	}
+
+	/**
+	 * Método que permite recuperar un usuario del servidor del sistema, enviando la petición al ServiceLocator.
+	 * @param login Nombre de usuario a buscar.
+	 * @param pwd Contraseña que ha insertado el usuario.
+	 * @return Usuario encontrado con credenciales correctas.
+	 */
 	public UsuarioDTO getUser(String login, String pwd) {
 		return rsl.getUser(login, pwd);
 	}
 
+	/**
+	 * Método utilizado para su Mockeo en las clases de Test. El objetivo es "enviar un mensaje", aunque no tiene
+	 * que ver con la aplicación desarrollada en sí.
+	 * @param login Nombre de usuario que envía el mensaje.
+	 * @param password Contraseña que ha insertado el usuario que envía el mensaje.
+	 * @param message Mensaje a enviar.
+	 * @return Confirmación de mensaje enviado, en caso de haberse hecho correctamente.
+	 */
 	public String sayMessage(String login, String password, String message) {
 		return rsl.sayMessage(login,password, message);
 	}
+
+	/**
+	 * Método utilizado para recuperar una lista de mensajes enviados por un usuario con nombre "login".
+	 * @param login Nombre de usuario para el cual se busca la lista de mensajes enviados.
+	 * @return Listado de mensajes enviado por el usuario.
+	 */
 	public MessageList getUserMessages(String login) {
 		return rsl.getUserMessages(login);
 	}
 
+	/**
+	 * Método que permite registrar un actor en el sistema, enviando su información al ServiceLocator.
+	 * @param id Identificativo unívoco del actor.
+	 * @param nombre Nombre del actor.
+	 * @param apellido Primer apellido del actor.
+	 * @param edad Edad del actor.
+	 */
 	public void registerActor(String id, String nombre, String apellido, int edad) {
 		rsl.registerActor(id,nombre,apellido,edad);
 	}
+
+	/**
+	 * Método que permite recuperar una lista de actores registrados en el sistema.
+	 * @return Listado de actores registrados en el sistema.
+	 */
 	public ActorList getActorList() {
 		return rsl.getActorList();
 	}
+
+	/**
+	 * Método que permite registrar una película en el sistema, enviando su información al ServiceLocator.
+	 * @param titulo Nombre de la película.
+	 * @param sinopsis Sinopsis de la película.
+	 * @param genero Género de la película.
+	 * @param duracion Duración (en minutos) de la película.
+	 * @param anyo Año de la película.
+	 * @param director Director de la película.
+	 * @param enlacetrailer URL del trailer de la película.
+	 * @param premios Premios que ha recibido la película en formato texto.
+	 * @param seccion Sección del Festival de Cine en la que se encuentra la película.
+	 * @param actores Actores principales que participan en la película.
+	 * @param imagen Ruta de la imagen asociada a la cartelera de la película.
+	 */
 	public void registerPelicula(String titulo, String sinopsis, String genero, int duracion, int anyo,
 								 String director, String enlacetrailer, String premios, String seccion,
 								 List<ActorDTO> actores, String imagen) {
 		rsl.registerPelicula(titulo,sinopsis,genero,duracion,anyo,director,enlacetrailer,premios, seccion, actores,
 				imagen);
 	}
+
+	/**
+	 * Método que permite recuperar el listado de películas existentes en el sistema.
+	 * @return Listado de películas existentes en el sistema.
+	 */
 	public PeliculaList getPeliculaList() {
 		return rsl.getPeliculaList();
 	}
+
+	/**
+	 * Método cuyo objetivo es valorar una película entre el 1 y el 10.
+	 * @param titulo Título de la película que se valorará.
+	 * @param valoracion Puntuación (entre el 1 y el 10) que el usuario ha dado a una película.
+	 * @throws NullPointerException
+	 */
 	public void valorarPelicula (String titulo, float valoracion) throws NullPointerException {
 		rsl.valorarPelicula(titulo, valoracion);
 	}
-	public ArrayList<String> getFiltros(String filtro) { return rsl.getFiltroList(filtro);}
-	public PeliculaList getFilteredPeliculaList(String filtro, String criterio) {
-		return rsl.getFilteredPeliculaList(filtro, criterio);
-	}
 
+	/**
+	 * Método que permite comentar una película, enviando la información relevante al ServiceLocator.
+	 * @param titulo Nombre de la película sobre la que comentar.
+	 * @param usuario Nombre de usuario que comenta en la película.
+	 * @param contenido Contenido del comentario que se hace sobre la película.
+	 * @throws NullPointerException
+	 */
 	public void comentarPelicula (String titulo, String usuario, String contenido) throws NullPointerException {
 		rsl.comentarPelicula(titulo, usuario, contenido);
 	}
 
+	/**
+	 * Método que permite obtener un listado de Filtros secundarios disponibles, en base a un Filtro primario.
+	 * @param filtro Filtro primario (Género, Director, Año, etc.) que el usuario elige en el primer ComboBox.
+	 * @return ArrayList de Strings de Filtros secundarios.
+	 */
+	public ArrayList<String> getFiltros(String filtro) { return rsl.getFiltroList(filtro);}
+
+	/**
+	 * Método que busca obtener un listado de películas en base a un Filtro primario y un Criterio o Filtro secundario.
+	 * @param filtro Filtro primario (Género, Director, Año, etc.) que el usuario elige en el primer ComboBox.
+	 * @param criterio Filtro secundario que el usuario elige en el segundo ComboBox o en un TextField.
+	 * @return Listado de películas que cumplen ambos filtros.
+	 */
+	public PeliculaList getFilteredPeliculaList(String filtro, String criterio) {
+		return rsl.getFilteredPeliculaList(filtro, criterio);
+	}
+
+	/**
+	 * Método main que se ejecuta mediante el profile de Cliente en Maven.
+	 * @param args Array de Strings que contiene la dirección host y el puerto al que se debe conectar el Cliente.
+	 */
 	public static void main(String[] args) {
 		new FestivalCineController(args);
 		FestivalCineController.getInstance().generateFixtures();

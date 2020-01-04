@@ -10,6 +10,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.logging.Logger;
 
+/**
+ * Implementación de la ventana para que un Usuario pueda acceder al sistema con sus credenciales existentes.
+ * @author Grupo RMBJ
+ * @version 3.0
+ * @since 3.0
+ */
 public class Login extends JFrame {
 
 	static Logger logger = Logger.getLogger(Login.class.getName());

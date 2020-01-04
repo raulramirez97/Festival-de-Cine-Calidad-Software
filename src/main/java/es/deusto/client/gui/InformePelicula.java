@@ -1,7 +1,3 @@
-/*
- * Created by JFormDesigner on Thu Dec 05 09:53:02 CET 2019
- */
-
 package es.deusto.client.gui;
 
 import java.awt.*;
@@ -16,7 +12,10 @@ import es.deusto.server.data.PeliculaDTO;
 import es.deusto.server.data.UsuarioDTO;
 
 /**
- * @author Beñat
+ * Implementación de la ventana para que un usuario pueda obtener un informe de una película.
+ * @author Grupo RMBJ
+ * @version 3.0
+ * @since 3.0
  */
 public class InformePelicula extends JFrame {
 
@@ -27,8 +26,6 @@ public class InformePelicula extends JFrame {
     }
 
     private void initComponents(PeliculaDTO pelicula, UsuarioDTO aux) {
-        // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        // Generated using JFormDesigner Evaluation license - Beñat
         label1 = new JLabel();
         label2 = new JLabel();
         label3 = new JLabel();
@@ -205,7 +202,7 @@ public class InformePelicula extends JFrame {
         button2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ComentarPeliculaTest m = new ComentarPeliculaTest (aux,pelicula);
+                ComentarPelicula m = new ComentarPelicula(aux,pelicula);
                 m.setVisible(true);
                 dispose();
             }
@@ -279,11 +276,8 @@ public class InformePelicula extends JFrame {
         Rectangle r = ventana.getBounds();
         r.grow(45,45);
         ventana.setBounds(r);
-        // JFormDesigner - End of component initialization  //GEN-END:initComponents
     }
 
-    // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - Beñat
     private JLabel label1;
     private JLabel label2;
     private JLabel label3;
@@ -310,9 +304,12 @@ public class InformePelicula extends JFrame {
     private JLabel label18;
     private JButton button4;
     private JFrame ventana;
-    // JFormDesigner - End of variables declaration  //GEN-END:variables
+
     /**
      * Método para redimensionar un ImageIcon al mismo tamaño que un JLabel.
+     * @param ImagePath Ruta de la imagen a modificar.
+     * @param label Jlabel sobre el cual se hará el ajuste de la imagen.
+     * @return Icono de Imagen con el tamaño ajustado.
      */
     public ImageIcon ResizeImage(String ImagePath, JLabel label)
     {

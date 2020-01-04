@@ -4,6 +4,13 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.Random;
 
+/**
+ * Implementación de la ventana para que se muestre una barra de progreso en la primera ejecución del sistema,
+ * cuando los datos iniciales se están cargando en el mismo.
+ * @author Grupo RMBJ
+ * @version 3.0
+ * @since 3.0
+ */
 public class ProgressBar extends JFrame {
 
     MiRunnable miHilo = null;
@@ -53,6 +60,9 @@ public class ProgressBar extends JFrame {
         Thread nuevoHilo = new Thread(miHilo );
         nuevoHilo.start();
     }
+    /**
+     * Método que finaliza esta ventana y da paso a la ventana principal del sistema.
+     */
     public void cerrar()
     {
         this.dispose();
@@ -60,6 +70,9 @@ public class ProgressBar extends JFrame {
         frame.setVisible(true);
     }
 
+    /**
+     * Implementación del hilo que permite que la barra de progreso se mueva lentamente.
+     */
     class MiRunnable implements Runnable {
         boolean sigo = true;
         @Override

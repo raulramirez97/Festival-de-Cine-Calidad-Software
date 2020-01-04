@@ -28,6 +28,10 @@ public class DBManager implements IDAO {
 		pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
 	}
 
+	/**
+	 * Método que permite insertar un UsuarioDTO en la base de datos.
+	 * @param u UsuarioDTO a insertar.
+	 */
 	@Override
 	public void storeUsuario(UsuarioDTO u) {
 
@@ -49,6 +53,11 @@ public class DBManager implements IDAO {
 		}
 	}
 
+	/**
+	 * Método que permite buscar un UsuarioDTO por su nombre de usuario.
+	 * @param login Nombre de usuario por el que realizar la búsqueda.
+	 * @return UsuarioDTO encontrado bajo ese nombre de usuario.
+	 */
 	@Override
 	public UsuarioDTO retrieveUsuario(String login) {
 		UsuarioDTO usuarioDTO = null;
@@ -62,18 +71,19 @@ public class DBManager implements IDAO {
 		} catch (JDOObjectNotFoundException jonfe) {
 			logger.severe("User does not exist: " + jonfe.getMessage());
 		}
-
 		finally {
 			if (tx != null && tx.isActive()) {
 				tx.rollback();
 			}
-
 			pm.close();
 		}
-
 		return usuarioDTO;
 	}
 
+	/**
+	 * Método que permite hacer una actualización de un UsuarioDTO con sus nuevos datos.
+	 * @param u UsuarioDTO con los datos modificados para modificar en la base de datos.
+	 */
 	@Override
 	public void updateUsuario(UsuarioDTO u) {
 		PersistenceManager pm = pmf.getPersistenceManager();
@@ -94,6 +104,10 @@ public class DBManager implements IDAO {
 		}
 	}
 
+	/**
+	 * Método que permite hacer un borrado de un UsuarioDTO. Solamente se utiliza en las clases de test.
+	 * @param u UsuarioDTO del cual se va a hacer el borrado.
+	 */
 	public void deleteUsuario(UsuarioDTO u) {
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx = pm.currentTransaction();
@@ -112,6 +126,10 @@ public class DBManager implements IDAO {
 		}
 	}
 
+	/**
+	 * Método que permite insertar un ActorDTO en la base de datos.
+	 * @param a ActorDTO a insertar.
+	 */
 	@Override
 	public void storeActor(ActorDTO a) {
 		PersistenceManager pm = pmf.getPersistenceManager();
@@ -132,6 +150,11 @@ public class DBManager implements IDAO {
 		}
 	}
 
+	/**
+	 * Método que permite buscar un ActorDTO por su identificativo.
+	 * @param id Código identificativo por el que realizar la búsqueda.
+	 * @return ActorDTO encontrado bajo ese código identificativo.
+	 */
 	@Override
 	public ActorDTO retrieveActor(String id) {
 		ActorDTO actorDTO = null;
@@ -145,18 +168,19 @@ public class DBManager implements IDAO {
 		} catch (JDOObjectNotFoundException jonfe) {
 			logger.severe("Actor does not exist: " + jonfe.getMessage());
 		}
-
 		finally {
 			if (tx != null && tx.isActive()) {
 				tx.rollback();
 			}
-
 			pm.close();
 		}
-
 		return actorDTO;
 	}
 
+	/**
+	 * Método que permite hacer una actualización de un ActorDTO con sus nuevos datos.
+	 * @param a ActorDTO con los datos modificados para modificar en la base de datos.
+	 */
 	@Override
 	public void updateActor(ActorDTO a) {
 		PersistenceManager pm = pmf.getPersistenceManager();
@@ -177,6 +201,10 @@ public class DBManager implements IDAO {
 		}
 	}
 
+	/**
+	 * Método que permite hacer un borrado de un ActorDTO. Solamente se utiliza en las clases de test.
+	 * @param a ActorDTO del cual se va a hacer el borrado.
+	 */
 	public void deleteActor(ActorDTO a) {
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx = pm.currentTransaction();
@@ -195,6 +223,10 @@ public class DBManager implements IDAO {
 		}
 	}
 
+	/**
+	 * Método que permite recuperar un listado de ActoresDTO de la base de datos.
+	 * @return Listado de ActoresDTO existentes en la base de datos.
+	 */
 	@Override
 	public ArrayList<ActorDTO> getActors() {
 		ArrayList<ActorDTO> actors = new ArrayList<ActorDTO>();
@@ -225,6 +257,10 @@ public class DBManager implements IDAO {
 		return actors;
 	}
 
+	/**
+	 * Método que permite insertar una PeliculaDTO en la base de datos.
+	 * @param p PeliculaDTO a insertar.
+	 */
 	@Override
 	public void storePelicula(PeliculaDTO p) {
 		PersistenceManager pm = pmf.getPersistenceManager();
@@ -240,11 +276,15 @@ public class DBManager implements IDAO {
 			if (tx != null && tx.isActive()) {
 				tx.rollback();
 			}
-
 			pm.close();
 		}
 	}
 
+	/**
+	 * Método que permite buscar una PeliculaDTO por su título.
+	 * @param titulo Título de la película por el que realizar la búsqueda.
+	 * @return PeliculaDTO encontrada bajo ese título.
+	 */
 	@Override
 	public PeliculaDTO retrievePelicula(String titulo) {
 		PeliculaDTO peliculaDTO = null;
@@ -258,7 +298,6 @@ public class DBManager implements IDAO {
 		} catch (JDOObjectNotFoundException jonfe) {
 			logger.severe("Pelicula does not exist: " + jonfe.getMessage());
 		}
-
 		finally {
 			if (tx != null && tx.isActive()) {
 				tx.rollback();
@@ -266,10 +305,13 @@ public class DBManager implements IDAO {
 
 			pm.close();
 		}
-
 		return peliculaDTO;
 	}
 
+	/**
+	 * Método que permite hacer una actualización de una PeliculaDTO con sus nuevos datos.
+	 * @param p PeliculaDTO con los datos modificados para modificar en la base de datos.
+	 */
 	@Override
 	public void updatePelicula(PeliculaDTO p) {
 		PersistenceManager pm = pmf.getPersistenceManager();
@@ -290,6 +332,10 @@ public class DBManager implements IDAO {
 		}
 	}
 
+	/**
+	 * Método que permite hacer un borrado de una PeliculaDTO. Solamente se utiliza en las clases de test.
+	 * @param p PeliculaDTO de la cual se va a hacer el borrado.
+	 */
 	public void deletePelicula(PeliculaDTO p) {
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx = pm.currentTransaction();
@@ -308,6 +354,10 @@ public class DBManager implements IDAO {
 		}
 	}
 
+	/**
+	 * Método que permite recuperar un listado de PeliculasDTO de la base de datos.
+	 * @return Listado de PeliculasDTO existentes en la base de datos.
+	 */
 	@Override
 	public ArrayList<PeliculaDTO> getPeliculas() {
 		ArrayList<PeliculaDTO> peliculas = new ArrayList<PeliculaDTO>();
@@ -338,6 +388,10 @@ public class DBManager implements IDAO {
 		return peliculas;
 	}
 
+	/**
+	 * Método que permite almacenar la ValoracionDTO hecha de una PelículaDTO.
+	 * @param v ValoracionDTO a almacenar en la base de datos.
+	 */
 	@Override
 	public void storeValoracion(ValoracionDTO v) {
 		PersistenceManager pm = pmf.getPersistenceManager();
@@ -358,6 +412,10 @@ public class DBManager implements IDAO {
 		}
 	}
 
+	/**
+	 * Método que permite recuperar las ValoracionesDTO realizadas de todas las PelículasDTO.
+	 * @return Listado de ValoracionesDTO realizadas.
+	 */
 	@Override
 	public ArrayList<ValoracionDTO> getValoraciones() {
 		ArrayList<ValoracionDTO> valoraciones = new ArrayList<ValoracionDTO>();
@@ -388,6 +446,10 @@ public class DBManager implements IDAO {
 		return valoraciones;
 	}
 
+	/**
+	 * Método que permite recuperar los ComentariosDTO que se han hecho de cada PelículaDTO.
+	 * @return Listado de ComentariosDTO realizados.
+	 */
 	@Override
 	public ArrayList<ComentarioDTO> getComentarios() {
 		ArrayList<ComentarioDTO> comentarios = new ArrayList<ComentarioDTO>();

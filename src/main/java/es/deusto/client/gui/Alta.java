@@ -9,6 +9,12 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * Implementación de la ventana para que un Usuario se pueda dar de alta en el sistema.
+ * @author Grupo RMBJ
+ * @version 3.0
+ * @since 3.0
+ */
 public class Alta extends JFrame {
 
 	private static final long serialVersionUID = 1L;
@@ -86,7 +92,5 @@ public class Alta extends JFrame {
 				dispose();
 		    }
 		});
-		
-		
 	}
 }
