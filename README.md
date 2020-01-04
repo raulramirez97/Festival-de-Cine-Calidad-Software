@@ -80,16 +80,16 @@ de diverso tipo a lo largo de la aplicación:
 
 | Objetivo | Tecnología |
 | --- | --- |
-| Desarrollo de tests unitarios | `JUnit3/4` |
-| Desarrollo de tests de rendimiento | `ContiPERF` |
-| Desarrollo de Mocking o simulación de clases | `Mockito` |
-| Mejora del code coverage | `JaCoCo` |
-| Uso de Logging | `Log4j` |
-| Comprobación de checkstyle | `Maven Checkstyle Plugin` |
-| Profiling de la aplicación | `VisualVM` |
-| Generación de documentación JavaDoc (Apache) | `Maven Project Info Reports Plugin` |
-| Generación de documentación JavaDoc (Doxygen) | `Doxygen` |
-| Integración continua (CI) de este repositorio | `TravisCI` |
+| Desarrollo de tests unitarios | [JUnit4](https://junit.org/junit4/) |
+| Desarrollo de tests de rendimiento | [ContiPERF](https://mvnrepository.com/artifact/org.databene/contiperf) |
+| Desarrollo de Mocking o simulación de clases | [Mockito](https://site.mockito.org/) |
+| Mejora del code coverage | [JaCoCo](https://www.eclemma.org/jacoco/) |
+| Uso de Logging | [Log4j](https://logging.apache.org/log4j/2.x/) |
+| Comprobación de checkstyle | [Maven Checkstyle Plugin](https://maven.apache.org/plugins/maven-checkstyle-plugin/) |
+| Profiling de la aplicación | [VisualVM](https://visualvm.github.io/) |
+| Generación de documentación JavaDoc (Apache) | [Maven Project Info Reports Plugin](https://maven.apache.org/plugins/maven-project-info-reports-plugin/) |
+| Generación de documentación JavaDoc (Doxygen) | [Doxygen](http://www.doxygen.nl/) |
+| Integración continua (CI) de este repositorio | [TravisCI](https://travis-ci.org/) |
 
 La información sobre profiling con VisualVM se ha incluido en el directorio `profiling` de este repo. El log que muestra 
 la integración correcta con TravisCI y la ejecución automatizada de este test se muestra en `travisci_log`.
@@ -101,19 +101,21 @@ bloqueara la ejecución de los tests.
 ### Comandos para ejecutar tests
 
 Se insertan a continuación diversos comandos para poder interactuar con las clases de testeo. Antes de ejecutar estos,
-habrá que ejecutar `mvn clean`. Los comandos son:
+habrá que ejecutar `mvn clean`.
 
-- Ejecución de tests a nivel general: ```mvn test```
-- Ejecución de code coverage: ```mvn jacoco:check```
-- Ejecución de plugin de checkstyle, para detectar errores de estilo en la aplicación: ```mvn checkstyle:checkstyle```
-- Generación de un dashboard completo del proyecto, tanto en formato Doxygen como en formato Apache Maven: ```mvn site```
+| Objetivo | Comando |
+| --- | --- |
+| Ejecución de todos los tests. | ```mvn test``` |
+| Evaluación de code coverage. | ```mvn jacoco:check``` |
+| Ejecución de plugin de checkstyle, para detectar errores de estilo en la aplicación. | ```mvn checkstyle:checkstyle``` |
+| Generación de un dashboard completo del proyecto, tanto en formato Doxygen como en formato Apache Maven. | ```mvn site``` |
 
 A su vez, el comando ```mvn site``` genera una carpeta ```docs``` en el nivel superior, la cual alimenta a la
 documentación on-line generada para este proyecto.
 
 URL de la documentación: https://github.com/Benny96
 
-NOTA: A la hora de utilizar el comando `mvn site`, es probable que haya errores a la hora de crear el directorio de
+<b>NOTA</b>: A la hora de utilizar el comando `mvn site`, es probable que haya errores a la hora de crear el directorio de
 `Dependencies` del informe de Apache. Esto es así por la utilización de diversas versiones en este proyecto. 
 Se ha decidido dejar así dado que no es un error bloqueante y porque la documentación generada vía Doxygen se actualiza 
 sin problema.
