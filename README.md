@@ -47,11 +47,13 @@ Para testear la aplicación, hay que ejecutar los siguientes comandos en dos ven
 ### En la primera ventana:
 1. `mvn clean` : Permite limpiar todas las versiones de paquetes de Maven descargadas.
 2. `mvn compile` : Permite compilar todos los ficheros .java con los paquetes de Maven, y unirlos en el target.
-3. `mvn package jetty:run` : Permite ejecutar el servidor o "Servlet" de Jetty, y ponerlo en escucha 
-(FestivalCineManager).
+
+3. Ejecución del servidor o "Servlet" de Jetty, y ponerlo en escucha (FestivalCineManager):
+- Si se quieren ejecutar todos los tests al ejecutar : `mvn package jetty:run`
+- Si solamente se quiere ejecutar el servidor : `mvn -DskipTests=true package jetty:run`
 
 ### En la segunda ventana:
-4. `mvn exec:java -Pclient -X` : Permite ejecutar el cliente (FestivalCineController).
+`mvn exec:java -Pclient -X` : Permite ejecutar el cliente (FestivalCineController).
 
 ## Prototipo
 

@@ -6,6 +6,7 @@ jdk:
   - openjdk8
 
 script:
+  - setenv DISPLAY :0.0
   - mvn test
 
 branches:
