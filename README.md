@@ -3,6 +3,8 @@
 [![Build Status](https://travis-ci.com/raulramirez97/Festival-de-Cine-Calidad-Software.svg?branch=master)](https://travis-ci.com/raulramirez97/Festival-de-Cine-Calidad-Software/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
+URL de la documentación: https://github.com/Benny96
+
 ## Contexto
 
 Repo que contiene un proyecto para la asignatura Proceso y Calidad de Software, impartida por la Universidad de Deusto.
@@ -112,9 +114,10 @@ habrá que ejecutar `mvn clean`.
 | Generación de un dashboard completo del proyecto, tanto en formato Doxygen como en formato Apache Maven. | ```mvn site``` |
 
 A su vez, el comando ```mvn site``` genera una carpeta ```docs``` en el nivel superior, la cual alimenta a la
-documentación on-line generada para este proyecto.
+documentación on-line generada para este proyecto, presentada en la parte inicial de este README.
 
-URL de la documentación: https://github.com/Benny96
+En lo que al checkstyle respecta, se han hecho varias revisiones de los ficheros pero aún quedarían bastantes detalles
+por pulir.
 
 <b>NOTA</b>: A la hora de utilizar el comando `mvn site`, es probable que haya errores a la hora de crear el directorio de
 `Dependencies` del informe de Apache. Esto es así por la utilización de diversas versiones en este proyecto. 

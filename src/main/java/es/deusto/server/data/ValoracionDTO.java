@@ -5,7 +5,8 @@ import javax.jdo.annotations.PrimaryKey;
 import java.io.Serializable;
 
 /**
- * Este bloque de código recoge la estructura de datos con la que se representan las Valoraciones en el sistema.
+ * Este bloque de código recoge la estructura de datos con la que se
+ * representan las Valoraciones en el sistema.
  * @author Grupo RMBJ
  * @version 3.0
  * @since 1.0
@@ -16,7 +17,8 @@ public class ValoracionDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * El id inicial es 1, y se va autoincrementando en la ejecución del programa.
+	 * El id inicial es 1, y se va autoincrementando en la ejecución del
+	 * programa.
 	 */
 	@PrimaryKey
 	int id = 1;

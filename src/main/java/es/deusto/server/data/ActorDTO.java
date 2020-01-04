@@ -5,7 +5,8 @@ import javax.jdo.annotations.PrimaryKey;
 import java.io.Serializable;
 
 /**
- * Este bloque de código recoge la estructura de datos con la que se representan los Actores en el sistema.
+ * Este bloque de código recoge la estructura de datos con la que se
+ * representan los Actores en el sistema.
  * @author Grupo RMBJ
  * @version 3.0
  * @since 1.0
@@ -20,7 +21,8 @@ public class ActorDTO implements Serializable{
 	private String apellido;
 	private int edad;
 
-	public ActorDTO (String identificador2, String nombre2, String apellido2, int edad2) {
+	public ActorDTO (String identificador2, String nombre2,
+					 String apellido2, int edad2) {
 		super();
 		identificador = identificador2;
 		nombre = nombre2;
@@ -54,13 +56,15 @@ public class ActorDTO implements Serializable{
 	}
 
 	/**
-	 * Método toString generado para obtener la representación a modo de informe por pantalla. Sin embargo, este
-	 * método debería dejar de usarse cuando el informe se genere con una ventana nueva.
+	 * Método toString generado para obtener la representación a modo de
+	 * informe por pantalla. Sin embargo, este método debería dejar de usarse
+	 * cuando el informe se genere con una ventana nueva.
 	 * @return Informe de un actor en formato texto mediante terminal.
 	 */
 	public String toString() {
-		return "Actor: Identificador --> " + this.getIdentificador() + ", Nombre -->  " + this.getNombre() +
-				", Apellido --> " + this.getApellido() + ", Edad --> " + this.getEdad() + "";
+		return "Actor: Identificador --> " + this.getIdentificador()
+				+ ", Nombre -->  " + this.getNombre()
+				+ ", Apellido --> " + this.getApellido()
+				+ ", Edad --> " + this.getEdad() + "";
 		}
 }
-

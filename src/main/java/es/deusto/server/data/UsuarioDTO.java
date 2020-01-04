@@ -9,7 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Este bloque de código recoge la estructura de datos con la que se representan los Usuarios en el sistema.
+ * Este bloque de código recoge la estructura de datos con la que se
+ * representan los Usuarios en el sistema.
  * @author Grupo RMBJ
  * @version 3.0
  * @since 1.0
@@ -22,10 +23,11 @@ public class UsuarioDTO implements Serializable {
 	String login = null;
 	String password = null;
 
-	@Persistent(defaultFetchGroup = "true", mappedBy = "usuariodto", dependentElement = "true")
+	@Persistent(defaultFetchGroup = "true", mappedBy = "usuariodto",
+			dependentElement = "true")
 	@Join
 	List<Message> messages = new ArrayList<Message>();
-	
+
 	public UsuarioDTO() {}
 
 	public UsuarioDTO(String login, String password) {
@@ -58,21 +60,22 @@ public class UsuarioDTO implements Serializable {
 	}
 
 	/**
-	 * Método toString generado para obtener la representación a modo de informe por pantalla.
+	 * Método toString generado para obtener la representación a modo de
+	 * informe por pantalla.
 	 * @return Información de un usuario.
 	 */
 	public String toString() {
 		if (messages.isEmpty()) {
-			return "User: login --> " + this.login + ", password -->  " + this.password;
-
+			return "User: login --> " + this.login + ", password -->  "
+					+ this.password;
 		} else {
 			StringBuffer messagesStr = new StringBuffer();
 			for (Message message : this.messages) {
 				messagesStr.append(message.toString() + " - ");
 			}
-			return "User: login --> " + this.login + ", password -->  " + this.password + ", messages --> ["
+			return "User: login --> " + this.login + ", password -->  "
+					+ this.password + ", messages --> ["
 					+ messagesStr + "]";
-
 		}
 	}
 }

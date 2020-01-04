@@ -18,8 +18,8 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 /**
- * Este bloque de código representa un conjunto de pruebas unitarias con el objetivo de validar que el Controller
- * busca la conexión correctamente.
+ * Este bloque de código representa un conjunto de pruebas unitarias con el
+ * objetivo de validar que el Controller busca la conexión correctamente.
  * @author Grupo RMBJ
  * @version 3.0
  * @since 3.0
@@ -35,15 +35,18 @@ public class FestivalCineControllerTest {
 	private ActorList testActorList;
 	private PeliculaList testPeliculaList;
 
-	static Logger logger = Logger.getLogger(FestivalCineControllerTest.class.getName());
+	static Logger logger = Logger.getLogger(FestivalCineControllerTest
+			.class.getName());
 
 	public static junit.framework.Test suite() {
 		return new JUnit4TestAdapter(FestivalCineControllerTest.class);
 	}
 
 	/**
-	 * Método que inicializa el Servidor y Servlet JeTTY contra el cual interactuarán los tests unitarios de esta clase.
-	 * @throws Exception
+	 * Método que inicializa el Servidor y Servlet JeTTY contra el cual
+	 * interactuarán los tests unitarios de esta clase.
+	 * @throws Exception Excepción lanzada en caso de que el Servidor no se
+	 * pueda generar correctamente.
 	 */
 	@BeforeClass
 	public static void startJetty() throws Exception
@@ -56,12 +59,15 @@ public class FestivalCineControllerTest {
 		server = new Server();
 		ServerConnector connector = new ServerConnector(server);
 		connector.setHost(args[0]);
-		connector.setPort(Integer.parseInt(args[1])); // auto-bind to available port
+		connector.setPort(Integer.parseInt(args[1])); // auto-bind to port
 		server.addConnector(connector);
 
 		ServletContextHandler context = new ServletContextHandler();
-		ServletHolder defaultServ = new ServletHolder("simple-jdo-jersey-dao", ServletContainer.class);
-		defaultServ.setInitParameter("jersey.config.server.provider.packages","es.deusto.server");
+		ServletHolder defaultServ = new ServletHolder(
+				"simple-jdo-jersey-dao", ServletContainer.class);
+		defaultServ.setInitParameter(
+				"jersey.config.server.provider.packages",
+				"es.deusto.server");
 		context.addServlet(defaultServ,"/rest/*");
 		server.setHandler(context);
 
@@ -75,7 +81,8 @@ public class FestivalCineControllerTest {
 			host = "localhost";
 		}
 		int port = connector.getLocalPort();
-		serverUri = new URI(String.format("http://%s:%s/rest/server",host,port));
+		serverUri = new URI(String.format(
+				"http://%s:%s/rest/server",host,port));
 	}
 
 	@Test
@@ -89,21 +96,27 @@ public class FestivalCineControllerTest {
 	public void testRegisterUser() {
 		testName = "testRegisterUser";
 		logger.info("Registrando información de UsuarioDTO de prueba:");
-		fcc.registerUser("testFestController","testFestController");
+		fcc.registerUser("testFestController",
+				"testFestController");
 	}
 	@Test
 	public void testGetUser() {
 		testName = "testGetUser";
-		fcc.registerUser("testFestController","testFestController");
+		fcc.registerUser("testFestController",
+				"testFestController");
 		logger.info("Recuperando información de UsuarioDTO de prueba:");
-		testUsuarioDTO = fcc.getUser("testFestController","testFestController");
-		assertEquals("testFestController",testUsuarioDTO.getLogin());
-		assertEquals("testFestController",testUsuarioDTO.getPassword());
+		testUsuarioDTO = fcc.getUser("testFestController",
+				"testFestController");
+		assertEquals("testFestController",
+				testUsuarioDTO.getLogin());
+		assertEquals("testFestController",
+				testUsuarioDTO.getPassword());
 	}
 	@Test
 	public void testSayMessage() {
 		testName = "testSayMessage";
-		String response = fcc.sayMessage("testFestController","testFestController",
+		String response = fcc.sayMessage("testFestController",
+				"testFestController",
 				"MyMessage");
 		logger.info(response);
 	}
@@ -111,7 +124,10 @@ public class FestivalCineControllerTest {
 	public void testRegisterActor() {
 		testName = "testRegisterActor";
 		logger.info("Registrando información de ActorDTO de prueba:");
-		fcc.registerActor("IDFestController","FestController","FestController",99);
+		fcc.registerActor("IDFestController",
+				"FestController",
+				"FestController",
+				99);
 	}
 	@Test
 	public void testGetActorList() {
@@ -129,8 +145,8 @@ public class FestivalCineControllerTest {
 	}
 
 	/**
-	 * El objetivo de este método es mostrar por pantalla al ejecutar Maven que los tests unitarios se han realizado
-	 * correctamente.
+	 * El objetivo de este método es mostrar por pantalla al ejecutar Maven
+	 * que los tests unitarios se han realizado correctamente.
 	 */
 	@After
 	public void printLastMessage() {

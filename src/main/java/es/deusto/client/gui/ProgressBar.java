@@ -5,8 +5,9 @@ import java.awt.*;
 import java.util.Random;
 
 /**
- * Implementación de la ventana para que se muestre una barra de progreso en la primera ejecución del sistema,
- * cuando los datos iniciales se están cargando en el mismo.
+ * Implementación de la ventana para que se muestre una barra de progreso en
+ * la primera ejecución del sistema, cuando los datos iniciales se están
+ * cargando en el mismo.
  * @author Grupo RMBJ
  * @version 3.0
  * @since 3.0
@@ -32,7 +33,8 @@ public class ProgressBar extends JFrame {
         setBounds(450, 300, 400, 140);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         String myPath = System.getProperty("user.dir");
-        this.setIconImage(new ImageIcon(myPath+"/src/main/resources/img/filmicon.png").getImage());
+        this.setIconImage(new ImageIcon(myPath
+                +"/src/main/resources/img/filmicon.png").getImage());
         getContentPane().setLayout(null);
 
         setTitle(titulo);
@@ -61,7 +63,8 @@ public class ProgressBar extends JFrame {
         nuevoHilo.start();
     }
     /**
-     * Método que finaliza esta ventana y da paso a la ventana principal del sistema.
+     * Método que finaliza esta ventana y da paso a la ventana principal
+     * del sistema.
      */
     public void cerrar()
     {
@@ -71,7 +74,8 @@ public class ProgressBar extends JFrame {
     }
 
     /**
-     * Implementación del hilo que permite que la barra de progreso se mueva lentamente.
+     * Implementación del hilo que permite que la barra de progreso
+     * se mueva lentamente.
      */
     class MiRunnable implements Runnable {
         boolean sigo = true;
@@ -86,16 +90,22 @@ public class ProgressBar extends JFrame {
                     progressBar.setValue(i);
 
                     if(i==v1)
-                        try { Thread.sleep(e1); } catch (InterruptedException e1) { e1.printStackTrace(); }
+                        try { Thread.sleep(e1); }
+                    catch (InterruptedException e1) { e1.printStackTrace(); }
                     if(i==v2)
-                        try { Thread.sleep(e2); } catch (InterruptedException e1) { e1.printStackTrace(); }
+                        try { Thread.sleep(e2); }
+                    catch (InterruptedException e1) { e1.printStackTrace(); }
                     if(i==v3)
-                        try { Thread.sleep(e3); } catch (InterruptedException e1) { e1.printStackTrace(); }
+                        try { Thread.sleep(e3); }
+                    catch (InterruptedException e1) { e1.printStackTrace(); }
                     if(i==v4)
-                        try { Thread.sleep(e4); } catch (InterruptedException e1) { e1.printStackTrace(); }
+                        try { Thread.sleep(e4); }
+                    catch (InterruptedException e1) { e1.printStackTrace(); }
                     if(i==v5)
-                        try { Thread.sleep(e5); } catch (InterruptedException e1) { e1.printStackTrace(); }
-                    try { Thread.sleep(15); } catch (InterruptedException e) { e.printStackTrace(); }
+                        try { Thread.sleep(e5); }
+                    catch (InterruptedException e1) { e1.printStackTrace(); }
+                    try { Thread.sleep(15); }
+                    catch (InterruptedException e) { e.printStackTrace(); }
                 }
                 sigo=false;
                 cerrar();

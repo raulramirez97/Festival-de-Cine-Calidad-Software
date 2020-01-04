@@ -11,7 +11,8 @@ import java.util.logging.Logger;
 import javax.swing.*;
 
 /**
- * Implementación de la ventana para que un Usuario pueda comentar sobre una Película.
+ * Implementación de la ventana para que un Usuario pueda comentar
+ * sobre una Película.
  * @author Grupo RMBJ
  * @version 3.0
  * @since 3.0
@@ -34,7 +35,8 @@ public class ComentarPelicula extends JFrame {
         button2 = new JButton();
 
         String myPath = System.getProperty("user.dir");
-        this.setIconImage(new ImageIcon(myPath+"/src/main/resources/img/filmicon.png").getImage());
+        this.setIconImage(new ImageIcon(myPath
+                +"/src/main/resources/img/filmicon.png").getImage());
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         //======== this ========
@@ -44,7 +46,8 @@ public class ComentarPelicula extends JFrame {
 
         //---- label1 ----
         label1.setText("Festival de Cine");
-        label1.setFont(label1.getFont().deriveFont(label1.getFont().getSize() + 12f));
+        label1.setFont(label1.getFont().deriveFont(label1.getFont()
+                .getSize() + 12f));
         label1.setHorizontalAlignment(SwingConstants.CENTER);
         contentPane.add(label1);
         label1.setBounds(390, 45, 200, 50);
@@ -52,7 +55,8 @@ public class ComentarPelicula extends JFrame {
         //---- label2 ----
         label2.setText("Comentario - "+pelicula.getTitulo());
         label2.setHorizontalAlignment(SwingConstants.CENTER);
-        label2.setFont(label2.getFont().deriveFont(label2.getFont().getSize() + 10f));
+        label2.setFont(label2.getFont().deriveFont(label2.getFont()
+                .getSize() + 10f));
         contentPane.add(label2);
         label2.setBounds(235, 145, 510, 65);
 
@@ -71,16 +75,20 @@ public class ComentarPelicula extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    FestivalCineController.getInstance().comentarPelicula(pelicula.getTitulo(), aux.getLogin(),
+                    FestivalCineController.getInstance().comentarPelicula(
+                            pelicula.getTitulo(), aux.getLogin(),
                             textField1.getText());
-                    logger.info("La pelicula se ha comentado correctamente");
+                    logger.info("La pelicula se ha comentado"
+                            + " correctamente");
                     InformePelicula m = new InformePelicula (pelicula,aux);
                     m.setVisible(true);
                     dispose();
                 }
                 //NO LLEGA AQUI LA EXCEPCION CON LAS PETICIONES REST...
                 catch (NullPointerException exc) {
-                    JOptionPane.showMessageDialog(ventana, "La pelicula que se ha querido comentar no está " +
+                    JOptionPane.showMessageDialog(ventana,
+                            "La pelicula que se ha querido"
+                                    + " comentar no está " +
                             "entre las peliculas disponibles.");
                 }
             }
@@ -104,8 +112,10 @@ public class ComentarPelicula extends JFrame {
             Dimension preferredSize = new Dimension();
             for(int i = 0; i < contentPane.getComponentCount(); i++) {
                 Rectangle bounds = contentPane.getComponent(i).getBounds();
-                preferredSize.width = Math.max(bounds.x + bounds.width, preferredSize.width);
-                preferredSize.height = Math.max(bounds.y + bounds.height, preferredSize.height);
+                preferredSize.width = Math.max(bounds.x
+                        + bounds.width, preferredSize.width);
+                preferredSize.height = Math.max(bounds.y
+                        + bounds.height, preferredSize.height);
             }
             Insets insets = contentPane.getInsets();
             preferredSize.width += insets.right;

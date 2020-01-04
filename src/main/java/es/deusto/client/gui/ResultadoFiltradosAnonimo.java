@@ -9,15 +9,16 @@ import java.awt.event.ActionListener;
 import java.util.logging.Logger;
 
 /**
- * Implementación de la ventana para que se muestre el listado de películas filtrado por un usuario
- * anónimo/no-registrado.
+ * Implementación de la ventana para que se muestre el listado de películas
+ * filtrado por un usuario anónimo/no-registrado.
  * @author Grupo RMBJ
  * @version 3.0
  * @since 3.0
  */
 public class ResultadoFiltradosAnonimo extends JFrame {
 
-    static Logger logger = Logger.getLogger(ResultadoFiltradosAnonimo.class.getName());
+    static Logger logger = Logger.getLogger(ResultadoFiltradosAnonimo
+            .class.getName());
 
     public ResultadoFiltradosAnonimo(PeliculaList peliculaList) {
         initComponents(peliculaList);
@@ -42,7 +43,8 @@ public class ResultadoFiltradosAnonimo extends JFrame {
         ventana = this;
 
         String myPath = System.getProperty("user.dir");
-        this.setIconImage(new ImageIcon(myPath+"/src/main/resources/img/filmicon.png").getImage());
+        this.setIconImage(new ImageIcon(myPath
+                +"/src/main/resources/img/filmicon.png").getImage());
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 960, 960);
 
@@ -56,23 +58,27 @@ public class ResultadoFiltradosAnonimo extends JFrame {
         if (tam > 0) {
 
             //---- label1 ----
-            label1.setText(peliculaList.getPeliculasDTO().get(0).getTitulo());
+            label1.setText(peliculaList.getPeliculasDTO().get(0)
+                    .getTitulo());
             contentPane.add(label1);
             label1.setBounds(20, 155, 200, 35);
 
             contentPane.add(textArea1);
-            textArea1.setText(peliculaList.getPeliculasDTO().get(0).getSinopsis());
+            textArea1.setText(peliculaList.getPeliculasDTO().get(0)
+                    .getSinopsis());
             textArea1.setBounds(235, 135, 443, 83);
             textArea1.setEditable(false);
 
             //---- button1 ----
             button1.setText("+ Info");
             contentPane.add(button1);
-            button1.setBounds(new Rectangle(new Point(785, 155), button1.getPreferredSize()));
+            button1.setBounds(new Rectangle(new Point(785, 155),
+                    button1.getPreferredSize()));
             button1.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    InformePeliculaAnonimo m = new InformePeliculaAnonimo(peliculaList.getPeliculasDTO().get(0));
+                    InformePeliculaAnonimo m = new InformePeliculaAnonimo(
+                            peliculaList.getPeliculasDTO().get(0));
                     m.setVisible(true);
                     dispose();
                 }
@@ -81,14 +87,16 @@ public class ResultadoFiltradosAnonimo extends JFrame {
             if (tam > 1) {
 
                 //---- label2 ----
-                label2.setText(peliculaList.getPeliculasDTO().get(1).getTitulo());
+                label2.setText(peliculaList.getPeliculasDTO().get(1)
+                        .getTitulo());
                 contentPane.add(label2);
                 label2.setBounds(20, 275, 195, 35);
 
                 //======== scrollPane1 ========
                 {
                     scrollPane1.setViewportView(textArea2);
-                    textArea2.setText(peliculaList.getPeliculasDTO().get(1).getSinopsis());
+                    textArea2.setText(peliculaList.getPeliculasDTO().get(1)
+                            .getSinopsis());
                     textArea2.setEditable(false);
                 }
                 contentPane.add(scrollPane1);
@@ -97,11 +105,13 @@ public class ResultadoFiltradosAnonimo extends JFrame {
                 //---- button2 ----
                 button2.setText("+ Info");
                 contentPane.add(button2);
-                button2.setBounds(new Rectangle(new Point(785, 270), button2.getPreferredSize()));
+                button2.setBounds(new Rectangle(new Point(785, 270),
+                        button2.getPreferredSize()));
                 button2.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        InformePeliculaAnonimo m = new InformePeliculaAnonimo(peliculaList.getPeliculasDTO().get(1));
+                        InformePeliculaAnonimo m = new InformePeliculaAnonimo(
+                                peliculaList.getPeliculasDTO().get(1));
                         m.setVisible(true);
                         dispose();
                     }
@@ -110,13 +120,15 @@ public class ResultadoFiltradosAnonimo extends JFrame {
                 if (tam > 2) {
 
                     //---- label3 ----
-                    label3.setText(peliculaList.getPeliculasDTO().get(2).getTitulo());
+                    label3.setText(peliculaList.getPeliculasDTO().get(2)
+                            .getTitulo());
                     contentPane.add(label3);
                     label3.setBounds(20, 390, 200, 40);
 
                     contentPane.add(textArea3);
                     textArea3.setBounds(235, 365, 443, 83);
-                    textArea3.setText(peliculaList.getPeliculasDTO().get(2).getSinopsis());
+                    textArea3.setText(peliculaList.getPeliculasDTO().get(2)
+                            .getSinopsis());
                     textArea3.setEditable(false);
 
                     //---- button3 ----
@@ -126,7 +138,11 @@ public class ResultadoFiltradosAnonimo extends JFrame {
                     button3.addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e) {
-                            InformePeliculaAnonimo m = new InformePeliculaAnonimo(peliculaList.getPeliculasDTO().get(2));
+                            InformePeliculaAnonimo m =
+                                    new InformePeliculaAnonimo(
+                                            peliculaList
+                                                    .getPeliculasDTO()
+                                                    .get(2));
                             m.setVisible(true);
                             dispose();
                         }
@@ -135,23 +151,30 @@ public class ResultadoFiltradosAnonimo extends JFrame {
                     if (tam > 3){
 
                         //---- label4 ----
-                        label4.setText(peliculaList.getPeliculasDTO().get(3).getTitulo());
+                        label4.setText(peliculaList.getPeliculasDTO()
+                                .get(3).getTitulo());
                         contentPane.add(label4);
-                        label4.setBounds(20, 495, 200, 40);
+                        label4.setBounds(20, 495,
+                                200, 40);
 
                         contentPane.add(textArea4);
-                        textArea4.setBounds(235, 475, 443, 83);
-                        textArea4.setText(peliculaList.getPeliculasDTO().get(3).getSinopsis());
+                        textArea4.setBounds(235, 475,
+                                443, 83);
+                        textArea4.setText(peliculaList.getPeliculasDTO()
+                                .get(3).getSinopsis());
                         textArea4.setEditable(false);
 
                         //---- button4 ----
                         button4.setText("+ Info");
                         contentPane.add(button4);
-                        button4.setBounds(785, 495, 78, 30);
+                        button4.setBounds(785, 495,
+                                78, 30);
                         button4.addActionListener(new ActionListener() {
                             @Override
                             public void actionPerformed(ActionEvent e) {
-                                InformePeliculaAnonimo m = new InformePeliculaAnonimo(peliculaList.
+                                InformePeliculaAnonimo m =
+                                        new InformePeliculaAnonimo(
+                                                peliculaList.
                                         getPeliculasDTO().get(3));
                                 m.setVisible(true);
                                 dispose();
@@ -179,8 +202,10 @@ public class ResultadoFiltradosAnonimo extends JFrame {
             Dimension preferredSize = new Dimension();
             for(int i = 0; i < contentPane.getComponentCount(); i++) {
                 Rectangle bounds = contentPane.getComponent(i).getBounds();
-                preferredSize.width = Math.max(bounds.x + bounds.width, preferredSize.width);
-                preferredSize.height = Math.max(bounds.y + bounds.height, preferredSize.height);
+                preferredSize.width = Math.max(bounds.x
+                        + bounds.width, preferredSize.width);
+                preferredSize.height = Math.max(bounds.y
+                        + bounds.height, preferredSize.height);
             }
             Insets insets = contentPane.getInsets();
             preferredSize.width += insets.right;

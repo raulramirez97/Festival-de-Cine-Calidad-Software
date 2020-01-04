@@ -6,7 +6,8 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * Este bloque de código recoge la estructura de datos con la que se representan los Comentarios en el sistema.
+ * Este bloque de código recoge la estructura de datos con la que se
+ * representan los Comentarios en el sistema.
  * @author Grupo RMBJ
  * @version 3.0
  * @since 1.0
@@ -24,7 +25,8 @@ public class ComentarioDTO implements Serializable {
 	private String contenido;
 	private long timestamp;
 
-	public ComentarioDTO(PeliculaDTO peli, String usuario, String contenido) {
+	public ComentarioDTO(PeliculaDTO peli, String usuario, String contenido)
+	{
 		this.id = 1;
 		this.pelicula = peli;
 		this.usuario = usuario;
@@ -32,7 +34,8 @@ public class ComentarioDTO implements Serializable {
 		this.timestamp = System.currentTimeMillis();
 	}
 
-	public ComentarioDTO(int id, PeliculaDTO peli, String usuario, String contenido) {
+	public ComentarioDTO(int id, PeliculaDTO peli, String usuario,
+						 String contenido) {
 		this.id = id;
 		this.pelicula = peli;
 		this.usuario = usuario;
@@ -70,7 +73,9 @@ public class ComentarioDTO implements Serializable {
 
 	public String toString() {
 		Date fecha = new Date(this.getTimestamp());
-		return "ID Comentario: "+this.getId()+", Usuario: "+this.getUsuario()+", Fecha: "+fecha
-				+", Contenido: "+contenido;
+		return "ID Comentario: "+this.getId()+", Usuario: "
+				+ this.getUsuario()
+				+ ", Fecha: "+ fecha
+				+ ", Contenido: "+ contenido;
 	}
 }

@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Este bloque de código recoge una de las estructuras de datos intermedias que se utilizan para hacer Mocking de
- * los mensajes.
+ * Este bloque de código recoge una de las estructuras de datos intermedias
+ * que se utilizan para hacer Mocking de los mensajes.
  * @author Grupo RMBJ
  * @version 3.0
  * @since 1.0

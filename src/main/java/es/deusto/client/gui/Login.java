@@ -11,7 +11,8 @@ import java.awt.event.ActionListener;
 import java.util.logging.Logger;
 
 /**
- * Implementación de la ventana para que un Usuario pueda acceder al sistema con sus credenciales existentes.
+ * Implementación de la ventana para que un Usuario pueda acceder al sistema
+ * con sus credenciales existentes.
  * @author Grupo RMBJ
  * @version 3.0
  * @since 3.0
@@ -30,18 +31,22 @@ public class Login extends JFrame {
 	{
 		ventana = this;
 		String myPath = System.getProperty("user.dir");
-		this.setIconImage(new ImageIcon(myPath+"/src/main/resources/img/filmicon.png").getImage());
+		this.setIconImage(new ImageIcon(myPath
+				+"/src/main/resources/img/filmicon.png").getImage());
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 452, 367);
 		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setBorder(new EmptyBorder(5, 5,
+				5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		getContentPane().setBackground(Color.white);
 		setTitle("Proceso de Login");
 		
-		JLabel lblFacebookgoogle = new JLabel("Introduce tus credenciales");
-		lblFacebookgoogle.setFont(new Font("Times New Roman", Font.PLAIN, 32));
+		JLabel lblFacebookgoogle = new JLabel("Introduce tus "
+				+ "credenciales");
+		lblFacebookgoogle.setFont(new Font("Times New Roman",
+				Font.PLAIN, 32));
 		lblFacebookgoogle.setBounds(40, 69, 350, 73);
 		contentPane.add(lblFacebookgoogle);
 		
@@ -82,7 +87,8 @@ public class Login extends JFrame {
 		
 		
 		JLabel lblFestivalDeCine = new JLabel("Festival de Cine");
-		lblFestivalDeCine.setFont(new Font("Times New Roman", Font.PLAIN, 32));
+		lblFestivalDeCine.setFont(new Font("Times New Roman",
+				Font.PLAIN, 32));
 		lblFestivalDeCine.setBounds(108, 0, 214, 73);
 		contentPane.add(lblFestivalDeCine);
 		btnRegistrarse.addActionListener(new ActionListener() {
@@ -91,20 +97,27 @@ public class Login extends JFrame {
             {
             	try
 				{
-					UsuarioDTO user = FestivalCineController.getInstance().getUser(textField.getText(),
+					UsuarioDTO user = FestivalCineController.getInstance()
+							.getUser(textField.getText(),
 							passwordField.getText());
-					logger.info("Nombre de usuario encontrado: " + user.getLogin());
-					logger.info("Contrasena de usuario encontrado: " + user.getPassword());
-					flag = comprobarUsuario(user,textField.getText(),passwordField.getText());
+					logger.info("Nombre de usuario encontrado: "
+							+ user.getLogin());
+					logger.info("Contrasena de usuario encontrado: "
+							+ user.getPassword());
+					flag = comprobarUsuario(user,textField.getText()
+							,passwordField.getText());
 					if (!flag)
 					{
-						JOptionPane.showMessageDialog(ventana, "No hay usuarios que concuerden con esas" +
-								" credenciales. Intentelo otra vez.");
+						JOptionPane.showMessageDialog(ventana,
+								"No hay usuarios que concuerden "
+										+"con esas credenciales. Inténtelo " +
+										"otra vez.");
 					}
 				}
             	catch (NullPointerException exception) {
-					JOptionPane.showMessageDialog(ventana, "No hay usuarios que concuerden con esas " +
-							"credenciales. Intentelo otra vez.");
+					JOptionPane.showMessageDialog(ventana,
+							"No hay usuarios que concuerden con " +
+									"esas credenciales. Inténtelo otra vez.");
 				}
 
             }
@@ -117,7 +130,8 @@ public class Login extends JFrame {
 			logger.info("El usuario se detecta como nulo.");
 			return false;
 		}
-		else if ((usu.getLogin().compareTo(login)==0) && (usu.getPassword().compareTo(pwd)==0))
+		else if ((usu.getLogin().compareTo(login)==0) && (usu
+				.getPassword().compareTo(pwd)==0))
 		{
 			logger.info("Paso 1.");
 			Menu m = new Menu(usu);

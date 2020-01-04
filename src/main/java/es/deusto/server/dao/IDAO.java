@@ -5,8 +5,9 @@ import es.deusto.server.data.*;
 import java.util.ArrayList;
 
 /**
- * Esta interfaz aporta las cabeceras de los métodos que se han de usar para acceder a la base de datos, delimitando
- * las funcionalidades de la implementación del patrón DAO.
+ * Esta interfaz aporta las cabeceras de los métodos que se han de usar para
+ * acceder a la base de datos, delimitando las funcionalidades de la
+ * implementación del patrón DAO.
  * @author Grupo RMBJ
  * @version 3.0
  * @since 1.0

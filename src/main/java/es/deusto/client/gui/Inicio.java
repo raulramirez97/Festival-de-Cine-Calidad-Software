@@ -7,8 +7,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * Implementación de la ventana para que un usuario anónimo/no-registrado pueda darse de alta en el sistema, entrar
- * con su usuario, o seguir navegando sin un usuario generado.
+ * Implementación de la ventana para que un usuario anónimo/no-registrado
+ * pueda darse de alta en el sistema, entrar con su usuario, o seguir
+ * navegando sin un usuario generado.
  * @author Grupo RMBJ
  * @version 3.0
  * @since 3.0
@@ -23,19 +24,23 @@ public class Inicio extends JFrame {
 	{
 		ventana = this;
 		String myPath = System.getProperty("user.dir");
-		this.setIconImage(new ImageIcon(myPath+"/src/main/resources/img/filmicon.png").getImage());
+		this.setIconImage(new ImageIcon(myPath
+				+"/src/main/resources/img/filmicon.png").getImage());
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 650, 484);
 		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setBorder(new EmptyBorder(5, 5,
+				5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		getContentPane().setBackground(Color.white);
 		setTitle("Menú Principal - Festival de Cine");
 
 		
-		JLabel lblFestivalCine = new JLabel("Bienvenido al Festival de Cine");
-		lblFestivalCine.setFont(new Font("Tahoma", Font.PLAIN, 31));
+		JLabel lblFestivalCine = new JLabel(
+				"Bienvenido al Festival de Cine");
+		lblFestivalCine.setFont(new Font("Tahoma",
+				Font.PLAIN, 31));
 		lblFestivalCine.setBounds(58, 50, 418, 81);
 		contentPane.add(lblFestivalCine);
 		

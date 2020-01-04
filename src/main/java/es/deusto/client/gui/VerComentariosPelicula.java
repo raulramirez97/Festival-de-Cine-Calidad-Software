@@ -1,7 +1,3 @@
-/*
- * Created by JFormDesigner on Fri Dec 06 15:21:40 CET 2019
- */
-
 package es.deusto.client.gui;
 
 import es.deusto.server.data.PeliculaDTO;
@@ -14,7 +10,11 @@ import java.util.Date;
 import javax.swing.*;
 
 /**
- * @author Beñat
+ * Implementación de la ventana para que un Usuario registrado pueda ver
+ * los ComentariosDTO de una PeliculaDTO.
+ * @author Grupo RMBJ
+ * @version 3.0
+ * @since 3.0
  */
 public class VerComentariosPelicula extends JFrame {
     public VerComentariosPelicula(UsuarioDTO usuario, PeliculaDTO pelicula) {
@@ -22,8 +22,6 @@ public class VerComentariosPelicula extends JFrame {
     }
 
     private void initComponents(UsuarioDTO usuario, PeliculaDTO pelicula) {
-        // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        // Generated using JFormDesigner Evaluation license - Beñat
         label1 = new JLabel();
         label2 = new JLabel();
         label3 = new JLabel();
@@ -40,7 +38,8 @@ public class VerComentariosPelicula extends JFrame {
         button2 = new JButton();
 
         String myPath = System.getProperty("user.dir");
-        this.setIconImage(new ImageIcon(myPath+"/src/main/resources/img/filmicon.png").getImage());
+        this.setIconImage(new ImageIcon(myPath
+                +"/src/main/resources/img/filmicon.png").getImage());
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         //======== this ========
@@ -50,14 +49,16 @@ public class VerComentariosPelicula extends JFrame {
 
         //---- label1 ----
         label1.setText("Comentarios: "+pelicula.getTitulo());
-        label1.setFont(label1.getFont().deriveFont(label1.getFont().getSize() + 10f));
+        label1.setFont(label1.getFont().deriveFont(
+                label1.getFont().getSize() + 10f));
         label1.setHorizontalAlignment(SwingConstants.CENTER);
         contentPane.add(label1);
         label1.setBounds(200, 70, 610, 75);
 
         if (pelicula.getComentarios() == null) {
             //---- label8 ----
-            label8.setText("Esta pel\u00edcula no tiene comentarios registrados.");
+            label8.setText("Esta pel\u00edcula no "
+                    + "tiene comentarios registrados.");
             contentPane.add(label8);
             label8.setBounds(345, 305, 300, 25);
         }
@@ -70,14 +71,16 @@ public class VerComentariosPelicula extends JFrame {
                 label2.setBounds(90, 185, 145, 20);
 
                 //---- label3 ----
-                label3.setText((new Date(pelicula.getComentarios().get(0).getTimestamp())).toString());
+                label3.setText((new Date(pelicula.getComentarios().get(0)
+                        .getTimestamp())).toString());
                 contentPane.add(label3);
                 label3.setBounds(270, 185, 195, 20);
 
                 //======== scrollPane1 ========
                 {
                     //---- textArea1 ----
-                    textArea1.setText(pelicula.getComentarios().get(0).getContenido());
+                    textArea1.setText(pelicula.getComentarios().get(0)
+                            .getContenido());
                     scrollPane1.setViewportView(textArea1);
                     textArea1.setEditable(false);
                 }
@@ -86,17 +89,20 @@ public class VerComentariosPelicula extends JFrame {
 
                 if (tam > 1) {
                     //---- label4 ----
-                    label4.setText(pelicula.getComentarios().get(1).getUsuario());
+                    label4.setText(pelicula.getComentarios().get(1)
+                            .getUsuario());
                     contentPane.add(label4);
                     label4.setBounds(90, 325, 145, 20);
 
                     //---- label5 ----
-                    label5.setText((new Date(pelicula.getComentarios().get(1).getTimestamp())).toString());
+                    label5.setText((new Date(pelicula.getComentarios().get(1)
+                            .getTimestamp())).toString());
                     contentPane.add(label5);
                     label5.setBounds(270, 325, 195, 20);
 
                     //---- textArea2 ----
-                    textArea2.setText(pelicula.getComentarios().get(1).getContenido());
+                    textArea2.setText(pelicula.getComentarios().get(1)
+                            .getContenido());
                     contentPane.add(textArea2);
                     textArea2.setBounds(90, 365, 813, 58);
                     textArea2.setEditable(false);
@@ -104,17 +110,20 @@ public class VerComentariosPelicula extends JFrame {
 
                 if (tam > 2) {
                     //---- label6 ----
-                    label6.setText(pelicula.getComentarios().get(2).getUsuario());
+                    label6.setText(pelicula.getComentarios().get(2)
+                            .getUsuario());
                     contentPane.add(label6);
                     label6.setBounds(90, 460, 145, 20);
 
                     //---- label7 ----
-                    label7.setText((new Date(pelicula.getComentarios().get(2).getTimestamp())).toString());
+                    label7.setText((new Date(pelicula.getComentarios().get(2)
+                            .getTimestamp())).toString());
                     contentPane.add(label7);
                     label7.setBounds(270, 460, 195, 20);
 
                     //---- textArea3 ----
-                    textArea3.setText(pelicula.getComentarios().get(2).getContenido());
+                    textArea3.setText(pelicula.getComentarios().get(2)
+                            .getContenido());
                     contentPane.add(textArea3);
                     textArea3.setBounds(90, 500, 813, 58);
                     textArea3.setEditable(false);
@@ -154,8 +163,10 @@ public class VerComentariosPelicula extends JFrame {
             Dimension preferredSize = new Dimension();
             for(int i = 0; i < contentPane.getComponentCount(); i++) {
                 Rectangle bounds = contentPane.getComponent(i).getBounds();
-                preferredSize.width = Math.max(bounds.x + bounds.width, preferredSize.width);
-                preferredSize.height = Math.max(bounds.y + bounds.height, preferredSize.height);
+                preferredSize.width = Math.max(bounds.x
+                        + bounds.width, preferredSize.width);
+                preferredSize.height = Math.max(bounds.y
+                        + bounds.height, preferredSize.height);
             }
             Insets insets = contentPane.getInsets();
             preferredSize.width += insets.right;
@@ -168,11 +179,8 @@ public class VerComentariosPelicula extends JFrame {
         Rectangle r = this.getBounds();
         r.grow(45,45);
         this.setBounds(r);
-        // JFormDesigner - End of component initialization  //GEN-END:initComponents
     }
 
-    // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - Beñat
     private JLabel label1;
     private JLabel label2;
     private JLabel label3;
@@ -187,5 +195,4 @@ public class VerComentariosPelicula extends JFrame {
     private JTextArea textArea3;
     private JButton button1;
     private JButton button2;
-    // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

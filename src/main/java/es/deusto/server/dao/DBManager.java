@@ -7,12 +7,14 @@ import java.util.ArrayList;
 import java.util.logging.Logger;
 
 /**
- * Este bloque de código implementa la interfaz IDAO, y representa la implementación del patrón de diseño DAO. Por lo
- * tanto, es la clase encargada de hacer procesos CRU (Create, Read, Update) con los datos de la base de datos MySQL,
- * gestionada a su vez mediante DataNucleus.
+ * Este bloque de código implementa la interfaz IDAO, y representa la
+ * implementación del patrón de diseño DAO. Por lo tanto, es la clase
+ * encargada de hacer procesos CRU (Create, Read, Update) con los datos de la
+ * base de datos MySQL, gestionada a su vez mediante DataNucleus.
  *
- * El borrado de datos se ha creado para ser utilizado por la clase de test DAOTest.java, por ello no se ha puesto
- * como operación disponible por la interfaz IDAO.
+ * El borrado de datos se ha creado para ser utilizado por la clase de test
+ * DAOTest.java, por ello no se ha puesto como operación disponible por la
+ * interfaz IDAO.
  *
  * @author Grupo RMBJ
  * @version 3.0
@@ -25,7 +27,8 @@ public class DBManager implements IDAO {
 	static Logger logger = Logger.getLogger(DBManager.class.getName());
 
 	public DBManager() {
-		pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
+		pmf = JDOHelper
+				.getPersistenceManagerFactory("datanucleus.properties");
 	}
 
 	/**
@@ -39,16 +42,16 @@ public class DBManager implements IDAO {
 		Transaction tx = pm.currentTransaction();
 		try {
 			tx.begin();
-			logger.info("   * Storing a user: " + u.getLogin());
+			logger.info("* Storing a user: " + u.getLogin());
 			pm.makePersistent(u);
 			tx.commit();
 		} catch (Exception ex) {
-			logger.severe("   $ Error storing an object: " + ex.getMessage());
+			logger.severe("$ Error storing an object: "
+					+ ex.getMessage());
 		} finally {
 			if (tx != null && tx.isActive()) {
 				tx.rollback();
 			}
-
 			pm.close();
 		}
 	}
@@ -81,8 +84,10 @@ public class DBManager implements IDAO {
 	}
 
 	/**
-	 * Método que permite hacer una actualización de un UsuarioDTO con sus nuevos datos.
-	 * @param u UsuarioDTO con los datos modificados para modificar en la base de datos.
+	 * Método que permite hacer una actualización de un UsuarioDTO con sus
+	 * nuevos datos.
+	 * @param u UsuarioDTO con los datos modificados para modificar en la
+	 *            base de datos.
 	 */
 	@Override
 	public void updateUsuario(UsuarioDTO u) {
@@ -105,7 +110,8 @@ public class DBManager implements IDAO {
 	}
 
 	/**
-	 * Método que permite hacer un borrado de un UsuarioDTO. Solamente se utiliza en las clases de test.
+	 * Método que permite hacer un borrado de un UsuarioDTO. Solamente
+	 * se utiliza en las clases de test.
 	 * @param u UsuarioDTO del cual se va a hacer el borrado.
 	 */
 	public void deleteUsuario(UsuarioDTO u) {
@@ -136,11 +142,13 @@ public class DBManager implements IDAO {
 		Transaction tx = pm.currentTransaction();
 		try {
 			tx.begin();
-			logger.info("   * Storing an actor: " + a.getNombre() + " " + a.getApellido());
+			logger.info("   * Storing an actor: "
+					+ a.getNombre() + " " + a.getApellido());
 			pm.makePersistent(a);
 			tx.commit();
 		} catch (Exception ex) {
-			logger.severe("   $ Error storing an object: " + ex.getMessage());
+			logger.severe("   $ Error storing an object: "
+					+ ex.getMessage());
 		} finally {
 			if (tx != null && tx.isActive()) {
 				tx.rollback();
@@ -178,8 +186,10 @@ public class DBManager implements IDAO {
 	}
 
 	/**
-	 * Método que permite hacer una actualización de un ActorDTO con sus nuevos datos.
-	 * @param a ActorDTO con los datos modificados para modificar en la base de datos.
+	 * Método que permite hacer una actualización de un ActorDTO con sus
+	 * nuevos datos.
+	 * @param a ActorDTO con los datos modificados para modificar en la
+	 *             base de datos.
 	 */
 	@Override
 	public void updateActor(ActorDTO a) {
@@ -202,7 +212,8 @@ public class DBManager implements IDAO {
 	}
 
 	/**
-	 * Método que permite hacer un borrado de un ActorDTO. Solamente se utiliza en las clases de test.
+	 * Método que permite hacer un borrado de un ActorDTO. Solamente
+	 * se utiliza en las clases de test.
 	 * @param a ActorDTO del cual se va a hacer el borrado.
 	 */
 	public void deleteActor(ActorDTO a) {
@@ -214,7 +225,8 @@ public class DBManager implements IDAO {
 			pm.deletePersistent(a);
 			tx.commit();
 		} catch (Exception ex) {
-			logger.severe("Error deleting an actor: " + ex.getMessage());
+			logger.severe("Error deleting an actor: "
+					+ ex.getMessage());
 		} finally {
 			if (tx != null && tx.isActive()) {
 				tx.rollback();
@@ -224,7 +236,8 @@ public class DBManager implements IDAO {
 	}
 
 	/**
-	 * Método que permite recuperar un listado de ActoresDTO de la base de datos.
+	 * Método que permite recuperar un listado de ActoresDTO de la base
+	 * de datos.
 	 * @return Listado de ActoresDTO existentes en la base de datos.
 	 */
 	@Override
@@ -246,7 +259,9 @@ public class DBManager implements IDAO {
 		}
 		catch (Exception ex)
 		{
-			logger.severe(" $ Error retrieving actors using an 'Extent': " + ex.getMessage());
+			logger.severe(
+					" $ Error retrieving actors using an 'Extent': "
+							+ ex.getMessage());
 		}
 		finally
 		{
@@ -267,11 +282,13 @@ public class DBManager implements IDAO {
 		Transaction tx = pm.currentTransaction();
 		try {
 			tx.begin();
-			logger.info("   * Storing a pelicula: " + p.getTitulo());
+			logger.info("   * Storing a pelicula: "
+					+ p.getTitulo());
 			pm.makePersistent(p);
 			tx.commit();
 		} catch (Exception ex) {
-			logger.severe("   $ Error storing an object: " + ex.getMessage());
+			logger.severe("   $ Error storing an object: "
+					+ ex.getMessage());
 		} finally {
 			if (tx != null && tx.isActive()) {
 				tx.rollback();
@@ -296,7 +313,8 @@ public class DBManager implements IDAO {
 			peliculaDTO = pm.getObjectById(PeliculaDTO.class, titulo);
 			tx.commit();
 		} catch (JDOObjectNotFoundException jonfe) {
-			logger.severe("Pelicula does not exist: " + jonfe.getMessage());
+			logger.severe("Pelicula does not exist: "
+					+ jonfe.getMessage());
 		}
 		finally {
 			if (tx != null && tx.isActive()) {
@@ -309,8 +327,10 @@ public class DBManager implements IDAO {
 	}
 
 	/**
-	 * Método que permite hacer una actualización de una PeliculaDTO con sus nuevos datos.
-	 * @param p PeliculaDTO con los datos modificados para modificar en la base de datos.
+	 * Método que permite hacer una actualización de una PeliculaDTO con sus
+	 * nuevos datos.
+	 * @param p PeliculaDTO con los datos modificados para modificar en
+	 *            la base de datos.
 	 */
 	@Override
 	public void updatePelicula(PeliculaDTO p) {
@@ -322,7 +342,8 @@ public class DBManager implements IDAO {
 			pm.makePersistent(p);
 			tx.commit();
 		} catch (Exception ex) {
-			logger.severe("Error updating a pelicula: " + ex.getMessage());
+			logger.severe("Error updating a pelicula: "
+					+ ex.getMessage());
 		} finally {
 			if (tx != null && tx.isActive()) {
 				tx.rollback();
@@ -333,7 +354,8 @@ public class DBManager implements IDAO {
 	}
 
 	/**
-	 * Método que permite hacer un borrado de una PeliculaDTO. Solamente se utiliza en las clases de test.
+	 * Método que permite hacer un borrado de una PeliculaDTO. Solamente se
+	 * utiliza en las clases de test.
 	 * @param p PeliculaDTO de la cual se va a hacer el borrado.
 	 */
 	public void deletePelicula(PeliculaDTO p) {
@@ -345,7 +367,8 @@ public class DBManager implements IDAO {
 			pm.deletePersistent(p);
 			tx.commit();
 		} catch (Exception ex) {
-			logger.severe("Error deleting a pelicula: " + ex.getMessage());
+			logger.severe("Error deleting a pelicula: "
+					+ ex.getMessage());
 		} finally {
 			if (tx != null && tx.isActive()) {
 				tx.rollback();
@@ -355,7 +378,8 @@ public class DBManager implements IDAO {
 	}
 
 	/**
-	 * Método que permite recuperar un listado de PeliculasDTO de la base de datos.
+	 * Método que permite recuperar un listado de PeliculasDTO de la
+	 * base de datos.
 	 * @return Listado de PeliculasDTO existentes en la base de datos.
 	 */
 	@Override
@@ -368,7 +392,8 @@ public class DBManager implements IDAO {
 			pm = pmf.getPersistenceManager();
 			tx = pm.currentTransaction();
 			tx.begin();
-			Extent<PeliculaDTO> extent = pm.getExtent(PeliculaDTO.class, true);
+			Extent<PeliculaDTO> extent = pm.getExtent(PeliculaDTO.class,
+					true);
 
 			for (PeliculaDTO pelicula : extent)
 			{
@@ -377,7 +402,9 @@ public class DBManager implements IDAO {
 		}
 		catch (Exception ex)
 		{
-			logger.severe(" $ Error retrieving peliculas using an 'Extent': " + ex.getMessage());
+			logger.severe(
+					" $ Error retrieving peliculas using an 'Extent': "
+							+ ex.getMessage());
 		}
 		finally
 		{
@@ -389,7 +416,7 @@ public class DBManager implements IDAO {
 	}
 
 	/**
-	 * Método que permite almacenar la ValoracionDTO hecha de una PelículaDTO.
+	 * Método que permite almacenar la ValoracionDTO hecha de una PeliculaDTO.
 	 * @param v ValoracionDTO a almacenar en la base de datos.
 	 */
 	@Override
@@ -398,11 +425,13 @@ public class DBManager implements IDAO {
 		Transaction tx = pm.currentTransaction();
 		try {
 			tx.begin();
-			logger.info("   * Storing a valoracion: " + v.getId());
+			logger.info("   * Storing a valoracion: "
+					+ v.getId());
 			pm.makePersistent(v);
 			tx.commit();
 		} catch (Exception ex) {
-			logger.severe("   $ Error storing an object: " + ex.getMessage());
+			logger.severe("   $ Error storing an object: "
+					+ ex.getMessage());
 		} finally {
 			if (tx != null && tx.isActive()) {
 				tx.rollback();
@@ -413,7 +442,8 @@ public class DBManager implements IDAO {
 	}
 
 	/**
-	 * Método que permite recuperar las ValoracionesDTO realizadas de todas las PelículasDTO.
+	 * Método que permite recuperar las ValoracionesDTO realizadas de
+	 * todas las PelículasDTO.
 	 * @return Listado de ValoracionesDTO realizadas.
 	 */
 	@Override
@@ -426,7 +456,8 @@ public class DBManager implements IDAO {
 			pm = pmf.getPersistenceManager();
 			tx = pm.currentTransaction();
 			tx.begin();
-			Extent<ValoracionDTO> extent = pm.getExtent(ValoracionDTO.class, true);
+			Extent<ValoracionDTO> extent = pm.getExtent(ValoracionDTO.class,
+					true);
 
 			for (ValoracionDTO valoracion : extent)
 			{
@@ -435,7 +466,9 @@ public class DBManager implements IDAO {
 		}
 		catch (Exception ex)
 		{
-			logger.severe(" $ Error retrieving valoraciones using an 'Extent': " + ex.getMessage());
+			logger.severe(
+					" $ Error retrieving valoraciones using an "
+							+ "'Extent': " + ex.getMessage());
 		}
 		finally
 		{
@@ -447,7 +480,8 @@ public class DBManager implements IDAO {
 	}
 
 	/**
-	 * Método que permite recuperar los ComentariosDTO que se han hecho de cada PelículaDTO.
+	 * Método que permite recuperar los ComentariosDTO que se han hecho
+	 * de cada PelículaDTO.
 	 * @return Listado de ComentariosDTO realizados.
 	 */
 	@Override
@@ -460,7 +494,8 @@ public class DBManager implements IDAO {
 			pm = pmf.getPersistenceManager();
 			tx = pm.currentTransaction();
 			tx.begin();
-			Extent<ComentarioDTO> extent = pm.getExtent(ComentarioDTO.class, true);
+			Extent<ComentarioDTO> extent = pm.getExtent(ComentarioDTO.class,
+					true);
 
 			for (ComentarioDTO comentario : extent)
 			{
@@ -469,7 +504,8 @@ public class DBManager implements IDAO {
 		}
 		catch (Exception ex)
 		{
-			logger.severe(" $ Error retrieving comentarios using an 'Extent': " + ex.getMessage());
+			logger.severe(" $ Error retrieving comentarios using an"
+					+ " 'Extent': " + ex.getMessage());
 		}
 		finally
 		{
