@@ -5,9 +5,12 @@
 
 ##### Documentación Online: https://raulramirez97.github.io/Festival-de-Cine-Calidad-Software/
 
+##### Manual de Usuario: https://github.com/raulramirez97/Festival-de-Cine-Calidad-Software/blob/master/user_guide/ManualUsuario_FestCine.pdf
+
 ## Contexto
 
 Repo que contiene un proyecto para la asignatura Proceso y Calidad de Software, impartida por la Universidad de Deusto.
+La idea subyacente del proyecto ha sido generar una aplicación que simule de manera sencilla a FilmAffinity.
 
 Los objetivos de este proyecto son de dos tipos:
 
