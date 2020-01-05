@@ -1,7 +1,3 @@
-/*
- * Created by JFormDesigner on Thu Dec 05 09:53:02 CET 2019
- */
-
 package es.deusto.client.gui;
 
 import es.deusto.client.FestivalCineController;
@@ -16,7 +12,11 @@ import java.awt.event.FocusListener;
 import java.util.logging.Logger;
 
 /**
- * @author Beñat
+ * Implementación de la ventana para que un Usuario de tipo Administrador
+ * pueda insertar un nuevo Actor al sistema.
+ * @author Grupo RMBJ
+ * @version 3.0
+ * @since 3.0
  */
 public class CreacionActor extends JFrame {
 
@@ -27,8 +27,6 @@ public class CreacionActor extends JFrame {
     }
 
     private void initComponents(UsuarioDTO aux) {
-        // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        // Generated using JFormDesigner Evaluation license - Beñat
         label1 = new JLabel();
         label2 = new JLabel();
         label3 = new JLabel();
@@ -43,14 +41,21 @@ public class CreacionActor extends JFrame {
 
         ventana = this;
 
+        String myPath = System.getProperty("user.dir");
+        this.setIconImage(new ImageIcon(myPath
+                + "/src/main/resources/img/filmicon.png").getImage());
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
         //======== this ========
         setTitle("Creación de nuevo actor");
         Container contentPane = getContentPane();
         contentPane.setLayout(null);
 
         //---- label1 ----
-        label1.setText("Inserta a continuaci\u00f3n los datos del nuevo actor");
-        label1.setFont(label1.getFont().deriveFont(label1.getFont().getSize() + 6f));
+        label1.setText("Inserta a continuaci\u00f3n los"
+                + " datos del nuevo actor");
+        label1.setFont(label1.getFont().deriveFont(label1
+                .getFont().getSize() + 6f));
         label1.setHorizontalAlignment(SwingConstants.CENTER);
         contentPane.add(label1);
         label1.setBounds(225, 55, 489, 35);
@@ -80,15 +85,17 @@ public class CreacionActor extends JFrame {
         label4.setBounds(105, 345, 75, 20);
 
         contentPane.add(textFieldIDActor);
-        textFieldIDActor.setBounds(225, 130, 275, textFieldNomActor.getPreferredSize().height);
+        textFieldIDActor.setBounds(225, 130, 275,
+                textFieldNomActor.getPreferredSize().height);
         textFieldIDActor.addFocusListener(new FocusListener() {
             @Override
-            public void focusGained(FocusEvent e) {}
+            public void focusGained(FocusEvent e) { }
             @Override
             public void focusLost(FocusEvent e) {
-                if (textFieldIDActor.getText().isEmpty()){
-                    JOptionPane.showMessageDialog(ventana, "Inserte contenido en el cuadro de los actores," +
-                            "por favor.");
+                if (textFieldIDActor.getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(ventana,
+                            "Inserte contenido en el cuadro"
+                                    + " de los actores, por favor.");
                 }
             }
         });
@@ -97,12 +104,13 @@ public class CreacionActor extends JFrame {
         textFieldNomActor.setBounds(225, 195, 275, 30);
         textFieldNomActor.addFocusListener(new FocusListener() {
             @Override
-            public void focusGained(FocusEvent e) {}
+            public void focusGained(FocusEvent e) { }
             @Override
             public void focusLost(FocusEvent e) {
-                if (textFieldNomActor.getText().isEmpty()){
-                    JOptionPane.showMessageDialog(ventana, "Inserte contenido en el cuadro de los actores," +
-                            "por favor.");
+                if (textFieldNomActor.getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(ventana,
+                            "Inserte contenido en el cuadro de"
+                                    + " los actores, por favor.");
                 }
             }
         });
@@ -111,12 +119,13 @@ public class CreacionActor extends JFrame {
         textFieldApeActor.setBounds(225, 270, 275, 30);
         textFieldApeActor.addFocusListener(new FocusListener() {
             @Override
-            public void focusGained(FocusEvent e) {}
+            public void focusGained(FocusEvent e) { }
             @Override
             public void focusLost(FocusEvent e) {
-                if (textFieldApeActor.getText().isEmpty()){
-                    JOptionPane.showMessageDialog(ventana, "Inserte contenido en el cuadro de los actores," +
-                            "por favor.");
+                if (textFieldApeActor.getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(ventana,
+                            "Inserte contenido en el cuadro de"
+                                    + " los actores, por favor.");
                 }
             }
         });
@@ -125,14 +134,15 @@ public class CreacionActor extends JFrame {
         textFieldEdadActor.setBounds(225, 340, 275, 30);
         textFieldEdadActor.addFocusListener(new FocusListener() {
             @Override
-            public void focusGained(FocusEvent e) {}
+            public void focusGained(FocusEvent e) { }
             @Override
             public void focusLost(FocusEvent e) {
                 try {
                     Integer.parseInt(textFieldEdadActor.getText());
                 } catch (NumberFormatException exc) {
-                    JOptionPane.showMessageDialog(ventana, "Inserte un valor numérico en el campo," +
-                            " por favor.");
+                    JOptionPane.showMessageDialog(ventana,
+                            "Inserte un valor numérico "
+                                    + "en el campo, por favor.");
                 }
             }
         });
@@ -157,42 +167,46 @@ public class CreacionActor extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    FestivalCineController.getInstance().registerActor(textFieldIDActor.getText(),
-                            textFieldNomActor.getText(),textFieldApeActor.getText(),
+                    FestivalCineController.getInstance().registerActor(
+                            textFieldIDActor.getText(),
+                            textFieldNomActor.getText(),
+                            textFieldApeActor.getText(),
                             Integer.parseInt(textFieldEdadActor.getText()));
-                    logger.info("Actor generated successfully by the admin.");
+                    logger.info("Actor generated successfully "
+                            + "by the admin.");
                     Menu m = new Menu(aux);
                     m.setVisible(true);
                     dispose();
-                }
-                catch (NumberFormatException exc) {
-                    JOptionPane.showMessageDialog(ventana, "Inserte un valor numérico en el campo de edad" +
-                            "numéricos, por favor.");
+                } catch (NumberFormatException exc) {
+                    JOptionPane.showMessageDialog(ventana,
+                            "Inserte un valor numérico en"
+                                    + " el campo de edad numérico, por "
+                                    + "favor.");
                 }
             }
         });
-
-        {
-            // compute preferred size
-            Dimension preferredSize = new Dimension();
-            for(int i = 0; i < contentPane.getComponentCount(); i++) {
-                Rectangle bounds = contentPane.getComponent(i).getBounds();
-                preferredSize.width = Math.max(bounds.x + bounds.width, preferredSize.width);
-                preferredSize.height = Math.max(bounds.y + bounds.height, preferredSize.height);
-            }
-            Insets insets = contentPane.getInsets();
-            preferredSize.width += insets.right;
-            preferredSize.height += insets.bottom;
-            contentPane.setMinimumSize(preferredSize);
-            contentPane.setPreferredSize(preferredSize);
+        // compute preferred size
+        Dimension preferredSize = new Dimension();
+        for (int i = 0; i < contentPane.getComponentCount(); i++) {
+            Rectangle bounds = contentPane.getComponent(i).getBounds();
+            preferredSize.width = Math.max(bounds.x
+                    + bounds.width, preferredSize.width);
+            preferredSize.height = Math.max(bounds.y
+                    + bounds.height, preferredSize.height);
         }
+        Insets insets = contentPane.getInsets();
+        preferredSize.width += insets.right;
+        preferredSize.height += insets.bottom;
+        contentPane.setMinimumSize(preferredSize);
+        contentPane.setPreferredSize(preferredSize);
+
         pack();
         setLocationRelativeTo(getOwner());
-        // JFormDesigner - End of component initialization  //GEN-END:initComponents
+        Rectangle r = ventana.getBounds();
+        r.grow(45, 45);
+        ventana.setBounds(r);
     }
 
-    // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - Beñat
     private JLabel label1;
     private JLabel label2;
     private JLabel label3;
@@ -205,5 +219,4 @@ public class CreacionActor extends JFrame {
     private JTextField textFieldApeActor;
     private JTextField textFieldEdadActor;
     private JFrame ventana;
-    // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

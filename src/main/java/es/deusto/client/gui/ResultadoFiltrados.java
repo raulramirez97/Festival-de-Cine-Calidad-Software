@@ -1,11 +1,7 @@
 package es.deusto.client.gui;
 
 import es.deusto.server.data.UsuarioDTO;
-import es.deusto.client.FestivalCineController;
 import es.deusto.server.data.PeliculaList;
-import es.deusto.server.data.PeliculaDTO;
-import jdk.nashorn.internal.scripts.JO;
-
 
 import javax.swing.*;
 
@@ -13,17 +9,18 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.logging.Logger;
-import java.util.ArrayList;
 
-
-//TODO: Esto debería cambiarse por una ventana medio bien hecha que muestre la información como en el prototipo.
-//TODO: Es decir: https://marvelapp.com/d2h27dh/screen/63129721
-//TODO: Posible mejora: Si se quieren enseñar de 4 en 4, se podría hacer la selección por mútiplos de 4, o con módulos
-//TODO: de 4.
-
+/**
+ * Implementación de la ventana para que se muestre el listado de películas
+ * filtrado por el usuario.
+ * @author Grupo RMBJ
+ * @version 3.0
+ * @since 3.0
+ */
 public class ResultadoFiltrados extends JFrame {
 
-    static Logger logger = Logger.getLogger(ResultadoFiltrados.class.getName());
+    static Logger logger = Logger.getLogger(ResultadoFiltrados
+            .class.getName());
 
     public ResultadoFiltrados(PeliculaList peliculaList, UsuarioDTO user) {
         initComponents(peliculaList, user);
@@ -31,8 +28,6 @@ public class ResultadoFiltrados extends JFrame {
 
     private void initComponents(PeliculaList peliculaList, UsuarioDTO aux) {
 
-        // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        // Generated using JFormDesigner Evaluation license - ben
         label1 = new JLabel();
         button1 = new JButton();
         scrollPane1 = new JScrollPane();
@@ -53,6 +48,9 @@ public class ResultadoFiltrados extends JFrame {
         ventana = this;
         //======== this ========
         String myPath = System.getProperty("user.dir");
+        this.setIconImage(new ImageIcon(myPath
+                + "/src/main/resources/img/filmicon.png").getImage());
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         int tam = peliculaList.getPeliculasDTO().size();
 
         setTitle("Resultado Filtrados");
@@ -69,27 +67,32 @@ public class ResultadoFiltrados extends JFrame {
 
             //---- label11 ----
             userIcon.setBounds(770, 50, 120, 55);
-            userIcon.setIcon(ResizeImage(myPath+"/src/main/resources/img/avataricon.jpg", userIcon));
+            userIcon.setIcon(ResizeImage(myPath
+                    + "/src/main/resources/img/avataricon.jpg", userIcon));
             contentPane.add(userIcon);
 
             //---- label1 ----
-            label1.setText(peliculaList.getPeliculasDTO().get(0).getTitulo());
+            label1.setText(peliculaList.getPeliculasDTO().get(0)
+                    .getTitulo());
             contentPane.add(label1);
             label1.setBounds(20, 155, 200, 35);
 
             contentPane.add(textArea1);
-            textArea1.setText(peliculaList.getPeliculasDTO().get(0).getSinopsis());
+            textArea1.setText(peliculaList.getPeliculasDTO().get(0)
+                    .getSinopsis());
             textArea1.setBounds(235, 135, 443, 83);
             textArea1.setEditable(false);
 
             //---- button1 ----
             button1.setText("+ Info");
             contentPane.add(button1);
-            button1.setBounds(new Rectangle(new Point(785, 155), button1.getPreferredSize()));
+            button1.setBounds(new Rectangle(new Point(785, 155),
+                    button1.getPreferredSize()));
             button1.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    InformePeliculaAnonimo m = new InformePeliculaAnonimo(peliculaList.getPeliculasDTO().get(0));
+                    InformePelicula m = new InformePelicula(peliculaList
+                            .getPeliculasDTO().get(0), aux);
                     m.setVisible(true);
                     dispose();
                 }
@@ -98,23 +101,27 @@ public class ResultadoFiltrados extends JFrame {
             if (tam > 1) {
 
                 //---- label2 ----
-                label2.setText(peliculaList.getPeliculasDTO().get(1).getTitulo());
+                label2.setText(peliculaList.getPeliculasDTO().get(1)
+                        .getTitulo());
                 contentPane.add(label2);
                 label2.setBounds(20, 275, 195, 35);
 
                 contentPane.add(textArea2);
                 textArea2.setBounds(235, 250, 445, 85);
-                textArea2.setText(peliculaList.getPeliculasDTO().get(1).getSinopsis());
+                textArea2.setText(peliculaList.getPeliculasDTO().get(1)
+                        .getSinopsis());
                 textArea2.setEditable(false);
 
                 //---- button2 ----
                 button2.setText("+ Info");
                 contentPane.add(button2);
-                button2.setBounds(new Rectangle(new Point(785, 270), button2.getPreferredSize()));
+                button2.setBounds(new Rectangle(new Point(785, 270),
+                        button2.getPreferredSize()));
                 button2.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        InformePeliculaAnonimo m = new InformePeliculaAnonimo(peliculaList.getPeliculasDTO().get(1));
+                        InformePelicula m = new InformePelicula(peliculaList
+                                .getPeliculasDTO().get(1), aux);
                         m.setVisible(true);
                         dispose();
                     }
@@ -122,13 +129,15 @@ public class ResultadoFiltrados extends JFrame {
 
                 if (tam > 2) {
                     //---- label3 ----
-                    label3.setText(peliculaList.getPeliculasDTO().get(2).getTitulo());
+                    label3.setText(peliculaList.getPeliculasDTO().get(2)
+                            .getTitulo());
                     contentPane.add(label3);
                     label3.setBounds(20, 390, 200, 40);
 
                     contentPane.add(textArea3);
                     textArea3.setBounds(235, 365, 443, 83);
-                    textArea3.setText(peliculaList.getPeliculasDTO().get(2).getSinopsis());
+                    textArea3.setText(peliculaList.getPeliculasDTO().get(2)
+                            .getSinopsis());
                     textArea3.setEditable(false);
 
                     //---- button3 ----
@@ -138,32 +147,40 @@ public class ResultadoFiltrados extends JFrame {
                     button3.addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e) {
-                            InformePeliculaAnonimo m = new InformePeliculaAnonimo(peliculaList.getPeliculasDTO().get(2));
+                            InformePelicula m = new InformePelicula(
+                                    peliculaList.getPeliculasDTO()
+                                            .get(2), aux);
                             m.setVisible(true);
                             dispose();
                         }
                     });
 
-                    if (tam > 3){
+                    if (tam > 3) {
                         //---- label4 ----
-                        label4.setText(peliculaList.getPeliculasDTO().get(3).getTitulo());
+                        label4.setText(peliculaList.getPeliculasDTO()
+                                .get(3).getTitulo());
                         contentPane.add(label4);
-                        label4.setBounds(20, 495, 200, 40);
+                        label4.setBounds(20, 495,
+                                200, 40);
 
                         contentPane.add(textArea4);
-                        textArea4.setBounds(235, 475, 443, 83);
-                        textArea4.setText(peliculaList.getPeliculasDTO().get(3).getSinopsis());
+                        textArea4.setBounds(235, 475,
+                                443, 83);
+                        textArea4.setText(peliculaList.getPeliculasDTO()
+                                .get(3).getSinopsis());
                         textArea4.setEditable(false);
 
                         //---- button4 ----
                         button4.setText("+ Info");
                         contentPane.add(button4);
-                        button4.setBounds(785, 495, 78, 30);
+                        button4.setBounds(785, 495,
+                                78, 30);
                         button4.addActionListener(new ActionListener() {
                             @Override
                             public void actionPerformed(ActionEvent e) {
-                                InformePeliculaAnonimo m = new InformePeliculaAnonimo(peliculaList.
-                                        getPeliculasDTO().get(3));
+                                InformePelicula m = new InformePelicula(
+                                        peliculaList.getPeliculasDTO()
+                                                .get(3), aux);
                                 m.setVisible(true);
                                 dispose();
                             }
@@ -184,28 +201,28 @@ public class ResultadoFiltrados extends JFrame {
                 }
             });
         }
-
-        {
-            // compute preferred size
-            Dimension preferredSize = new Dimension();
-            for(int i = 0; i < contentPane.getComponentCount(); i++) {
-                Rectangle bounds = contentPane.getComponent(i).getBounds();
-                preferredSize.width = Math.max(bounds.x + bounds.width, preferredSize.width);
-                preferredSize.height = Math.max(bounds.y + bounds.height, preferredSize.height);
-            }
-            Insets insets = contentPane.getInsets();
-            preferredSize.width += insets.right;
-            preferredSize.height += insets.bottom;
-            contentPane.setMinimumSize(preferredSize);
-            contentPane.setPreferredSize(preferredSize);
+        // compute preferred size
+        Dimension preferredSize = new Dimension();
+        for (int i = 0; i < contentPane.getComponentCount(); i++) {
+            Rectangle bounds = contentPane.getComponent(i).getBounds();
+            preferredSize.width = Math.max(bounds.x
+                    + bounds.width, preferredSize.width);
+            preferredSize.height = Math.max(bounds.y
+                    + bounds.height, preferredSize.height);
         }
+        Insets insets = contentPane.getInsets();
+        preferredSize.width += insets.right;
+        preferredSize.height += insets.bottom;
+        contentPane.setMinimumSize(preferredSize);
+        contentPane.setPreferredSize(preferredSize);
+
         pack();
         setLocationRelativeTo(getOwner());
-        // JFormDesigner - End of component initialization  //GEN-END:initComponents
+        Rectangle r = ventana.getBounds();
+        r.grow(45, 45);
+        ventana.setBounds(r);
     }
 
-    // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - ben
     private JLabel label1;
     private JButton button1;
     private JScrollPane scrollPane1;
@@ -224,18 +241,18 @@ public class ResultadoFiltrados extends JFrame {
     private JLabel userName;
     private JLabel userIcon;
 
-    // JFormDesigner - End of variables declaration  //GEN-END:variables
-
     /**
      * Método para redimensionar un ImageIcon al mismo tamaño que un JLabel.
+     * @param ImagePath Ruta de la imagen a modificar.
+     * @param label Jlabel sobre el cual se hará el ajuste de la imagen.
+     * @return Icono de Imagen con el tamaño ajustado.
      */
-    public ImageIcon ResizeImage(String ImagePath, JLabel label)
-    {
+    public ImageIcon ResizeImage(String ImagePath, JLabel label) {
         ImageIcon MyImage = new ImageIcon(ImagePath);
         Image img = MyImage.getImage();
-        Image newImg = img.getScaledInstance(label.getWidth(), label.getHeight(), Image.SCALE_SMOOTH);
+        Image newImg = img.getScaledInstance(label.getWidth(),
+                label.getHeight(), Image.SCALE_SMOOTH);
         ImageIcon image = new ImageIcon(newImg);
         return image;
     }
-
 }

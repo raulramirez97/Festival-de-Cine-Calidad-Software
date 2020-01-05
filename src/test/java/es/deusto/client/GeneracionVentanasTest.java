@@ -1,181 +1,291 @@
 package es.deusto.client;
 
+import es.deusto.client.gui.*;
 import es.deusto.server.data.*;
 import junit.framework.JUnit4TestAdapter;
-import org.databene.contiperf.PerfTest;
-import org.databene.contiperf.Required;
-import org.databene.contiperf.junit.ContiPerfRule;
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Rule;
 import org.junit.Test;
-
-import java.util.ArrayList;
 import java.util.logging.Logger;
 
-import static org.junit.Assert.*;
-
-//import org.junit.Ignore;
-
 /**
- * Este bloque de código representa un conjunto de pruebas unitarias con el objetivo de validar que las ventanas
- * se generan correctamente. A estas pruebas unitarias se les ha añadido tests de rendimiento para validar que su
- * generación es rápida.
+ * Este bloque de código representa un conjunto de pruebas unitarias con el
+ * objetivo de validar que las ventanas se generan correctamente. A estas
+ * pruebas unitarias se les ha añadido tests de rendimiento para validar
+ * que su generación es rápida.
  * @author Grupo RMBJ
  * @version 3.0
  * @since 3.0
  */
-@PerfTest(invocations = 3)
-@Required(max = 100, average = 50)
+
 public class GeneracionVentanasTest {
-//
-//	private ActorDTO testActorDTO;
-//	private ComentarioDTO testComentarioDTO;
-//	private PeliculaDTO testPeliculaDTO;
-//	private UsuarioDTO testUsuarioDTO;
-//	private ValoracionDTO testValoracionDTO;
-//	String testName;
-//
-//	static Logger logger = Logger.getLogger(GeneracionVentanasTest.class.getName());
-//
-//	@Rule
-//	public ContiPerfRule rule = new ContiPerfRule();
-//
-//	public static junit.framework.Test suite() {
-//		return new JUnit4TestAdapter(GeneracionVentanasTest.class);
-//	}
-//
-//	@Before
-//	public void setUp() {}
-//
-//	@Test
-//	public void testGenerateUsuarioDTOCorrectly() {
-//		testName = "testGenerateUsuarioDTOCorrectly";
-//		testUsuarioDTO = new UsuarioDTO("usuario", "pass");
-//		assertEquals("usuario",testUsuarioDTO.getLogin());
-//		assertEquals("pass",testUsuarioDTO.getPassword());
-//		assertTrue(testUsuarioDTO.getMessages().size()==0);
-//	}
-//	@Test
-//	public void testGenerateActorDTOCorrectly() {
-//		testName = "testGenerateActorDTOCorrectly";
-//		testActorDTO = new ActorDTO("ID1", "Test", "Cage", 40);
-//		assertEquals("ID1",testActorDTO.getIdentificador());
-//		assertEquals("Test",testActorDTO.getNombre());
-//		assertFalse(testActorDTO.getApellido() == "Test");
-//		assertEquals("Cage",testActorDTO.getApellido());
-//		assertTrue(testActorDTO.getEdad() == 40);
-//	}
-//	@Test
-//	public void testGeneratePeliculaDTOCorrectly() {
-//		testName = "testGeneratePeliculaDTOCorrectly";
-//		testActorDTO = new ActorDTO("ID1", "Test", "Cage", 40);
-//
-//		testPeliculaDTO = new PeliculaDTO("Test", "Este es el inicio de un gran test",
-//				"TestingDrama", 10, 2019, "Benat",
-//				"http://www.iliketoquote.com/save-the-drama-for-your-mama/", 10.0,
-//				"Premio Cannes al mejor Drama", null,"Drama",
-//				testActorDTO.getNombre() + " "+ testActorDTO.getApellido());
-//		assertEquals("Test",testPeliculaDTO.getTitulo());
-//		assertEquals("Este es el inicio de un gran test",testPeliculaDTO.getSinopsis());
-//		assertEquals("TestingDrama",testPeliculaDTO.getGenero());
-//		assertFalse(testPeliculaDTO.getDuracion()==0);
-//		assertEquals(2019,testPeliculaDTO.getAnyo());
-//		assertNotEquals("Steven Spielberg",testPeliculaDTO.getDirector());
-//		assertNotEquals("MIURL",testPeliculaDTO.getEnlaceTrailer());
-//		assertEquals(10.0, testPeliculaDTO.getValoracionMedia(), 0.01);
-//		assertEquals("Premio Cannes al mejor Drama",testPeliculaDTO.getPremios());
-//		assertTrue(testPeliculaDTO.getComentarios() == null);
-//		assertEquals("Drama",testPeliculaDTO.getSeccionFestival());
-//		assertEquals("Test Cage",testPeliculaDTO.getActores());
-//	}
-//	@Test
-//	public void testGenerateValoracionDTOCorrectly() {
-//		testName = "testGenerateValoracionDTOCorrectly";
-//		testValoracionDTO = new ValoracionDTO("Test", 10.0);
-//		assertTrue("Test".compareTo(testValoracionDTO.getTitulo())==0);
-//		assertFalse(testValoracionDTO.getValoracion()<9);
-//		ValoracionDTO expected = new ValoracionDTO(1, "AnotherTest", 7);
-//		assertEquals(testValoracionDTO.getId(), expected.getId());
-//	}
-//	@Test
-//	public void testGenerateComentarioDTOCorrectly() {
-//		testName = "testGenerateComentarioDTOCorrectly";
-//		testUsuarioDTO = new UsuarioDTO("usuario", "pass");
-//
-//		testActorDTO = new ActorDTO("ID1", "Test", "Cage", 40);
-//
-//		testPeliculaDTO = new PeliculaDTO("Test", "Este es el inicio de un gran test",
-//				"TestingDrama", 10, 2019, "Benat",
-//				"http://www.iliketoquote.com/save-the-drama-for-your-mama/", 10.0,
-//				"Premio Cannes al mejor Drama", null,"Drama",
-//				testActorDTO.getNombre() + " "+ testActorDTO.getApellido());
-//
-//		long currentTime = System.currentTimeMillis();
-//		testComentarioDTO = new ComentarioDTO(testPeliculaDTO, testUsuarioDTO.getLogin(),
-//				"Es una gran pelicula de test!");
-//		assertEquals("Test", testComentarioDTO.getPelicula().getTitulo());
-//		assertEquals("usuario", testComentarioDTO.getUsuario());
-//		assertFalse(testComentarioDTO.getContenido().compareTo("Es una basurilla de test")==0);
-//		logger.info("Comprobando que el ComentarioDTO se ha creado en una diferencia de tiempo razonable...");
-//		assertEquals(currentTime,testComentarioDTO.getTimestamp(),0.5);
-//	}
-//
-//	@Test (expected=NullPointerException.class)
-//	public void testSetComentarioDTOIncorrectly() {
-//		testName = "testSetComentarioDTOIncorrectly";
-//		testUsuarioDTO = new UsuarioDTO("usuario", "pass");
-//
-//		testActorDTO = new ActorDTO("ID1", "Test", "Cage", 40);
-//
-//		testPeliculaDTO = new PeliculaDTO("Test", "Este es el inicio de un gran test",
-//				"TestingDrama", 10, 2019, "Benat",
-//				"http://www.iliketoquote.com/save-the-drama-for-your-mama/", 10.0,
-//				"Premio Cannes al mejor Drama", null,"Drama",
-//				testActorDTO.getNombre() + " "+ testActorDTO.getApellido());
-//
-//		testComentarioDTO = new ComentarioDTO(testPeliculaDTO, testUsuarioDTO.getLogin(),
-//				"Es una gran pelicula de test!");
-//		logger.info("Generando excepción al settear erróneamente el ComentarioDTO...");
-//		testPeliculaDTO.setComentario(testComentarioDTO);
-//	}
-//
-//	@Test
-//	public void testSetComentarioDTOCorrectly() {
-//		testName = "testSetComentarioDTOCorrectly";
-//		testUsuarioDTO = new UsuarioDTO("usuario", "pass");
-//
-//		testActorDTO = new ActorDTO("ID1", "Test", "Cage", 40);
-//
-//		testPeliculaDTO = new PeliculaDTO("Test", "Este es el inicio de un gran test",
-//				"TestingDrama", 10, 2019, "Benat",
-//				"http://www.iliketoquote.com/save-the-drama-for-your-mama/", 10.0,
-//				"Premio Cannes al mejor Drama", null,"Drama",
-//				testActorDTO.getNombre() + " "+ testActorDTO.getApellido());
-//
-//		testComentarioDTO = new ComentarioDTO(testPeliculaDTO, testUsuarioDTO.getLogin(),
-//				"Es una gran pelicula de test!");
-//		ArrayList<ComentarioDTO> listaComentarios = new ArrayList<>();
-//		testPeliculaDTO.setComentarios(listaComentarios);
-//		testPeliculaDTO.setComentario(testComentarioDTO);
-//		logger.info("Ejecutando aserto al insertar un ComentarioDTO correctamente...");
-//		assertEquals("Es una gran pelicula de test!",
-//				testComentarioDTO.getPelicula().getComentarios().get(0).getContenido());
-//
-//		ArrayList<ComentarioDTO> nuevaListaComentarios = new ArrayList<>();
-//		nuevaListaComentarios.add(testComentarioDTO);
-//		testPeliculaDTO.setComentarios(nuevaListaComentarios);
-//		logger.info("Ejecutando aserto al insertar la lista de ComentariosDTO...");
-//		assertEquals("Es una gran pelicula de test!",
-//				testComentarioDTO.getPelicula().getComentarios().get(0).getContenido());
-//	}
-//
-//	/**
-//	 * El objetivo de este método es mostrar por pantalla al ejecutar Maven que los tests unitarios se han realizado
-//	 * correctamente.
-//	 */
-//	@After
-//	public void printLastMessage() {
-//		logger.info(testName + " completado satisfactoriamente.");
-//	}
+
+	private ActorDTO testActorDTO;
+	private PeliculaDTO testPeliculaDTO;
+	private PeliculaList testPeliculaList;
+	private UsuarioDTO testUsuarioDTO;
+	String testName;
+	String testTitle;
+
+	static Logger logger = Logger.getLogger(GeneracionVentanasTest
+			.class.getName());
+
+	public static junit.framework.Test suite() {
+		return new JUnit4TestAdapter(GeneracionVentanasTest.class);
+	}
+
+	@Before
+	public void setUp() {}
+
+	/**
+	 * Método que testea el tiempo que dura el ProgressBar. Se ha añadido un
+	 * timeout de 18 segundos dado que no debería excederse nunca de ese
+	 * tiempo.
+	 */
+	@Test (timeout = 18000)
+	public void testProgressBar() {
+		testName = "testProgressBar";
+		testTitle = testName;
+        ProgressBar testPB = new ProgressBar(testTitle);
+        testPB.setVisible(true);
+	}
+
+	@Test
+	public void testMenuAnonimo() {
+		testName = "testMenuAnonimo";
+		testActorDTO = new ActorDTO("ID1",
+				"Test", "Cage", 40);
+		testPeliculaDTO = new PeliculaDTO("Test",
+				"Este es el inicio de un gran test",
+				"TestingDrama", 10, 2019,
+				"Benat",
+				"http://www.iliketoquote.com/save-the-drama-for-your-mama/",
+				10.0,
+				"Premio Cannes al mejor Drama",
+				null,"Drama",
+				testActorDTO.getNombre() + " "
+						+ testActorDTO.getApellido(),
+				"MyDrama");
+		testPeliculaList = new PeliculaList();
+		testPeliculaList.addPeliculaDTO(testPeliculaDTO);
+		MenuAnonimo testMA = new MenuAnonimo(testPeliculaList);
+		testMA.setVisible(true);
+	}
+	@Test
+	public void testMenu() {
+		testName = "testMenu";
+		testActorDTO = new ActorDTO("ID1",
+				"Test", "Cage", 40);
+		testPeliculaDTO = new PeliculaDTO("Test",
+				"Este es el inicio de un gran test",
+				"TestingDrama", 10, 2019,
+				"Benat",
+				"http://www.iliketoquote.com/save-the-drama-for-your-mama/",
+				10.0,
+				"Premio Cannes al mejor Drama", null,
+				"Drama",
+				testActorDTO.getNombre() + " "
+						+ testActorDTO.getApellido(), "MyDrama");
+		testPeliculaList = new PeliculaList();
+		testPeliculaList.addPeliculaDTO(testPeliculaDTO);
+		testUsuarioDTO = new UsuarioDTO("usuario", "pass");
+
+		Menu testM = new Menu(testPeliculaList, testUsuarioDTO);
+		testM.setVisible(true);
+	}
+	@Test
+	public void testMenuAdmin() {
+		testName = "testMenuAdmin";
+		testActorDTO = new ActorDTO("ID1", "Test",
+				"Cage", 40);
+		testPeliculaDTO = new PeliculaDTO("Test",
+				"Este es el inicio de un gran test",
+				"TestingDrama", 10, 2019,
+				"Benat",
+				"http://www.iliketoquote.com/save-the-drama-for-your-mama/",
+				10.0,
+				"Premio Cannes al mejor Drama",
+				null,"Drama",
+				testActorDTO.getNombre() + " "
+						+ testActorDTO.getApellido(), "MyDrama");
+		testPeliculaList = new PeliculaList();
+		testPeliculaList.addPeliculaDTO(testPeliculaDTO);
+		testUsuarioDTO = new UsuarioDTO("admin", "admin");
+
+		Menu testM = new Menu(testPeliculaList, testUsuarioDTO);
+		testM.setVisible(true);
+	}
+	@Test
+	public void testInicio() {
+		testName = "testInicio";
+		Inicio testI = new Inicio();
+		testI.setVisible(true);
+	}
+	@Test
+	public void testAlta() {
+		testName = "testAlta";
+		Alta testA = new Alta();
+		testA.setVisible(true);
+	}
+	@Test
+	public void testLogin() {
+		testName = "testLogin";
+		Login testL = new Login();
+		testL.setVisible(true);
+	}
+	@Test
+	public void testCreacionActor() {
+		testName = "testCreacionActor";
+		testUsuarioDTO = new UsuarioDTO("admin", "admin");
+		CreacionActor testCA = new CreacionActor(testUsuarioDTO);
+		testCA.setVisible(true);
+	}
+	@Test
+	public void testCreacionPelicula() {
+		testName = "testCreacionPelicula";
+		testUsuarioDTO = new UsuarioDTO("admin", "admin");
+		CreacionPelicula testCP = new CreacionPelicula(testUsuarioDTO);
+		testCP.setVisible(true);
+	}
+	@Test
+	public void testResultadoFiltradosAnonimo() {
+		testName = "testResultadoFiltradosAnonimo";
+		testActorDTO = new ActorDTO("ID1", "Test",
+				"Cage", 40);
+		testPeliculaDTO = new PeliculaDTO("Test",
+				"Este es el inicio de un gran test",
+				"TestingDrama", 10, 2019,
+				"Benat",
+				"http://www.iliketoquote.com/save-the-drama-for-your-mama/",
+				10.0,
+				"Premio Cannes al mejor Drama",
+				null,"Drama",
+				testActorDTO.getNombre() + " "
+						+ testActorDTO.getApellido(), "MyDrama");
+		testPeliculaList = new PeliculaList();
+		testPeliculaList.addPeliculaDTO(testPeliculaDTO);
+
+		ResultadoFiltradosAnonimo testRFA =
+				new ResultadoFiltradosAnonimo(testPeliculaList);
+		testRFA.setVisible(true);
+	}
+	@Test
+	public void testResultadoFiltrados() {
+		testName = "testResultadoFiltrados";
+		testActorDTO = new ActorDTO("ID1", "Test",
+				"Cage", 40);
+		testPeliculaDTO = new PeliculaDTO("Test",
+				"Este es el inicio de un gran test",
+				"TestingDrama", 10, 2019,
+				"Benat",
+				"http://www.iliketoquote.com/save-the-drama-for-your-mama/",
+				10.0,
+				"Premio Cannes al mejor Drama", null,
+				"Drama",
+				testActorDTO.getNombre() + " "
+						+ testActorDTO.getApellido(), "MyDrama");
+		testPeliculaList = new PeliculaList();
+		testPeliculaList.addPeliculaDTO(testPeliculaDTO);
+		testUsuarioDTO = new UsuarioDTO("usuario", "pass");
+
+		ResultadoFiltrados testRF =
+				new ResultadoFiltrados(testPeliculaList, testUsuarioDTO);
+		testRF.setVisible(true);
+	}
+
+	@Test
+	public void testInformePelicula() {
+		testName = "testInformePelicula";
+
+		testActorDTO = new ActorDTO("ID1", "Test",
+				"Cage", 40);
+		testPeliculaDTO = new PeliculaDTO("Test",
+				"Este es el inicio de un gran test",
+				"TestingDrama", 10, 2019,
+				"Benat",
+				"http://www.iliketoquote.com/save-the-drama-for-your-mama/",
+				10.0,
+				"Premio Cannes al mejor Drama", null,
+				"Drama",
+				testActorDTO.getNombre() + " "
+						+ testActorDTO.getApellido(), "MyDrama");
+		testUsuarioDTO = new UsuarioDTO("usuario", "pass");
+
+		InformePelicula testIP =
+				new InformePelicula(testPeliculaDTO, testUsuarioDTO);
+		testIP.setVisible(true);
+	}
+	@Test
+	public void testInformePeliculaAnonimo() {
+		testName = "testInformePeliculaAnonimo";
+
+		testActorDTO = new ActorDTO("ID1", "Test",
+				"Cage", 40);
+		testPeliculaDTO = new PeliculaDTO("Test",
+				"Este es el inicio de un gran test",
+				"TestingDrama", 10, 2019,
+				"Benat",
+				"http://www.iliketoquote.com/save-the-drama-for-your-mama/",
+				10.0,
+				"Premio Cannes al mejor Drama", null,
+				"Drama",
+				testActorDTO.getNombre() + " "
+						+ testActorDTO.getApellido(), "MyDrama");
+
+		InformePeliculaAnonimo testIPA = new InformePeliculaAnonimo(testPeliculaDTO);
+		testIPA.setVisible(true);
+	}
+	@Test
+	public void testComentarPelicula() {
+		testName = "testInformePeliculaAnonimo";
+
+		testActorDTO = new ActorDTO("ID1", "Test",
+				"Cage", 40);
+		testPeliculaDTO = new PeliculaDTO("Test",
+				"Este es el inicio de un gran test",
+				"TestingDrama", 10, 2019,
+				"Benat",
+				"http://www.iliketoquote.com/save-the-drama-for-your-mama/",
+				10.0,
+				"Premio Cannes al mejor Drama", null,
+				"Drama",
+				testActorDTO.getNombre() + " "
+						+ testActorDTO.getApellido(), "MyDrama");
+		testUsuarioDTO = new UsuarioDTO("usuario", "pass");
+
+		ComentarPelicula testCP =
+				new ComentarPelicula(testUsuarioDTO, testPeliculaDTO);
+		testCP.setVisible(true);
+	}
+
+	@Test
+	public void testVerComentariosPelicula() {
+		testName = "testVerComentariosPelicula";
+
+		testActorDTO = new ActorDTO("ID1", "Test",
+				"Cage", 40);
+		testPeliculaDTO = new PeliculaDTO("Test",
+				"Este es el inicio de un gran test",
+				"TestingDrama", 10, 2019,
+				"Benat",
+				"http://www.iliketoquote.com/save-the-drama-for-your-mama/",
+				10.0,
+				"Premio Cannes al mejor Drama", null,
+				"Drama",
+				testActorDTO.getNombre() + " "
+						+ testActorDTO.getApellido(), "MyDrama");
+		testUsuarioDTO = new UsuarioDTO("usuario", "pass");
+
+		VerComentariosPelicula testVCP =
+				new VerComentariosPelicula(testUsuarioDTO, testPeliculaDTO);
+		testVCP.setVisible(true);
+	}
+	/**
+	 * El objetivo de este método es mostrar por pantalla al ejecutar Maven
+	 * que los tests unitarios se han realizado correctamente.
+	 */
+	@After
+	public void printLastMessage() {
+		logger.info(testName + " completado satisfactoriamente.");
+	}
 }

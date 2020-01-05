@@ -1,7 +1,3 @@
-/*
- * Created by JFormDesigner on Thu Dec 05 09:53:02 CET 2019
- */
-
 package es.deusto.client.gui;
 
 import java.awt.*;
@@ -22,10 +18,18 @@ import es.deusto.server.data.ActorDTO;
 import es.deusto.server.data.UsuarioDTO;
 
 /**
- * @author Beñat
- * Inspiración para JFileChooser tomada de: http://1bestcsharp.blogspot.com/2015/04/java-how-to-browse-image-file-and-And-Display-It-Using-JFileChooser-In-Java.html
- * Inspiración para tomar working directory: https://stackoverflow.com/questions/4871051/getting-the-current-working-directory-in-java
- * Inspiración para recoger imagen: https://docs.oracle.com/javase/tutorial/2d/images/loadimage.html
+ * Implementación de la ventana para que un Usuario de tipo Administrador
+ * pueda insertar una nueva Película al sistema. Se referencian distintas
+ * inspiraciones que han valido para generar este código:
+ * Inspiración para JFileChooser tomada de:
+ * http://1bestcsharp.blogspot.com/2015/04/java-how-to-browse-image-file-and-And-Display-It-Using-JFileChooser-In-Java.html
+ * Inspiración para tomar working directory:
+ * https://stackoverflow.com/questions/4871051/getting-the-current-working-directory-in-java
+ * Inspiración para recoger imagen:
+ * https://docs.oracle.com/javase/tutorial/2d/images/loadimage.html
+ * @author Grupo RMBJ
+ * @version 3.0
+ * @since 3.0
  */
 public class CreacionPelicula extends JFrame {
 
@@ -36,8 +40,6 @@ public class CreacionPelicula extends JFrame {
     }
 
     private void initComponents(UsuarioDTO aux) {
-        // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        // Generated using JFormDesigner Evaluation license - Beñat
         label1 = new JLabel();
         label2 = new JLabel();
         label3 = new JLabel();
@@ -65,14 +67,21 @@ public class CreacionPelicula extends JFrame {
 
         ventana = this;
 
+        String myPath = System.getProperty("user.dir");
+        this.setIconImage(new ImageIcon(myPath
+                + "/src/main/resources/img/filmicon.png").getImage());
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
         //======== this ========
         setTitle("Creación de nueva película");
         Container contentPane = getContentPane();
         contentPane.setLayout(null);
 
         //---- label1 ----
-        label1.setText("Inserta a continuaci\u00f3n los datos de la nueva pel\u00edcula");
-        label1.setFont(label1.getFont().deriveFont(label1.getFont().getSize() + 6f));
+        label1.setText("Inserta a continuaci\u00f3n "
+                + "los datos de la nueva pel\u00edcula");
+        label1.setFont(label1.getFont().deriveFont(label1.getFont()
+                .getSize() + 6f));
         label1.setHorizontalAlignment(SwingConstants.CENTER);
         contentPane.add(label1);
         label1.setBounds(225, 55, 489, 35);
@@ -120,9 +129,7 @@ public class CreacionPelicula extends JFrame {
         label9.setBounds(105, 535, 75, 20);
 
         //======== scrollPane1 ========
-        {
-            scrollPane1.setViewportView(textAreaSinopsisPeli);
-        }
+        scrollPane1.setViewportView(textAreaSinopsisPeli);
         contentPane.add(scrollPane1);
         scrollPane1.setBounds(230, 360, 270, 90);
 
@@ -130,12 +137,14 @@ public class CreacionPelicula extends JFrame {
         textAreaPremiosPeli.setBounds(230, 470, 270, 45);
         textAreaPremiosPeli.addFocusListener(new FocusListener() {
             @Override
-            public void focusGained(FocusEvent e) {}
+            public void focusGained(FocusEvent e) { }
             @Override
             public void focusLost(FocusEvent e) {
-                if (textAreaPremiosPeli.getText().isEmpty()){
-                    JOptionPane.showMessageDialog(ventana, "Inserte contenido en el cuadro de premios, o N/A" +
-                            "si no tiene, por favor.");
+                if (textAreaPremiosPeli.getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(ventana,
+                            "Inserte contenido en el cuadro"
+                                    + " de premios, o N/A si no tiene, por "
+                                    + "favor.");
                 }
             }
         });
@@ -150,7 +159,8 @@ public class CreacionPelicula extends JFrame {
         label15.setText("Director");
         label15.setHorizontalAlignment(SwingConstants.RIGHT);
         contentPane.add(label15);
-        label15.setBounds(115, 280, 65, label15.getPreferredSize().height);
+        label15.setBounds(115, 280, 65, label15
+                .getPreferredSize().height);
 
         //---- label8 ----
         label8.setText("Nombre");
@@ -159,15 +169,18 @@ public class CreacionPelicula extends JFrame {
         label8.setBounds(105, 130, 75, 20);
 
         contentPane.add(textFieldNomPeli);
-        textFieldNomPeli.setBounds(225, 130, 275, textFieldNomPeli.getPreferredSize().height);
+        textFieldNomPeli.setBounds(225, 130, 275,
+                textFieldNomPeli.getPreferredSize().height);
         textFieldNomPeli.addFocusListener(new FocusListener() {
             @Override
-            public void focusGained(FocusEvent e) {}
+            public void focusGained(FocusEvent e) { }
             @Override
             public void focusLost(FocusEvent e) {
-                if (textFieldNomPeli.getText().isEmpty()){
-                    JOptionPane.showMessageDialog(ventana, "Inserte contenido en el cuadro del nombre de la" +
-                            "película, por favor.");
+                if (textFieldNomPeli.getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(ventana,
+                            "Inserte contenido en el cuadro del "
+                                    + "nombre de la "
+                                    + "película, por favor.");
                 }
             }
         });
@@ -176,14 +189,15 @@ public class CreacionPelicula extends JFrame {
         textFieldAnyoPeli.setBounds(225, 165, 275, 30);
         textFieldAnyoPeli.addFocusListener(new FocusListener() {
             @Override
-            public void focusGained(FocusEvent e) {}
+            public void focusGained(FocusEvent e) { }
             @Override
             public void focusLost(FocusEvent e) {
                 try {
                     Integer.parseInt(textFieldAnyoPeli.getText());
                 } catch (NumberFormatException exc) {
-                    JOptionPane.showMessageDialog(ventana, "Inserte un valor numérico en el campo," +
-                            " por favor.");
+                    JOptionPane.showMessageDialog(ventana,
+                            "Inserte un valor numérico en el "
+                                    + " campo, por favor.");
                 }
             }
         });
@@ -192,14 +206,15 @@ public class CreacionPelicula extends JFrame {
         textFieldDurPeli.setBounds(225, 205, 275, 30);
         textFieldDurPeli.addFocusListener(new FocusListener() {
             @Override
-            public void focusGained(FocusEvent e) {}
+            public void focusGained(FocusEvent e) { }
             @Override
             public void focusLost(FocusEvent e) {
                 try {
                     Integer.parseInt(textFieldDurPeli.getText());
                 } catch (NumberFormatException exc) {
-                    JOptionPane.showMessageDialog(ventana, "Inserte un valor numérico en el campo," +
-                            " por favor.");
+                    JOptionPane.showMessageDialog(ventana,
+                            "Inserte un valor numérico en el "
+                                    + "campo, por favor.");
                 }
             }
         });
@@ -208,12 +223,13 @@ public class CreacionPelicula extends JFrame {
         textFieldGenPeli.setBounds(225, 245, 275, 30);
         textFieldGenPeli.addFocusListener(new FocusListener() {
             @Override
-            public void focusGained(FocusEvent e) {}
+            public void focusGained(FocusEvent e) { }
             @Override
             public void focusLost(FocusEvent e) {
-                if (textFieldGenPeli.getText().isEmpty()){
-                    JOptionPane.showMessageDialog(ventana, "Inserte contenido en el cuadro del género," +
-                            "por favor.");
+                if (textFieldGenPeli.getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(ventana,
+                            "Inserte contenido en el cuadro "
+                                    + "del género, por favor.");
                 }
             }
         });
@@ -222,12 +238,13 @@ public class CreacionPelicula extends JFrame {
         textFieldDirPeli.setBounds(225, 285, 275, 30);
         textFieldDirPeli.addFocusListener(new FocusListener() {
             @Override
-            public void focusGained(FocusEvent e) {}
+            public void focusGained(FocusEvent e) { }
             @Override
             public void focusLost(FocusEvent e) {
-                if (textFieldDirPeli.getText().isEmpty()){
-                    JOptionPane.showMessageDialog(ventana, "Inserte contenido en el cuadro del director," +
-                            "por favor.");
+                if (textFieldDirPeli.getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(ventana,
+                            "Inserte contenido en el cuadro"
+                                    + " del director, por favor.");
                 }
             }
         });
@@ -236,12 +253,13 @@ public class CreacionPelicula extends JFrame {
         textFieldActoresPeli.setBounds(225, 320, 275, 30);
         textFieldActoresPeli.addFocusListener(new FocusListener() {
             @Override
-            public void focusGained(FocusEvent e) {}
+            public void focusGained(FocusEvent e) { }
             @Override
             public void focusLost(FocusEvent e) {
-                if (textFieldActoresPeli.getText().isEmpty()){
-                    JOptionPane.showMessageDialog(ventana, "Inserte contenido en el cuadro de los actores," +
-                            "por favor.");
+                if (textFieldActoresPeli.getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(ventana,
+                            "Inserte contenido en el cuadro de"
+                                    + " los actores, por favor.");
                 }
             }
         });
@@ -250,12 +268,13 @@ public class CreacionPelicula extends JFrame {
         textFieldURLTrailer.setBounds(225, 535, 275, 30);
         textFieldURLTrailer.addFocusListener(new FocusListener() {
             @Override
-            public void focusGained(FocusEvent e) {}
+            public void focusGained(FocusEvent e) { }
             @Override
             public void focusLost(FocusEvent e) {
-                if (textFieldURLTrailer.getText().isEmpty()){
-                    JOptionPane.showMessageDialog(ventana, "Inserte contenido en el cuadro de la URL," +
-                            "por favor.");
+                if (textFieldURLTrailer.getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(ventana,
+                            "Inserte contenido en el cuadro"
+                                    + " de la URL, por favor.");
                 }
             }
         });
@@ -280,37 +299,48 @@ public class CreacionPelicula extends JFrame {
         button4.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                List<ActorDTO> allActors = FestivalCineController.getInstance().getActorList().getActorsDTO();
+                List<ActorDTO> allActors = FestivalCineController
+                        .getInstance().getActorList().getActorsDTO();
                 List<ActorDTO> selectedActors = new ArrayList<>();
-                String[] actorsStringList = textFieldActoresPeli.getText().split("\\s*,\\s*");
+                String[] actorsStringList = textFieldActoresPeli.getText()
+                        .split("\\s*,\\s*");
                 for (ActorDTO myActor: allActors) {
-                    String check = myActor.getNombre() + " " + myActor.getApellido();
-                    for (int i = 0; i < actorsStringList.length; i++){
-                        if (check.toUpperCase().compareTo(actorsStringList[i].toUpperCase())==0){
+                    String check = myActor.getNombre() + " "
+                            + myActor.getApellido();
+                    for (int i = 0; i < actorsStringList.length; i++) {
+                        if (check.toUpperCase().compareTo(
+                                actorsStringList[i].toUpperCase()) == 0) {
                             selectedActors.add(myActor);
                         }
                     }
                 }
                 if (selectedActors.size() == 0) {
-                    JOptionPane.showMessageDialog(ventana, "Inserta nombre y apellido de actores, separados" +
-                            " con comas que existan actualmente en el sistema.");
-                }
-                else {
+                    JOptionPane.showMessageDialog(ventana,
+                            "Inserta nombre y apellido de actores,"
+                                    + " separados con comas que existan "
+                                    + "actualmente en el sistema.");
+                } else {
                     try {
-                        FestivalCineController.getInstance().registerPelicula(textFieldNomPeli.getText(),
-                                textAreaSinopsisPeli.getText(), textFieldGenPeli.getText(),
+                        FestivalCineController.getInstance()
+                                .registerPelicula(textFieldNomPeli.getText(),
+                                textAreaSinopsisPeli.getText(),
+                                        textFieldGenPeli.getText(),
                                 Integer.parseInt(textFieldDurPeli.getText()),
                                 Integer.parseInt(textFieldAnyoPeli.getText()),
-                                textFieldDirPeli.getText(),textFieldURLTrailer.getText(),
-                                textAreaPremiosPeli.getText(), "novedades", selectedActors, URIImage);
-                        logger.info("Pelicula generated successfully by the admin.");
+                                textFieldDirPeli.getText(),
+                                        textFieldURLTrailer.getText(),
+                                textAreaPremiosPeli.getText(),
+                                        "novedades",
+                                        selectedActors, URIImage);
+                        logger.info("Pelicula generated successfully"
+                                + " by the admin.");
                         Menu m = new Menu(aux);
                         m.setVisible(true);
                         dispose();
-                    }
-                    catch (NumberFormatException exc) {
-                        JOptionPane.showMessageDialog(ventana, "Inserte un valor numérico en los campos" +
-                                "numéricos, por favor.");
+                    } catch (NumberFormatException exc) {
+                        JOptionPane.showMessageDialog(ventana,
+                                "Inserte un valor numérico en "
+                                        + "los campos numéricos, por favor.");
                     }
                 }
             }
@@ -322,58 +352,71 @@ public class CreacionPelicula extends JFrame {
         button5.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 JFileChooser file = new JFileChooser();
-                file.setCurrentDirectory(new File(System.getProperty("user.home")));
+                file.setCurrentDirectory(new File(System
+                        .getProperty("user.home")));
                 //filter the files
-                FileNameExtensionFilter filter = new FileNameExtensionFilter("*.Images",
-                        "jpg","gif","png");
+                FileNameExtensionFilter filter =
+                        new FileNameExtensionFilter("*.Images",
+                        "jpg",
+                                "gif",
+                                "png");
                 file.addChoosableFileFilter(filter);
                 int result = file.showSaveDialog(null);
                 //if the user click on save in Jfilechooser
-                if(result == JFileChooser.APPROVE_OPTION){
+                if (result == JFileChooser.APPROVE_OPTION) {
                     File selectedFile = file.getSelectedFile();
                     String path = selectedFile.getAbsolutePath();
                     label14.setIcon(ResizeImage(path));
                     //Store image in resources/img folder:
-                    String store = System.getProperty("user.dir")+"/src/main/resources/img";
+                    String store = System.getProperty("user.dir")
+                            + "/src/main/resources/img";
                     BufferedImage img = null;
                     try {
                         img = ImageIO.read(selectedFile);
-                        ImageIO.write(img,"png",new File(store+"/"+selectedFile.getName()));
-                        URIImage = "/src/main/resources/img/"+selectedFile.getName();
+                        ImageIO.write(img,
+                                "png",
+                                new File(
+                                store
+                                        + "/"
+                                        + selectedFile.getName()));
+                        URIImage = "/src/main/resources/img/"
+                                + selectedFile.getName();
                     } catch (IOException ex) {
-                        JOptionPane.showMessageDialog(ventana, "Se ha seleeccionado un tipo de fichero" +
-                                " distinto a una imagen");
-                        logger.info("Se ha seleeccionado un tipo de fichero distinto a una imagen.");
+                        JOptionPane.showMessageDialog(ventana,
+                                "Se ha seleeccionado un tipo "
+                                        + "de fichero  distinto a una imagen");
+                        logger.info("Se ha seleeccionado un tipo "
+                                + "de fichero distinto a una imagen.");
                     }
-                }
-                //if the user click on cancel in Jfilechooser
-                else if(result == JFileChooser.CANCEL_OPTION){
+                } else if (result == JFileChooser.CANCEL_OPTION) {
+                    //if the user click on cancel in Jfilechooser
                     logger.info("No se ha seleccionado ninguna imagen");
                 }
             }
         });
 
-        {
-            // compute preferred size
-            Dimension preferredSize = new Dimension();
-            for(int i = 0; i < contentPane.getComponentCount(); i++) {
-                Rectangle bounds = contentPane.getComponent(i).getBounds();
-                preferredSize.width = Math.max(bounds.x + bounds.width, preferredSize.width);
-                preferredSize.height = Math.max(bounds.y + bounds.height, preferredSize.height);
-            }
-            Insets insets = contentPane.getInsets();
-            preferredSize.width += insets.right;
-            preferredSize.height += insets.bottom;
-            contentPane.setMinimumSize(preferredSize);
-            contentPane.setPreferredSize(preferredSize);
+        // compute preferred size
+        Dimension preferredSize = new Dimension();
+        for (int i = 0; i < contentPane.getComponentCount(); i++) {
+            Rectangle bounds = contentPane.getComponent(i).getBounds();
+            preferredSize.width = Math.max(bounds.x
+                    + bounds.width, preferredSize.width);
+            preferredSize.height = Math.max(bounds.y
+                    + bounds.height, preferredSize.height);
         }
+        Insets insets = contentPane.getInsets();
+        preferredSize.width += insets.right;
+        preferredSize.height += insets.bottom;
+        contentPane.setMinimumSize(preferredSize);
+        contentPane.setPreferredSize(preferredSize);
+
         pack();
         setLocationRelativeTo(getOwner());
-        // JFormDesigner - End of component initialization  //GEN-END:initComponents
+        Rectangle r = ventana.getBounds();
+        r.grow(45, 45);
+        ventana.setBounds(r);
     }
 
-    // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - Beñat
     private JLabel label1;
     private JLabel label2;
     private JLabel label3;
@@ -400,16 +443,17 @@ public class CreacionPelicula extends JFrame {
     private JTextArea textAreaPremiosPeli;
     private JFrame ventana;
     private String URIImage;
-    // JFormDesigner - End of variables declaration  //GEN-END:variables
 
     /**
      * Método para redimensionar un ImageIcon al mismo tamaño que un JLabel.
+     * @param ImagePath Ruta de la imagen a modificar.
+     * @return Icono de Imagen con el tamaño ajustado.
      */
-    public ImageIcon ResizeImage(String ImagePath)
-    {
+    public ImageIcon ResizeImage(String ImagePath) {
         ImageIcon MyImage = new ImageIcon(ImagePath);
         Image img = MyImage.getImage();
-        Image newImg = img.getScaledInstance(label14.getWidth(), label14.getHeight(), Image.SCALE_SMOOTH);
+        Image newImg = img.getScaledInstance(label14.getWidth(),
+                label14.getHeight(), Image.SCALE_SMOOTH);
         ImageIcon image = new ImageIcon(newImg);
         return image;
     }
