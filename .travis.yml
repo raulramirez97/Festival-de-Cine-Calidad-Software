@@ -17,10 +17,10 @@ script:
 branches:
 
   only:
-    - devel
+    - master
 
   except:
-    - master
+    - devel
     - featBizlogic
     - featFestivalUX
     - featAdmin
