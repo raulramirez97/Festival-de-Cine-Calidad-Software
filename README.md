@@ -68,8 +68,8 @@ URL: https://marvelapp.com/d2h27dh/screen/63095209
 Un usuario de tipo administrador, con credenciales:
 
 ```
-    - Nombre de usuario: admin
-    - Contraseña: admin
+Nombre de usuario: admin
+Contraseña: admin
 ```
 
 Es capaz de insertar películas y actores en el sistema, y en el caso de estos primeros, puede seleccionar una imagen
