@@ -4,13 +4,20 @@ import javax.jdo.annotations.PersistenceCapable;
 import java.io.Serializable;
 import java.util.Date;
 
+/**
+ * Este bloque de código recoge una de las estructuras de datos intermedias
+ * que se utilizan para hacer Mocking de los mensajes.
+ * @author Grupo RMBJ
+ * @version 3.0
+ * @since 1.0
+ */
 @PersistenceCapable
 public class Message implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	UsuarioDTO usuariodto = null;
-	String text = null;
-	long timestamp;
+	private UsuarioDTO usuariodto = null;
+	private String text = null;
+	private long timestamp;
 
 	public Message(String text) {
 
@@ -35,6 +42,9 @@ public class Message implements Serializable {
 	}
 
 	public String toString() {
-		return "Message: message --> " + this.text + ", timestamp -->  " + new Date(this.timestamp);
+		return "Message: message --> "
+				+ this.text
+				+ ", timestamp -->  "
+				+ new Date(this.timestamp);
 	}
 }

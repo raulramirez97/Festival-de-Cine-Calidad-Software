@@ -1,0 +1,8 @@
+<map id="es.deusto.client.gui.Login.Login" name="es.deusto.client.gui.Login.Login">
+<area shape="rect" id="node1" title=" " alt="" coords="5,104,180,145"/>
+<area shape="rect" id="node2" href="$classes_1_1deusto_1_1client_1_1_festival_cine_controller.html#a8e41015623bf41454ea3cb18814ed892" title=" " alt="" coords="238,5,413,47"/>
+<area shape="rect" id="node3" href="$classes_1_1deusto_1_1server_1_1data_1_1_usuario_d_t_o.html#a9444d6cee5fa6b9f6594adaa357c2a5d" title=" " alt="" coords="228,71,423,112"/>
+<area shape="rect" id="node4" href="$classes_1_1deusto_1_1server_1_1data_1_1_usuario_d_t_o.html#a746d476e12dd332bf0fa509b81ff7de9" title=" " alt="" coords="228,136,423,177"/>
+<area shape="rect" id="node5" href="$classes_1_1deusto_1_1client_1_1_festival_cine_controller.html#ace37fd1d71c8fe491449563710a671d4" title=" " alt="" coords="244,201,407,243"/>
+<area shape="rect" id="node6" href="$classes_1_1deusto_1_1client_1_1remote_1_1_service_locator.html#a5f0fe94ddb57973c15138971d83251b4" title=" " alt="" coords="471,201,633,243"/>
+</map>

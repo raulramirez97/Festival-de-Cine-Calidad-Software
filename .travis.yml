@@ -1,9 +1,15 @@
 language: java
 
 os: linux
+services:
+  - xvfb
+  - mysql
 
 jdk:
   - openjdk8
+
+before_install:
+  - mysql -u root --password="" < src/main/sql/create-festivalcinedb.sql
 
 script:
   - mvn test
@@ -11,9 +17,12 @@ script:
 branches:
 
   only:
-    - master
+    - devel
 
   except:
-    - devel
+    - master
     - featBizlogic
     - featFestivalUX
+    - featAdmin
+    - featFilter
+    - featQA
