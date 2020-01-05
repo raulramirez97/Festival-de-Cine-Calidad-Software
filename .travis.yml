@@ -17,12 +17,12 @@ script:
 branches:
 
   only:
-    - featQA
+    - devel
 
   except:
     - master
-    - devel
     - featBizlogic
     - featFestivalUX
     - featAdmin
     - featFilter
+    - featQA
