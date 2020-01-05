@@ -15,7 +15,7 @@ public class PeliculaList {
 
     private List<PeliculaDTO> peliculas = new ArrayList<PeliculaDTO>();
 
-    public PeliculaList() {}
+    public PeliculaList() { }
 
     public List<PeliculaDTO> getPeliculasDTO() {
         return this.peliculas;

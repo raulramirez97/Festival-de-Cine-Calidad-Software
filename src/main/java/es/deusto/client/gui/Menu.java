@@ -31,7 +31,7 @@ public class Menu extends JFrame {
     public Menu(UsuarioDTO aux) {
         PeliculaList peliculaList = FestivalCineController.getInstance()
                 .getPeliculaList();
-        initComponents(peliculaList,aux);
+        initComponents(peliculaList, aux);
     }
     /**
      * Constructor generado para su uso en GeneracionVentanasTest.java.
@@ -39,10 +39,10 @@ public class Menu extends JFrame {
      * @param aux Usuario que está navegando actualmente en la aplicación.
      */
     public Menu(PeliculaList peliculaList, UsuarioDTO aux) {
-        initComponents(peliculaList,aux);
+        initComponents(peliculaList, aux);
     }
 
-    private void initComponents(PeliculaList peliculaList,UsuarioDTO aux) {
+    private void initComponents(PeliculaList peliculaList, UsuarioDTO aux) {
         button1 = new JButton();
         label1 = new JLabel();
         label2 = new JLabel();
@@ -68,22 +68,22 @@ public class Menu extends JFrame {
         comboBox2 = new JComboBox();
         textField1 = new JTextField();
 
-
         ventana = this;
 
         //======== this ========
-        setTitle("Men\u00fa Principal - "+aux.getLogin());
+        setTitle("Men\u00fa Principal - " + aux.getLogin());
         Container contentPane = getContentPane();
         contentPane.setLayout(null);
 
         String myPath = System.getProperty("user.dir");
         this.setIconImage(new ImageIcon(myPath
-                +"/src/main/resources/img/filmicon.png").getImage());
+                + "/src/main/resources/img/filmicon.png").getImage());
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 960, 960);
 
         int tam = peliculaList.getPeliculasDTO().size();
-        logger.info("Tamaño de películas disponibles obtenido: "+ tam);
+        logger.info("Tamaño de películas disponibles obtenido: "
+                + tam);
 
         //---- button1 ----
         button1.setText("Salir");
@@ -115,14 +115,14 @@ public class Menu extends JFrame {
         //---- label11 ----
         label11.setBounds(770, 50, 120, 55);
         label11.setIcon(ResizeImage(myPath
-                +"/src/main/resources/img/avataricon.jpg", label11));
+                + "/src/main/resources/img/avataricon.jpg", label11));
         contentPane.add(label11);
 
-        if (tam > 0 ) {
+        if (tam > 0) {
             //---- label2 ----
             label2.setBounds(220, 215, 130, 90);
             label2.setIcon(ResizeImage(myPath
-                    +peliculaList.getPeliculasDTO().get(0)
+                    + peliculaList.getPeliculasDTO().get(0)
                     .getURIimagen(), label2));
             contentPane.add(label2);
 
@@ -153,7 +153,7 @@ public class Menu extends JFrame {
                 //---- label3 ----
                 label3.setBounds(500, 215, 130, 90);
                 label3.setIcon(ResizeImage(myPath
-                                +peliculaList.getPeliculasDTO()
+                                + peliculaList.getPeliculasDTO()
                                 .get(1).getURIimagen(),
                         label3));
                 contentPane.add(label3);
@@ -182,7 +182,7 @@ public class Menu extends JFrame {
                     //---- label4 ----
                     label4.setBounds(215, 425, 130, 90);
                     label4.setIcon(ResizeImage(myPath
-                                    +peliculaList.getPeliculasDTO()
+                                    + peliculaList.getPeliculasDTO()
                                     .get(2).getURIimagen(), label4));
                     contentPane.add(label4);
 
@@ -210,21 +210,24 @@ public class Menu extends JFrame {
                     if (tam > 3) {
                         //---- label5 ----
                         contentPane.add(label5);
-                        label5.setBounds(500, 425, 130, 90);
+                        label5.setBounds(500, 425,
+                                130, 90);
                         label5.setIcon(ResizeImage(myPath
-                                +peliculaList.getPeliculasDTO().get(3)
+                                + peliculaList.getPeliculasDTO().get(3)
                                 .getURIimagen(), label5));
 
                         //---- label8 ----
                         label8.setText(peliculaList.getPeliculasDTO()
                                 .get(3).getTitulo());
                         contentPane.add(label8);
-                        label8.setBounds(510, 540, 125, 20);
+                        label8.setBounds(510, 540,
+                                125, 20);
 
                         //---- button5 ----
                         button5.setText("+ Info");
                         contentPane.add(button5);
-                        button5.setBounds(510, 580, 110, 30);
+                        button5.setBounds(510, 580,
+                                110, 30);
                         button5.addActionListener(new ActionListener() {
                             @Override
                             public void actionPerformed(ActionEvent e) {
@@ -251,7 +254,7 @@ public class Menu extends JFrame {
         filtrosGenerales.add("Actor"); //CODE: 7
         filtrosGenerales.add("Premio"); //CODE: 8
         String[] filtrosGeneralesStrings =
-                new String [filtrosGenerales.size()];
+                new String[filtrosGenerales.size()];
         for (int i = 0; i < filtrosGeneralesStrings.length; i++) {
             filtrosGeneralesStrings[i] = filtrosGenerales.get(i);
         }
@@ -282,83 +285,17 @@ public class Menu extends JFrame {
         comboBox1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (comboBox1.getSelectedIndex()==0)
-                {
+                if (comboBox1.getSelectedIndex() == 0) {
                     comboBox2.setVisible(false);
-                }
-                else if (comboBox1.getSelectedIndex()==1)
-                {
+                } else if (comboBox1.getSelectedIndex() == 1) {
                     textField1.setVisible(false);
-                    ArrayList<String> filtrosEspecificos = new ArrayList<String>();
+                    ArrayList<String> filtrosEspecificos = new ArrayList<>();
                     filtrosEspecificos = FestivalCineController.getInstance()
                             .getFiltros(filtrosGenerales.get(1));
                     String[] filtrosEspecificosStrings =
-                            new String [filtrosEspecificos.size()];
-                    for (int i = 0; i <
-                            filtrosEspecificosStrings.length; i++) {
-                        filtrosEspecificosStrings[i] =
-                                filtrosEspecificos.get(i);
-                    }
-
-                    DefaultComboBoxModel model =
-                            new DefaultComboBoxModel(filtrosEspecificosStrings);
-                    comboBox2.setModel(model);
-                    comboBox2.setVisible(true);
-
-                }
-                else if (comboBox1.getSelectedIndex()==2) {
-                    textField1.setVisible(false);
-                    ArrayList<String> filtrosEspecificos = new ArrayList<String>();
-                    filtrosEspecificos = FestivalCineController.getInstance()
-                            .getFiltros(filtrosGenerales.get(2));
-                    String[] filtrosEspecificosStrings =
-                            new String [filtrosEspecificos.size()];
-                    for (int i = 0; i <
-                            filtrosEspecificosStrings.length; i++){
-                        filtrosEspecificosStrings[i] =
-                                filtrosEspecificos.get(i);
-                    }
-
-                    DefaultComboBoxModel model = new
-                            DefaultComboBoxModel(filtrosEspecificosStrings);
-                    comboBox2.setModel(model);
-                    comboBox2.setVisible(true);
-                }
-                else if (comboBox1.getSelectedIndex()==3) {
-                    textField1.setVisible(false);
-                    ArrayList<String> filtrosEspecificos = new ArrayList<String>();
-                    filtrosEspecificos = FestivalCineController.getInstance()
-                            .getFiltros(filtrosGenerales.get(3));
-                    String[] filtrosEspecificosStrings =
-                            new String [filtrosEspecificos.size()];
-                    for (int i = 0; i <
-                            filtrosEspecificosStrings.length; i++) {
-                        filtrosEspecificosStrings[i] =
-                                filtrosEspecificos.get(i);
-                    }
-
-                    DefaultComboBoxModel model =
-                            new DefaultComboBoxModel(filtrosEspecificosStrings);
-                    comboBox2.setModel(model);
-                    comboBox2.setVisible(true);
-                }
-                else if (comboBox1.getSelectedIndex()==4) {
-                    comboBox2.setVisible(false);
-                    textField1.setVisible(true);
-                }
-                else if (comboBox1.getSelectedIndex()==5) {
-                    comboBox2.setVisible(false);
-                    textField1.setVisible(true);
-                }
-                else if (comboBox1.getSelectedIndex()==6) {
-                    textField1.setVisible(false);
-                    ArrayList<String> filtrosEspecificos = new ArrayList<String>();
-                    filtrosEspecificos = FestivalCineController.getInstance()
-                            .getFiltros(filtrosGenerales.get(6));
-                    String[] filtrosEspecificosStrings =
-                            new String [filtrosEspecificos.size()];
-                    for (int i = 0; i <
-                            filtrosEspecificosStrings.length; i++){
+                            new String[filtrosEspecificos.size()];
+                    for (int i = 0; i
+                            < filtrosEspecificosStrings.length; i++) {
                         filtrosEspecificosStrings[i] =
                                 filtrosEspecificos.get(i);
                     }
@@ -368,20 +305,78 @@ public class Menu extends JFrame {
                                     filtrosEspecificosStrings);
                     comboBox2.setModel(model);
                     comboBox2.setVisible(true);
-                }
-                else if (comboBox1.getSelectedIndex()==7) {
+
+                } else if (comboBox1.getSelectedIndex() == 2) {
+                    textField1.setVisible(false);
+                    ArrayList<String> filtrosEspecificos = new ArrayList<>();
+                    filtrosEspecificos = FestivalCineController.getInstance()
+                            .getFiltros(filtrosGenerales.get(2));
+                    String[] filtrosEspecificosStrings =
+                            new String[filtrosEspecificos.size()];
+                    for (int i = 0; i
+                            < filtrosEspecificosStrings.length; i++) {
+                        filtrosEspecificosStrings[i] =
+                                filtrosEspecificos.get(i);
+                    }
+
+                    DefaultComboBoxModel model = new
+                            DefaultComboBoxModel(filtrosEspecificosStrings);
+                    comboBox2.setModel(model);
+                    comboBox2.setVisible(true);
+                } else if (comboBox1.getSelectedIndex() == 3) {
+                    textField1.setVisible(false);
+                    ArrayList<String> filtrosEspecificos = new ArrayList<>();
+                    filtrosEspecificos = FestivalCineController.getInstance()
+                            .getFiltros(filtrosGenerales.get(3));
+                    String[] filtrosEspecificosStrings =
+                            new String[filtrosEspecificos.size()];
+                    for (int i = 0; i
+                            < filtrosEspecificosStrings.length; i++) {
+                        filtrosEspecificosStrings[i] =
+                                filtrosEspecificos.get(i);
+                    }
+
+                    DefaultComboBoxModel model =
+                            new DefaultComboBoxModel(
+                                    filtrosEspecificosStrings);
+                    comboBox2.setModel(model);
+                    comboBox2.setVisible(true);
+                } else if (comboBox1.getSelectedIndex() == 4) {
                     comboBox2.setVisible(false);
                     textField1.setVisible(true);
-                }
-                else if (comboBox1.getSelectedIndex()==8) {
+                } else if (comboBox1.getSelectedIndex() == 5) {
+                    comboBox2.setVisible(false);
+                    textField1.setVisible(true);
+                } else if (comboBox1.getSelectedIndex() == 6) {
                     textField1.setVisible(false);
-                    ArrayList<String> filtrosEspecificos = new ArrayList<String>();
+                    ArrayList<String> filtrosEspecificos = new ArrayList<>();
+                    filtrosEspecificos = FestivalCineController.getInstance()
+                            .getFiltros(filtrosGenerales.get(6));
+                    String[] filtrosEspecificosStrings =
+                            new String[filtrosEspecificos.size()];
+                    for (int i = 0; i
+                            < filtrosEspecificosStrings.length; i++) {
+                        filtrosEspecificosStrings[i] =
+                                filtrosEspecificos.get(i);
+                    }
+
+                    DefaultComboBoxModel model =
+                            new DefaultComboBoxModel(
+                                    filtrosEspecificosStrings);
+                    comboBox2.setModel(model);
+                    comboBox2.setVisible(true);
+                } else if (comboBox1.getSelectedIndex() == 7) {
+                    comboBox2.setVisible(false);
+                    textField1.setVisible(true);
+                } else if (comboBox1.getSelectedIndex() == 8) {
+                    textField1.setVisible(false);
+                    ArrayList<String> filtrosEspecificos = new ArrayList<>();
                     filtrosEspecificos = FestivalCineController.getInstance()
                             .getFiltros(filtrosGenerales.get(8));
                     String[] filtrosEspecificosStrings =
-                            new String [filtrosEspecificos.size()];
-                    for (int i = 0; i <
-                            filtrosEspecificosStrings.length; i++){
+                            new String[filtrosEspecificos.size()];
+                    for (int i = 0; i
+                            < filtrosEspecificosStrings.length; i++) {
                         filtrosEspecificosStrings[i] =
                                 filtrosEspecificos.get(i);
                     }
@@ -408,40 +403,36 @@ public class Menu extends JFrame {
                             "¡Selecciona una opción, por favor!",
                             "ERR-A01 - Selección errónea de filtro",
                             JOptionPane.ERROR_MESSAGE);
-                }
-                else {
+                } else {
                     try {
                         PeliculaList peliculaList = null;
-                        if (comboBox1.getSelectedIndex() == 1 ||
-                                comboBox1.getSelectedIndex() == 2 ||
-                                comboBox1.getSelectedIndex() == 3 ||
-                                comboBox1.getSelectedIndex() == 6 ||
-                                comboBox1.getSelectedIndex() == 8) {
+                        if (comboBox1.getSelectedIndex() == 1
+                                || comboBox1.getSelectedIndex() == 2
+                                || comboBox1.getSelectedIndex() == 3
+                                || comboBox1.getSelectedIndex() == 6
+                                || comboBox1.getSelectedIndex() == 8) {
                             peliculaList = FestivalCineController
                                     .getInstance().getFilteredPeliculaList(
                                     (String) (comboBox2.getSelectedItem()),
                                             (String) comboBox1
                                                     .getSelectedItem());
-                        }
-                        else if (comboBox1.getSelectedIndex() == 4) {
+                        } else if (comboBox1.getSelectedIndex() == 4) {
                             Double.parseDouble(textField1.getText());
                             peliculaList = FestivalCineController
                                     .getInstance().getFilteredPeliculaList(
                                     (textField1.getText()),
                                             (String) comboBox1
                                                     .getSelectedItem());
-                        }
-                        else if (comboBox1.getSelectedIndex() == 5) {
+                        } else if (comboBox1.getSelectedIndex() == 5) {
                             Integer.parseInt(textField1.getText());
                             peliculaList = FestivalCineController
                                     .getInstance().getFilteredPeliculaList(
                                     (textField1.getText()),
                                             (String) comboBox1
                                                     .getSelectedItem());
-                        }
-                        else if ( comboBox1.getSelectedIndex() == 7) {
+                        } else if (comboBox1.getSelectedIndex() == 7) {
                             String actorInput = textField1.getText();
-                            if (actorInput.length()==0){
+                            if (actorInput.length() == 0) {
                                 throw new NullPointerException();
                             }
                             peliculaList = FestivalCineController
@@ -450,8 +441,7 @@ public class Menu extends JFrame {
                                             (String) comboBox1
                                                     .getSelectedItem());
                         }
-                        if (peliculaList.getPeliculasDTO().size() == 0)
-                        {
+                        if (peliculaList.getPeliculasDTO().size() == 0) {
                             JOptionPane.showMessageDialog(ventana,
                                     "No hay películas que "
                                             + "cumplan este filtro.",
@@ -460,23 +450,20 @@ public class Menu extends JFrame {
                                     JOptionPane.ERROR_MESSAGE);
                             logger.info("ERR-A04 - No hay películas "
                                     + "que cumplan este filtro.");
-                        }
-                        else {
+                        } else {
                             ResultadoFiltrados m = new
-                                    ResultadoFiltrados(peliculaList,aux);
+                                    ResultadoFiltrados(peliculaList, aux);
                             m.setVisible(true);
                             dispose();
                         }
-                    }
-                    catch (NumberFormatException e1) {
+                    } catch (NumberFormatException e1) {
                         JOptionPane.showMessageDialog(ventana,
                                 "¡No has insertado un valor"
                                         + " numérico correcto!",
                                 "ERR-A02 - Inserción errónea de "
                                         + "valor numérico",
                                 JOptionPane.ERROR_MESSAGE);
-                    }
-                    catch (NullPointerException e1){
+                    } catch (NullPointerException e1) {
                         JOptionPane.showMessageDialog(ventana,
                                 "¡Has dejado en blanco el "
                                         + "campo de búsqueda del actor!",
@@ -488,7 +475,7 @@ public class Menu extends JFrame {
             }
         });
         logger.info("Botón de búsqueda con Filtros cargado.");
-        if (aux.getLogin().compareTo("admin")==0){
+        if (aux.getLogin().compareTo("admin") == 0) {
             //---- button7 ----
 
             //---- label13 ----
@@ -523,28 +510,29 @@ public class Menu extends JFrame {
                     dispose();
                 }
             });
-            logger.info("Botones de generación cargados con usuario admin.");
+            logger.info("Botones de generación cargados con"
+                    + " usuario admin.");
         }
-        {
-            // compute preferred size
-            Dimension preferredSize = new Dimension();
-            for(int i = 0; i < contentPane.getComponentCount(); i++) {
-                Rectangle bounds = contentPane.getComponent(i).getBounds();
-                preferredSize.width = Math.max(bounds.x
-                        + bounds.width, preferredSize.width);
-                preferredSize.height = Math.max(bounds.y
-                        + bounds.height, preferredSize.height);
-            }
-            Insets insets = contentPane.getInsets();
-            preferredSize.width += insets.right;
-            preferredSize.height += insets.bottom;
-            contentPane.setMinimumSize(preferredSize);
-            contentPane.setPreferredSize(preferredSize);
+
+        // compute preferred size
+        Dimension preferredSize = new Dimension();
+        for (int i = 0; i < contentPane.getComponentCount(); i++) {
+            Rectangle bounds = contentPane.getComponent(i).getBounds();
+            preferredSize.width = Math.max(bounds.x
+                    + bounds.width, preferredSize.width);
+            preferredSize.height = Math.max(bounds.y
+                    + bounds.height, preferredSize.height);
         }
+        Insets insets = contentPane.getInsets();
+        preferredSize.width += insets.right;
+        preferredSize.height += insets.bottom;
+        contentPane.setMinimumSize(preferredSize);
+        contentPane.setPreferredSize(preferredSize);
+
         pack();
         setLocationRelativeTo(getOwner());
         Rectangle r = ventana.getBounds();
-        r.grow(45,45);
+        r.grow(45, 45);
         ventana.setBounds(r);
     }
 
@@ -580,8 +568,7 @@ public class Menu extends JFrame {
      * @param label Jlabel sobre el cual se hará el ajuste de la imagen.
      * @return Icono de Imagen con el tamaño ajustado.
      */
-    public ImageIcon ResizeImage(String ImagePath, JLabel label)
-    {
+    public ImageIcon ResizeImage(String ImagePath, JLabel label) {
         ImageIcon MyImage = new ImageIcon(ImagePath);
         Image img = MyImage.getImage();
         Image newImg = img.getScaledInstance(label.getWidth(),

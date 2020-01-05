@@ -27,12 +27,12 @@ public class Login extends JFrame {
 	private boolean flag = false;
 	private JFrame ventana;
 	
-	public Login() 
-	{
+	public Login() {
 		ventana = this;
 		String myPath = System.getProperty("user.dir");
 		this.setIconImage(new ImageIcon(myPath
-				+"/src/main/resources/img/filmicon.png").getImage());
+				+ "/src/main/resources/img/filmicon.png")
+				.getImage());
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 452, 367);
 		contentPane = new JPanel();
@@ -53,8 +53,7 @@ public class Login extends JFrame {
 		JLabel lblUsuario = new JLabel("Usuario");
 		lblUsuario.setBounds(50, 134, 101, 37);
 		contentPane.add(lblUsuario);
-		
-		
+
 		textField = new JTextField();
 		textField.setBounds(50, 170, 340, 26);
 		contentPane.add(textField);
@@ -84,8 +83,7 @@ public class Login extends JFrame {
 				dispose();
 		    }
 		});
-		
-		
+
 		JLabel lblFestivalDeCine = new JLabel("Festival de Cine");
 		lblFestivalDeCine.setFont(new Font("Times New Roman",
 				Font.PLAIN, 32));
@@ -93,46 +91,51 @@ public class Login extends JFrame {
 		contentPane.add(lblFestivalDeCine);
 		btnRegistrarse.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e)
-            {
-            	try
-				{
-					UsuarioDTO user = FestivalCineController.getInstance()
-							.getUser(textField.getText(),
-							passwordField.getText());
-					logger.info("Nombre de usuario encontrado: "
+            public void actionPerformed(ActionEvent e) {
+            	try {
+					UsuarioDTO user = FestivalCineController
+							.getInstance()
+							.getUser(textField
+											.getText(),
+							passwordField
+									.getText());
+					logger.info("Nombre de usuario "
+							+ "encontrado: "
 							+ user.getLogin());
-					logger.info("Contrasena de usuario encontrado: "
+					logger.info("Contrasena de usuario "
+							+ "encontrado: "
 							+ user.getPassword());
-					flag = comprobarUsuario(user,textField.getText()
-							,passwordField.getText());
-					if (!flag)
-					{
-						JOptionPane.showMessageDialog(ventana,
-								"No hay usuarios que concuerden "
-										+"con esas credenciales. Inténtelo " +
-										"otra vez.");
+					flag = comprobarUsuario(user,
+							textField.getText(),
+							passwordField
+									.getText());
+					if (!flag) {
+						JOptionPane
+								.showMessageDialog(ventana,
+										"No hay usuarios que "
+												+ "concuerden con esas "
+												+ "credenciales. Inténtelo"
+												+ " otra vez.");
 					}
+				} catch (NullPointerException exception) {
+					JOptionPane
+							.showMessageDialog(ventana,
+									"No hay usuarios que "
+											+ "concuerden con esas "
+											+ "credenciales. Inténtelo"
+											+ " otra vez.");
 				}
-            	catch (NullPointerException exception) {
-					JOptionPane.showMessageDialog(ventana,
-							"No hay usuarios que concuerden con " +
-									"esas credenciales. Inténtelo otra vez.");
-				}
-
             }
         });
 	}
-	private boolean comprobarUsuario(UsuarioDTO usu, String login, String pwd)
-	{
-		if ((usu == null))
-		{
+	private boolean comprobarUsuario(UsuarioDTO usu,
+									 String login,
+									 String pwd) {
+		if ((usu == null)) {
 			logger.info("El usuario se detecta como nulo.");
 			return false;
-		}
-		else if ((usu.getLogin().compareTo(login)==0) && (usu
-				.getPassword().compareTo(pwd)==0))
-		{
+		} else if ((usu.getLogin().compareTo(login) == 0)
+				&& (usu.getPassword().compareTo(pwd) == 0)) {
 			logger.info("Paso 1.");
 			Menu m = new Menu(usu);
 			logger.info("Paso 2.");
@@ -141,8 +144,7 @@ public class Login extends JFrame {
 			dispose();
 			logger.info("Paso 4.");
 			return true;
-		}
-		else {
+		} else {
 			logger.info("Las credenciales no coinciden.");
 			return false;
 		}

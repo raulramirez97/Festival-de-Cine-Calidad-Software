@@ -97,7 +97,7 @@ de diverso tipo a lo largo de la aplicación:
 La información sobre profiling con VisualVM se ha incluido en el directorio `profiling` de este repo. El log que muestra 
 la integración correcta con TravisCI y la ejecución automatizada de este test se muestra en `travisci_log`.
 
-<b>NOTA</b>: El code coverage obtenido es relativamente bajo de base (50% en recorrido de código general sobre el 30% de 
+<b>NOTA</b>: El code coverage obtenido es relativamente bajo de base (53% en recorrido de código general sobre el 30% de 
 variantes disponibles). Por ello, se ha reducido a niveles bajos los indicadores de code coverage para que JaCoCo no 
 bloqueara la ejecución de los tests.
 
@@ -116,8 +116,9 @@ habrá que ejecutar `mvn clean`.
 A su vez, el comando ```mvn site``` genera una carpeta ```docs``` en el nivel superior, la cual alimenta a la
 documentación on-line generada para este proyecto, presentada en la parte inicial de este README.
 
-En lo que al checkstyle respecta, se han hecho varias revisiones de los ficheros pero aún quedarían bastantes detalles
-por pulir.
+En lo que al checkstyle respecta, se han hecho varias revisiones de los ficheros, reduciendo de 4.000 errores iniciales
+que había a casi 1.900. Sin embargo, se ha decidido que muchos de ellos eran decisiones propias del diseño, así que se
+ha preferido no alterar en exceso el codigo solo con el motivo de respetar lo que indica el plugin de checkstyle.
 
 <b>NOTA</b>: A la hora de utilizar el comando `mvn site`, es probable que haya errores a la hora de crear el directorio de
 `Dependencies` del informe de Apache. Esto es así por la utilización de diversas versiones en este proyecto. 

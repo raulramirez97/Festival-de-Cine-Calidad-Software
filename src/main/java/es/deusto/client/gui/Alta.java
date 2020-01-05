@@ -3,9 +3,17 @@ package es.deusto.client.gui;
 import es.deusto.client.FestivalCineController;
 import es.deusto.server.data.UsuarioDTO;
 
-import javax.swing.*;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.JPasswordField;
+import javax.swing.ImageIcon;
+
 import javax.swing.border.EmptyBorder;
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -23,15 +31,14 @@ public class Alta extends JFrame {
 	private JTextField textField;
 	private JPasswordField passwordField;
 	private JFrame alta;
-	
-	UsuarioDTO myUser=null;
+	UsuarioDTO myUser = null;
 
-	public Alta() 
-	{
+	public Alta() {
 		alta = this;
 		String myPath = System.getProperty("user.dir");
 		this.setIconImage(new ImageIcon(myPath
-				+"/src/main/resources/img/filmicon.png").getImage());
+				+ "/src/main/resources/img/filmicon.png")
+				.getImage());
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 552, 367);
 		contentPane = new JPanel();
@@ -41,7 +48,7 @@ public class Alta extends JFrame {
 		contentPane.setLayout(null);
 		getContentPane().setBackground(Color.white);
 		setTitle("Proceso de Alta");
-		
+
 		JLabel lblAlta = new JLabel("Alta de Usuario");
 		lblAlta.setFont(new Font("Times New Roman",
 				Font.PLAIN, 32));
@@ -65,15 +72,17 @@ public class Alta extends JFrame {
 		passwordField.setBounds(75, 228, 346, 26);
 		contentPane.add(passwordField);
 		passwordField.setColumns(10);
-		
+
 		JButton btnRegistrarseGoogle = new JButton("Registrarse");
 		btnRegistrarseGoogle.setBounds(85, 271, 175, 29);
 		contentPane.add(btnRegistrarseGoogle);
 		btnRegistrarseGoogle.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-				FestivalCineController.getInstance().registerUser(
-						textField.getText(), passwordField.getText());
+				FestivalCineController.getInstance()
+						.registerUser(
+						textField.getText(),
+						passwordField.getText());
 				myUser = new UsuarioDTO(textField.getText(),
 						passwordField.getText());
 				Menu m = new Menu(myUser);

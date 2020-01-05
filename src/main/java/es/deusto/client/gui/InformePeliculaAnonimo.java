@@ -55,12 +55,12 @@ public class InformePeliculaAnonimo extends JFrame {
 
         String myPath = System.getProperty("user.dir");
         this.setIconImage(new ImageIcon(myPath
-                +"/src/main/resources/img/filmicon.png").getImage());
+                + "/src/main/resources/img/filmicon.png").getImage());
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         //======== this ========
 
-        setTitle("Informe: "+pelicula.getTitulo());
+        setTitle("Informe: " + pelicula.getTitulo());
         Container contentPane = getContentPane();
         contentPane.setLayout(null);
 
@@ -133,8 +133,8 @@ public class InformePeliculaAnonimo extends JFrame {
         label10.setBounds(230, 170, 130, 15);
 
         //---- label11 ----
-
-        label11.setText(Integer.toString(pelicula.getDuracion())+" m.");
+        label11.setText(Integer.toString(pelicula.getDuracion())
+                + " m.");
         contentPane.add(label11);
         label11.setBounds(230, 205, 140, 15);
 
@@ -155,7 +155,7 @@ public class InformePeliculaAnonimo extends JFrame {
 
         //---- label16 ----
         label16.setText(Double.toString(pelicula.getValoracionMedia())
-                +"/10");
+                + "/10");
         contentPane.add(label16);
         label16.setBounds(230, 530, 265, 15);
 
@@ -165,12 +165,11 @@ public class InformePeliculaAnonimo extends JFrame {
         label17.setBounds(230, 570, 265, 15);
 
         //======== scrollPane1 ========
-        {
-            //---- textArea1 ----
-            textArea1.setText(pelicula.getSinopsis());
-            scrollPane1.setViewportView(textArea1);
-            textArea1.setEditable(false);
-        }
+        //---- textArea1 ----
+        textArea1.setText(pelicula.getSinopsis());
+        scrollPane1.setViewportView(textArea1);
+        textArea1.setEditable(false);
+
         contentPane.add(scrollPane1);
         scrollPane1.setBounds(230, 360, 270, 90);
 
@@ -182,7 +181,8 @@ public class InformePeliculaAnonimo extends JFrame {
 
         //---- label14 ----
         label14.setBounds(580, 165, 270, 160);
-        label14.setIcon(ResizeImage(myPath+pelicula.getURIimagen(),
+        label14.setIcon(ResizeImage(myPath
+                        + pelicula.getURIimagen(),
                 label14));
         contentPane.add(label14);
 
@@ -210,54 +210,53 @@ public class InformePeliculaAnonimo extends JFrame {
                 String valoracion = JOptionPane.showInputDialog(ventana,
                         "Indica la puntuación de  1 a 10 por favor");
                 try {
-                    if (Float.parseFloat(valoracion) < 1 ||
-                            Float.parseFloat(valoracion) > 10) {
+                    if (Float.parseFloat(valoracion) < 1
+                            || Float.parseFloat(valoracion) > 10) {
                         JOptionPane.showMessageDialog(ventana,
                                 "Inserte un valor entre el 1 y el"
                                         + " 10, por favor.");
-                    }
-                    else {
+                    } else {
                         FestivalCineController.getInstance().valorarPelicula(
                                 pelicula.getTitulo(),
                                 Float.parseFloat(valoracion));
                         logger.info("La pelicula se ha valorado"
                                 + " correctamente.");
                         JOptionPane.showConfirmDialog(ventana,
-                                "La pelicula se ha valorado"
-                                        + " correctamente. " +
-                                        "Recarga el informe de película para"
-                                        +" ver la valoración actualizada.",
+                                "La pelicula se ha valorado "
+                                        + "correctamente. "
+                                        + "Recarga el informe de película "
+                                        + "para ver la valoración "
+                                        + "actualizada.",
                                 "CONF-A01 - Confirmación de película"
                                         + " valorada",
                                 JOptionPane.DEFAULT_OPTION);
                     }
-                }
-                catch (NumberFormatException exc) {
+                } catch (NumberFormatException exc) {
                     JOptionPane.showMessageDialog(ventana,
-                            "Inserte un valor numérico en el campo " +
-                            "de la puntuación, por favor.");
+                            "Inserte un valor numérico en el campo "
+                                    + "de la puntuación, por favor.");
                 }
             }
         });
-        {
-            Dimension preferredSize = new Dimension();
-            for(int i = 0; i < contentPane.getComponentCount(); i++) {
-                Rectangle bounds = contentPane.getComponent(i).getBounds();
-                preferredSize.width = Math.max(bounds.x
-                        + bounds.width, preferredSize.width);
-                preferredSize.height = Math.max(bounds.y
-                        + bounds.height, preferredSize.height);
-            }
-            Insets insets = contentPane.getInsets();
-            preferredSize.width += insets.right;
-            preferredSize.height += insets.bottom;
-            contentPane.setMinimumSize(preferredSize);
-            contentPane.setPreferredSize(preferredSize);
+
+        Dimension preferredSize = new Dimension();
+        for (int i = 0; i < contentPane.getComponentCount(); i++) {
+            Rectangle bounds = contentPane.getComponent(i).getBounds();
+            preferredSize.width = Math.max(bounds.x
+                    + bounds.width, preferredSize.width);
+            preferredSize.height = Math.max(bounds.y
+                    + bounds.height, preferredSize.height);
         }
+        Insets insets = contentPane.getInsets();
+        preferredSize.width += insets.right;
+        preferredSize.height += insets.bottom;
+        contentPane.setMinimumSize(preferredSize);
+        contentPane.setPreferredSize(preferredSize);
+
         pack();
         setLocationRelativeTo(getOwner());
         Rectangle r = ventana.getBounds();
-        r.grow(45,45);
+        r.grow(45, 45);
         ventana.setBounds(r);
     }
 
@@ -292,8 +291,7 @@ public class InformePeliculaAnonimo extends JFrame {
      * @param label Jlabel sobre el cual se hará el ajuste de la imagen.
      * @return Icono de Imagen con el tamaño ajustado.
      */
-    public ImageIcon ResizeImage(String ImagePath, JLabel label)
-    {
+    public ImageIcon ResizeImage(String ImagePath, JLabel label) {
         ImageIcon MyImage = new ImageIcon(ImagePath);
         Image img = MyImage.getImage();
         Image newImg = img.getScaledInstance(label.getWidth(),

@@ -44,7 +44,7 @@ public class ResultadoFiltradosAnonimo extends JFrame {
 
         String myPath = System.getProperty("user.dir");
         this.setIconImage(new ImageIcon(myPath
-                +"/src/main/resources/img/filmicon.png").getImage());
+                + "/src/main/resources/img/filmicon.png").getImage());
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 960, 960);
 
@@ -56,7 +56,6 @@ public class ResultadoFiltradosAnonimo extends JFrame {
         contentPane.setLayout(null);
 
         if (tam > 0) {
-
             //---- label1 ----
             label1.setText(peliculaList.getPeliculasDTO().get(0)
                     .getTitulo());
@@ -85,7 +84,6 @@ public class ResultadoFiltradosAnonimo extends JFrame {
             });
 
             if (tam > 1) {
-
                 //---- label2 ----
                 label2.setText(peliculaList.getPeliculasDTO().get(1)
                         .getTitulo());
@@ -93,12 +91,11 @@ public class ResultadoFiltradosAnonimo extends JFrame {
                 label2.setBounds(20, 275, 195, 35);
 
                 //======== scrollPane1 ========
-                {
-                    scrollPane1.setViewportView(textArea2);
-                    textArea2.setText(peliculaList.getPeliculasDTO().get(1)
-                            .getSinopsis());
-                    textArea2.setEditable(false);
-                }
+                scrollPane1.setViewportView(textArea2);
+                textArea2.setText(peliculaList.getPeliculasDTO().get(1)
+                        .getSinopsis());
+                textArea2.setEditable(false);
+
                 contentPane.add(scrollPane1);
                 scrollPane1.setBounds(235, 250, 445, 85);
 
@@ -118,7 +115,6 @@ public class ResultadoFiltradosAnonimo extends JFrame {
                 });
 
                 if (tam > 2) {
-
                     //---- label3 ----
                     label3.setText(peliculaList.getPeliculasDTO().get(2)
                             .getTitulo());
@@ -148,8 +144,7 @@ public class ResultadoFiltradosAnonimo extends JFrame {
                         }
                     });
 
-                    if (tam > 3){
-
+                    if (tam > 3) {
                         //---- label4 ----
                         label4.setText(peliculaList.getPeliculasDTO()
                                 .get(3).getTitulo());
@@ -197,26 +192,24 @@ public class ResultadoFiltradosAnonimo extends JFrame {
             });
         }
 
-        {
-            // compute preferred size
-            Dimension preferredSize = new Dimension();
-            for(int i = 0; i < contentPane.getComponentCount(); i++) {
-                Rectangle bounds = contentPane.getComponent(i).getBounds();
-                preferredSize.width = Math.max(bounds.x
-                        + bounds.width, preferredSize.width);
-                preferredSize.height = Math.max(bounds.y
-                        + bounds.height, preferredSize.height);
-            }
-            Insets insets = contentPane.getInsets();
-            preferredSize.width += insets.right;
-            preferredSize.height += insets.bottom;
-            contentPane.setMinimumSize(preferredSize);
-            contentPane.setPreferredSize(preferredSize);
+        Dimension preferredSize = new Dimension();
+        for (int i = 0; i < contentPane.getComponentCount(); i++) {
+            Rectangle bounds = contentPane.getComponent(i).getBounds();
+            preferredSize.width = Math.max(bounds.x
+                    + bounds.width, preferredSize.width);
+            preferredSize.height = Math.max(bounds.y
+                    + bounds.height, preferredSize.height);
         }
+        Insets insets = contentPane.getInsets();
+        preferredSize.width += insets.right;
+        preferredSize.height += insets.bottom;
+        contentPane.setMinimumSize(preferredSize);
+        contentPane.setPreferredSize(preferredSize);
+
         pack();
         setLocationRelativeTo(getOwner());
         Rectangle r = ventana.getBounds();
-        r.grow(45,45);
+        r.grow(45, 45);
         ventana.setBounds(r);
     }
 
@@ -242,11 +235,11 @@ public class ResultadoFiltradosAnonimo extends JFrame {
      * @param label Jlabel sobre el cual se hará el ajuste de la imagen.
      * @return Icono de Imagen con el tamaño ajustado.
      */
-    public ImageIcon ResizeImage(String ImagePath, JLabel label)
-    {
+    public ImageIcon ResizeImage(String ImagePath, JLabel label) {
         ImageIcon MyImage = new ImageIcon(ImagePath);
         Image img = MyImage.getImage();
-        Image newImg = img.getScaledInstance(label.getWidth(), label.getHeight(), Image.SCALE_SMOOTH);
+        Image newImg = img.getScaledInstance(label.getWidth(),
+                label.getHeight(), Image.SCALE_SMOOTH);
         ImageIcon image = new ImageIcon(newImg);
         return image;
     }

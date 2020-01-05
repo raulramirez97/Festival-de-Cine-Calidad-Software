@@ -39,16 +39,16 @@ public class VerComentariosPelicula extends JFrame {
 
         String myPath = System.getProperty("user.dir");
         this.setIconImage(new ImageIcon(myPath
-                +"/src/main/resources/img/filmicon.png").getImage());
+                + "/src/main/resources/img/filmicon.png").getImage());
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         //======== this ========
-        setTitle("Comentarios: "+pelicula.getTitulo());
+        setTitle("Comentarios: " + pelicula.getTitulo());
         Container contentPane = getContentPane();
         contentPane.setLayout(null);
 
         //---- label1 ----
-        label1.setText("Comentarios: "+pelicula.getTitulo());
+        label1.setText("Comentarios: " + pelicula.getTitulo());
         label1.setFont(label1.getFont().deriveFont(
                 label1.getFont().getSize() + 10f));
         label1.setHorizontalAlignment(SwingConstants.CENTER);
@@ -61,8 +61,7 @@ public class VerComentariosPelicula extends JFrame {
                     + "tiene comentarios registrados.");
             contentPane.add(label8);
             label8.setBounds(345, 305, 300, 25);
-        }
-        else {
+        } else {
             int tam = pelicula.getComentarios().size();
             if (tam > 0) {
                 //---- label2 ----
@@ -77,13 +76,12 @@ public class VerComentariosPelicula extends JFrame {
                 label3.setBounds(270, 185, 195, 20);
 
                 //======== scrollPane1 ========
-                {
-                    //---- textArea1 ----
-                    textArea1.setText(pelicula.getComentarios().get(0)
-                            .getContenido());
-                    scrollPane1.setViewportView(textArea1);
-                    textArea1.setEditable(false);
-                }
+                //---- textArea1 ----
+                textArea1.setText(pelicula.getComentarios().get(0)
+                        .getContenido());
+                scrollPane1.setViewportView(textArea1);
+                textArea1.setEditable(false);
+
                 contentPane.add(scrollPane1);
                 scrollPane1.setBounds(90, 225, 815, 60);
 
@@ -139,7 +137,7 @@ public class VerComentariosPelicula extends JFrame {
         button1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ComentarPelicula m = new ComentarPelicula(usuario,pelicula);
+                ComentarPelicula m = new ComentarPelicula(usuario, pelicula);
                 m.setVisible(true);
                 dispose();
             }
@@ -152,32 +150,31 @@ public class VerComentariosPelicula extends JFrame {
         button2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                InformePelicula m = new InformePelicula(pelicula,usuario);
+                InformePelicula m = new InformePelicula(pelicula, usuario);
                 m.setVisible(true);
                 dispose();
             }
         });
 
-        {
-            // compute preferred size
-            Dimension preferredSize = new Dimension();
-            for(int i = 0; i < contentPane.getComponentCount(); i++) {
-                Rectangle bounds = contentPane.getComponent(i).getBounds();
-                preferredSize.width = Math.max(bounds.x
-                        + bounds.width, preferredSize.width);
-                preferredSize.height = Math.max(bounds.y
-                        + bounds.height, preferredSize.height);
-            }
-            Insets insets = contentPane.getInsets();
-            preferredSize.width += insets.right;
-            preferredSize.height += insets.bottom;
-            contentPane.setMinimumSize(preferredSize);
-            contentPane.setPreferredSize(preferredSize);
+        // compute preferred size
+        Dimension preferredSize = new Dimension();
+        for (int i = 0; i < contentPane.getComponentCount(); i++) {
+            Rectangle bounds = contentPane.getComponent(i).getBounds();
+            preferredSize.width = Math.max(bounds.x
+                    + bounds.width, preferredSize.width);
+            preferredSize.height = Math.max(bounds.y
+                    + bounds.height, preferredSize.height);
         }
+        Insets insets = contentPane.getInsets();
+        preferredSize.width += insets.right;
+        preferredSize.height += insets.bottom;
+        contentPane.setMinimumSize(preferredSize);
+        contentPane.setPreferredSize(preferredSize);
+
         pack();
         setLocationRelativeTo(getOwner());
         Rectangle r = this.getBounds();
-        r.grow(45,45);
+        r.grow(45, 45);
         this.setBounds(r);
     }
 

@@ -36,11 +36,11 @@ public class ComentarPelicula extends JFrame {
 
         String myPath = System.getProperty("user.dir");
         this.setIconImage(new ImageIcon(myPath
-                +"/src/main/resources/img/filmicon.png").getImage());
+                + "/src/main/resources/img/filmicon.png").getImage());
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         //======== this ========
-        setTitle("Comentar Pelicula: "+pelicula.getTitulo());
+        setTitle("Comentar Pelicula: " + pelicula.getTitulo());
         Container contentPane = getContentPane();
         contentPane.setLayout(null);
 
@@ -53,7 +53,7 @@ public class ComentarPelicula extends JFrame {
         label1.setBounds(390, 45, 200, 50);
 
         //---- label2 ----
-        label2.setText("Comentario - "+pelicula.getTitulo());
+        label2.setText("Comentario - " + pelicula.getTitulo());
         label2.setHorizontalAlignment(SwingConstants.CENTER);
         label2.setFont(label2.getFont().deriveFont(label2.getFont()
                 .getSize() + 10f));
@@ -80,16 +80,15 @@ public class ComentarPelicula extends JFrame {
                             textField1.getText());
                     logger.info("La pelicula se ha comentado"
                             + " correctamente");
-                    InformePelicula m = new InformePelicula (pelicula,aux);
+                    InformePelicula m = new InformePelicula(pelicula, aux);
                     m.setVisible(true);
                     dispose();
-                }
-                //NO LLEGA AQUI LA EXCEPCION CON LAS PETICIONES REST...
-                catch (NullPointerException exc) {
+                } catch (NullPointerException exc) {
+                    //NO LLEGA AQUI LA EXCEPCION CON LAS PETICIONES REST...
                     JOptionPane.showMessageDialog(ventana,
                             "La pelicula que se ha querido"
-                                    + " comentar no está " +
-                            "entre las peliculas disponibles.");
+                                    + " comentar no está "
+                                    + "entre las peliculas disponibles.");
                 }
             }
         });
@@ -101,32 +100,30 @@ public class ComentarPelicula extends JFrame {
         button2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                InformePelicula m = new InformePelicula (pelicula,aux);
+                InformePelicula m = new InformePelicula(pelicula, aux);
                 m.setVisible(true);
                 dispose();
             }
         });
-
-        {
-            // compute preferred size
-            Dimension preferredSize = new Dimension();
-            for(int i = 0; i < contentPane.getComponentCount(); i++) {
-                Rectangle bounds = contentPane.getComponent(i).getBounds();
-                preferredSize.width = Math.max(bounds.x
-                        + bounds.width, preferredSize.width);
-                preferredSize.height = Math.max(bounds.y
-                        + bounds.height, preferredSize.height);
-            }
-            Insets insets = contentPane.getInsets();
-            preferredSize.width += insets.right;
-            preferredSize.height += insets.bottom;
-            contentPane.setMinimumSize(preferredSize);
-            contentPane.setPreferredSize(preferredSize);
+        // compute preferred size
+        Dimension preferredSize = new Dimension();
+        for (int i = 0; i < contentPane.getComponentCount(); i++) {
+            Rectangle bounds = contentPane.getComponent(i).getBounds();
+            preferredSize.width = Math.max(bounds.x
+                    + bounds.width, preferredSize.width);
+            preferredSize.height = Math.max(bounds.y
+                    + bounds.height, preferredSize.height);
         }
+        Insets insets = contentPane.getInsets();
+        preferredSize.width += insets.right;
+        preferredSize.height += insets.bottom;
+        contentPane.setMinimumSize(preferredSize);
+        contentPane.setPreferredSize(preferredSize);
+
         pack();
         setLocationRelativeTo(getOwner());
         Rectangle r = ventana.getBounds();
-        r.grow(45,45);
+        r.grow(45, 45);
         ventana.setBounds(r);
     }
 

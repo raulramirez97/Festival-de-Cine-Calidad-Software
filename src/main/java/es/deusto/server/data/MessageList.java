@@ -14,7 +14,7 @@ public class MessageList {
 
     private List<Message> messages = new ArrayList<Message>();
 
-    public MessageList() {}
+    public MessageList() { }
 
     public List<Message> getMessages() {
         return this.messages;
@@ -25,7 +25,7 @@ public class MessageList {
         this.messages.addAll(messages);
     }
 
-	public void addMessage(Message m) {
-		this.messages.add(m);		
+    public void addMessage(Message m) {
+		this.messages.add(m);
 	}
 }

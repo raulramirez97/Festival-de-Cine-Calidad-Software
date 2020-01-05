@@ -25,8 +25,8 @@ public class ComentarioDTO implements Serializable {
 	private String contenido;
 	private long timestamp;
 
-	public ComentarioDTO(PeliculaDTO peli, String usuario, String contenido)
-	{
+	public ComentarioDTO(PeliculaDTO peli, String usuario,
+						 String contenido) {
 		this.id = 1;
 		this.pelicula = peli;
 		this.usuario = usuario;
@@ -73,9 +73,9 @@ public class ComentarioDTO implements Serializable {
 
 	public String toString() {
 		Date fecha = new Date(this.getTimestamp());
-		return "ID Comentario: "+this.getId()+", Usuario: "
-				+ this.getUsuario()
-				+ ", Fecha: "+ fecha
-				+ ", Contenido: "+ contenido;
+		return "ID Comentario: " + this.getId()
+				+ ", Usuario: " + this.getUsuario()
+				+ ", Fecha: " + fecha
+				+ ", Contenido: " + contenido;
 	}
 }

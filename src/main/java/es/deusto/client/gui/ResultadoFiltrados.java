@@ -49,7 +49,7 @@ public class ResultadoFiltrados extends JFrame {
         //======== this ========
         String myPath = System.getProperty("user.dir");
         this.setIconImage(new ImageIcon(myPath
-                +"/src/main/resources/img/filmicon.png").getImage());
+                + "/src/main/resources/img/filmicon.png").getImage());
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         int tam = peliculaList.getPeliculasDTO().size();
 
@@ -68,7 +68,7 @@ public class ResultadoFiltrados extends JFrame {
             //---- label11 ----
             userIcon.setBounds(770, 50, 120, 55);
             userIcon.setIcon(ResizeImage(myPath
-                    +"/src/main/resources/img/avataricon.jpg", userIcon));
+                    + "/src/main/resources/img/avataricon.jpg", userIcon));
             contentPane.add(userIcon);
 
             //---- label1 ----
@@ -115,8 +115,8 @@ public class ResultadoFiltrados extends JFrame {
                 //---- button2 ----
                 button2.setText("+ Info");
                 contentPane.add(button2);
-                button2.setBounds(new Rectangle(new Point(785, 270)
-                        , button2.getPreferredSize()));
+                button2.setBounds(new Rectangle(new Point(785, 270),
+                        button2.getPreferredSize()));
                 button2.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
@@ -155,7 +155,7 @@ public class ResultadoFiltrados extends JFrame {
                         }
                     });
 
-                    if (tam > 3){
+                    if (tam > 3) {
                         //---- label4 ----
                         label4.setText(peliculaList.getPeliculasDTO()
                                 .get(3).getTitulo());
@@ -201,26 +201,25 @@ public class ResultadoFiltrados extends JFrame {
                 }
             });
         }
-        {
-            // compute preferred size
-            Dimension preferredSize = new Dimension();
-            for(int i = 0; i < contentPane.getComponentCount(); i++) {
-                Rectangle bounds = contentPane.getComponent(i).getBounds();
-                preferredSize.width = Math.max(bounds.x
-                        + bounds.width, preferredSize.width);
-                preferredSize.height = Math.max(bounds.y
-                        + bounds.height, preferredSize.height);
-            }
-            Insets insets = contentPane.getInsets();
-            preferredSize.width += insets.right;
-            preferredSize.height += insets.bottom;
-            contentPane.setMinimumSize(preferredSize);
-            contentPane.setPreferredSize(preferredSize);
+        // compute preferred size
+        Dimension preferredSize = new Dimension();
+        for (int i = 0; i < contentPane.getComponentCount(); i++) {
+            Rectangle bounds = contentPane.getComponent(i).getBounds();
+            preferredSize.width = Math.max(bounds.x
+                    + bounds.width, preferredSize.width);
+            preferredSize.height = Math.max(bounds.y
+                    + bounds.height, preferredSize.height);
         }
+        Insets insets = contentPane.getInsets();
+        preferredSize.width += insets.right;
+        preferredSize.height += insets.bottom;
+        contentPane.setMinimumSize(preferredSize);
+        contentPane.setPreferredSize(preferredSize);
+
         pack();
         setLocationRelativeTo(getOwner());
         Rectangle r = ventana.getBounds();
-        r.grow(45,45);
+        r.grow(45, 45);
         ventana.setBounds(r);
     }
 
@@ -248,8 +247,7 @@ public class ResultadoFiltrados extends JFrame {
      * @param label Jlabel sobre el cual se hará el ajuste de la imagen.
      * @return Icono de Imagen con el tamaño ajustado.
      */
-    public ImageIcon ResizeImage(String ImagePath, JLabel label)
-    {
+    public ImageIcon ResizeImage(String ImagePath, JLabel label) {
         ImageIcon MyImage = new ImageIcon(ImagePath);
         Image img = MyImage.getImage();
         Image newImg = img.getScaledInstance(label.getWidth(),

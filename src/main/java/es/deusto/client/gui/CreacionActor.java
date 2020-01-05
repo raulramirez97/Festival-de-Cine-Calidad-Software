@@ -43,7 +43,7 @@ public class CreacionActor extends JFrame {
 
         String myPath = System.getProperty("user.dir");
         this.setIconImage(new ImageIcon(myPath
-                +"/src/main/resources/img/filmicon.png").getImage());
+                + "/src/main/resources/img/filmicon.png").getImage());
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         //======== this ========
@@ -89,10 +89,10 @@ public class CreacionActor extends JFrame {
                 textFieldNomActor.getPreferredSize().height);
         textFieldIDActor.addFocusListener(new FocusListener() {
             @Override
-            public void focusGained(FocusEvent e) {}
+            public void focusGained(FocusEvent e) { }
             @Override
             public void focusLost(FocusEvent e) {
-                if (textFieldIDActor.getText().isEmpty()){
+                if (textFieldIDActor.getText().isEmpty()) {
                     JOptionPane.showMessageDialog(ventana,
                             "Inserte contenido en el cuadro"
                                     + " de los actores, por favor.");
@@ -104,10 +104,10 @@ public class CreacionActor extends JFrame {
         textFieldNomActor.setBounds(225, 195, 275, 30);
         textFieldNomActor.addFocusListener(new FocusListener() {
             @Override
-            public void focusGained(FocusEvent e) {}
+            public void focusGained(FocusEvent e) { }
             @Override
             public void focusLost(FocusEvent e) {
-                if (textFieldNomActor.getText().isEmpty()){
+                if (textFieldNomActor.getText().isEmpty()) {
                     JOptionPane.showMessageDialog(ventana,
                             "Inserte contenido en el cuadro de"
                                     + " los actores, por favor.");
@@ -119,10 +119,10 @@ public class CreacionActor extends JFrame {
         textFieldApeActor.setBounds(225, 270, 275, 30);
         textFieldApeActor.addFocusListener(new FocusListener() {
             @Override
-            public void focusGained(FocusEvent e) {}
+            public void focusGained(FocusEvent e) { }
             @Override
             public void focusLost(FocusEvent e) {
-                if (textFieldApeActor.getText().isEmpty()){
+                if (textFieldApeActor.getText().isEmpty()) {
                     JOptionPane.showMessageDialog(ventana,
                             "Inserte contenido en el cuadro de"
                                     + " los actores, por favor.");
@@ -134,7 +134,7 @@ public class CreacionActor extends JFrame {
         textFieldEdadActor.setBounds(225, 340, 275, 30);
         textFieldEdadActor.addFocusListener(new FocusListener() {
             @Override
-            public void focusGained(FocusEvent e) {}
+            public void focusGained(FocusEvent e) { }
             @Override
             public void focusLost(FocusEvent e) {
                 try {
@@ -177,8 +177,7 @@ public class CreacionActor extends JFrame {
                     Menu m = new Menu(aux);
                     m.setVisible(true);
                     dispose();
-                }
-                catch (NumberFormatException exc) {
+                } catch (NumberFormatException exc) {
                     JOptionPane.showMessageDialog(ventana,
                             "Inserte un valor numérico en"
                                     + " el campo de edad numérico, por "
@@ -186,27 +185,25 @@ public class CreacionActor extends JFrame {
                 }
             }
         });
-
-        {
-            // compute preferred size
-            Dimension preferredSize = new Dimension();
-            for(int i = 0; i < contentPane.getComponentCount(); i++) {
-                Rectangle bounds = contentPane.getComponent(i).getBounds();
-                preferredSize.width = Math.max(bounds.x
-                        + bounds.width, preferredSize.width);
-                preferredSize.height = Math.max(bounds.y
-                        + bounds.height, preferredSize.height);
-            }
-            Insets insets = contentPane.getInsets();
-            preferredSize.width += insets.right;
-            preferredSize.height += insets.bottom;
-            contentPane.setMinimumSize(preferredSize);
-            contentPane.setPreferredSize(preferredSize);
+        // compute preferred size
+        Dimension preferredSize = new Dimension();
+        for (int i = 0; i < contentPane.getComponentCount(); i++) {
+            Rectangle bounds = contentPane.getComponent(i).getBounds();
+            preferredSize.width = Math.max(bounds.x
+                    + bounds.width, preferredSize.width);
+            preferredSize.height = Math.max(bounds.y
+                    + bounds.height, preferredSize.height);
         }
+        Insets insets = contentPane.getInsets();
+        preferredSize.width += insets.right;
+        preferredSize.height += insets.bottom;
+        contentPane.setMinimumSize(preferredSize);
+        contentPane.setPreferredSize(preferredSize);
+
         pack();
         setLocationRelativeTo(getOwner());
         Rectangle r = ventana.getBounds();
-        r.grow(45,45);
+        r.grow(45, 45);
         ventana.setBounds(r);
     }
 

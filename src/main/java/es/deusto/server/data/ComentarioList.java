@@ -15,7 +15,7 @@ public class ComentarioList {
 
     private List<ComentarioDTO> comentarios = new ArrayList<ComentarioDTO>();
 
-    public ComentarioList() {}
+    public ComentarioList() { }
 
     public List<ComentarioDTO> getComentariosDTO() {
         return this.comentarios;

@@ -28,7 +28,8 @@ public class DBManager implements IDAO {
 
 	public DBManager() {
 		pmf = JDOHelper
-				.getPersistenceManagerFactory("datanucleus.properties");
+				.getPersistenceManagerFactory(
+						"datanucleus.properties");
 	}
 
 	/**
@@ -37,7 +38,6 @@ public class DBManager implements IDAO {
 	 */
 	@Override
 	public void storeUsuario(UsuarioDTO u) {
-
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx = pm.currentTransaction();
 		try {
@@ -72,9 +72,9 @@ public class DBManager implements IDAO {
 			usuarioDTO = pm.getObjectById(UsuarioDTO.class, login);
 			tx.commit();
 		} catch (JDOObjectNotFoundException jonfe) {
-			logger.severe("User does not exist: " + jonfe.getMessage());
-		}
-		finally {
+			logger.severe("User does not exist: "
+					+ jonfe.getMessage());
+		} finally {
 			if (tx != null && tx.isActive()) {
 				tx.rollback();
 			}
@@ -93,18 +93,17 @@ public class DBManager implements IDAO {
 	public void updateUsuario(UsuarioDTO u) {
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx = pm.currentTransaction();
-
 		try {
 			tx.begin();
 			pm.makePersistent(u);
 			tx.commit();
 		} catch (Exception ex) {
-			logger.severe("Error updating a user: " + ex.getMessage());
+			logger.severe("Error updating a user: "
+					+ ex.getMessage());
 		} finally {
 			if (tx != null && tx.isActive()) {
 				tx.rollback();
 			}
-
 			pm.close();
 		}
 	}
@@ -117,13 +116,13 @@ public class DBManager implements IDAO {
 	public void deleteUsuario(UsuarioDTO u) {
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx = pm.currentTransaction();
-
 		try {
 			tx.begin();
 			pm.deletePersistent(u);
 			tx.commit();
 		} catch (Exception ex) {
-			logger.severe("Error deleting a user: " + ex.getMessage());
+			logger.severe("Error deleting a user: "
+					+ ex.getMessage());
 		} finally {
 			if (tx != null && tx.isActive()) {
 				tx.rollback();
@@ -143,7 +142,8 @@ public class DBManager implements IDAO {
 		try {
 			tx.begin();
 			logger.info("   * Storing an actor: "
-					+ a.getNombre() + " " + a.getApellido());
+					+ a.getNombre() + " "
+					+ a.getApellido());
 			pm.makePersistent(a);
 			tx.commit();
 		} catch (Exception ex) {
@@ -153,7 +153,6 @@ public class DBManager implements IDAO {
 			if (tx != null && tx.isActive()) {
 				tx.rollback();
 			}
-
 			pm.close();
 		}
 	}
@@ -174,9 +173,9 @@ public class DBManager implements IDAO {
 			actorDTO = pm.getObjectById(ActorDTO.class, id);
 			tx.commit();
 		} catch (JDOObjectNotFoundException jonfe) {
-			logger.severe("Actor does not exist: " + jonfe.getMessage());
-		}
-		finally {
+			logger.severe("Actor does not exist: "
+					+ jonfe.getMessage());
+		} finally {
 			if (tx != null && tx.isActive()) {
 				tx.rollback();
 			}
@@ -195,18 +194,17 @@ public class DBManager implements IDAO {
 	public void updateActor(ActorDTO a) {
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx = pm.currentTransaction();
-
 		try {
 			tx.begin();
 			pm.makePersistent(a);
 			tx.commit();
 		} catch (Exception ex) {
-			logger.severe("Error updating an actor: " + ex.getMessage());
+			logger.severe("Error updating an actor: "
+					+ ex.getMessage());
 		} finally {
 			if (tx != null && tx.isActive()) {
 				tx.rollback();
 			}
-
 			pm.close();
 		}
 	}
@@ -219,7 +217,6 @@ public class DBManager implements IDAO {
 	public void deleteActor(ActorDTO a) {
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx = pm.currentTransaction();
-
 		try {
 			tx.begin();
 			pm.deletePersistent(a);
@@ -245,26 +242,21 @@ public class DBManager implements IDAO {
 		ArrayList<ActorDTO> actors = new ArrayList<ActorDTO>();
 		PersistenceManager pm = null;
 		Transaction tx = null;
-		try
-		{
+		try {
 			pm = pmf.getPersistenceManager();
 			tx = pm.currentTransaction();
 			tx.begin();
-			Extent<ActorDTO> extent = pm.getExtent(ActorDTO.class, true);
+			Extent<ActorDTO> extent = pm.getExtent(
+					ActorDTO.class, true);
 
-			for (ActorDTO actor : extent)
-			{
+			for (ActorDTO actor : extent) {
 				actors.add(actor);
 			}
-		}
-		catch (Exception ex)
-		{
+		} catch (Exception ex) {
 			logger.severe(
-					" $ Error retrieving actors using an 'Extent': "
-							+ ex.getMessage());
-		}
-		finally
-		{
+					" $ Error retrieving actors using "
+							+ "an 'Extent': " + ex.getMessage());
+		} finally {
 			if (pm != null && !pm.isClosed()) {
 				pm.close();
 			}
@@ -310,17 +302,16 @@ public class DBManager implements IDAO {
 		Transaction tx = pm.currentTransaction();
 		try {
 			tx.begin();
-			peliculaDTO = pm.getObjectById(PeliculaDTO.class, titulo);
+			peliculaDTO = pm.getObjectById(PeliculaDTO.class,
+					titulo);
 			tx.commit();
 		} catch (JDOObjectNotFoundException jonfe) {
 			logger.severe("Pelicula does not exist: "
 					+ jonfe.getMessage());
-		}
-		finally {
+		} finally {
 			if (tx != null && tx.isActive()) {
 				tx.rollback();
 			}
-
 			pm.close();
 		}
 		return peliculaDTO;
@@ -336,7 +327,6 @@ public class DBManager implements IDAO {
 	public void updatePelicula(PeliculaDTO p) {
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx = pm.currentTransaction();
-
 		try {
 			tx.begin();
 			pm.makePersistent(p);
@@ -348,7 +338,6 @@ public class DBManager implements IDAO {
 			if (tx != null && tx.isActive()) {
 				tx.rollback();
 			}
-
 			pm.close();
 		}
 	}
@@ -361,7 +350,6 @@ public class DBManager implements IDAO {
 	public void deletePelicula(PeliculaDTO p) {
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx = pm.currentTransaction();
-
 		try {
 			tx.begin();
 			pm.deletePersistent(p);
@@ -387,27 +375,21 @@ public class DBManager implements IDAO {
 		ArrayList<PeliculaDTO> peliculas = new ArrayList<PeliculaDTO>();
 		PersistenceManager pm = null;
 		Transaction tx = null;
-		try
-		{
+		try {
 			pm = pmf.getPersistenceManager();
 			tx = pm.currentTransaction();
 			tx.begin();
-			Extent<PeliculaDTO> extent = pm.getExtent(PeliculaDTO.class,
-					true);
+			Extent<PeliculaDTO> extent = pm.getExtent(
+					PeliculaDTO.class, true);
 
-			for (PeliculaDTO pelicula : extent)
-			{
+			for (PeliculaDTO pelicula : extent) {
 				peliculas.add(pelicula);
 			}
-		}
-		catch (Exception ex)
-		{
+		} catch (Exception ex) {
 			logger.severe(
-					" $ Error retrieving peliculas using an 'Extent': "
-							+ ex.getMessage());
-		}
-		finally
-		{
+					" $ Error retrieving peliculas using "
+							+ "an 'Extent': " + ex.getMessage());
+		} finally {
 			if (pm != null && !pm.isClosed()) {
 				pm.close();
 			}
@@ -416,7 +398,8 @@ public class DBManager implements IDAO {
 	}
 
 	/**
-	 * Método que permite almacenar la ValoracionDTO hecha de una PeliculaDTO.
+	 * Método que permite almacenar la ValoracionDTO hecha de una
+	 * PeliculaDTO.
 	 * @param v ValoracionDTO a almacenar en la base de datos.
 	 */
 	@Override
@@ -436,7 +419,6 @@ public class DBManager implements IDAO {
 			if (tx != null && tx.isActive()) {
 				tx.rollback();
 			}
-
 			pm.close();
 		}
 	}
@@ -448,30 +430,25 @@ public class DBManager implements IDAO {
 	 */
 	@Override
 	public ArrayList<ValoracionDTO> getValoraciones() {
-		ArrayList<ValoracionDTO> valoraciones = new ArrayList<ValoracionDTO>();
+		ArrayList<ValoracionDTO> valoraciones = new ArrayList<>();
 		PersistenceManager pm = null;
 		Transaction tx = null;
-		try
-		{
+		try {
 			pm = pmf.getPersistenceManager();
 			tx = pm.currentTransaction();
 			tx.begin();
-			Extent<ValoracionDTO> extent = pm.getExtent(ValoracionDTO.class,
-					true);
+			Extent<ValoracionDTO> extent = pm.getExtent(
+					ValoracionDTO.class, true);
 
-			for (ValoracionDTO valoracion : extent)
-			{
+			for (ValoracionDTO valoracion : extent) {
 				valoraciones.add(valoracion);
 			}
-		}
-		catch (Exception ex)
-		{
+		} catch (Exception ex) {
 			logger.severe(
-					" $ Error retrieving valoraciones using an "
-							+ "'Extent': " + ex.getMessage());
-		}
-		finally
-		{
+					" $ Error retrieving valoraciones using "
+							+ "an 'Extent': "
+							+ ex.getMessage());
+		} finally {
 			if (pm != null && !pm.isClosed()) {
 				pm.close();
 			}
@@ -486,29 +463,23 @@ public class DBManager implements IDAO {
 	 */
 	@Override
 	public ArrayList<ComentarioDTO> getComentarios() {
-		ArrayList<ComentarioDTO> comentarios = new ArrayList<ComentarioDTO>();
+		ArrayList<ComentarioDTO> comentarios = new ArrayList<>();
 		PersistenceManager pm = null;
 		Transaction tx = null;
-		try
-		{
+		try {
 			pm = pmf.getPersistenceManager();
 			tx = pm.currentTransaction();
 			tx.begin();
-			Extent<ComentarioDTO> extent = pm.getExtent(ComentarioDTO.class,
-					true);
+			Extent<ComentarioDTO> extent = pm.getExtent(
+					ComentarioDTO.class, true);
 
-			for (ComentarioDTO comentario : extent)
-			{
+			for (ComentarioDTO comentario : extent) {
 				comentarios.add(comentario);
 			}
-		}
-		catch (Exception ex)
-		{
+		} catch (Exception ex) {
 			logger.severe(" $ Error retrieving comentarios using an"
 					+ " 'Extent': " + ex.getMessage());
-		}
-		finally
-		{
+		} finally {
 			if (pm != null && !pm.isClosed()) {
 				pm.close();
 			}

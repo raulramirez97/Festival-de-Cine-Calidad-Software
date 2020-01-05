@@ -51,7 +51,7 @@ public class PeliculaDTO implements Serializable {
 	@Persistent(defaultFetchGroup = "true", mappedBy = "pelicula",
 			dependentElement = "true")
 	@Join
-	private List<ComentarioDTO> comentarios = new ArrayList<ComentarioDTO>();
+	private List<ComentarioDTO> comentarios = new ArrayList<>();
 
 	/**
 	 * Representa los nombres y apellidos de los actores más destacados que
@@ -65,15 +65,20 @@ public class PeliculaDTO implements Serializable {
 	/**
 	 * Representa la ruta en la que se encuentra la imagen de la pelicula a
 	 * la que se quiere hacer referencia. Por ello, es importante tener la
-	 * carpeta java/resources/img con los carteles de las películas preparados.
+	 * carpeta java/resources/img con los carteles de las películas
+	 * preparados.
 	 */
 	private String URIimagen = "";
 
 	public PeliculaDTO(String titulo, String sinopsis, String genero,
-					   int duracion, int anyo, String director,
-					   String enlaceTrailer, double valoracionMedia,
-					   String premios, List<ComentarioDTO> comentarios,
-					   String seccion, String actores, String URIimagen) {
+					   int duracion, int anyo,
+					   String director,
+					   String enlaceTrailer,
+					   double valoracionMedia,
+					   String premios,
+					   List<ComentarioDTO> comentarios,
+					   String seccion, String actores,
+					   String URIimagen) {
 		this.titulo = titulo;
 		this.sinopsis = sinopsis;
 		this.genero = genero;
@@ -180,89 +185,150 @@ public class PeliculaDTO implements Serializable {
 
 	/**
 	 * Método toString generado para obtener la representación a modo de
-	 * informe por pantalla. Sin embargo, este método debería dejar de usarse
-	 * cuando el informe se genere con una ventana nueva.
+	 * informe por pantalla. Sin embargo, este método debería dejar de
+	 * usarse cuando el informe se genere con una ventana nueva.
 	 * @return Informe de una película en formato texto mediante terminal.
 	 */
 	public String toString() {
 
 		if (this.getComentarios() == null) {
 			if (this.getActores() == null) {
-			return "___________________________________________\n" +
-					"Pelicula: Titulo --> " + this.getTitulo() + ", " +
-					"Sinopsis -->  " + this.getSinopsis() + ", Genero --> "
-					+ this.getGenero() + ", Seccion --> "
-					+ this.getSeccionFestival() +  ", Duracion --> "
-					+ this.getDuracion() + ", Director --> "
-					+ this.getDirector() + ", Año --> " + this.getAnyo()
-					+ ", Enlace a trailer --> " + this.getEnlaceTrailer()
-					+ ", Valoracion media --> " + this.getValoracionMedia()
-					+ ", Premios --> " + this.getPremios()
-					+ ", Comentarios --> No hay registrados,"
-					+ " Actores --> No hay registrados" +
-					"\n__________________________________________\n";
+			return "_____________________"
+					+ "______________________\n"
+					+ "Pelicula: Titulo --> "
+					+ this.getTitulo() + ", "
+					+ "Sinopsis -->  "
+					+ this.getSinopsis()
+					+ ", Genero --> "
+					+ this.getGenero()
+					+ ", Seccion --> "
+					+ this.getSeccionFestival()
+					+  ", Duracion --> "
+					+ this.getDuracion()
+					+ ", Director --> "
+					+ this.getDirector()
+					+ ", Año --> "
+					+ this.getAnyo()
+					+ ", Enlace a trailer --> "
+					+ this.getEnlaceTrailer()
+					+ ", Valoracion media --> "
+					+ this.getValoracionMedia()
+					+ ", Premios --> "
+					+ this.getPremios()
+					+ ", Comentarios --> "
+					+ "No hay registrados,"
+					+ " Actores --> "
+					+ "No hay registrados"
+					+ "\n___________________"
+					+ "_______________________\n";
 
-				}
-			else {
-					return "___________________________________________\n" +
-							"Pelicula: Titulo --> " + this.getTitulo() + ", "
-							+ "Sinopsis -->  " + this.getSinopsis() + ", " +
-							"Genero --> " + this.getGenero()
-							+ ", Seccion --> " + this.getSeccionFestival()
-							+ ", Duracion --> " + this.getDuracion()
-							+ ", Director --> " + this.getDirector()
-							+ ", Año --> " + this.getAnyo()
-							+ ", Enlace a trailer --> "
+				} else {
+					return "_________________"
+							+ "________________\n"
+							+ "Pelicula: Titulo --> "
+							+ this.getTitulo()
+							+ ", "
+							+ "Sinopsis -->  "
+							+ this.getSinopsis()
+							+ ", "
+							+ "Genero --> "
+							+ this.getGenero()
+							+ ", Seccion --> "
+							+ this.getSeccionFestival()
+							+ ", Duracion --> "
+							+ this.getDuracion()
+							+ ", Director --> "
+							+ this.getDirector()
+							+ ", Año --> "
+							+ this.getAnyo()
+							+ ", Enlace a trailer "
+							+ "--> "
 							+ this.getEnlaceTrailer()
-							+ ", Valoracion media --> "
+							+ ", Valoracion media "
+							+ "--> "
 							+ this.getValoracionMedia()
-							+ ", Premios --> " + this.getPremios()
-							+ ", Comentarios --> No hay registrados"
-							+ ", Actores --> [" + this.getActores() + "]"
-							+ "\n__________________________________________\n";
+							+ ", Premios --> "
+							+ this.getPremios()
+							+ ", Comentarios --> "
+							+ "No hay registrados"
+							+ ", Actores --> ["
+							+ this.getActores()
+							+ "]"
+							+ "\n________________"
+							+ "_______________\n";
 				}
-			}
-		else {
+			} else {
 			StringBuffer comentariosStr = new StringBuffer();
 			for (ComentarioDTO comentario : this.getComentarios()) {
-				comentariosStr.append(comentario.toString() + " - ");
+				comentariosStr.append(comentario.toString()
+						+ " - ");
 			}
 
 			if (this.getActores() == null) {
-				return "___________________________________________\n"
-						+ "Pelicula: Titulo --> " + this.getTitulo() + ", "
-						+ "Sinopsis -->  " + this.getSinopsis()
-						+ ", Genero --> " + this.getGenero()
-						+ ", Seccion --> " + this.getSeccionFestival()
-						+ ", Duracion --> " + this.getDuracion()
-						+ ", Director --> " + this.getDirector()
-						+ ", Año --> " + this.getAnyo()
-						+ ", Enlace a trailer --> " + this.getEnlaceTrailer()
-						+ ", Valoracion media --> " + this.getValoracionMedia()
-						+ ", Premios --> " + this.getPremios()
-						+ ", Comentarios --> [" + comentariosStr
+				return "___________________"
+						+ "________________________\n"
+						+ "Pelicula: Titulo --> "
+						+ this.getTitulo()
+						+ ", "
+						+ "Sinopsis -->  "
+						+ this.getSinopsis()
+						+ ", Genero --> "
+						+ this.getGenero()
+						+ ", Seccion --> "
+						+ this.getSeccionFestival()
+						+ ", Duracion --> "
+						+ this.getDuracion()
+						+ ", Director --> "
+						+ this.getDirector()
+						+ ", Año --> "
+						+ this.getAnyo()
+						+ ", Enlace a trailer --> "
+						+ this.getEnlaceTrailer()
+						+ ", Valoracion media --> "
+						+ this.getValoracionMedia()
+						+ ", Premios --> "
+						+ this.getPremios()
+						+ ", Comentarios --> ["
+						+ comentariosStr
 						+ "]"
-						+ ", Actores --> No hay registrados"
-						+ "\n__________________________________________\n";
-			}
-			else {
-					return "___________________________________________\n"
-							+ "Pelicula: Titulo --> " + this.getTitulo()
+						+ ", Actores --> "
+						+ "No hay registrados"
+						+ "\n____________________"
+						+ "______________________\n";
+			} else {
+					return "________________"
+							+ "________________\n"
+							+ "Pelicula: Titulo "
+							+ "--> "
+							+ this.getTitulo()
 							+ ", "
-							+ "Sinopsis -->  " + this.getSinopsis()
-							+ ", Genero --> " + this.getGenero()
-							+ ", Seccion --> " + this.getSeccionFestival()
-							+ ", Duracion --> " + this.getDuracion()
-							+ ", Director --> " + this.getDirector()
-							+ ", Año --> " + this.getAnyo()
-							+ ", Enlace a trailer --> "
+							+ "Sinopsis -->  "
+							+ this.getSinopsis()
+							+ ", Genero --> "
+							+ this.getGenero()
+							+ ", Seccion --> "
+							+ this.getSeccionFestival()
+							+ ", Duracion --> "
+							+ this.getDuracion()
+							+ ", Director --> "
+							+ this.getDirector()
+							+ ", Año --> "
+							+ this.getAnyo()
+							+ ", Enlace a trailer "
+							+ "--> "
 							+ this.getEnlaceTrailer()
-							+ ", Valoracion media --> "
+							+ ", Valoracion media "
+							+ "--> "
 							+ this.getValoracionMedia()
-							+ ", Premios --> " + this.getPremios()
-							+ ", Comentarios --> [" + comentariosStr + "]"
-							+ ", Actores --> [" + this.getActores() + "]"
-							+ "\n__________________________________________\n";
+							+ ", Premios --> "
+							+ this.getPremios()
+							+ ", Comentarios --> ["
+							+ comentariosStr + "]"
+							+ ", Actores --> ["
+							+ this.getActores()
+							+ "]"
+							+ "\n________________"
+							+ "_________________\n";
 				}
 			}
 	}

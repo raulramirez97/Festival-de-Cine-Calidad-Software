@@ -108,10 +108,12 @@ public class FestivalCineController {
 		FestivalCineController.getInstance().registerUser("admin",
 				"admin");
 		logger.info("* Message coming from the server: '"
-				+ FestivalCineController.getInstance().sayMessage("admin",
+				+ FestivalCineController.getInstance()
+				.sayMessage("admin",
 				"admin", "This is test 1!") + "'");
 		logger.info("* Message coming from the server: '"
-				+ FestivalCineController.getInstance().sayMessage("admin",
+				+ FestivalCineController.getInstance()
+				.sayMessage("admin",
 				"admin", "This is test 2!") + "'");
 
 		MessageList messages = FestivalCineController.getInstance()
@@ -150,7 +152,8 @@ public class FestivalCineController {
 				"Muchos y variados",
 				"clasicos",
 				randomActors,
-				store+"/loqueelvientosellevo.jpg");
+				store
+						+ "/loqueelvientosellevo.jpg");
 
 		randomActors.clear();
 
@@ -177,8 +180,10 @@ public class FestivalCineController {
 				"Alguien",
 				"MIURL",
 				"Muchos y variados",
-				"clasicos",randomActors,
-				store+"/elreyleon.jpg");
+				"clasicos",
+				randomActors,
+				store
+						+ "/elreyleon.jpg");
 
 		randomActors.clear();
 		randomActors.add(FestivalCineController.getInstance()
@@ -199,7 +204,8 @@ public class FestivalCineController {
 				"Muchos y variados",
 				"novedades",
 				randomActors,
-				store+"/lacomedia.jpg");
+				store
+						+ "/lacomedia.jpg");
 		logger.info("Fixtures generated successfully.");
 	}
 
@@ -210,7 +216,7 @@ public class FestivalCineController {
 	 * @param password Contraseña del usuario.
 	 */
 	public void registerUser(String login, String password) {
-		rsl.registerUser(login,password);
+		rsl.registerUser(login, password);
 	}
 
 	/**
@@ -235,8 +241,10 @@ public class FestivalCineController {
 	 * @return Confirmación de mensaje enviado, en caso de haberse hecho
 	 * correctamente.
 	 */
-	public String sayMessage(String login, String password, String message) {
-		return rsl.sayMessage(login,password, message);
+	public String sayMessage(String login,
+							 String password,
+							 String message) {
+		return rsl.sayMessage(login, password, message);
 	}
 
 	/**
@@ -260,7 +268,7 @@ public class FestivalCineController {
 	 */
 	public void registerActor(String id, String nombre, String apellido,
 							  int edad) {
-		rsl.registerActor(id,nombre,apellido,edad);
+		rsl.registerActor(id, nombre, apellido, edad);
 	}
 
 	/**
@@ -289,14 +297,20 @@ public class FestivalCineController {
 	 * @param imagen Ruta de la imagen asociada a la cartelera de
 	 *                  la película.
 	 */
-	public void registerPelicula(String titulo, String sinopsis, String genero,
-								 int duracion, int anyo, String director,
-								 String enlacetrailer, String premios,
-								 String seccion, List<ActorDTO> actores,
+	public void registerPelicula(String titulo,
+								 String sinopsis,
+								 String genero,
+								 int duracion,
+								 int anyo,
+								 String director,
+								 String enlacetrailer,
+								 String premios,
+								 String seccion,
+								 List<ActorDTO> actores,
 								 String imagen) {
-		rsl.registerPelicula(titulo,sinopsis,genero,duracion,anyo,
-				director,enlacetrailer,premios, seccion, actores,
-				imagen);
+		rsl.registerPelicula(titulo, sinopsis, genero, duracion,
+				anyo, director, enlacetrailer, premios, seccion,
+				actores, imagen);
 	}
 
 	/**
@@ -316,7 +330,7 @@ public class FestivalCineController {
 	 * @throws NullPointerException Excepción lanzada al no encontrar
 	 * películas a valorar.
 	 */
-	public void valorarPelicula (String titulo, float valoracion)
+	public void valorarPelicula(String titulo, float valoracion)
 			throws NullPointerException {
 		rsl.valorarPelicula(titulo, valoracion);
 	}
@@ -331,7 +345,7 @@ public class FestivalCineController {
 	 * @throws NullPointerException Excepción lanzada al no encontrar
 	 * películas a comentar.
 	 */
-	public void comentarPelicula (String titulo, String usuario,
+	public void comentarPelicula(String titulo, String usuario,
 								  String contenido)
 			throws NullPointerException {
 		rsl.comentarPelicula(titulo, usuario, contenido);
@@ -344,8 +358,9 @@ public class FestivalCineController {
 	 *                 usuario elige en el primer ComboBox.
 	 * @return ArrayList de Strings de Filtros secundarios.
 	 */
-	public ArrayList<String> getFiltros(String filtro)
-	{ return rsl.getFiltroList(filtro);}
+	public ArrayList<String> getFiltros(String filtro) {
+		return rsl.getFiltroList(filtro);
+	}
 
 	/**
 	 * Método que busca obtener un listado de películas en base a un Filtro

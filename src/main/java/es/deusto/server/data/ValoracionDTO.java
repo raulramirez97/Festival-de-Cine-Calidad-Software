@@ -21,11 +21,11 @@ public class ValoracionDTO implements Serializable {
 	 * programa.
 	 */
 	@PrimaryKey
-	int id = 1;
-	String titulo = null;
-	double valoracion = 0;
+	private int id = 1;
+	private String titulo = null;
+	private double valoracion = 0;
 
-	public ValoracionDTO() {}
+	public ValoracionDTO() { }
 
 	public ValoracionDTO(String titulo, double valoracion) {
 		this.titulo = titulo;
