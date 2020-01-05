@@ -1,7 +1,5 @@
 <map id="es.deusto.client.remote.ServiceLocator.comentarPelicula" name="es.deusto.client.remote.ServiceLocator.comentarPelicula">
-<area shape="rect" id="node1" title=" " alt="" coords="5,104,216,145"/>
-<area shape="rect" id="node2" href="$classes_1_1deusto_1_1server_1_1data_1_1_comentario_d_t_o.html#a811896629f077973933fa25a9e673dcc" title=" " alt="" coords="264,5,480,47"/>
-<area shape="rect" id="node3" href="$classes_1_1deusto_1_1client_1_1remote_1_1_service_locator.html#a2be01b73778ce04d51b64f89fa509590" title=" " alt="" coords="274,71,470,112"/>
-<area shape="rect" id="node4" href="$classes_1_1deusto_1_1server_1_1data_1_1_pelicula_list.html#aec5733557f06b9996e699449f3e31a5a" title=" " alt="" coords="274,136,470,177"/>
-<area shape="rect" id="node5" href="$classes_1_1deusto_1_1server_1_1data_1_1_pelicula_d_t_o.html#aea3b6a55d32f2347e047a3e058861c9e" title=" " alt="" coords="274,201,470,243"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,39,216,80"/>
+<area shape="rect" id="node2" href="$classes_1_1deusto_1_1client_1_1remote_1_1_service_locator.html#a2be01b73778ce04d51b64f89fa509590" title=" " alt="" coords="264,5,460,47"/>
+<area shape="rect" id="node3" href="$classes_1_1deusto_1_1server_1_1data_1_1_pelicula_list.html#aec5733557f06b9996e699449f3e31a5a" title=" " alt="" coords="264,71,460,112"/>
 </map>

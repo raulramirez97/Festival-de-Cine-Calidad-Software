@@ -97,113 +97,126 @@ $(document).ready(function(){initNavTree('_alta_8java_source.html','');});
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="keyword">import</span> <a class="code" href="namespacees.html">es</a>.<a class="code" href="namespacees_1_1deusto.html">deusto</a>.<a class="code" href="namespacees_1_1deusto_1_1client.html">client</a>.<a class="code" href="classes_1_1deusto_1_1client_1_1_festival_cine_controller.html">FestivalCineController</a>;</div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="keyword">import</span> <a class="code" href="namespacees.html">es</a>.<a class="code" href="namespacees_1_1deusto.html">deusto</a>.<a class="code" href="namespacees_1_1deusto_1_1server.html">server</a>.<a class="code" href="namespacees_1_1deusto_1_1server_1_1data.html">data</a>.<a class="code" href="classes_1_1deusto_1_1server_1_1data_1_1_usuario_d_t_o.html">UsuarioDTO</a>;</div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">import</span> javax.swing.*;</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">import</span> javax.swing.border.EmptyBorder;</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">import</span> java.awt.*;</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">import</span> java.awt.event.ActionEvent;</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">import</span> java.awt.event.ActionListener;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
-<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="classes_1_1deusto_1_1client_1_1gui_1_1_alta.html">   12</a></span>&#160;<span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="classes_1_1deusto_1_1client_1_1gui_1_1_alta.html">Alta</a> <span class="keyword">extends</span> JFrame {</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">import</span> javax.swing.JButton;</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">import</span> javax.swing.JFrame;</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">import</span> javax.swing.JPanel;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">import</span> javax.swing.JLabel;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">import</span> javax.swing.JTextField;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">import</span> javax.swing.JPasswordField;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">import</span> javax.swing.ImageIcon;</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keywordtype">long</span> serialVersionUID = 1L;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keyword">private</span> JPanel contentPane;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keyword">private</span> JTextField textField;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keyword">private</span> JPasswordField passwordField;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keyword">private</span> JFrame alta;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    </div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <a class="code" href="classes_1_1deusto_1_1server_1_1data_1_1_usuario_d_t_o.html">UsuarioDTO</a> myUser=<span class="keyword">null</span>;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
-<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="classes_1_1deusto_1_1client_1_1gui_1_1_alta.html#a0c7ce4d8a8814350a49fa604d86751de">   22</a></span>&#160;    <span class="keyword">public</span> <a class="code" href="classes_1_1deusto_1_1client_1_1gui_1_1_alta.html#a0c7ce4d8a8814350a49fa604d86751de">Alta</a>() </div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    {</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        alta = <span class="keyword">this</span>;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        String myPath = System.getProperty(<span class="stringliteral">&quot;user.dir&quot;</span>);</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        this.setIconImage(<span class="keyword">new</span> ImageIcon(myPath+<span class="stringliteral">&quot;/src/main/resources/img/filmicon.png&quot;</span>).getImage());</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        setBounds(100, 100, 552, 367);</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        contentPane = <span class="keyword">new</span> JPanel();</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        contentPane.setBorder(<span class="keyword">new</span> EmptyBorder(5, 5, 5, 5));</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        setContentPane(contentPane);</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        contentPane.setLayout(<span class="keyword">null</span>);</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        getContentPane().setBackground(Color.white);</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        setTitle(<span class="stringliteral">&quot;Proceso de Alta&quot;</span>);</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        </div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        JLabel lblAlta = <span class="keyword">new</span> JLabel(<span class="stringliteral">&quot;Alta de Usuario&quot;</span>);</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        lblAlta.setFont(<span class="keyword">new</span> Font(<span class="stringliteral">&quot;Times New Roman&quot;</span>, Font.PLAIN, 32));</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        lblAlta.setBounds(166, 70, 280, 72);</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        contentPane.add(lblAlta);</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        </div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        JLabel lblUsuario = <span class="keyword">new</span> JLabel(<span class="stringliteral">&quot;Usuario&quot;</span>);</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        lblUsuario.setBounds(75, 121, 101, 37);</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        contentPane.add(lblUsuario);</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        textField = <span class="keyword">new</span> JTextField();</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        textField.setBounds(75, 150, 346, 26);</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        contentPane.add(textField);</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        textField.setColumns(10);</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        JLabel lblPassword = <span class="keyword">new</span> JLabel(<span class="stringliteral">&quot;Contraseña&quot;</span>);</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        lblPassword.setBounds(75, 188, 101, 37);</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        contentPane.add(lblPassword);</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        passwordField = <span class="keyword">new</span> JPasswordField();</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        passwordField.setBounds(75, 228, 346, 26);</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        contentPane.add(passwordField);</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        passwordField.setColumns(10);</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        </div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        JButton btnRegistrarseGoogle = <span class="keyword">new</span> JButton(<span class="stringliteral">&quot;Registrarse&quot;</span>);</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        btnRegistrarseGoogle.setBounds(85, 271, 175, 29);</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        contentPane.add(btnRegistrarseGoogle);</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        btnRegistrarseGoogle.addActionListener(<span class="keyword">new</span> ActionListener() {</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;            @Override</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            <span class="keyword">public</span> <span class="keywordtype">void</span> actionPerformed(ActionEvent e) {</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                <a class="code" href="classes_1_1deusto_1_1client_1_1_festival_cine_controller.html">FestivalCineController</a>.<a class="code" href="classes_1_1deusto_1_1client_1_1_festival_cine_controller.html#a8e41015623bf41454ea3cb18814ed892">getInstance</a>().<a class="code" href="classes_1_1deusto_1_1client_1_1_festival_cine_controller.html#acbad9e29ebe99bc691fcae11808c3b05">registerUser</a>(textField.getText(), passwordField.getText());</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                myUser = <span class="keyword">new</span> <a class="code" href="classes_1_1deusto_1_1server_1_1data_1_1_usuario_d_t_o.html">UsuarioDTO</a>(textField.getText(),passwordField.getText());</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                <a class="code" href="classes_1_1deusto_1_1client_1_1gui_1_1_menu.html">Menu</a> m = <span class="keyword">new</span> <a class="code" href="classes_1_1deusto_1_1client_1_1gui_1_1_menu.html">Menu</a>(myUser);</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                m.setVisible(<span class="keyword">true</span>);</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                dispose();</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            }</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        });</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        </div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        JLabel lblFestivalDeCine = <span class="keyword">new</span> JLabel(<span class="stringliteral">&quot;Festival de Cine&quot;</span>);</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        lblFestivalDeCine.setFont(<span class="keyword">new</span> Font(<span class="stringliteral">&quot;Times New Roman&quot;</span>, Font.PLAIN, 32));</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        lblFestivalDeCine.setBounds(156, 11, 280, 72);</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        contentPane.add(lblFestivalDeCine);</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        </div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        JButton btnVolver = <span class="keyword">new</span> JButton(<span class="stringliteral">&quot;Volver&quot;</span>);</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        btnVolver.setBounds(285, 274, 136, 23);</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        contentPane.add(btnVolver);</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        btnVolver.addActionListener(<span class="keyword">new</span> ActionListener() {</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            @Override</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;            <span class="keyword">public</span> <span class="keywordtype">void</span> actionPerformed(ActionEvent e) {</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                <a class="code" href="classes_1_1deusto_1_1client_1_1gui_1_1_inicio.html">Inicio</a> i = <span class="keyword">new</span> <a class="code" href="classes_1_1deusto_1_1client_1_1gui_1_1_inicio.html">Inicio</a>();</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                i.setVisible(<span class="keyword">true</span>);</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                dispose();</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;            }</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        });</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        </div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        </div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    }</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;}</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">import</span> javax.swing.border.EmptyBorder;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">import</span> java.awt.Color;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">import</span> java.awt.Font;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">import</span> java.awt.event.ActionEvent;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">import</span> java.awt.event.ActionListener;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="classes_1_1deusto_1_1client_1_1gui_1_1_alta.html">   27</a></span>&#160;<span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="classes_1_1deusto_1_1client_1_1gui_1_1_alta.html">Alta</a> <span class="keyword">extends</span> JFrame {</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keywordtype">long</span> serialVersionUID = 1L;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keyword">private</span> JPanel contentPane;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keyword">private</span> JTextField textField;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keyword">private</span> JPasswordField passwordField;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keyword">private</span> JFrame alta;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <a class="code" href="classes_1_1deusto_1_1server_1_1data_1_1_usuario_d_t_o.html">UsuarioDTO</a> myUser = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="classes_1_1deusto_1_1client_1_1gui_1_1_alta.html#a0c7ce4d8a8814350a49fa604d86751de">   36</a></span>&#160;    <span class="keyword">public</span> <a class="code" href="classes_1_1deusto_1_1client_1_1gui_1_1_alta.html#a0c7ce4d8a8814350a49fa604d86751de">Alta</a>() {</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        alta = <span class="keyword">this</span>;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        String myPath = System.getProperty(<span class="stringliteral">&quot;user.dir&quot;</span>);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        this.setIconImage(<span class="keyword">new</span> ImageIcon(myPath</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                + <span class="stringliteral">&quot;/src/main/resources/img/filmicon.png&quot;</span>)</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;                .getImage());</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        setBounds(100, 100, 552, 367);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        contentPane = <span class="keyword">new</span> JPanel();</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        contentPane.setBorder(<span class="keyword">new</span> EmptyBorder(5, 5,</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                5, 5));</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        setContentPane(contentPane);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        contentPane.setLayout(<span class="keyword">null</span>);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        getContentPane().setBackground(Color.white);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        setTitle(<span class="stringliteral">&quot;Proceso de Alta&quot;</span>);</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        JLabel lblAlta = <span class="keyword">new</span> JLabel(<span class="stringliteral">&quot;Alta de Usuario&quot;</span>);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        lblAlta.setFont(<span class="keyword">new</span> Font(<span class="stringliteral">&quot;Times New Roman&quot;</span>,</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                Font.PLAIN, 32));</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        lblAlta.setBounds(166, 70, 280, 72);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        contentPane.add(lblAlta);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        JLabel lblUsuario = <span class="keyword">new</span> JLabel(<span class="stringliteral">&quot;Usuario&quot;</span>);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        lblUsuario.setBounds(75, 121, 101, 37);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        contentPane.add(lblUsuario);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        textField = <span class="keyword">new</span> JTextField();</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        textField.setBounds(75, 150, 346, 26);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        contentPane.add(textField);</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        textField.setColumns(10);</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        JLabel lblPassword = <span class="keyword">new</span> JLabel(<span class="stringliteral">&quot;Contraseña&quot;</span>);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        lblPassword.setBounds(75, 188, 101, 37);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        contentPane.add(lblPassword);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        passwordField = <span class="keyword">new</span> JPasswordField();</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        passwordField.setBounds(75, 228, 346, 26);</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        contentPane.add(passwordField);</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        passwordField.setColumns(10);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        JButton btnRegistrarseGoogle = <span class="keyword">new</span> JButton(<span class="stringliteral">&quot;Registrarse&quot;</span>);</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        btnRegistrarseGoogle.setBounds(85, 271, 175, 29);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        contentPane.add(btnRegistrarseGoogle);</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        btnRegistrarseGoogle.addActionListener(<span class="keyword">new</span> ActionListener() {</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            @Override</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            <span class="keyword">public</span> <span class="keywordtype">void</span> actionPerformed(ActionEvent e) {</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                <a class="code" href="classes_1_1deusto_1_1client_1_1_festival_cine_controller.html">FestivalCineController</a>.<a class="code" href="classes_1_1deusto_1_1client_1_1_festival_cine_controller.html#a8e41015623bf41454ea3cb18814ed892">getInstance</a>()</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                        .<a class="code" href="classes_1_1deusto_1_1client_1_1_festival_cine_controller.html#acbad9e29ebe99bc691fcae11808c3b05">registerUser</a>(</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                        textField.getText(),</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                        passwordField.getText());</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                myUser = <span class="keyword">new</span> <a class="code" href="classes_1_1deusto_1_1server_1_1data_1_1_usuario_d_t_o.html">UsuarioDTO</a>(textField.getText(),</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                        passwordField.getText());</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                <a class="code" href="classes_1_1deusto_1_1client_1_1gui_1_1_menu.html">Menu</a> m = <span class="keyword">new</span> <a class="code" href="classes_1_1deusto_1_1client_1_1gui_1_1_menu.html">Menu</a>(myUser);</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                m.setVisible(<span class="keyword">true</span>);</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                dispose();</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;            }</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        });</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        </div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        JLabel lblFestivalDeCine = <span class="keyword">new</span> JLabel(<span class="stringliteral">&quot;Festival de Cine&quot;</span>);</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        lblFestivalDeCine.setFont(<span class="keyword">new</span> Font(<span class="stringliteral">&quot;Times New Roman&quot;</span>,</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                Font.PLAIN, 32));</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        lblFestivalDeCine.setBounds(156, 11, 280, 72);</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        contentPane.add(lblFestivalDeCine);</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        </div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        JButton btnVolver = <span class="keyword">new</span> JButton(<span class="stringliteral">&quot;Volver&quot;</span>);</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        btnVolver.setBounds(285, 274, 136, 23);</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        contentPane.add(btnVolver);</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        btnVolver.addActionListener(<span class="keyword">new</span> ActionListener() {</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;            @Override</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;            <span class="keyword">public</span> <span class="keywordtype">void</span> actionPerformed(ActionEvent e) {</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;                <a class="code" href="classes_1_1deusto_1_1client_1_1gui_1_1_inicio.html">Inicio</a> i = <span class="keyword">new</span> <a class="code" href="classes_1_1deusto_1_1client_1_1gui_1_1_inicio.html">Inicio</a>();</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;                i.setVisible(<span class="keyword">true</span>);</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;                dispose();</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;            }</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        });</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    }</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="aclasses_1_1deusto_1_1client_1_1gui_1_1_menu_html"><div class="ttname"><a href="classes_1_1deusto_1_1client_1_1gui_1_1_menu.html">es.deusto.client.gui.Menu</a></div><div class="ttdef"><b>Definition:</b> <a href="_menu_8java_source.html#l00022">Menu.java:22</a></div></div>
+<div class="ttc" id="aclasses_1_1deusto_1_1client_1_1gui_1_1_menu_html"><div class="ttname"><a href="classes_1_1deusto_1_1client_1_1gui_1_1_menu.html">es.deusto.client.gui.Menu</a></div><div class="ttdef"><b>Definition:</b> <a href="_menu_8java_source.html#l00023">Menu.java:23</a></div></div>
 <div class="ttc" id="anamespacees_html"><div class="ttname"><a href="namespacees.html">es</a></div></div>
-<div class="ttc" id="aclasses_1_1deusto_1_1client_1_1_festival_cine_controller_html"><div class="ttname"><a href="classes_1_1deusto_1_1client_1_1_festival_cine_controller.html">es.deusto.client.FestivalCineController</a></div><div class="ttdef"><b>Definition:</b> <a href="_festival_cine_controller_8java_source.html#l00023">FestivalCineController.java:23</a></div></div>
+<div class="ttc" id="aclasses_1_1deusto_1_1client_1_1_festival_cine_controller_html"><div class="ttname"><a href="classes_1_1deusto_1_1client_1_1_festival_cine_controller.html">es.deusto.client.FestivalCineController</a></div><div class="ttdef"><b>Definition:</b> <a href="_festival_cine_controller_8java_source.html#l00030">FestivalCineController.java:30</a></div></div>
 <div class="ttc" id="anamespacees_1_1deusto_1_1server_1_1data_html"><div class="ttname"><a href="namespacees_1_1deusto_1_1server_1_1data.html">es.deusto.server.data</a></div><div class="ttdef"><b>Definition:</b> <a href="_actor_d_t_o_8java_source.html#l00001">ActorDTO.java:1</a></div></div>
 <div class="ttc" id="anamespacees_1_1deusto_1_1client_html"><div class="ttname"><a href="namespacees_1_1deusto_1_1client.html">es.deusto.client</a></div><div class="ttdef"><b>Definition:</b> <a href="_festival_cine_controller_8java_source.html#l00001">FestivalCineController.java:1</a></div></div>
 <div class="ttc" id="anamespacees_1_1deusto_1_1server_html"><div class="ttname"><a href="namespacees_1_1deusto_1_1server.html">es.deusto.server</a></div></div>
-<div class="ttc" id="aclasses_1_1deusto_1_1client_1_1_festival_cine_controller_html_acbad9e29ebe99bc691fcae11808c3b05"><div class="ttname"><a href="classes_1_1deusto_1_1client_1_1_festival_cine_controller.html#acbad9e29ebe99bc691fcae11808c3b05">es.deusto.client.FestivalCineController.registerUser</a></div><div class="ttdeci">void registerUser(String login, String password)</div><div class="ttdef"><b>Definition:</b> <a href="_festival_cine_controller_8java_source.html#l00140">FestivalCineController.java:140</a></div></div>
-<div class="ttc" id="aclasses_1_1deusto_1_1server_1_1data_1_1_usuario_d_t_o_html"><div class="ttname"><a href="classes_1_1deusto_1_1server_1_1data_1_1_usuario_d_t_o.html">es.deusto.server.data.UsuarioDTO</a></div><div class="ttdef"><b>Definition:</b> <a href="_usuario_d_t_o_8java_source.html#l00012">UsuarioDTO.java:12</a></div></div>
-<div class="ttc" id="aclasses_1_1deusto_1_1client_1_1gui_1_1_alta_html_a0c7ce4d8a8814350a49fa604d86751de"><div class="ttname"><a href="classes_1_1deusto_1_1client_1_1gui_1_1_alta.html#a0c7ce4d8a8814350a49fa604d86751de">es.deusto.client.gui.Alta.Alta</a></div><div class="ttdeci">Alta()</div><div class="ttdef"><b>Definition:</b> <a href="_alta_8java_source.html#l00022">Alta.java:22</a></div></div>
-<div class="ttc" id="aclasses_1_1deusto_1_1client_1_1gui_1_1_inicio_html"><div class="ttname"><a href="classes_1_1deusto_1_1client_1_1gui_1_1_inicio.html">es.deusto.client.gui.Inicio</a></div><div class="ttdef"><b>Definition:</b> <a href="_inicio_8java_source.html#l00009">Inicio.java:9</a></div></div>
+<div class="ttc" id="aclasses_1_1deusto_1_1client_1_1_festival_cine_controller_html_acbad9e29ebe99bc691fcae11808c3b05"><div class="ttname"><a href="classes_1_1deusto_1_1client_1_1_festival_cine_controller.html#acbad9e29ebe99bc691fcae11808c3b05">es.deusto.client.FestivalCineController.registerUser</a></div><div class="ttdeci">void registerUser(String login, String password)</div><div class="ttdef"><b>Definition:</b> <a href="_festival_cine_controller_8java_source.html#l00218">FestivalCineController.java:218</a></div></div>
+<div class="ttc" id="aclasses_1_1deusto_1_1server_1_1data_1_1_usuario_d_t_o_html"><div class="ttname"><a href="classes_1_1deusto_1_1server_1_1data_1_1_usuario_d_t_o.html">es.deusto.server.data.UsuarioDTO</a></div><div class="ttdef"><b>Definition:</b> <a href="_usuario_d_t_o_8java_source.html#l00019">UsuarioDTO.java:19</a></div></div>
+<div class="ttc" id="aclasses_1_1deusto_1_1client_1_1gui_1_1_alta_html_a0c7ce4d8a8814350a49fa604d86751de"><div class="ttname"><a href="classes_1_1deusto_1_1client_1_1gui_1_1_alta.html#a0c7ce4d8a8814350a49fa604d86751de">es.deusto.client.gui.Alta.Alta</a></div><div class="ttdeci">Alta()</div><div class="ttdef"><b>Definition:</b> <a href="_alta_8java_source.html#l00036">Alta.java:36</a></div></div>
+<div class="ttc" id="aclasses_1_1deusto_1_1client_1_1gui_1_1_inicio_html"><div class="ttname"><a href="classes_1_1deusto_1_1client_1_1gui_1_1_inicio.html">es.deusto.client.gui.Inicio</a></div><div class="ttdef"><b>Definition:</b> <a href="_inicio_8java_source.html#l00017">Inicio.java:17</a></div></div>
 <div class="ttc" id="anamespacees_1_1deusto_html"><div class="ttname"><a href="namespacees_1_1deusto.html">es.deusto</a></div></div>
-<div class="ttc" id="aclasses_1_1deusto_1_1client_1_1_festival_cine_controller_html_a8e41015623bf41454ea3cb18814ed892"><div class="ttname"><a href="classes_1_1deusto_1_1client_1_1_festival_cine_controller.html#a8e41015623bf41454ea3cb18814ed892">es.deusto.client.FestivalCineController.getInstance</a></div><div class="ttdeci">static FestivalCineController getInstance()</div><div class="ttdef"><b>Definition:</b> <a href="_festival_cine_controller_8java_source.html#l00031">FestivalCineController.java:31</a></div></div>
-<div class="ttc" id="aclasses_1_1deusto_1_1client_1_1gui_1_1_alta_html"><div class="ttname"><a href="classes_1_1deusto_1_1client_1_1gui_1_1_alta.html">es.deusto.client.gui.Alta</a></div><div class="ttdef"><b>Definition:</b> <a href="_alta_8java_source.html#l00012">Alta.java:12</a></div></div>
+<div class="ttc" id="aclasses_1_1deusto_1_1client_1_1_festival_cine_controller_html_a8e41015623bf41454ea3cb18814ed892"><div class="ttname"><a href="classes_1_1deusto_1_1client_1_1_festival_cine_controller.html#a8e41015623bf41454ea3cb18814ed892">es.deusto.client.FestivalCineController.getInstance</a></div><div class="ttdeci">static FestivalCineController getInstance()</div><div class="ttdef"><b>Definition:</b> <a href="_festival_cine_controller_8java_source.html#l00045">FestivalCineController.java:45</a></div></div>
+<div class="ttc" id="aclasses_1_1deusto_1_1client_1_1gui_1_1_alta_html"><div class="ttname"><a href="classes_1_1deusto_1_1client_1_1gui_1_1_alta.html">es.deusto.client.gui.Alta</a></div><div class="ttdef"><b>Definition:</b> <a href="_alta_8java_source.html#l00027">Alta.java:27</a></div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_5eb159725f84c66aafd839904a4acdd0.html">main</a></li><li class="navelem"><a class="el" href="dir_fd3f6763802dee1ad875f6c80eac0bda.html">java</a></li><li class="navelem"><a class="el" href="dir_f9b1e2a59d62d001356ff527358589e3.html">es</a></li><li class="navelem"><a class="el" href="dir_218602b84a76f1dba535b3f8d119ec0a.html">deusto</a></li><li class="navelem"><a class="el" href="dir_a21d685e197beff303ac1f895439446b.html">client</a></li><li class="navelem"><a class="el" href="dir_2f5157b222047cc4aa042d44c6c39d0b.html">gui</a></li><li class="navelem"><a class="el" href="_alta_8java.html">Alta.java</a></li>
-    <li class="footer">Generado el Sábado, 4 de Enero de 2020 19:34:08 para Festival_de_Cine por
+    <li class="footer">Generado el Domingo, 5 de Enero de 2020 12:20:05 para Festival_de_Cine por
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.16 </li>
   </ul>

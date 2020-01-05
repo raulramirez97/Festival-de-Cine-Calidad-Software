@@ -3,8 +3,8 @@ var dir_2f5157b222047cc4aa042d44c6c39d0b =
     [ "Alta.java", "_alta_8java.html", [
       [ "Alta", "classes_1_1deusto_1_1client_1_1gui_1_1_alta.html", "classes_1_1deusto_1_1client_1_1gui_1_1_alta" ]
     ] ],
-    [ "ComentarPeliculaTest.java", "_comentar_pelicula_test_8java.html", [
-      [ "ComentarPeliculaTest", "classes_1_1deusto_1_1client_1_1gui_1_1_comentar_pelicula_test.html", "classes_1_1deusto_1_1client_1_1gui_1_1_comentar_pelicula_test" ]
+    [ "ComentarPelicula.java", "_comentar_pelicula_8java.html", [
+      [ "ComentarPelicula", "classes_1_1deusto_1_1client_1_1gui_1_1_comentar_pelicula.html", "classes_1_1deusto_1_1client_1_1gui_1_1_comentar_pelicula" ]
     ] ],
     [ "CreacionActor.java", "_creacion_actor_8java.html", [
       [ "CreacionActor", "classes_1_1deusto_1_1client_1_1gui_1_1_creacion_actor.html", "classes_1_1deusto_1_1client_1_1gui_1_1_creacion_actor" ]

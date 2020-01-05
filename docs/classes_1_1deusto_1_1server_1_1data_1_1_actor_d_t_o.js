@@ -1,6 +1,6 @@
 var classes_1_1deusto_1_1server_1_1data_1_1_actor_d_t_o =
 [
-    [ "ActorDTO", "classes_1_1deusto_1_1server_1_1data_1_1_actor_d_t_o.html#a94b8417e42679a70175fb1dc0c96f506", null ],
+    [ "ActorDTO", "classes_1_1deusto_1_1server_1_1data_1_1_actor_d_t_o.html#ac82c8d4f6b161b4936c4f16cc3a5a803", null ],
     [ "getApellido", "classes_1_1deusto_1_1server_1_1data_1_1_actor_d_t_o.html#abe45158596a4323bc1037ae7a65fda00", null ],
     [ "getEdad", "classes_1_1deusto_1_1server_1_1data_1_1_actor_d_t_o.html#a296f655532c953116b1e8d5c5ee18d98", null ],
     [ "getIdentificador", "classes_1_1deusto_1_1server_1_1data_1_1_actor_d_t_o.html#aa00dbf4ded8e31c32a5985ce75505858", null ],

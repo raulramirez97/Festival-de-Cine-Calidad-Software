@@ -5,7 +5,7 @@ var interfacees_1_1deusto_1_1server_1_1dao_1_1_i_d_a_o =
     [ "getPeliculas", "interfacees_1_1deusto_1_1server_1_1dao_1_1_i_d_a_o.html#abeba731c6072e63307a37c4fee53ca9a", null ],
     [ "getValoraciones", "interfacees_1_1deusto_1_1server_1_1dao_1_1_i_d_a_o.html#a0aceb8c151a0f1cd36f4eea36af1a326", null ],
     [ "retrieveActor", "interfacees_1_1deusto_1_1server_1_1dao_1_1_i_d_a_o.html#a07ed3b7ac144102df35e938bfd824f6b", null ],
-    [ "retrievePelicula", "interfacees_1_1deusto_1_1server_1_1dao_1_1_i_d_a_o.html#a23931405211c61d7d760e75eeda268f8", null ],
+    [ "retrievePelicula", "interfacees_1_1deusto_1_1server_1_1dao_1_1_i_d_a_o.html#a9f81001e93e934279cdbe23fdc348c08", null ],
     [ "retrieveUsuario", "interfacees_1_1deusto_1_1server_1_1dao_1_1_i_d_a_o.html#a1ce6835d6d964dfa36f33ab624b5ed96", null ],
     [ "storeActor", "interfacees_1_1deusto_1_1server_1_1dao_1_1_i_d_a_o.html#acf522dbf402a8389761451c10986f491", null ],
     [ "storePelicula", "interfacees_1_1deusto_1_1server_1_1dao_1_1_i_d_a_o.html#af15b4530da394333948b4bb7a6a60bd6", null ],

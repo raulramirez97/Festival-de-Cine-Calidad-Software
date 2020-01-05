@@ -1,7 +1,7 @@
 var namespacees_1_1deusto_1_1client_1_1gui =
 [
     [ "Alta", "classes_1_1deusto_1_1client_1_1gui_1_1_alta.html", "classes_1_1deusto_1_1client_1_1gui_1_1_alta" ],
-    [ "ComentarPeliculaTest", "classes_1_1deusto_1_1client_1_1gui_1_1_comentar_pelicula_test.html", "classes_1_1deusto_1_1client_1_1gui_1_1_comentar_pelicula_test" ],
+    [ "ComentarPelicula", "classes_1_1deusto_1_1client_1_1gui_1_1_comentar_pelicula.html", "classes_1_1deusto_1_1client_1_1gui_1_1_comentar_pelicula" ],
     [ "CreacionActor", "classes_1_1deusto_1_1client_1_1gui_1_1_creacion_actor.html", "classes_1_1deusto_1_1client_1_1gui_1_1_creacion_actor" ],
     [ "CreacionPelicula", "classes_1_1deusto_1_1client_1_1gui_1_1_creacion_pelicula.html", "classes_1_1deusto_1_1client_1_1gui_1_1_creacion_pelicula" ],
     [ "InformePelicula", "classes_1_1deusto_1_1client_1_1gui_1_1_informe_pelicula.html", "classes_1_1deusto_1_1client_1_1gui_1_1_informe_pelicula" ],

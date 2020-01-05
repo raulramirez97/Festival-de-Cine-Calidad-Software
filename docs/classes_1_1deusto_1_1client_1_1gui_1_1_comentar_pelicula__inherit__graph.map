@@ -1,4 +1,4 @@
-<map id="es.deusto.client.gui.ComentarPeliculaTest" name="es.deusto.client.gui.ComentarPeliculaTest">
+<map id="es.deusto.client.gui.ComentarPelicula" name="es.deusto.client.gui.ComentarPelicula">
 <area shape="rect" id="node1" title=" " alt="" coords="5,80,200,121"/>
 <area shape="rect" id="node2" title=" " alt="" coords="70,5,135,32"/>
 </map>

@@ -5,7 +5,8 @@ var indexSectionsWithContent =
   2: "e",
   3: "acdfgilmprsuv",
   4: "acdfgilmprstuv",
-  5: "r"
+  5: "r",
+  6: "f"
 };
 
 var indexSectionNames =
@@ -15,7 +16,8 @@ var indexSectionNames =
   2: "namespaces",
   3: "files",
   4: "functions",
-  5: "variables"
+  5: "variables",
+  6: "pages"
 };
 
 var indexSectionLabels =
@@ -25,6 +27,7 @@ var indexSectionLabels =
   2: "Namespaces",
   3: "Archivos",
   4: "Funciones",
-  5: "Variables"
+  5: "Variables",
+  6: "Páginas"
 };
 

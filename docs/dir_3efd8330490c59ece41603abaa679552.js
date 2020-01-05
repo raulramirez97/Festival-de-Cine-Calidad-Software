@@ -28,9 +28,6 @@ var dir_3efd8330490c59ece41603abaa679552 =
     [ "PeliculaList.java", "_pelicula_list_8java.html", [
       [ "PeliculaList", "classes_1_1deusto_1_1server_1_1data_1_1_pelicula_list.html", "classes_1_1deusto_1_1server_1_1data_1_1_pelicula_list" ]
     ] ],
-    [ "UserList.java", "_user_list_8java.html", [
-      [ "UserList", "classes_1_1deusto_1_1server_1_1data_1_1_user_list.html", "classes_1_1deusto_1_1server_1_1data_1_1_user_list" ]
-    ] ],
     [ "UsuarioDTO.java", "_usuario_d_t_o_8java.html", [
       [ "UsuarioDTO", "classes_1_1deusto_1_1server_1_1data_1_1_usuario_d_t_o.html", "classes_1_1deusto_1_1server_1_1data_1_1_usuario_d_t_o" ]
     ] ],

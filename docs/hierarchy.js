@@ -13,9 +13,13 @@ var hierarchy =
     [ "es.deusto.server.dao.IDAO", "interfacees_1_1deusto_1_1server_1_1dao_1_1_i_d_a_o.html", [
       [ "es.deusto.server.dao.DBManager", "classes_1_1deusto_1_1server_1_1dao_1_1_d_b_manager.html", null ]
     ] ],
+    [ "es.deusto.server.data.MessageList", "classes_1_1deusto_1_1server_1_1data_1_1_message_list.html", null ],
+    [ "es.deusto.server.data.PeliculaList", "classes_1_1deusto_1_1server_1_1data_1_1_pelicula_list.html", null ],
+    [ "es.deusto.client.remote.ServiceLocator", "classes_1_1deusto_1_1client_1_1remote_1_1_service_locator.html", null ],
+    [ "es.deusto.server.data.ValoracionList", "classes_1_1deusto_1_1server_1_1data_1_1_valoracion_list.html", null ],
     [ "JFrame", null, [
       [ "es.deusto.client.gui.Alta", "classes_1_1deusto_1_1client_1_1gui_1_1_alta.html", null ],
-      [ "es.deusto.client.gui.ComentarPeliculaTest", "classes_1_1deusto_1_1client_1_1gui_1_1_comentar_pelicula_test.html", null ],
+      [ "es.deusto.client.gui.ComentarPelicula", "classes_1_1deusto_1_1client_1_1gui_1_1_comentar_pelicula.html", null ],
       [ "es.deusto.client.gui.CreacionActor", "classes_1_1deusto_1_1client_1_1gui_1_1_creacion_actor.html", null ],
       [ "es.deusto.client.gui.CreacionPelicula", "classes_1_1deusto_1_1client_1_1gui_1_1_creacion_pelicula.html", null ],
       [ "es.deusto.client.gui.InformePelicula", "classes_1_1deusto_1_1client_1_1gui_1_1_informe_pelicula.html", null ],
@@ -29,11 +33,6 @@ var hierarchy =
       [ "es.deusto.client.gui.ResultadoFiltradosAnonimo", "classes_1_1deusto_1_1client_1_1gui_1_1_resultado_filtrados_anonimo.html", null ],
       [ "es.deusto.client.gui.VerComentariosPelicula", "classes_1_1deusto_1_1client_1_1gui_1_1_ver_comentarios_pelicula.html", null ]
     ] ],
-    [ "es.deusto.server.data.MessageList", "classes_1_1deusto_1_1server_1_1data_1_1_message_list.html", null ],
-    [ "es.deusto.server.data.PeliculaList", "classes_1_1deusto_1_1server_1_1data_1_1_pelicula_list.html", null ],
-    [ "es.deusto.client.remote.ServiceLocator", "classes_1_1deusto_1_1client_1_1remote_1_1_service_locator.html", null ],
-    [ "es.deusto.server.data.UserList", "classes_1_1deusto_1_1server_1_1data_1_1_user_list.html", null ],
-    [ "es.deusto.server.data.ValoracionList", "classes_1_1deusto_1_1server_1_1data_1_1_valoracion_list.html", null ],
     [ "Serializable", null, [
       [ "es.deusto.server.data.ActorDTO", "classes_1_1deusto_1_1server_1_1data_1_1_actor_d_t_o.html", null ],
       [ "es.deusto.server.data.ComentarioDTO", "classes_1_1deusto_1_1server_1_1data_1_1_comentario_d_t_o.html", null ],

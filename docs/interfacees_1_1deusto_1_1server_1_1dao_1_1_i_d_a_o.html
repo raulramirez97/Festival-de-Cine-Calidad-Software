@@ -123,8 +123,8 @@ Métodos públicos</h2></td></tr>
 <tr class="separator:a70333af0677dcab8b50ec2e9e5bf9321"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af15b4530da394333948b4bb7a6a60bd6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacees_1_1deusto_1_1server_1_1dao_1_1_i_d_a_o.html#af15b4530da394333948b4bb7a6a60bd6">storePelicula</a> (<a class="el" href="classes_1_1deusto_1_1server_1_1data_1_1_pelicula_d_t_o.html">PeliculaDTO</a> p)</td></tr>
 <tr class="separator:af15b4530da394333948b4bb7a6a60bd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a23931405211c61d7d760e75eeda268f8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classes_1_1deusto_1_1server_1_1data_1_1_pelicula_d_t_o.html">PeliculaDTO</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacees_1_1deusto_1_1server_1_1dao_1_1_i_d_a_o.html#a23931405211c61d7d760e75eeda268f8">retrievePelicula</a> (String id)</td></tr>
-<tr class="separator:a23931405211c61d7d760e75eeda268f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f81001e93e934279cdbe23fdc348c08"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classes_1_1deusto_1_1server_1_1data_1_1_pelicula_d_t_o.html">PeliculaDTO</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacees_1_1deusto_1_1server_1_1dao_1_1_i_d_a_o.html#a9f81001e93e934279cdbe23fdc348c08">retrievePelicula</a> (String titulo)</td></tr>
+<tr class="separator:a9f81001e93e934279cdbe23fdc348c08"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9354a25acceec41434d528d828871c1a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacees_1_1deusto_1_1server_1_1dao_1_1_i_d_a_o.html#a9354a25acceec41434d528d828871c1a">updatePelicula</a> (<a class="el" href="classes_1_1deusto_1_1server_1_1data_1_1_pelicula_d_t_o.html">PeliculaDTO</a> p)</td></tr>
 <tr class="separator:a9354a25acceec41434d528d828871c1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abeba731c6072e63307a37c4fee53ca9a"><td class="memItemLeft" align="right" valign="top">ArrayList&lt; <a class="el" href="classes_1_1deusto_1_1server_1_1data_1_1_pelicula_d_t_o.html">PeliculaDTO</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacees_1_1deusto_1_1server_1_1dao_1_1_i_d_a_o.html#abeba731c6072e63307a37c4fee53ca9a">getPeliculas</a> ()</td></tr>
@@ -141,7 +141,7 @@ Métodos públicos</h2></td></tr>
 <dl class="section version"><dt>Versión</dt><dd>3.0 </dd></dl>
 <dl class="section since"><dt>Desde</dt><dd>1.0 </dd></dl>
 
-<p class="definition">Definición en la línea <a class="el" href="_i_d_a_o_8java_source.html#l00014">14</a> del archivo <a class="el" href="_i_d_a_o_8java_source.html">IDAO.java</a>.</p>
+<p class="definition">Definición en la línea <a class="el" href="_i_d_a_o_8java_source.html#l00019">19</a> del archivo <a class="el" href="_i_d_a_o_8java_source.html">IDAO.java</a>.</p>
 </div><h2 class="groupheader">Documentación de las funciones miembro</h2>
 <a id="a70333af0677dcab8b50ec2e9e5bf9321"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a70333af0677dcab8b50ec2e9e5bf9321">&#9670;&nbsp;</a></span>getActors()</h2>
@@ -157,6 +157,7 @@ Métodos públicos</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Método que permite recuperar un listado de ActoresDTO de la base de datos. </p><dl class="section return"><dt>Devuelve</dt><dd>Listado de ActoresDTO existentes en la base de datos. </dd></dl>
 
 <p>Implementado en <a class="el" href="classes_1_1deusto_1_1server_1_1dao_1_1_d_b_manager.html#a372d93c9a8cb13d67a1a6c721451a0b6">es.deusto.server.dao.DBManager</a>.</p>
 <div class="dynheader">
@@ -185,6 +186,7 @@ Gráfico de llamadas a esta función:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Método que permite recuperar los ComentariosDTO que se han hecho de cada PelículaDTO. </p><dl class="section return"><dt>Devuelve</dt><dd>Listado de ComentariosDTO realizados. </dd></dl>
 
 <p>Implementado en <a class="el" href="classes_1_1deusto_1_1server_1_1dao_1_1_d_b_manager.html#abcb5594855aed292bc97293fae6aba5a">es.deusto.server.dao.DBManager</a>.</p>
 <div class="dynheader">
@@ -213,6 +215,7 @@ Gráfico de llamadas a esta función:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Método que permite recuperar un listado de PeliculasDTO de la base de datos. </p><dl class="section return"><dt>Devuelve</dt><dd>Listado de PeliculasDTO existentes en la base de datos. </dd></dl>
 
 <p>Implementado en <a class="el" href="classes_1_1deusto_1_1server_1_1dao_1_1_d_b_manager.html#abb43604f1c45b0fafa0799f803e028b1">es.deusto.server.dao.DBManager</a>.</p>
 <div class="dynheader">
@@ -241,6 +244,7 @@ Gráfico de llamadas a esta función:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Método que permite recuperar las ValoracionesDTO realizadas de todas las PelículasDTO. </p><dl class="section return"><dt>Devuelve</dt><dd>Listado de ValoracionesDTO realizadas. </dd></dl>
 
 <p>Implementado en <a class="el" href="classes_1_1deusto_1_1server_1_1dao_1_1_d_b_manager.html#a48a43eb541a90205e3103a89c9c47aa5">es.deusto.server.dao.DBManager</a>.</p>
 <div class="dynheader">
@@ -270,6 +274,13 @@ Gráfico de llamadas a esta función:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Método que permite buscar un ActorDTO por su identificativo. </p><dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>Código identificativo por el que realizar la búsqueda. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>ActorDTO encontrado bajo ese código identificativo. </dd></dl>
 
 <p>Implementado en <a class="el" href="classes_1_1deusto_1_1server_1_1dao_1_1_d_b_manager.html#ab890f4be5207942d8f44d4bac27b273c">es.deusto.server.dao.DBManager</a>.</p>
 <div class="dynheader">
@@ -285,8 +296,8 @@ Gráfico de llamadas a esta función:</div>
 
 </div>
 </div>
-<a id="a23931405211c61d7d760e75eeda268f8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a23931405211c61d7d760e75eeda268f8">&#9670;&nbsp;</a></span>retrievePelicula()</h2>
+<a id="a9f81001e93e934279cdbe23fdc348c08"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9f81001e93e934279cdbe23fdc348c08">&#9670;&nbsp;</a></span>retrievePelicula()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -295,18 +306,25 @@ Gráfico de llamadas a esta función:</div>
           <td class="memname"><a class="el" href="classes_1_1deusto_1_1server_1_1data_1_1_pelicula_d_t_o.html">PeliculaDTO</a> es.deusto.server.dao.IDAO.retrievePelicula </td>
           <td>(</td>
           <td class="paramtype">String&#160;</td>
-          <td class="paramname"><em>id</em></td><td>)</td>
+          <td class="paramname"><em>titulo</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Método que permite buscar una PeliculaDTO por su título. </p><dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">titulo</td><td>Título de la película por el que realizar la búsqueda. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>PeliculaDTO encontrada bajo ese título. </dd></dl>
 
 <p>Implementado en <a class="el" href="classes_1_1deusto_1_1server_1_1dao_1_1_d_b_manager.html#aab242af989014852b9c99f5baa723abe">es.deusto.server.dao.DBManager</a>.</p>
 <div class="dynheader">
 Gráfico de llamadas a esta función:</div>
 <div class="dyncontent">
-<div class="center"><img src="interfacees_1_1deusto_1_1server_1_1dao_1_1_i_d_a_o_a23931405211c61d7d760e75eeda268f8_icgraph.png" border="0" usemap="#interfacees_1_1deusto_1_1server_1_1dao_1_1_i_d_a_o_a23931405211c61d7d760e75eeda268f8_icgraph" alt=""/></div>
-<map name="interfacees_1_1deusto_1_1server_1_1dao_1_1_i_d_a_o_a23931405211c61d7d760e75eeda268f8_icgraph" id="interfacees_1_1deusto_1_1server_1_1dao_1_1_i_d_a_o_a23931405211c61d7d760e75eeda268f8_icgraph">
+<div class="center"><img src="interfacees_1_1deusto_1_1server_1_1dao_1_1_i_d_a_o_a9f81001e93e934279cdbe23fdc348c08_icgraph.png" border="0" usemap="#interfacees_1_1deusto_1_1server_1_1dao_1_1_i_d_a_o_a9f81001e93e934279cdbe23fdc348c08_icgraph" alt=""/></div>
+<map name="interfacees_1_1deusto_1_1server_1_1dao_1_1_i_d_a_o_a9f81001e93e934279cdbe23fdc348c08_icgraph" id="interfacees_1_1deusto_1_1server_1_1dao_1_1_i_d_a_o_a9f81001e93e934279cdbe23fdc348c08_icgraph">
 <area shape="rect" title=" " alt="" coords="260,71,483,112"/>
 <area shape="rect" href="classes_1_1deusto_1_1server_1_1_festival_cine_manager.html#a6a6c6ec7fefc26b3bf59b06f3886fbd2" title=" " alt="" coords="8,5,209,47"/>
 <area shape="rect" href="classes_1_1deusto_1_1server_1_1_festival_cine_manager.html#a35be0b823434f942a6a0aa6bd585031c" title=" " alt="" coords="13,71,204,112"/>
@@ -331,6 +349,13 @@ Gráfico de llamadas a esta función:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Método que permite buscar un UsuarioDTO por su nombre de usuario. </p><dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">login</td><td>Nombre de usuario por el que realizar la búsqueda. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>UsuarioDTO encontrado bajo ese nombre de usuario. </dd></dl>
 
 <p>Implementado en <a class="el" href="classes_1_1deusto_1_1server_1_1dao_1_1_d_b_manager.html#ac4847743487cccf82d14418d101c81b5">es.deusto.server.dao.DBManager</a>.</p>
 <div class="dynheader">
@@ -366,6 +391,12 @@ Gráfico de llamadas a esta función:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Método que permite insertar un ActorDTO en la base de datos. </p><dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">a</td><td>ActorDTO a insertar. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p>Implementado en <a class="el" href="classes_1_1deusto_1_1server_1_1dao_1_1_d_b_manager.html#a4496633b7227d33dcc8061ce4ee7983a">es.deusto.server.dao.DBManager</a>.</p>
 <div class="dynheader">
@@ -395,6 +426,12 @@ Gráfico de llamadas a esta función:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Método que permite insertar una PeliculaDTO en la base de datos. </p><dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">p</td><td>PeliculaDTO a insertar. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p>Implementado en <a class="el" href="classes_1_1deusto_1_1server_1_1dao_1_1_d_b_manager.html#a46f43febe647878ab8ddb6c9a05b5220">es.deusto.server.dao.DBManager</a>.</p>
 <div class="dynheader">
@@ -424,6 +461,12 @@ Gráfico de llamadas a esta función:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Método que permite insertar un UsuarioDTO en la base de datos. </p><dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">u</td><td>UsuarioDTO a insertar. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p>Implementado en <a class="el" href="classes_1_1deusto_1_1server_1_1dao_1_1_d_b_manager.html#a8541e5996522f83a2e06bb4d3d5ce977">es.deusto.server.dao.DBManager</a>.</p>
 <div class="dynheader">
@@ -455,6 +498,12 @@ Gráfico de llamadas a esta función:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Método que permite almacenar la ValoracionDTO hecha de una PeliculaDTO. </p><dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">v</td><td>ValoracionDTO a almacenar en la base de datos. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p>Implementado en <a class="el" href="classes_1_1deusto_1_1server_1_1dao_1_1_d_b_manager.html#a717920c538970b68bcc9b847f5856db0">es.deusto.server.dao.DBManager</a>.</p>
 <div class="dynheader">
@@ -484,6 +533,12 @@ Gráfico de llamadas a esta función:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Método que permite hacer una actualización de un ActorDTO con sus nuevos datos. </p><dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">a</td><td>ActorDTO con los datos modificados para modificar en la base de datos. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p>Implementado en <a class="el" href="classes_1_1deusto_1_1server_1_1dao_1_1_d_b_manager.html#a5a7f01b993c906e190add3985fbb76fd">es.deusto.server.dao.DBManager</a>.</p>
 <div class="dynheader">
@@ -513,6 +568,12 @@ Gráfico de llamadas a esta función:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Método que permite hacer una actualización de una PeliculaDTO con sus nuevos datos. </p><dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">p</td><td>PeliculaDTO con los datos modificados para modificar en la base de datos. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p>Implementado en <a class="el" href="classes_1_1deusto_1_1server_1_1dao_1_1_d_b_manager.html#aa8be589bc3dad6a9e78d428e8e50904d">es.deusto.server.dao.DBManager</a>.</p>
 <div class="dynheader">
@@ -543,6 +604,12 @@ Gráfico de llamadas a esta función:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Método que permite hacer una actualización de un UsuarioDTO con sus nuevos datos. </p><dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">u</td><td>UsuarioDTO con los datos modificados para modificar en la base de datos. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p>Implementado en <a class="el" href="classes_1_1deusto_1_1server_1_1dao_1_1_d_b_manager.html#ad2b98f365c8faa7f0acb93b730f8191b">es.deusto.server.dao.DBManager</a>.</p>
 <div class="dynheader">
@@ -570,7 +637,7 @@ Gráfico de llamadas a esta función:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacees.html">es</a></li><li class="navelem"><a class="el" href="namespacees_1_1deusto.html">deusto</a></li><li class="navelem"><a class="el" href="namespacees_1_1deusto_1_1server.html">server</a></li><li class="navelem"><a class="el" href="namespacees_1_1deusto_1_1server_1_1dao.html">dao</a></li><li class="navelem"><a class="el" href="interfacees_1_1deusto_1_1server_1_1dao_1_1_i_d_a_o.html">IDAO</a></li>
-    <li class="footer">Generado el Sábado, 4 de Enero de 2020 19:34:14 para Festival_de_Cine por
+    <li class="footer">Generado el Domingo, 5 de Enero de 2020 12:20:12 para Festival_de_Cine por
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.16 </li>
   </ul>
