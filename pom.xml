@@ -29,22 +29,27 @@
         <dependency>
             <groupId>org.datanucleus</groupId>
             <artifactId>datanucleus-core</artifactId>
-            <version>[5.1.6, 5.9)</version>
+            <version>5.2.2</version>
         </dependency>
         <dependency>
             <groupId>org.datanucleus</groupId>
             <artifactId>datanucleus-api-jdo</artifactId>
-            <version>[5.1.4, 5.9)</version>
+            <version>5.2.2</version>
         </dependency>
         <dependency>
             <groupId>org.datanucleus</groupId>
             <artifactId>datanucleus-rdbms</artifactId>
-            <version>[5.1.6, 5.9)</version>
+            <version>5.2.1</version>
         </dependency>
         <dependency>
             <groupId>org.datanucleus</groupId>
             <artifactId>javax.jdo</artifactId>
-            <version>[3.2.0-m8, )</version>
+            <version>3.2.0-m12</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.jdo</groupId>
+            <artifactId>jdo-api</artifactId>
+            <version>3.0.1</version>
         </dependency>
         <dependency>
             <groupId>mysql</groupId>
@@ -213,7 +218,7 @@
                 <version>3.1.0</version>
                 <executions>
                     <execution>
-                        <id>copy-resources</id>
+                        <id>copy-resources-docs</id>
                         <!-- here the phase you need -->
                         <phase>site</phase>
                         <goals>
@@ -221,6 +226,23 @@
                         </goals>
                         <configuration>
                             <outputDirectory>${basedir}/docs</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>${basedir}/target/doxygen/html</directory>
+                                    <filtering>true</filtering>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>copy-resources-site</id>
+                        <!-- here the phase you need -->
+                        <phase>site</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${basedir}/target/site/doxygen</outputDirectory>
                             <resources>
                                 <resource>
                                     <directory>${basedir}/target/doxygen/html</directory>
@@ -261,6 +283,10 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-project-info-reports-plugin</artifactId>
                 <version>2.9</version>
+                <configuration>
+                    <dependencyDetailsEnabled>false</dependencyDetailsEnabled>
+                    <dependencyLocationsEnabled>false</dependencyLocationsEnabled>
+                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -301,6 +327,10 @@
                 <groupId>com.soebes.maven.plugins</groupId>
                 <artifactId>doxygen-maven-plugin</artifactId>
                 <version>1.1.0</version>
+                <configuration>
+                    <configurationFile>${doxygen.config.file}</configurationFile>
+                    <outputDirectory>${basedir}/target/doxygen/html</outputDirectory>
+                </configuration>
             </plugin>
         </plugins>
     </reporting>

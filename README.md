@@ -120,13 +120,8 @@ A su vez, el comando ```mvn site``` genera una carpeta ```docs``` en el nivel su
 documentación on-line generada para este proyecto, presentada en la parte inicial de este README.
 
 En lo que al checkstyle respecta, se han hecho varias revisiones de los ficheros, reduciendo de 4.000 errores iniciales
-que había a casi 1.900. Sin embargo, se ha decidido que muchos de ellos eran decisiones propias del diseño, así que se
+que había a algo menos de 2.000. Sin embargo, se ha decidido que muchos de ellos eran decisiones propias del diseño, así que se
 ha preferido no alterar en exceso el codigo solo con el motivo de respetar lo que indica el plugin de checkstyle.
-
-<b>NOTA</b>: A la hora de utilizar el comando `mvn site`, es probable que haya errores a la hora de crear el directorio de
-`Dependencies` del informe de Apache. Esto es así por la utilización de diversas versiones en este proyecto. 
-Se ha decidido dejar así dado que no es un error bloqueante y porque la documentación generada vía Doxygen se actualiza 
-sin problema.
 _____
 
 # Autores:
@@ -134,4 +129,4 @@ _____
 - Beñat Galdós ([Benny96](https://github.com/Benny96 "Perfil de GitHub de Beñat Galdós"))
 - Anne Idigoras ([anneidigoras](https://github.com/anneidigoras "Perfil de GitHub de Anne Idigoras"))
 - Julen Elcoro-Iribe ([elkerr](https://github.com/Elkerr "Perfil de GitHub de Julen Elcoro-Iribe"))
-- Raúl Ramirez ([raulramirez97](https://github.com/raulramirez97 "Perfil de GitHub de Raúl Ramirez"))
+- Raúl Ramirez de Cartagena ([raulramirez97](https://github.com/raulramirez97 "Perfil de GitHub de Raúl Ramirez de Cartagena"))
