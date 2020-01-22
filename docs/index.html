@@ -93,35 +93,36 @@ $(document).ready(function(){initNavTree('index.html','');});
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p><a href="https://travis-ci.com/raulramirez97/Festival-de-Cine-Calidad-Software/"><img src="https://travis-ci.com/raulramirez97/Festival-de-Cine-Calidad-Software.svg?branch=master" alt="Build Status" class="inline"/></a> <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT" class="inline"/></a></p>
-<h4>Documentación Online: <a href="https://raulramirez97.github.io/Festival-de-Cine-Calidad-Software/">https://raulramirez97.github.io/Festival-de-Cine-Calidad-Software/</a></h4>
-<h4>Manual de Usuario: <a href="https://github.com/raulramirez97/Festival-de-Cine-Calidad-Software/blob/master/user_guide/ManualUsuario_FestCine.pdf">https://github.com/raulramirez97/Festival-de-Cine-Calidad-Software/blob/master/user_guide/ManualUsuario_FestCine.pdf</a></h4>
-<h1>Contexto</h1>
+<h1>Spanish</h1>
+<h5>Documentación Online: <a href="https://raulramirez97.github.io/Festival-de-Cine-Calidad-Software/">https://raulramirez97.github.io/Festival-de-Cine-Calidad-Software/</a></h5>
+<h5>Manual de Usuario: <a href="https://github.com/raulramirez97/Festival-de-Cine-Calidad-Software/blob/master/user_guide/ManualUsuario_FestCine.pdf">https://github.com/raulramirez97/Festival-de-Cine-Calidad-Software/blob/master/user_guide/ManualUsuario_FestCine.pdf</a></h5>
+<h2>Contexto</h2>
 <p>Repo que contiene un proyecto para la asignatura Proceso y Calidad de Software, impartida por la Universidad de Deusto. La idea subyacente del proyecto ha sido generar una aplicación que simule de manera sencilla a FilmAffinity.</p>
 <p>Los objetivos de este proyecto son de dos tipos:</p>
-<h2>A) Humano / Organizativo</h2>
+<h3>A) Humano / Organizativo</h3>
 <p>Este proyecto se enmarca dentro de un contexto en el que los autores han debido trabajar en base a una metodología Scrum. Para ello, los autores han ido rotando tres roles (Scrum Master, Product Owner y Developer) en tres Sprints de desarrollo.</p>
-<h2>B) Técnico</h2>
+<h3>B) Técnico</h3>
 <p>A su vez, este proyecto ha pretendido ser una excusa para que los alumnos pudieran aprender a manejar las siguientes tecnologías:</p>
 <ul>
 <li><a href="https://maven.apache.org/" title="Landing page de Maven">Maven</a>.</li>
 <li>Comunicación mediante REST, usando <a href="https://eclipse-ee4j.github.io/jersey/" title="Documentación de Jersey">Jersey</a>.</li>
 <li><a href="https://www.jetbrains.com/youtrack/" title="Landing page de YouTrack, producto de JetBrains">YouTrack</a>.</li>
 </ul>
-<h1>Ejecución</h1>
-<h1>0. Requisitos previos a la ejecución</h1>
+<h2>Ejecución</h2>
+<h2>0. Requisitos previos a la ejecución</h2>
 <p>Antes de llevar a cabo los pasos de ejecución, cabe destacar que:</p>
 <ol type="1">
 <li>Hay que tener alguna herramienta que permita acceder a una base de datos MySQL, como por ejemplo <a href="https://www.mysql.com/products/workbench/" title="Landing page de MySQL Workbench">MySQL Workbench</a>.</li>
 <li>Hay que instalar Maven en el equipo. Más información para la instalación <a href="https://maven.apache.org/install.html" title="URL de ayuda para instalar Maven">en su página web</a>.</li>
 </ol>
-<h1>1. Ejecución</h1>
+<h2>1. Ejecución</h2>
 <p>Para preparar la base de datos MySQL:</p>
 <ol type="1">
 <li>Iniciar MySQL.</li>
 <li>Crear el schema MySQL usando el script preparado en <code>src\main\sql</code>.</li>
 </ol>
 <p>Para testear la aplicación, hay que ejecutar los siguientes comandos en dos ventanas de línea de comando (ya sea *SH o PowerShell):</p>
-<h2>En la primera ventana:</h2>
+<h3>En la primera ventana:</h3>
 <ol type="1">
 <li><code>mvn clean</code> : Permite limpiar todas las versiones de paquetes de Maven descargadas.</li>
 <li><code>mvn compile</code> : Permite compilar todos los ficheros .java con los paquetes de Maven, y unirlos en el target.</li>
@@ -131,16 +132,16 @@ $(document).ready(function(){initNavTree('index.html','');});
 <li>Si se quieren ejecutar todos los tests al ejecutar : <code>mvn package jetty:run</code></li>
 <li>Si solamente se quiere ejecutar el servidor : <code>mvn -DskipTests=true package jetty:run</code></li>
 </ul>
-<h2>En la segunda ventana:</h2>
+<h3>En la segunda ventana:</h3>
 <p><code>mvn exec:java -Pclient -X</code> : Permite ejecutar el cliente (FestivalCineController).</p>
-<h1>Prototipo</h1>
+<h2>Prototipo</h2>
 <p>La aplicación ha tomado como referencia un prototipo creado mediante Marvel App para su diseño y desarrollo. URL: <a href="https://marvelapp.com/d2h27dh/screen/63095209">https://marvelapp.com/d2h27dh/screen/63095209</a></p>
-<h1>Sobre las imágenes</h1>
+<h2>Sobre las imágenes</h2>
 <p>Un usuario de tipo administrador, con credenciales:</p>
 <div class="fragment"><div class="line">Nombre de usuario: admin</div>
 <div class="line">Contraseña: admin</div>
 </div><!-- fragment --><p>Es capaz de insertar películas y actores en el sistema, y en el caso de estos primeros, puede seleccionar una imagen para completar la ficha de una película. Para que el cargado de imágenes sea óptimo en cualquier situación, es recomendable que los nombres de estas no tengan espacios intermedios, sino que sean del formato <code>el_rey_leon.jpg</code>.</p>
-<h1>2. Testeo</h1>
+<h2>2. Testeo</h2>
 <p>Otra parte fundamental que se ha querido trabajar en este proyecto han sido los tests. Se han hecho tests y mejoras de diverso tipo a lo largo de la aplicación:</p>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -168,7 +169,7 @@ $(document).ready(function(){initNavTree('index.html','');});
 </table>
 <p>La información sobre profiling con VisualVM se ha incluido en el directorio <code>profiling</code> de este repo. El log que muestra la integración correcta con TravisCI y la ejecución automatizada de este test se muestra en <code>travisci_log</code>.</p>
 <p><b>NOTA</b>: El code coverage obtenido es relativamente bajo de base (53% en recorrido de código general sobre el 30% de variantes disponibles). Por ello, se ha reducido a niveles bajos los indicadores de code coverage para que JaCoCo no bloqueara la ejecución de los tests.</p>
-<h2>Comandos para ejecutar tests</h2>
+<h3>Comandos para ejecutar tests</h3>
 <p>Se insertan a continuación diversos comandos para poder interactuar con las clases de testeo. Antes de ejecutar estos, habrá que ejecutar <code>mvn clean</code>.</p>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -185,12 +186,112 @@ $(document).ready(function(){initNavTree('index.html','');});
 <p>A su vez, el comando <code>mvn site</code> genera una carpeta <code>docs</code> en el nivel superior, la cual alimenta a la documentación on-line generada para este proyecto, presentada en la parte inicial de este README.</p>
 <p>En lo que al checkstyle respecta, se han hecho varias revisiones de los ficheros, reduciendo de 4.000 errores iniciales que había a algo menos de 2.000. Sin embargo, se ha decidido que muchos de ellos eran decisiones propias del diseño, así que se ha preferido no alterar en exceso el codigo solo con el motivo de respetar lo que indica el plugin de checkstyle.</p>
 <hr  />
-<h1>Autores:</h1>
+<h2>Autores:</h2>
 <ul>
 <li>Beñat Galdós (<a href="https://github.com/Benny96" title="Perfil de GitHub de Beñat Galdós">Benny96</a>)</li>
 <li>Anne Idigoras (<a href="https://github.com/anneidigoras" title="Perfil de GitHub de Anne Idigoras">anneidigoras</a>)</li>
 <li>Julen Elcoro-Iribe (<a href="https://github.com/Elkerr" title="Perfil de GitHub de Julen Elcoro-Iribe">elkerr</a>)</li>
-<li>Raúl Ramirez de Cartagena (<a href="https://github.com/raulramirez97" title="Perfil de GitHub de Raúl Ramirez de Cartagena">raulramirez97</a>) </li>
+<li>Raúl Ramirez de Cartagena (<a href="https://github.com/raulramirez97" title="Perfil de GitHub de Raúl Ramirez de Cartagena">raulramirez97</a>)</li>
+</ul>
+<h1>English</h1>
+<h5>Online Documentation [SPA]: <a href="https://raulramirez97.github.io/Festival-de-Cine-Calidad-Software/">https://raulramirez97.github.io/Festival-de-Cine-Calidad-Software/</a></h5>
+<h5>User Manual [SPA]: <a href="https://github.com/raulramirez97/Festival-de-Cine-Calidad-Software/blob/master/user_guide/ManualUsuario_FestCine.pdf">https://github.com/raulramirez97/Festival-de-Cine-Calidad-Software/blob/master/user_guide/ManualUsuario_FestCine.pdf</a></h5>
+<h2>Context</h2>
+<p>Repo that contains a project for the subject Process and Software Quality, taught by the University of Deusto. The underlying idea of the project has been to generate an application that simulates FilmAffinity in a simple way.</p>
+<p>The objectives of this project are of two types:</p>
+<h3>A) Human / Organizational</h3>
+<p>This project is framed within a context in which the authors have had to work based on a Scrum methodology. For this, the authors have been rotating three roles (Scrum Master, Product Owner and Developer) in three Sprints of development.</p>
+<h3>B) Technical</h3>
+<p>Additionally, this project has been an excuse for students to learn to use the following technologies:</p>
+<ul>
+<li><a href="https://maven.apache.org/" title="Maven&apos;s Landing Page">Maven</a>.</li>
+<li>RESTful Communications with <a href="https://eclipse-ee4j.github.io/jersey/" title="Jersey Documentation">Jersey</a>.</li>
+<li><a href="https://www.jetbrains.com/youtrack/" title="YouTrack&apos;s Landing Page, JetBrains&apos; product">YouTrack</a>.</li>
+</ul>
+<h2>Run</h2>
+<h2>0. Prerequisites for running</h2>
+<p>Before carrying out the execution steps, it should be noted that:</p>
+<ol type="1">
+<li>You have to have some tool that allows you to access a MySQL database, such as <a href="https://www.mysql.com/products/workbench/" title="MySQL Workbench&apos;s Landing Page">MySQL Workbench</a>.</li>
+<li>Maven must be installed on the computer. More information for installation <a href="https://maven.apache.org/install.html" title="URL describing Maven&apos;s installation process">in their web page</a>.</li>
+</ol>
+<h2>1. Running</h2>
+<p>To prepare the MySQL database:</p>
+<ol type="1">
+<li>Start MySQL.</li>
+<li>Create the MySQL schema using the script prepared in <code>src \ main \ sql</code>.</li>
+</ol>
+<p>To test the application, you must execute the following commands in two command line windows (either * SH or PowerShell):</p>
+<h3>In the first window:</h3>
+<ol type="1">
+<li><code>mvn clean</code>: It allows you to clean all versions of downloaded Maven packages.</li>
+<li><code>mvn compile</code>: It allows you to compile all the .java files with the Maven packages, and join them in the target.</li>
+<li>Running the server or JeTTY "Servlet" and keep it listening to new input (FestivalCineManager):</li>
+</ol>
+<ul>
+<li>If you want to run all the tests: <code>mvn package jetty: run</code></li>
+<li>If you only want to run the server: <code>mvn -DskipTests = true package jetty: run</code></li>
+</ul>
+<h3>In the second window:</h3>
+<p><code>mvn exec: java -Pclient -X</code>: Run the client (FestivalCineController).</p>
+<h2>Prototype</h2>
+<p>The application has been designed and developed considering a prototype created using MarvelApp. URL: <a href="https://marvelapp.com/d2h27dh/screen/63095209">https://marvelapp.com/d2h27dh/screen/63095209</a></p>
+<h2>About the images</h2>
+<p>An administrator user, with credentials:</p>
+<div class="fragment"><div class="line">Username: admin</div>
+<div class="line">Password: admin</div>
+</div><!-- fragment --><p>Is able to insert movies and actors in the system, and in the case of the former, you can select an image to complete a movie file. So that image loading works optimally in any situation, it is recommended to remove whitespaces between file names, leaving a format like <code>el_rey_leon.jpg</code>.</p>
+<h2>2. Testing</h2>
+<p>The other essential part that has been developed with this project have been the tests. Tests and improvements of different types have been included throughout the application:</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Objective  </th><th class="markdownTableHeadNone">Technology   </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Development of unit tests  </td><td class="markdownTableBodyNone"><a href="https://junit.org/junit4/">JUnit4</a>   </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Performance test development  </td><td class="markdownTableBodyNone"><a href="https://mvnrepository.com/artifact/org.databene/contiperf">ContiPERF</a>   </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Mocking development or class simulation  </td><td class="markdownTableBodyNone"><a href="https://site.mockito.org/">Mockito</a>   </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Code coverage improvement  </td><td class="markdownTableBodyNone"><a href="https://www.eclemma.org/jacoco/">JaCoCo</a>   </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Use of Logging  </td><td class="markdownTableBodyNone"><a href="https://logging.apache.org/log4j/2.x/">Log4j</a>   </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Checkstyle check  </td><td class="markdownTableBodyNone"><a href="https://maven.apache.org/plugins/maven-checkstyle-plugin/">Maven Checkstyle Plugin</a>   </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Application profiling  </td><td class="markdownTableBodyNone"><a href="https://visualvm.github.io/">VisualVM</a>   </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">JavaDoc documentation generation (Apache)  </td><td class="markdownTableBodyNone"><a href="https://maven.apache.org/plugins/maven-project-info-reports-plugin/">Maven Project Info Reports Plugin</a>   </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">JavaDoc documentation generation (Doxygen)  </td><td class="markdownTableBodyNone"><a href="http://www.doxygen.nl/">Doxygen</a>   </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Continuous integration (CI) of this repository  </td><td class="markdownTableBodyNone"><a href="https://travis-ci.org/">TravisCI</a>   </td></tr>
+</table>
+<p>Information on profiling with VisualVM has been included in the <code>profiling</code> directory of this repo. The log that shows the correct integration with TravisCI and the automated execution of this test is shown in <code>travisci_log</code>.</p>
+<p><b>SIDENOTE</b>: The code coverage obtained is low (53% of instructions over 30% of branches). Therefore, the code coverage indicators have been reduced to low levels so that JaCoCo does not block the execution of the tests.</p>
+<h3>Commands to run tests</h3>
+<p>Various commands are then inserted in order to interact with the test classes. Before running these tests, <code>mvn clean</code> should be executed.</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Objective  </th><th class="markdownTableHeadNone">Command   </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Execution of all tests.  </td><td class="markdownTableBodyNone"><code>mvn test</code>   </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Code coverage evaluation.  </td><td class="markdownTableBodyNone"><code>mvn jacoco: check</code>   </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Execution of checkstyle plugin to detect style errors in the application.  </td><td class="markdownTableBodyNone"><code>mvn checkstyle: checkstyle</code>   </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Generation of a complete dashboard of the project, both in Doxygen format and in Apache Maven format.  </td><td class="markdownTableBodyNone"><code>mvn site</code>   </td></tr>
+</table>
+<p>Besides, the <code>mvn site</code> command generates a <code>docs</code> folder at the top level, which feeds the on-line documentation generated for this project, presented in the initial part of this README.</p>
+<p>As far as checkstyle is concerned, several revisions of the files have been made, reducing the amount of errors from 4,000 to approximately 2,000. However, since many of those warnings given by the checkstyle plugin conflicted with our design decisions, we preferred not to override the code.</p>
+<hr  />
+<h1>Authors:</h1>
+<ul>
+<li>Beñat Galdós (<a href="https://github.com/Benny96" title="Beñat Galdós&apos; GitHub profile">Benny96</a>)</li>
+<li>Anne Idigoras (<a href="https://github.com/anneidigoras" title="Anne Idigoras&apos; GitHub profile">anneidigoras</a>)</li>
+<li>Julen Elcoro-Iribe (<a href="https://github.com/Elkerr" title="Julen Elcoro-Iribe&apos;s GitHub profile">elkerr</a>)</li>
+<li>Raúl Ramirez de Cartagena (<a href="https://github.com/raulramirez97" title="Raúl Ramirez de Cartagena&apos;s GitHub profile">raulramirez97</a>) </li>
 </ul>
 </div></div><!-- PageDoc -->
 </div><!-- contents -->
@@ -198,7 +299,7 @@ $(document).ready(function(){initNavTree('index.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generado el Lunes, 6 de Enero de 2020 12:20:25 para Festival_de_Cine por
+    <li class="footer">Generado el Miércoles, 22 de Enero de 2020 18:40:27 para Festival_de_Cine por
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.16 </li>
   </ul>
